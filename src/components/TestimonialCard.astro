@@ -1,8 +1,10 @@
 ---
+import Card from './Card.astro';
+
 /**
  * Customer quote card: brand-yellow quote mark, quote text (default slot),
  * author name and role. Used on landing pages instead of the old slick
- * carousel slides.
+ * carousel slides. Quote text is gray like any `.card-body`.
  */
 interface Props {
   author: string;
@@ -12,7 +14,7 @@ interface Props {
 const { author, role } = Astro.props;
 ---
 
-<div class="flex h-full flex-col rounded-[0.3125rem] bg-white p-8 shadow-card">
+<Card bodyClass="flex flex-col p-8">
   <figure class="mb-4" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 8 8">
       <path
@@ -27,7 +29,7 @@ const { author, role } = Astro.props;
   </blockquote>
 
   <div>
-    <p class="text-lg font-bold">{author}</p>
+    <p class="text-lg font-bold text-ink">{author}</p>
     <p class="text-sm">{role}</p>
   </div>
-</div>
+</Card>

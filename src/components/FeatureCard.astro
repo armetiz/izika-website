@@ -1,10 +1,11 @@
 ---
+import Card from './Card.astro';
+
 /**
- * White card with an illustration icon, a title (optional pill badge) and a
- * short description in the default slot. Used in landing feature grids.
- * Matches the source markup: figure `.max-w-11rem` (compiled to 5rem), h4
- * title, `.font-size-1 .text-body` body (0.875rem, #677788), and the
- * `.badge-success.badge-pill` override (#fec000, white text).
+ * Icon feature card used on the home and pricing grids. Matches the source
+ * markup: `.card.transition-3d-hover` > `.card-body` with a `.max-w-11rem`
+ * figure (compiled to 5rem), an h4 title (optional `.badge-success.badge-pill`
+ * pill — #fec000, white text) and a `.font-size-1.text-body` description.
  */
 interface Props {
   icon: string;
@@ -19,7 +20,7 @@ interface Props {
 const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro.props;
 ---
 
-<div class="btn-3d h-full rounded-[0.3125rem] bg-white p-6 shadow-card">
+<Card hover3d>
   <figure class="mb-4 w-full max-w-20">
     <img
       class="h-auto w-full"
@@ -40,5 +41,5 @@ const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro
       )
     }
   </h3>
-  <p class="mt-2 text-sm text-muted"><slot /></p>
-</div>
+  <p class="mt-2 text-sm"><slot /></p>
+</Card>

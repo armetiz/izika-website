@@ -1,0 +1,35 @@
+---
+/**
+ * Theme `.card` equivalent — the single source of truth for card styling:
+ * white background, shadow 0 4px 15px rgba(218,210,190,.4), radius 5px
+ * (0.3125rem). The body reproduces `.card-body`: flex-1, 1.5rem padding and
+ * text color #677788 (headings keep #363636 via the global h1-h6 rule).
+ *
+ * Slots: `top` (image strip, like .card-img-top), default (body content),
+ * `footer`.
+ */
+interface Props {
+  /** `.transition-3d-hover`: lift 3px + shadow on hover. */
+  hover3d?: boolean;
+  /** Extra classes on the wrapper (e.g. "relative"). */
+  class?: string;
+  /** Extra/override classes on the body (padding overrides win over p-6). */
+  bodyClass?: string;
+}
+
+const { hover3d = false, class: className, bodyClass } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex h-full flex-col overflow-hidden rounded-[0.3125rem] bg-white shadow-card',
+    hover3d && 'btn-3d',
+    className,
+  ]}
+>
+  <slot name="top" />
+  <div class:list={['flex-1 p-6 text-muted', bodyClass]}>
+    <slot />
+  </div>
+  <slot name="footer" />
+</div>
