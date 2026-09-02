@@ -50,7 +50,7 @@ const backgroundClass = {
             alt="Pierre A., cofondateur d'izika"
             loading="lazy"
           />
-          <p class="font-semibold">Pierre A., cofondateur</p>
+          <p class="text-lg font-semibold">Pierre A., cofondateur</p>
         </div>
       </div>
 
@@ -76,14 +76,29 @@ const backgroundClass = {
 
       <div class="lg:pt-8">
         <div class="flex items-center gap-3">
-          <a class="text-4xl font-bold" href={reviews.trustpilotUrl} rel="nofollow">
+          <a class="text-[2.5rem] font-bold" href={reviews.trustpilotUrl} rel="nofollow">
             {reviews.ratingValue}
           </a>
           <div class="flex flex-col">
-            <a class="text-primary" rel="nofollow" href={reviews.trustpilotUrl} aria-label={`Note ${reviews.ratingValue} sur 5`}>
-              ★★★★<span aria-hidden="true">½</span>
+            <a
+              class="flex items-center gap-0.5 text-primary"
+              rel="nofollow"
+              href={reviews.trustpilotUrl}
+              aria-label={`Note ${reviews.ratingValue} sur 5`}
+            >
+              {/* 4 full stars + 1 half star, like the fa-star/fa-star-half icons */}
+              {
+                [0, 1, 2, 3].map(() => (
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))
+              }
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2v15.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
             </a>
-            <a href={reviews.trustpilotUrl} class="text-sm underline" rel="nofollow">
+            <a href={reviews.trustpilotUrl} class="underline" rel="nofollow">
               Voir tous les avis
             </a>
           </div>
@@ -92,7 +107,7 @@ const backgroundClass = {
     </div>
 
     <div class="mt-12 pb-4 text-center">
-      <p class="text-sm">
+      <p class="text-[80%]">
         <a class="underline" href={localizedPath('legal', locale)}>{dict.footer.legal}</a>
         {' | '}
         <a class="underline" href={localizedPath('terms', locale)}>{dict.footer.terms}</a>
