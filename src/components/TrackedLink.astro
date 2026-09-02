@@ -1,0 +1,38 @@
+---
+import { site } from '../config/site';
+
+/**
+ * CTA link carrying the data-track-click JSON handled by /assets/analytics.js
+ * (same payload shape as the old Twig templates). trackingContext defaults to
+ * 'page_<last path segment>' like defaultTrackingContext did.
+ */
+interface Props {
+  eventId: string;
+  href?: string;
+  trackingContext?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  eventId,
+  href = site.joinUrl,
+  trackingContext,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const context = trackingContext ?? `page_${segments[segments.length - 1] ?? ''}`;
+
+const payload = JSON.stringify({
+  name: 'productEventTriggered',
+  properties: {
+    eventId,
+    eventAction: 'clicked',
+    eventContext: context,
+  },
+});
+---
+
+<a href={href} class={className} data-track-click={payload} {...rest}><slot /></a>

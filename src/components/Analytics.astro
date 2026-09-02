@@ -1,0 +1,82 @@
+---
+/**
+ * Faithful port of the tracking blocks from _base.html.twig. Plain scripts,
+ * no Partytown: Axeptio (CMP) must orchestrate consent before GTM/GA4 fire.
+ * Every id comes from env; an empty id disables its block, so dev/preview
+ * deployments track nothing by default.
+ */
+const gtmId = import.meta.env.PUBLIC_GTM_ID ?? '';
+const brevoClientKey = import.meta.env.PUBLIC_BREVO_TRACKER_CLIENT_KEY ?? '';
+const axeptioClientId = import.meta.env.PUBLIC_AXEPTIO_CLIENT_ID ?? '';
+const debugTracking = import.meta.env.PUBLIC_DEBUG_TRACKING === 'true';
+const analyticsEnabled = Boolean(gtmId);
+
+const analyticsInit = `
+document.addEventListener('DOMContentLoaded', function () {
+	var analyticsInstance = IzikaAnalytics.analytics({
+		debug: ${debugTracking},
+		enabled: ${analyticsEnabled},
+		hasUserConsent: true, // TODO: check if user has given consent
+		destination: {
+			gtm: {
+				containerId: ${JSON.stringify(gtmId)},
+			},
+		},
+		bootstrapProperties: {
+			userId: null, // pas de session sur le site public
+		},
+	});
+
+	IzikaAnalytics.domTracker({
+		analytics: analyticsInstance,
+		document,
+	});
+});
+`;
+
+const axeptioInit = `
+window.axeptioSettings = {
+	clientId: ${JSON.stringify(axeptioClientId)},
+	cookiesVersion: "izika-fr-EU",
+	googleConsentMode: {
+		default: {
+			analytics_storage: "denied",
+			ad_storage: "denied",
+			ad_user_data: "denied",
+			ad_personalization: "denied",
+			wait_for_update: 500
+		}
+	}
+};
+
+(function(d, s) {
+	var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+	e.async = true; e.src = "//static.axept.io/sdk.js";
+	t.parentNode.insertBefore(e, t);
+})(document, "script");
+`;
+
+const brevoInit = `
+window.Brevo = window.Brevo || [];
+Brevo.push([
+	"init",
+	{
+		client_key: ${JSON.stringify(brevoClientKey)},
+	}
+]);
+`;
+---
+
+<script is:inline src="/assets/analytics.js"></script>
+<script is:inline set:html={analyticsInit} />
+
+{
+  brevoClientKey && (
+    <>
+      <script is:inline src="https://cdn.brevo.com/js/sdk-loader.js" async />
+      <script is:inline set:html={brevoInit} />
+    </>
+  )
+}
+
+{axeptioClientId && <script is:inline set:html={axeptioInit} />}

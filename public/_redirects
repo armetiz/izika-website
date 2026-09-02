@@ -1,0 +1,35 @@
+# Cloudflare Pages redirects — evaluated BEFORE static assets.
+# NEVER add a /:slug catch-all here: it would swallow real files
+# (favicon.ico, robots.txt, /_astro/*…). Explicit lines only.
+# Exact-match rules first (faster), splats last.
+# The 37 legacy article lines are appended at build time by
+# src/integrations/legacy-redirects.mjs.
+
+# ---- Root ----
+/                                      /fr                                       301
+
+# ---- Legacy 301s: jump straight to the final URL (no chains) ----
+/vtc                                   /fr/vtc-indemnites-kilometriques          301
+/indemnites-kilometriques              /fr/indemnite-kilometrique                301
+
+# ---- Old non-prefixed editorial aliases (were 302, now permanent) ----
+/solo                                  /fr/solo                                  301
+/team                                  /fr/team                                  301
+/team-collectivites                    /fr/team-collectivites                    301
+/team-entreprises                      /fr/team-entreprises                      301
+/fonctionnalites                       /fr/fonctionnalites                       301
+/pricing                               /fr/pricing                               301
+/faq                                   /fr/faq                                   301
+/security                              /fr/security                              301
+/mentions-legales                      /fr/mentions-legales                      301
+/charte-de-confidentialite             /fr/charte-de-confidentialite             301
+/cgv                                   /fr/cgv                                   301
+/calculateur-indemnites-kilometriques  /fr/calculateur-indemnites-kilometriques  301
+/desabonnement                         /fr/faq                                   301
+/fr_FR                                 /fr                                       301
+/fr_CH                                 /fr                                       301
+
+# ---- Splats last ----
+/fr_FR/*                               /fr/:splat                                301
+/fr_CH/*                               /fr/:splat                                301
+/solutions/*                           /fr/solutions/:splat                      301

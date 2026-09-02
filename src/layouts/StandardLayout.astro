@@ -1,0 +1,19 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { ComponentProps } from 'astro/types';
+
+type Props = ComponentProps<typeof BaseLayout>;
+
+const props = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <slot name="head" slot="head" />
+  <Header locale={props.locale} />
+  <main class="pt-12 pb-16">
+    <slot />
+  </main>
+  <Footer locale={props.locale} />
+</BaseLayout>

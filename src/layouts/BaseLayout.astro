@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import JsonLd from '../components/JsonLd.astro';
+import Analytics from '../components/Analytics.astro';
+import { graph, organizationSchema, webSiteSchema } from '../seo/schema';
+import type { RouteKey } from '../i18n';
+import type { Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  routeKey?: RouteKey;
+  image?: string;
+  robots?: string;
+  ogType?: 'website' | 'article';
+  articlePublishedTime?: Date;
+  /** Page-specific JSON-LD nodes merged into the shared @graph. */
+  schemaNodes?: Array<Record<string, unknown>>;
+}
+
+const {
+  locale,
+  title,
+  description,
+  routeKey,
+  image,
+  robots,
+  ogType,
+  articlePublishedTime,
+  schemaNodes = [],
+} = Astro.props;
+
+const schema = graph(organizationSchema(), webSiteSchema(), ...schemaNodes);
+
+const pageViewPayload = JSON.stringify({ name: 'pageViewed', properties: {} });
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo
+      title={title}
+      description={description}
+      routeKey={routeKey}
+      image={image}
+      robots={robots}
+      ogType={ogType}
+      articlePublishedTime={articlePublishedTime}
+    />
+    <JsonLd schema={schema} />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- TrustBox script -->
+    <script
+      is:inline
+      type="text/javascript"
+      src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+      async></script>
+
+    <slot name="head" />
+  </head>
+  <body data-track-page-view={pageViewPayload}>
+    <slot />
+    <Analytics />
+  </body>
+</html>

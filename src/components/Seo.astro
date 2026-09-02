@@ -1,0 +1,87 @@
+---
+import { site } from '../config/site';
+import { locales, xDefaultLocale, routes, localizedPath, type RouteKey } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Editorial pages: drives hreflang alternates from the routes table. */
+  routeKey?: RouteKey;
+  /** Absolute or root-relative og:image; defaults to the site banner. */
+  image?: string;
+  robots?: string;
+  ogType?: 'website' | 'article';
+  articlePublishedTime?: Date;
+}
+
+const {
+  title,
+  description,
+  routeKey,
+  image = site.defaultOgImage,
+  robots = 'index, follow',
+  ogType = 'website',
+  articlePublishedTime,
+} = Astro.props;
+
+// Self-referencing absolute canonical, no trailing slash and no .html
+// (build.format 'file' bakes it into pathname at build time). Fixes the old
+// hardcoded og:url by construction: canonical and og:url share this value.
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/(index)?$/, '') || '/';
+const canonical = new URL(path, Astro.site).href;
+
+// hreflang: only emitted when the page exists in >= 2 locales. fr-only launch
+// deliberately ships zero hreflang tags.
+const alternates = routeKey
+  ? locales
+      .map((locale) => ({ locale, href: localizedPath(routeKey, locale) }))
+      .filter((a): a is { locale: (typeof locales)[number]; href: string } => a.href !== null)
+  : [];
+const emitHreflang = alternates.length >= 2;
+const xDefaultHref = routeKey ? localizedPath(routeKey, xDefaultLocale) : null;
+
+const ogImage = new URL(image, Astro.site).href;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonical} />
+
+{
+  emitHreflang && (
+    <>
+      {xDefaultHref && (
+        <link rel="alternate" href={new URL(xDefaultHref, Astro.site).href} hreflang="x-default" />
+      )}
+      {alternates.map((a) => (
+        <link rel="alternate" href={new URL(a.href, Astro.site).href} hreflang={a.locale} />
+      ))}
+    </>
+  )
+}
+
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content="IZIKA : Calcul indemnité kilométrique" />
+<meta property="article:publisher" content="https://www.facebook.com/izikacom/" />
+{
+  articlePublishedTime && (
+    <meta
+      property="article:published_time"
+      content={articlePublishedTime.toISOString().slice(0, 10)}
+    />
+  )
+}
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content={site.twitterHandle} />
+<meta name="twitter:site" content={site.twitterHandle} />
+
+<meta name="msvalidate.01" content="98A4420FB16EC9DF4C90C203D3D15E84" />
+<meta name="yandex-verification" content="160b5db46dfbd7b1" />

@@ -1,0 +1,100 @@
+---
+import StandardLayout from './StandardLayout.astro';
+import TrackedLink from '../components/TrackedLink.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import { articleSchema, breadcrumbSchema } from '../seo/schema';
+import { t, localizedPath, type Locale } from '../i18n';
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  date: Date;
+  image?: string;
+  robots?: string;
+  toc?: boolean;
+  headings?: MarkdownHeading[];
+}
+
+const { locale, title, description, date, image, robots, toc = false, headings = [] } = Astro.props;
+const dict = t(locale);
+
+// Same default og:image as the old page.html.twig.
+const ogImage = image ? `/${image.replace(/^\//, '')}` : '/content/pages/bareme-indemnite-kilometrique.jpg';
+
+const canonical = new URL(
+  Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, ''),
+  Astro.site,
+).href;
+const homeUrl = new URL(localizedPath('home', locale)!, Astro.site).href;
+
+const schemaNodes = [
+  articleSchema({ url: canonical, title, description, datePublished: date, image: ogImage }),
+  breadcrumbSchema([
+    { name: dict.article.breadcrumbHome, url: homeUrl },
+    { name: title, url: canonical },
+  ]),
+];
+---
+
+<StandardLayout
+  locale={locale}
+  title={title}
+  description={description}
+  image={ogImage}
+  robots={robots}
+  ogType="article"
+  articlePublishedTime={date}
+  schemaNodes={schemaNodes}
+>
+  <!-- Top CTA banner (same copy as page.html.twig) -->
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-lg bg-beige-dark/50 p-8">
+      <div class="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
+        <div>
+          <p class="text-2xl font-semibold">Envie de gagner du temps sur le calcul de vos IK ?</p>
+          <p class="mb-0">Vos IK en quelques minutes au lieu de plusieurs heures.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2">
+          <TrackedLink
+            eventId="cta_block_cta"
+            class="rounded-full bg-primary px-6 py-2.5 font-semibold transition hover:shadow-card"
+          >
+            Essayer gratuitement
+          </TrackedLink>
+          <a
+            class="rounded-full bg-white px-6 py-2.5 font-semibold transition hover:shadow-card"
+            href={localizedPath('home', locale)}
+          >
+            En savoir +
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 pt-8 pb-16">
+    {toc && headings.length > 0 && <TableOfContents headings={headings} title={dict.article.tocTitle} />}
+    <article class="prose prose-izika mx-auto lg:max-w-[85%]">
+      <slot />
+    </article>
+  </div>
+
+  <!-- Bottom CTA card -->
+  <div class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="relative mx-auto overflow-hidden rounded-lg bg-white p-8 shadow-card lg:max-w-[85%]">
+      <div class="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+        <h3 class="text-xl font-semibold">
+          izika automatise la gestion de vos indemnités kilométriques
+        </h3>
+        <a
+          class="shrink-0 rounded-md bg-primary px-5 py-2 font-semibold transition hover:shadow-card"
+          href={localizedPath('home', locale)}
+        >
+          Découvrez izika
+        </a>
+      </div>
+    </div>
+  </div>
+</StandardLayout>

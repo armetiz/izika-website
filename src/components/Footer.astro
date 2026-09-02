@@ -1,0 +1,95 @@
+---
+import { t, localizedPath, type Locale } from '../i18n';
+import { reviews } from '../data/reviews';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-beige">
+  <div class="mx-auto max-w-6xl px-4 pt-16">
+    <div class="grid gap-10 lg:grid-cols-[2fr_1.5fr_1fr]">
+      <div>
+        <a class="mb-4 inline-flex items-center" href={localizedPath('home', locale)} aria-label="izika">
+          <img src="/assets/img/logo/izika-logo.png" alt="Logo izika" width="159" height="56" class="h-12 w-auto" />
+        </a>
+
+        <div class="mb-4">
+          <p class="text-lg font-semibold">Consacrez-vous à ce qui compte vraiment !</p>
+          <p>
+            <em>
+              "Notre ambition est de gérer intégralement les frais kilométriques et de libérer du
+              temps pour les collaborateurs et les dirigeants avec un logiciel intelligent et
+              solide."
+            </em>
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <img
+            class="h-8 w-8 rounded-full"
+            src="/assets/landing-pages/team/pierre-aulagne.jpg"
+            alt="Pierre A., cofondateur d'izika"
+            loading="lazy"
+          />
+          <p class="font-semibold">Pierre A., cofondateur</p>
+        </div>
+      </div>
+
+      <div class="lg:pt-8">
+        <ul class="space-y-2">
+          <li>
+            <a class="hover:underline" href={localizedPath('features', locale)}>{dict.nav.features}</a>
+          </li>
+          <li>
+            <a class="hover:underline" href={localizedPath('calculator', locale)}>
+              Calculateur d'indemnités kilométriques
+            </a>
+          </li>
+          <li><a class="hover:underline" href={localizedPath('faq', locale)}>{dict.nav.faq}</a></li>
+          <li>
+            <a class="hover:underline" href={localizedPath('team', locale)}>
+              izika <span class="rounded bg-primary-hover px-1.5 py-0.5 text-xs font-bold">Team</span>
+              pour les <strong>Entreprises, associations & collectivités</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:pt-8">
+        <div class="flex items-center gap-3">
+          <a class="text-4xl font-bold" href={reviews.trustpilotUrl} rel="nofollow">
+            {reviews.ratingValue}
+          </a>
+          <div class="flex flex-col">
+            <a class="text-primary" rel="nofollow" href={reviews.trustpilotUrl} aria-label={`Note ${reviews.ratingValue} sur 5`}>
+              ★★★★<span aria-hidden="true">½</span>
+            </a>
+            <a href={reviews.trustpilotUrl} class="text-sm underline" rel="nofollow">
+              Voir tous les avis
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pb-4 text-center">
+      <p class="text-sm">
+        <a class="underline" href={localizedPath('legal', locale)}>{dict.footer.legal}</a>
+        {' | '}
+        <a class="underline" href={localizedPath('terms', locale)}>{dict.footer.terms}</a>
+        {' | '}
+        <a class="underline" href="javascript:openAxeptioCookies()">Consentement des cookies</a>
+        {' | '}
+        &copy;Copyright {year} izika SAS - RCS Montpellier 807746524 - 199 rue Hélène Boucher 34170
+        Castelnau-le-Lez, France
+      </p>
+      <LanguageSwitcher locale={locale} />
+    </div>
+  </div>
+</footer>

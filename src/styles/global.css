@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@import '@fontsource/open-sans/400.css';
+@import '@fontsource/open-sans/600.css';
+@import '@fontsource/open-sans/700.css';
+
+/*
+ * Live brand palette — carried over from the inline `styles_header` block of
+ * _base.html.twig (which overrode the theme's blue everywhere). The visual
+ * identity is yellow/gold on warm beige, text #363636.
+ */
+@theme {
+  --color-primary: #fabd00;
+  --color-primary-hover: #fec000;
+  --color-ink: #363636;
+  --color-success: #00ce79;
+  --color-trustpilot: #00b67a;
+  --color-beige: #f1ede5;
+  --color-beige-dark: #e3dccc;
+  --color-beige-line: #e2dccd;
+  --color-soft-primary: rgb(254 192 0 / 0.15);
+  --color-soft-neutral: rgb(244 241 235 / 0.7);
+
+  --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 4px 15px rgb(218 210 190 / 0.4);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+
+/*
+ * Article body styling — replaces the Bootstrap classes the old CommonMark
+ * pipeline injected (DefaultAttributesExtension). Applied via
+ * <article class="prose prose-izika"> in ArticleLayout.
+ */
+.prose-izika {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-ink);
+  max-width: 72ch;
+}
+
+.prose-izika h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prose-izika a {
+  text-decoration: underline;
+}
+
+.prose-izika a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Barème tables (17 articles) — equivalent of .table.table-thead-bordered + .thead-light */
+.prose-izika table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose-izika thead {
+  background-color: #f8fafd;
+}
+
+.prose-izika th,
+.prose-izika td {
+  border: 1px solid var(--color-beige-line);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Blockquote — equivalent of the old soft-primary rounded card */
+.prose-izika blockquote {
+  background-color: var(--color-soft-primary);
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-style: normal;
+  quotes: none;
+}
+
+.prose-izika blockquote p::before,
+.prose-izika blockquote p::after {
+  content: none;
+}
+
+/* Images — equivalent of .img-fluid.rounded.my-2.my-sm-4.mx-auto.d-block */
+.prose-izika img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Heading permalink anchors added by rehype-autolink-headings */
+.prose-izika :is(h2, h3, h4) a {
+  text-decoration: none;
+  font-weight: inherit;
+  color: inherit;
+}

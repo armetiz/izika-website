@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import StandardLayout from '../../../layouts/StandardLayout.astro';
+import { articlePath } from '../../../i18n';
+
+// Successor of the old /pages dev index — noindex, like before.
+const articles = (await getCollection('articles', ({ id }) => id.startsWith('fr/'))).sort((a, b) =>
+  a.id.localeCompare(b.id),
+);
+---
+
+<StandardLayout
+  locale="fr"
+  title="Articles — izika"
+  description="Index des articles izika : barèmes d'indemnités kilométriques, intégrations d'agendas et guides."
+  robots="noindex, nofollow"
+>
+  <div class="mx-auto max-w-4xl px-4">
+    <h1 class="mb-8 text-3xl font-semibold">Articles</h1>
+    <ul class="space-y-3">
+      {
+        articles.map((a) => (
+          <li>
+            <a class="font-semibold underline" href={articlePath(a.id.replace(/^fr\//, ''), 'fr')}>
+              {a.data.title}
+            </a>
+            <span class="ml-2 text-sm text-ink/60">{a.data.date.toISOString().slice(0, 10)}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</StandardLayout>

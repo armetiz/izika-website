@@ -1,0 +1,36 @@
+---
+import { locales, localizedPath, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const localeNames: Record<Locale, string> = {
+  fr: 'français',
+};
+
+// Renders nothing while only one locale exists; expands automatically when
+// locales are added to src/i18n/locales.ts.
+const entries = locales.map((l) => ({
+  locale: l,
+  href: localizedPath('home', l),
+  name: localeNames[l],
+}));
+---
+
+{
+  entries.length >= 2 && (
+    <p class="text-sm">
+      <span aria-label="Sélecteur de langue">
+        {entries.map((e, i) => (
+          <>
+            {i > 0 && ' - '}
+            <a class="underline" href={e.href} hreflang={e.locale} lang={e.locale} rel="alternate">
+              {e.name}
+            </a>
+          </>
+        ))}
+      </span>
+    </p>
+  )
+}
