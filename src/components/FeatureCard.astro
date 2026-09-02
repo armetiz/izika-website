@@ -2,6 +2,9 @@
 /**
  * White card with an illustration icon, a title (optional pill badge) and a
  * short description in the default slot. Used in landing feature grids.
+ * Matches the source markup: figure `.max-w-11rem` (compiled to 5rem), h4
+ * title, `.font-size-1 .text-body` body (0.875rem, #677788), and the
+ * `.badge-success.badge-pill` override (#fec000, white text).
  */
 interface Props {
   icon: string;
@@ -9,7 +12,7 @@ interface Props {
   iconWidth?: number;
   iconHeight?: number;
   title: string;
-  /** Small green pill appended to the title (e.g. "team"). */
+  /** Small yellow pill appended to the title (e.g. "team"). */
   badge?: string;
 }
 
@@ -17,7 +20,7 @@ const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro
 ---
 
 <div class="btn-3d h-full rounded-[0.3125rem] bg-white p-6 shadow-card">
-  <figure class="mb-4 w-full max-w-[8rem]">
+  <figure class="mb-4 w-full max-w-20">
     <img
       class="h-auto w-full"
       src={icon}
@@ -31,11 +34,11 @@ const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro
     {title}
     {
       badge && (
-        <span class="ml-1 inline-block rounded-full bg-success px-2 py-0.5 align-middle text-xs font-bold text-white">
+        <span class="ml-1 inline-block rounded-full bg-primary-hover px-2 py-0.5 align-middle text-xs font-bold text-white">
           {badge}
         </span>
       )
     }
   </h3>
-  <p class="mt-2 text-sm"><slot /></p>
+  <p class="mt-2 text-sm text-muted"><slot /></p>
 </div>

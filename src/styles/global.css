@@ -34,6 +34,10 @@
   --color-soft-primary: rgb(254 192 0 / 0.15);
   /* .bg-soft-danger / .bg-soft-info override */
   --color-soft-neutral: rgb(244 241 235 / 0.7);
+  /* .bg-primary override (#fabd004a) — translucent yellow band */
+  --color-primary-band: rgb(250 189 0 / 0.29);
+  /* .text-body — secondary text in cards */
+  --color-muted: #677788;
 
   --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
 
