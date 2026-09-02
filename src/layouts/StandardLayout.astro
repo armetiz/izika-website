@@ -4,9 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import type { ComponentProps } from 'astro/types';
 
-type Props = ComponentProps<typeof BaseLayout>;
+type Props = ComponentProps<typeof BaseLayout> & {
+  /** Forwarded to Footer — landing pages use 'gradient' or 'soft'. */
+  footerBackground?: ComponentProps<typeof Footer>['background'];
+};
 
-const props = Astro.props;
+const { footerBackground, ...props } = Astro.props;
 ---
 
 <BaseLayout {...props}>
@@ -16,5 +19,5 @@ const props = Astro.props;
   <main>
     <slot />
   </main>
-  <Footer locale={props.locale} />
+  <Footer locale={props.locale} background={footerBackground} />
 </BaseLayout>

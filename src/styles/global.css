@@ -66,6 +66,11 @@ h6 {
   color: var(--color-ink);
 }
 
+/* Landing footer zone — gradient of the old solo/team landing footers */
+@utility footer-gradient {
+  background-image: linear-gradient(to bottom, #f4f1eb 0%, rgb(254 192 0 / 0.15) 100%);
+}
+
 @utility btn-3d {
   /* .transition-3d-hover */
   transition: all 0.2s ease-in-out;

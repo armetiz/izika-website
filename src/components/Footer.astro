@@ -5,14 +5,27 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 
 interface Props {
   locale: Locale;
+  /**
+   * Footer-zone background: 'beige' (default site-wide), 'gradient' (the
+   * solo/team landing gradient), 'soft' (the collectivités/entreprises
+   * landing tint). Pair with the same background on LandingClosingCta so the
+   * CTA and the footer read as one zone.
+   */
+  background?: 'beige' | 'gradient' | 'soft';
 }
 
-const { locale } = Astro.props;
+const { locale, background = 'beige' } = Astro.props;
 const dict = t(locale);
 const year = new Date().getFullYear();
+
+const backgroundClass = {
+  beige: 'bg-beige',
+  gradient: 'footer-gradient',
+  soft: 'bg-soft-neutral',
+}[background];
 ---
 
-<footer class="bg-beige">
+<footer class={backgroundClass}>
   <div class="mx-auto max-w-6xl px-4 pt-12">
     <div class="grid gap-10 lg:grid-cols-[2fr_1.5fr_1fr]">
       <div>

@@ -1,6 +1,7 @@
 ---
 import LandingLayout from '../../layouts/LandingLayout.astro';
 import TeamLanding from '../../components/TeamLanding.astro';
+import LandingClosingCta from '../../components/LandingClosingCta.astro';
 ---
 
 <LandingLayout
@@ -8,10 +9,26 @@ import TeamLanding from '../../components/TeamLanding.astro';
   title="Gestion des IK pour les entreprises"
   description="Simplifiez le calcul des IK pour vos collaborateurs"
   routeKey="teamEntreprises"
+  footerBackground="soft"
 >
   {/*
     The Twig source's hero H1 still said "collectivités" here (copy/paste
     leftover — its own meta title says "entreprises"); fixed on purpose.
   */}
   <TeamLanding audience="entreprises" trackingContext="page_entreprises" />
+
+  <LandingClosingCta
+    title="Prêt à tester le meilleur outil de gestion d'IK ?"
+    text="Notre équipe est à votre disposition pour vous accompagner dans la mise en place d'izika dans votre structure."
+    trackingContext="page_entreprises"
+    class="bg-soft-neutral"
+  >
+    <div class="mt-4 flex items-start gap-2">
+      <img width="50" src="/assets/landing-pages/team/cocorico.png" alt="" loading="lazy" />
+      <p class="flex-1">
+        Application made in France,<br />
+        Support ultra-efficace en français et non sous-traité&nbsp;!
+      </p>
+    </div>
+  </LandingClosingCta>
 </LandingLayout>

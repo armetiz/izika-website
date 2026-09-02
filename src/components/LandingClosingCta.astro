@@ -2,30 +2,44 @@
 import TrackedLink from './TrackedLink.astro';
 
 /**
- * Closing CTA band — carries over the landing-specific footer pitch of the
- * old solo/team templates (tracked as cta_footer), which the unified Footer
- * dropped.
+ * Closing CTA of the landing pages — the top half of the old landing-specific
+ * footer: left-aligned column (col-lg-5), `h2.h1` heading (2.5rem), lead
+ * paragraph and an optional `.btn-lg` CTA (tracked as cta_footer). Extra
+ * content (e.g. the "made in France" blurb) goes in the default slot.
+ *
+ * Carries no background of its own: pass the footer-zone color via `class`
+ * so the section and the Footer below read as one zone, like the prod
+ * gradient footer.
  */
 interface Props {
   title: string;
   text: string;
-  ctaLabel: string;
+  /** Omit to render no button (the collectivités/entreprises variant). */
+  ctaLabel?: string;
   trackingContext: string;
+  class?: string;
 }
 
-const { title, text, ctaLabel, trackingContext } = Astro.props;
+const { title, text, ctaLabel, trackingContext, class: className } = Astro.props;
 ---
 
-<section class="bg-beige-light">
-  <div class="mx-auto max-w-4xl px-4 py-16 text-center">
-    <h2 class="text-[2.5rem] font-bold">{title}</h2>
-    <p class="mx-auto mt-3 max-w-2xl">{text}</p>
-    <TrackedLink
-      eventId="cta_footer"
-      trackingContext={trackingContext}
-      class="btn-3d mt-6 inline-block min-w-40 rounded-[0.3125rem] bg-primary px-8 py-3 text-center font-bold text-white hover:bg-primary-hover"
-    >
-      {ctaLabel}
-    </TrackedLink>
+<section class:list={[className]}>
+  <div class="mx-auto max-w-6xl px-4 pt-16 pb-8">
+    <div class="lg:max-w-[42%]">
+      <h2 class="text-[2.5rem] font-bold">{title}</h2>
+      <p class="mt-4">{text}</p>
+      {
+        ctaLabel && (
+          <TrackedLink
+            eventId="cta_footer"
+            trackingContext={trackingContext}
+            class="btn-3d mt-3 mb-5 inline-block min-w-40 rounded-lg bg-primary px-[1.125rem] py-[1.125rem] text-center text-xl font-bold text-white"
+          >
+            {ctaLabel}
+          </TrackedLink>
+        )
+      }
+      <slot />
+    </div>
   </div>
 </section>
