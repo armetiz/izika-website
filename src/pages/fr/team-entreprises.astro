@@ -1,0 +1,17 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import TeamLanding from '../../components/TeamLanding.astro';
+---
+
+<LandingLayout
+  locale="fr"
+  title="Gestion des IK pour les entreprises"
+  description="Simplifiez le calcul des IK pour vos collaborateurs"
+  routeKey="teamEntreprises"
+>
+  {/*
+    The Twig source's hero H1 still said "collectivités" here (copy/paste
+    leftover — its own meta title says "entreprises"); fixed on purpose.
+  */}
+  <TeamLanding audience="entreprises" trackingContext="page_entreprises" />
+</LandingLayout>

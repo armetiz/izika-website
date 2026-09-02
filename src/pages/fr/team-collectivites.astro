@@ -1,0 +1,13 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import TeamLanding from '../../components/TeamLanding.astro';
+---
+
+<LandingLayout
+  locale="fr"
+  title="Gestion des IK pour les collectivités"
+  description="Simplifiez le calcul des IK pour vos collaborateurs"
+  routeKey="teamCollectivites"
+>
+  <TeamLanding audience="collectivités" trackingContext="page_collectivites" />
+</LandingLayout>

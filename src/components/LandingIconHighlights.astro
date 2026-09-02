@@ -1,0 +1,41 @@
+---
+/**
+ * Row of small icon + caption highlights under the solo/team landing hero
+ * (the old "Clients" row). `text` may contain inline HTML (e.g. <br />) and
+ * is rendered as-is — only pass trusted, hardcoded copy.
+ */
+export interface IconHighlight {
+  icon: string;
+  /** Decorative in the original templates — defaults to an empty alt. */
+  iconAlt?: string;
+  text: string;
+}
+
+interface Props {
+  items: readonly IconHighlight[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="mx-auto max-w-6xl px-4 py-12">
+  <div class="flex flex-wrap justify-center gap-x-8 gap-y-10 text-center lg:justify-between">
+    {
+      items.map((item) => (
+        <div class="flex w-36 flex-col items-center sm:w-40">
+          <figure class="mb-4 w-full max-w-[8rem]">
+            <img
+              class="h-auto w-full"
+              src={item.icon}
+              alt={item.iconAlt ?? ''}
+              width="500"
+              height="500"
+              loading="lazy"
+            />
+          </figure>
+          <h3 class="text-sm font-semibold" set:html={item.text} />
+        </div>
+      ))
+    }
+  </div>
+</div>

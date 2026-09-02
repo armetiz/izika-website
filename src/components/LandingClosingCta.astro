@@ -1,0 +1,31 @@
+---
+import TrackedLink from './TrackedLink.astro';
+
+/**
+ * Closing CTA band — carries over the landing-specific footer pitch of the
+ * old solo/team templates (tracked as cta_footer), which the unified Footer
+ * dropped.
+ */
+interface Props {
+  title: string;
+  text: string;
+  ctaLabel: string;
+  trackingContext: string;
+}
+
+const { title, text, ctaLabel, trackingContext } = Astro.props;
+---
+
+<section class="bg-beige-dark/50">
+  <div class="mx-auto max-w-4xl px-4 py-16 text-center">
+    <h2 class="text-3xl font-semibold">{title}</h2>
+    <p class="mx-auto mt-3 max-w-2xl">{text}</p>
+    <TrackedLink
+      eventId="cta_footer"
+      trackingContext={trackingContext}
+      class="mt-6 inline-block rounded-full bg-primary px-8 py-3 font-semibold transition hover:shadow-card"
+    >
+      {ctaLabel}
+    </TrackedLink>
+  </div>
+</section>

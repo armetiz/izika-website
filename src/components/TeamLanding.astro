@@ -1,0 +1,321 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+import TrackedLink from './TrackedLink.astro';
+
+/**
+ * Shared body of the /team-collectivites and /team-entreprises landing pages
+ * (ported from templates/landing/team-*.html.twig, which were identical except
+ * for the meta title, the tracking context and the hero audience word).
+ */
+interface Props {
+  /** Highlighted audience word in the hero H1 (e.g. "collectivités"). */
+  audience: string;
+  /** Analytics context, e.g. "page_collectivites" (matches the old Twig pages). */
+  trackingContext: string;
+}
+
+const { audience, trackingContext } = Astro.props;
+
+const heroBenefits = [
+  { icon: '/assets/landing-pages/team/icon_cal-to-rdv.png', title: 'Gestion intelligente des RDV' },
+  { icon: '/assets/landing-pages/team/icon_approval.png', title: "Flux d'approbation efficaces" },
+  {
+    icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
+    title: 'Ventilation par équipe et par dossier',
+  },
+  {
+    icon: '/assets/landing-pages/team/icon_report-conformity.png',
+    title: 'Rapports conformes aux règles fiscales',
+  },
+  {
+    icon: '/assets/landing-pages/team/icon_security.png',
+    title: 'Sécurisé, fiable, hébergé en France',
+  },
+];
+
+const collaboratorPoints = [
+  'Mise en route simplissime sur invitation.',
+  "Import des RDV depuis un agenda électronique et/ou saisie manuelle intuitive.",
+  'Calcul des distances pour chaque déplacement.',
+  'Paramétrage des déplacements en tournée ou en étoile.',
+  'Gestion des justificatifs et des attributions à des dossiers ou projets.',
+];
+
+const collaboratorScreens = [
+  {
+    src: '/assets/landing-pages/team/illu_rdv-etoiles.png',
+    alt: 'Configuration des déplacements en étoile ou en tournée',
+  },
+  {
+    src: '/assets/landing-pages/team/illu_dossiers.png',
+    alt: 'catégorisation des rendez-vous en dossiers',
+  },
+  {
+    src: '/assets/landing-pages/team/illu_justificatifs.png',
+    alt: 'association des justificatifs aux rendez-vous',
+  },
+];
+
+const managerPoints = [
+  'Toutes les demandes sont centralisées et organisées (par équipe, par dossier, etc.) pour simplifier la vie des gestionnaires.',
+  "Demandes d'indemnisations ultra-lisibles, simples à parcourir, justificatifs à portée de clic.",
+  "Acceptez des demandes en un clin d'oeil. Refusez des demandes en deux clins d'oeil. Les managers pointent les RDV problématiques.",
+  'Organisez vos équipes comme bon vous semble. Assignez à chaque équipe des managers, des dossiers ou des projets.',
+  'Editez des rapports complets et conformes aux règles comptables et fiscales.',
+];
+
+const managerScreens = [
+  {
+    src: '/assets/landing-pages/team/illu_liste-demandes.png',
+    alt: "Liste des demandes d'indemnisation",
+  },
+  { src: '/assets/landing-pages/team/illu_approve.png', alt: 'approuver une demande' },
+  { src: '/assets/landing-pages/team/illu_voir-itineraire.png', alt: "Voir l'itinéraire en détail" },
+];
+
+const securityPoints = [
+  'Un support ultra-efficace en français et non sous-traité, à votre écoute pour répondre à toutes vos questions.',
+  'Hébergé en France, sur des serveurs français sécurisés.',
+  "Conforme aux règles fiscales françaises et européennes. Rapports d'IK validés par l'administration et les experts comptables.",
+  'Conforme à la RGPD et aux règles de confidentialité et de sécurité.',
+];
+---
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-b from-white to-beige">
+  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-bold lg:text-5xl">
+          Gestion des IK pour les<br />
+          <span class="text-primary">{audience}</span>
+        </h1>
+        <p class="mt-4 text-lg">
+          Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités
+          kilométriques.
+        </p>
+
+        <div class="mt-8">
+          <TrackedLink
+            eventId="cta_header"
+            trackingContext={trackingContext}
+            class="inline-block rounded-md bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+          >
+            Tester gratuitement izika
+          </TrackedLink>
+        </div>
+      </div>
+
+      <div class="hidden sm:block">
+        <img
+          class="w-full rounded-xl border border-beige-line shadow-card"
+          src="/assets/landing-pages/header-screen-macbook.jpg"
+          alt="izika sur ordinateur de bureau"
+          width="1618"
+          height="1010"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits icon row -->
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <div class="grid grid-cols-2 gap-8 text-center sm:grid-cols-3 lg:grid-cols-5">
+    {
+      heroBenefits.map((benefit) => (
+        <div>
+          <figure class="mx-auto mb-4 max-w-[10rem]">
+            <img
+              class="h-auto w-full"
+              src={benefit.icon}
+              alt=""
+              width="500"
+              height="500"
+              loading="lazy"
+            />
+          </figure>
+          <h2 class="text-sm font-semibold">{benefit.title}</h2>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- "izika Team, c'est" Section -->
+<section class="bg-soft-primary">
+  <div class="mx-auto max-w-3xl px-4 py-16 text-center">
+    <h2 class="text-3xl font-bold">
+      Izika <span class="text-primary">Team</span>, c'est :
+    </h2>
+    <p class="mt-6 text-xl font-semibold">
+      Un <span class="text-primary">outil de calcul d'IK</span><br />
+      pour vos collaborateurs roulants
+    </p>
+    <p class="my-4" aria-hidden="true">
+      <span
+        class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-ink"
+      >
+        +
+      </span>
+    </p>
+    <p class="text-xl font-semibold">
+      Une interface d'<span class="text-primary">approbation des demandes d'IK</span><br />
+      pour vos gestionnaires
+    </p>
+  </div>
+</section>
+
+<!-- Features Section: collaborateurs -->
+<section class="bg-beige">
+  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="mb-2 text-sm font-bold tracking-wide uppercase">Pour vos collaborateurs,</p>
+        <h2 class="mb-6 text-3xl font-bold">Une application de calcul d'IK rapide et facile</h2>
+
+        <ul class="space-y-3">
+          {
+            collaboratorPoints.map((point) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
+                <p>{point}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto">
+        {
+          collaboratorScreens.map((screen) => (
+            <img
+              class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
+              src={screen.src}
+              alt={screen.alt}
+              width="920"
+              height="719"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section: gestionnaires -->
+<section class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div class="order-last flex snap-x snap-mandatory gap-4 overflow-x-auto lg:order-first">
+      {
+        managerScreens.map((screen) => (
+          <img
+            class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
+            src={screen.src}
+            alt={screen.alt}
+            width="920"
+            height="719"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+
+    <div>
+      <p class="mb-2 text-sm font-bold tracking-wide uppercase">Pour vos gestionnaires,</p>
+      <h2 class="mb-6 text-3xl font-bold">Des flux d'approbation limpides et efficaces</h2>
+
+      <ul class="space-y-3">
+        {
+          managerPoints.map((point) => (
+            <li class="flex items-start gap-3">
+              <span
+                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                aria-hidden="true"
+              >
+                ✓
+              </span>
+              <p>{point}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Security Section -->
+<section class="bg-soft-primary">
+  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="mb-2 text-sm font-bold tracking-wide uppercase">Sécurité &amp; fiabilité</p>
+        <h2 class="mb-6 text-3xl font-bold">
+          izika, fabriqué en France, pour des entreprises françaises et européennes.
+        </h2>
+
+        <ul class="space-y-3">
+          {
+            securityPoints.map((point) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
+                <p>{point}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <figure class="mx-auto w-4/5">
+        <img
+          class="h-auto w-full"
+          src="/assets/img/illustrations/expert-comptable-large.png"
+          alt="izika validé par les experts-comptables"
+          width="1203"
+          height="1349"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+  <div class="grid gap-6 md:grid-cols-2">
+    <TestimonialCard author="Olivier" role="Expert-comptable">
+      Nous avons suggéré à izika d’inclure dans la version Team la gestion de la chaîne
+      d’approbation des indemnités kilométriques depuis le conducteur jusqu’à la paie. Et le
+      résultat dépasse nos espérances! Merci beaucoup.
+    </TestimonialCard>
+
+    <TestimonialCard author="Romain F" role="Dirigeant de groupement d’agences immobilières">
+      J’aime beaucoup le fait de remplacer des déclarations sous Excel avec des kilométrages
+      fantaisistes de la part de certains des salariés par un calcul effectué par un tiers sur la
+      base des RDV de l’agenda Outlook des techniciens de maintenance (...)
+    </TestimonialCard>
+
+    <TestimonialCard author="France" role="Comptable (SARL de climatisation)">
+      IZIKA gère les distances et les IK, mais aussi les pièces jointes comme les tickets de
+      parking. Cela nous permet de tout centraliser du commercial à son manager puis à la
+      comptabilité.
+    </TestimonialCard>
+
+    <TestimonialCard author="Mohed" role="président d’association">
+      Je trouve que le système des approbations et refus des relevés d’IK des salariés est super
+      bien pensé, mais on apprécie surtout de recevoir des données fiables de la part des
+      commerciaux terrain.
+    </TestimonialCard>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+/**
+ * Hero screenshot collage for the solo/team landings (successor of the old
+ * device-frame mockups): a large desktop screen with a tablet overlay, plus
+ * the shared ipad/iphone screens. Hidden below lg like the Twig original.
+ */
+interface Props {
+  desktopSrc: string;
+  desktopAlt: string;
+  desktopWidth: number;
+  desktopHeight: number;
+  tabletSrc: string;
+  tabletAlt: string;
+  tabletWidth: number;
+  tabletHeight: number;
+}
+
+const {
+  desktopSrc,
+  desktopAlt,
+  desktopWidth,
+  desktopHeight,
+  tabletSrc,
+  tabletAlt,
+  tabletWidth,
+  tabletHeight,
+} = Astro.props;
+---
+
+<div class="relative hidden lg:block">
+  <img
+    class="w-full rounded-xl border border-beige-line shadow-card"
+    src={desktopSrc}
+    alt={desktopAlt}
+    width={desktopWidth}
+    height={desktopHeight}
+  />
+  <img
+    class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-lg border-4 border-white shadow-card"
+    src={tabletSrc}
+    alt={tabletAlt}
+    width={tabletWidth}
+    height={tabletHeight}
+  />
+  <img
+    class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-lg border-4 border-white shadow-card"
+    src="/assets/landing-pages/header-screen-ipad.jpg"
+    alt="izika sur ipad"
+    width="533"
+    height="711"
+  />
+  <img
+    class="absolute -right-4 -bottom-8 w-24 rounded-2xl border-4 border-white shadow-card"
+    src="/assets/landing-pages/header-screen-iphone-x.jpg"
+    alt="izika sur mobile"
+    width="407"
+    height="867"
+  />
+</div>

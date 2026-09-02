@@ -1,0 +1,84 @@
+---
+import TrackedLink from './TrackedLink.astro';
+
+/**
+ * Solo/team landing hero: static headline prefix followed by a highlighted
+ * rotating word (replaces the old Typed.js animation — the first word is
+ * server-rendered so the page works without JS), a free-form lead
+ * (slot "lead"), a primary tracked CTA and a visual (slot "media").
+ */
+interface Props {
+  titlePrefix: string;
+  /** Rotating highlighted words; the first one is the no-JS fallback. */
+  words: readonly string[];
+  ctaEventId: string;
+  ctaLabel: string;
+  trackingContext?: string;
+}
+
+const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.props;
+---
+
+<section class="bg-gradient-to-b from-white to-soft-primary">
+  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-bold lg:text-5xl">
+          {titlePrefix}<br />
+          <span class="text-primary" data-rotating-words={JSON.stringify(words)}>{words[0]}</span>
+        </h1>
+        <div class="mt-4 text-lg">
+          <slot name="lead" />
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <TrackedLink
+            eventId={ctaEventId}
+            trackingContext={trackingContext}
+            class="inline-block rounded-md bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+          >
+            {ctaLabel}
+          </TrackedLink>
+          <slot name="secondary" />
+        </div>
+      </div>
+
+      <div>
+        <slot name="media" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Vanilla replacement for the old Typed.js hero animation
+  // (typeSpeed 60, backSpeed 25, backDelay 1500, loop).
+  for (const el of document.querySelectorAll<HTMLElement>('[data-rotating-words]')) {
+    const words = JSON.parse(el.dataset.rotatingWords ?? '[]') as string[];
+    if (words.length < 2) continue;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) continue;
+
+    let index = 0;
+    let text = words[0] ?? '';
+    let deleting = false;
+
+    const tick = () => {
+      const word = words[index % words.length] ?? '';
+      text = deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1);
+      el.textContent = text;
+
+      let delay = deleting ? 25 : 60;
+      if (!deleting && text === word) {
+        deleting = true;
+        delay = 1500;
+      } else if (deleting && text === '') {
+        deleting = false;
+        index += 1;
+        delay = 200;
+      }
+      window.setTimeout(tick, delay);
+    };
+
+    window.setTimeout(tick, 1500);
+  }
+</script>

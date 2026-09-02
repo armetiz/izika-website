@@ -1,0 +1,49 @@
+---
+/**
+ * Landing feature section: uppercase eyebrow, title and a checkmark list on
+ * one side, a visual (default slot) on the other. `reverse` puts the visual
+ * on the left on large screens. Used by the solo/team landing pages.
+ */
+interface Props {
+  eyebrow: string;
+  title: string;
+  items: readonly string[];
+  /** Visual on the left, text on the right (lg screens). */
+  reverse?: boolean;
+  /** Extra classes for the outer section (e.g. a background color). */
+  class?: string;
+}
+
+const { eyebrow, title, items, reverse = false, class: className } = Astro.props;
+---
+
+<section class:list={[className]}>
+  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div class:list={[reverse && 'lg:order-2']}>
+        <p class="mb-2 text-sm font-bold tracking-wide uppercase">{eyebrow}</p>
+        <h2 class="mb-6 text-3xl font-bold">{title}</h2>
+
+        <ul class="space-y-3">
+          {
+            items.map((item) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
+                <p>{item}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class:list={[reverse && 'lg:order-1']}>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

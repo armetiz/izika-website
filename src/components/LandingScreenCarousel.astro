@@ -1,0 +1,37 @@
+---
+/**
+ * Horizontal scroll-snap row of app screenshots — the no-JS replacement for
+ * the old slick carousels inside browser mockups on the solo/team landings.
+ */
+export interface CarouselImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  images: readonly CarouselImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<div
+  class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+  role="group"
+  aria-label="Captures d'écran de l'application"
+>
+  {
+    images.map((image) => (
+      <img
+        class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+      />
+    ))
+  }
+</div>
