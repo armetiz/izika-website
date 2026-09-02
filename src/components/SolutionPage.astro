@@ -30,20 +30,20 @@ const richText =
   '[&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_strong]:font-bold [&_strong]:text-ink';
 
 const btnPrimary =
-  'inline-block rounded-md bg-primary px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-primary-hover hover:-translate-y-0.5';
+  'btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white';
 ---
 
 <div>
   <!-- Hero -->
   <section class="bg-gradient-to-b from-transparent to-soft-primary">
-    <div class="mx-auto max-w-6xl px-4 py-12 md:py-16">
+    <div class="mx-auto max-w-6xl px-4 pt-24 pb-16 md:pt-32">
       <div class="grid items-center gap-10 md:grid-cols-2">
         <div>
           <span class="mb-2 block text-sm font-bold tracking-wide uppercase">
             {head.title1}
           </span>
-          <h1 class="mb-3 text-3xl leading-tight font-bold md:text-4xl">{head.title2}</h1>
-          <p class="mb-6 text-lg text-ink/80">{head.catch}</p>
+          <h1 class="mb-3 text-[2.5rem] font-bold">{head.title2}</h1>
+          <p class="mb-6 text-xl text-ink/80">{head.catch}</p>
           <div class="flex flex-wrap items-center gap-3">
             <TrackedLink
               eventId="cta_header"
@@ -57,7 +57,7 @@ const btnPrimary =
               secondaryCtaHref && head.secondaryCta && (
                 <a
                   href={secondaryCtaHref}
-                  class="inline-flex items-center gap-1 px-4 py-3 font-semibold text-ink hover:text-primary-hover"
+                  class="inline-flex items-center gap-1 px-4 py-3 font-bold text-ink hover:text-primary-hover"
                 >
                   {head.secondaryCta.text}
                   <svg
@@ -93,7 +93,7 @@ const btnPrimary =
   <section class="mx-auto max-w-6xl px-4 py-16">
     <div class="grid items-center gap-10 md:grid-cols-12">
       <div class="md:col-span-7">
-        <h2 class="mb-6 text-2xl font-bold md:text-3xl">{featureHighlights.title}</h2>
+        <h2 class="mb-6 text-3xl font-bold">{featureHighlights.title}</h2>
         <div class="space-y-5">
           {
             featureHighlights.items.map((item) => (
@@ -123,7 +123,7 @@ const btnPrimary =
       </div>
 
       <div class="md:col-span-5">
-        <div class="rounded-xl bg-beige p-6 text-center shadow-card lg:mx-auto lg:max-w-sm">
+        <div class="rounded-[0.3125rem] bg-soft-neutral p-6 text-center lg:mx-auto lg:max-w-sm">
           <img
             class="mx-auto rounded-lg shadow-sm"
             src={featureHighlights.image.src}
@@ -131,7 +131,7 @@ const btnPrimary =
             title={featureHighlights.image.title}
           />
           <div class="px-2 pt-4">
-            <h4 class="text-xl font-bold">Testez gratuitement</h4>
+            <h4 class="text-lg font-bold">Testez gratuitement</h4>
             <p class="mb-4 text-sm text-ink/70">
               Pas de besoin de carte de crédit &bull; Vos IK en 5 min
             </p>
@@ -150,15 +150,15 @@ const btnPrimary =
 
   <!-- Benefits -->
   <section class="bg-soft-primary">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-      <h2 class="mx-auto max-w-3xl py-8 text-center text-3xl font-bold">{benefits.title}</h2>
+    <div class="mx-auto max-w-6xl px-4 py-8">
+      <h2 class="mx-auto max-w-3xl py-8 text-center text-[2.5rem] font-bold">{benefits.title}</h2>
 
       {
         (benefits.items ?? []).map((item, index) => (
           <div class="py-8">
             <div class="grid items-center gap-10 lg:grid-cols-12">
               <div class:list={['lg:col-span-5', index % 2 === 1 && 'lg:order-2']}>
-                <h3 class="mb-3 text-2xl font-bold">{item.title}</h3>
+                <h3 class="mb-3 text-3xl font-bold">{item.title}</h3>
                 <div class:list={['text-ink/80', richText]} set:html={item.text} />
               </div>
               <div class:list={['lg:col-span-7', index % 2 === 1 && 'lg:order-1']}>
@@ -187,7 +187,7 @@ const btnPrimary =
             </svg>
           </figure>
 
-          <blockquote class="mb-6 text-center text-xl leading-relaxed font-bold">
+          <blockquote class="mb-6 text-center text-[1.3125rem] leading-relaxed font-bold">
             “{benefits.testimonial.quote}”
           </blockquote>
 
@@ -198,14 +198,14 @@ const btnPrimary =
               alt={benefits.testimonial.avatarAlt}
             />
             <div>
-              <p class="font-bold">{benefits.testimonial.name}</p>
+              <p class="text-lg font-bold">{benefits.testimonial.name}</p>
               <p class="text-sm text-ink/60">{benefits.testimonial.companyTitle}</p>
             </div>
           </div>
 
           <!-- Trustpilot rating -->
           <div class="mt-6 flex items-center justify-center gap-3">
-            <a class="text-3xl font-bold" href={reviews.trustpilotUrl} rel="nofollow">
+            <a class="text-[2.5rem] font-bold" href={reviews.trustpilotUrl} rel="nofollow">
               {reviews.ratingValue}
             </a>
             <div class="flex flex-col">
@@ -229,12 +229,12 @@ const btnPrimary =
 
   <!-- Mid-page CTA band -->
   <section class="bg-primary">
-    <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="mx-auto max-w-6xl px-4 py-16">
       <div
         class="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left"
       >
         <div class="max-w-xl">
-          <h2 class="text-2xl font-bold">Votre temps est précieux !</h2>
+          <h2 class="text-3xl font-bold">Votre temps est précieux !</h2>
           <p>
             Laissez izika faire vos indemnités kilométriques pour vous et utilisez votre temps
             autrement.
@@ -243,7 +243,7 @@ const btnPrimary =
         <TrackedLink
           eventId="cta_mid"
           trackingContext={trackingContext}
-          class="inline-block rounded-full bg-white px-8 py-3 font-semibold text-ink shadow-card transition hover:-translate-y-0.5"
+          class="btn-3d inline-block min-w-40 rounded-full bg-white px-4 py-3 text-center font-bold text-ink"
         >
           S'inscrire maintenant
         </TrackedLink>
@@ -255,7 +255,7 @@ const btnPrimary =
   <section class="mx-auto max-w-6xl px-4 py-16">
     <div class="grid items-center gap-10 lg:grid-cols-2">
       <div>
-        <h2 class="mb-3 text-2xl font-bold md:text-3xl">{customerCase.title}</h2>
+        <h2 class="mb-3 text-3xl font-bold">{customerCase.title}</h2>
         <div class:list={['text-ink/80', richText]} set:html={customerCase.intro} />
       </div>
       <div class="lg:pl-4">
@@ -297,24 +297,24 @@ const btnPrimary =
           </svg>
         </figure>
 
-        <blockquote class="mb-6 text-lg leading-relaxed font-bold">
+        <blockquote class="mb-6 text-xl leading-relaxed font-bold">
           {customerCase.testimonial.quote}
         </blockquote>
 
-        <span class="block text-xl font-bold">{customerCase.testimonial.name}</span>
+        <span class="block text-lg font-bold">{customerCase.testimonial.name}</span>
         <small class="text-ink/60">{customerCase.testimonial.companyTitle}</small>
       </div>
     </div>
 
     <!-- Final CTA card -->
     <div class="mx-auto lg:max-w-4xl">
-      <div class="rounded-xl bg-primary p-6">
+      <div class="rounded-[0.3125rem] bg-primary p-6">
         <div
           class="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left"
         >
-          <h3 class="text-xl font-bold">{customerCase.ctaBlock.text}</h3>
+          <h3 class="text-[1.3125rem] font-bold">{customerCase.ctaBlock.text}</h3>
           <a
-            class="inline-block shrink-0 rounded-md bg-white px-6 py-3 font-semibold text-ink shadow-card transition hover:-translate-y-0.5"
+            class="btn-3d inline-block shrink-0 rounded-[0.3125rem] bg-white px-4 py-3 font-bold text-ink"
             href={customerCase.ctaBlock.buttonUrl ?? site.joinUrl}
           >
             {customerCase.ctaBlock.buttonText ?? 'Tester gratuitement'}

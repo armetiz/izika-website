@@ -123,7 +123,7 @@ const complianceItems = [
         heroLeadItems.map((item) => (
           <li class="flex items-start gap-3">
             <span
-              class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+              class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
               aria-hidden="true"
             >
               ✓
@@ -155,7 +155,7 @@ const complianceItems = [
     eyebrow="Vos relevés d'IK en 2 min."
     title="Simplifiez le calcul des IK pour vos collaborateurs"
     items={simplifyItems}
-    class="bg-beige"
+    class="bg-soft-neutral"
   >
     <LandingScreenCarousel images={simplifyScreens} />
   </LandingChecklistSection>
@@ -175,7 +175,7 @@ const complianceItems = [
     eyebrow="Conformité, sécurité, fiabilité"
     title="Conformité avec les règles fiscales. Relevés d'IK approuvés par les experts comptables"
     items={complianceItems}
-    class="bg-soft-primary"
+    class="bg-soft-primary pb-16 lg:pb-0"
   >
     <figure class="mx-auto w-4/5">
       <img
@@ -190,7 +190,7 @@ const complianceItems = [
   </LandingChecklistSection>
 
   <!-- Testimonials Section -->
-  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+  <section class="mx-auto max-w-6xl px-4 pt-16 pb-32">
     <div class="grid gap-6 md:grid-cols-2">
       <TestimonialCard author="Olivier" role="Expert-comptable">
         Nous avons suggéré à izika d’inclure dans la version Team la gestion de la chaîne

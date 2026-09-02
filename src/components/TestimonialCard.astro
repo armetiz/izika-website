@@ -12,7 +12,7 @@ interface Props {
 const { author, role } = Astro.props;
 ---
 
-<div class="flex h-full flex-col rounded-lg bg-white p-8 shadow-card">
+<div class="flex h-full flex-col rounded-[0.3125rem] bg-white p-8 shadow-card">
   <figure class="mb-4" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 8 8">
       <path
@@ -27,7 +27,7 @@ const { author, role } = Astro.props;
   </blockquote>
 
   <div>
-    <p class="font-semibold">{author}</p>
+    <p class="text-lg font-bold">{author}</p>
     <p class="text-sm">{role}</p>
   </div>
 </div>

@@ -16,7 +16,10 @@ import StandardLayout from '../../layouts/StandardLayout.astro';
     <link rel="stylesheet" crossorigin="anonymous" href="/assets/calculator/index-CsYrc_U-.css" />
   </Fragment>
 
-  <div class="mt-10">
+  {/* Twig had mt-10 to clear the absolutely-positioned header; our sticky
+      header already reserves that space, so keep only a small optical gap
+      and let the page own its bottom spacing before the footer. */}
+  <div class="pt-4 pb-16">
     <div id="root"></div>
   </div>
 </StandardLayout>

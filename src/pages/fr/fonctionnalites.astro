@@ -41,11 +41,11 @@ const iconBlocks = [
   description="Des fonctionnalités fiables pour vous faire gagner toujours plus de temps sur vos IK"
 >
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-transparent to-soft-primary pt-12 pb-16">
+  <section class="bg-gradient-to-b from-transparent to-soft-primary pt-24 pb-16 lg:pt-32">
     <div class="mx-auto max-w-6xl px-4 text-center">
       <div class="mx-auto max-w-3xl">
-        <h1 class="text-3xl font-bold md:text-4xl">Fonctionnalités</h1>
-        <h2 class="mt-4 text-xl font-normal text-ink md:text-2xl">
+        <h1 class="text-[2.5rem] font-bold">Fonctionnalités</h1>
+        <h2 class="mt-4 text-3xl font-bold">
           Des fonctionnalités fiables pour vous faire gagner toujours plus de temps sur vos IK
         </h2>
       </div>
@@ -53,7 +53,7 @@ const iconBlocks = [
         <TrackedLink
           eventId="cta_header"
           trackingContext={trackingContext}
-          class="inline-block rounded-md bg-primary px-8 py-3 font-bold text-ink transition hover:bg-primary-hover hover:shadow-card"
+          class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-base font-bold text-white sm:px-12"
         >
           Essayez gratuitement
         </TrackedLink>
@@ -62,7 +62,7 @@ const iconBlocks = [
   </section>
 
   <!-- Icon blocks -->
-  <section class="mx-auto max-w-6xl px-4 py-12">
+  <section class="mx-auto max-w-6xl px-4 py-8">
     <div class="grid gap-8 md:grid-cols-2 lg:gap-x-16">
       {iconBlocks.map((block) => (
         <div class="flex items-start gap-4">
@@ -82,7 +82,7 @@ const iconBlocks = [
   <section class="bg-soft-primary py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        <div class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-card">
+        <div class="flex h-full flex-col overflow-hidden rounded-[0.3125rem] bg-white shadow-card">
           <img class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-vehicules.jpg" alt="Image Description" loading="lazy" />
           <div class="flex-1 p-6">
             <h4 class="text-lg font-bold">Gestion multi-véhicules</h4>
@@ -95,7 +95,7 @@ const iconBlocks = [
           </div>
         </div>
 
-        <div class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-card">
+        <div class="flex h-full flex-col overflow-hidden rounded-[0.3125rem] bg-white shadow-card">
           <img class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-adresses.jpg" alt="Image Description" loading="lazy" />
           <div class="flex-1 p-6">
             <h4 class="text-lg font-bold">Adresses favorites</h4>
@@ -105,7 +105,7 @@ const iconBlocks = [
           </div>
         </div>
 
-        <div class="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-card">
+        <div class="flex h-full flex-col overflow-hidden rounded-[0.3125rem] bg-white shadow-card">
           <img class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-mode-deplacement.jpg" alt="Image Description" loading="lazy" />
           <div class="flex-1 p-6">
             <h4 class="text-lg font-bold">Modes de déplacement</h4>
@@ -121,7 +121,7 @@ const iconBlocks = [
   </section>
 
   <!-- Team block -->
-  <section class="mx-auto max-w-6xl px-4 py-12">
+  <section class="mx-auto max-w-6xl px-4 py-8">
     <div class="flex max-w-xl items-start gap-4">
       <figure class="w-full max-w-32 shrink-0">
         <img class="h-auto max-w-full" src="/assets/landing-pages/icon_team.png" alt="gestion multi vehicule et vehicule favori" loading="lazy" />
@@ -129,7 +129,7 @@ const iconBlocks = [
       <div>
         <h4 class="text-lg font-bold">Gestion de flottes</h4>
         <p class="mt-2">Gestion des flux d'approbation des demandes d'IK des salariés pour les entreprises</p>
-        <a class="mt-2 inline-block font-bold text-ink hover:text-primary-hover" href={localizedPath('team', 'fr')}>
+        <a class="btn-3d mt-2 inline-block font-bold text-ink" href={localizedPath('team', 'fr')}>
           En savoir plus sur izika Team
           <span aria-hidden="true">›</span>
         </a>
@@ -138,17 +138,17 @@ const iconBlocks = [
   </section>
 
   <!-- CTA -->
-  <section class="mx-auto max-w-5xl px-4 pb-4">
-    <div class="rounded-lg bg-white p-8 shadow-card">
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <div class="rounded-[0.3125rem] bg-white p-8 shadow-card">
       <div class="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
-        <h3 class="text-xl font-bold md:ml-auto md:max-w-md">
+        <h3 class="text-lg font-bold md:ml-auto md:max-w-md">
           Prêt à tester ? Essayez gratuitement et sans obligation d'achat
         </h3>
         <div class="md:text-right">
           <TrackedLink
             eventId="cta_block_cta"
             trackingContext={trackingContext}
-            class="inline-block rounded-md bg-primary px-6 py-3 font-bold text-ink transition hover:bg-primary-hover hover:shadow-card"
+            class="btn-3d inline-block rounded-[0.3125rem] bg-primary px-4 py-3 text-base font-bold text-white"
           >
             Créez votre compte
           </TrackedLink>

@@ -82,15 +82,15 @@ const securityPoints = [
 ---
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-b from-white to-beige">
-  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
+<section class="bg-gradient-to-b from-transparent to-soft-primary">
+  <div class="mx-auto max-w-6xl px-4 pt-24 pb-16 lg:pt-32">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <h1 class="text-4xl font-bold lg:text-5xl">
+        <h1 class="text-[2.5rem] font-bold lg:text-[3.5rem]">
           Gestion des IK pour les<br />
           <span class="text-primary">{audience}</span>
         </h1>
-        <p class="mt-4 text-lg">
+        <p class="mt-4 text-xl">
           Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités
           kilométriques.
         </p>
@@ -99,7 +99,7 @@ const securityPoints = [
           <TrackedLink
             eventId="cta_header"
             trackingContext={trackingContext}
-            class="inline-block rounded-md bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+            class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white"
           >
             Tester gratuitement izika
           </TrackedLink>
@@ -120,7 +120,7 @@ const securityPoints = [
 </section>
 
 <!-- Benefits icon row -->
-<section class="mx-auto max-w-6xl px-4 py-12">
+<section class="mx-auto max-w-6xl px-4 pt-8 pb-16">
   <div class="grid grid-cols-2 gap-8 text-center sm:grid-cols-3 lg:grid-cols-5">
     {
       heroBenefits.map((benefit) => (
@@ -135,7 +135,7 @@ const securityPoints = [
               loading="lazy"
             />
           </figure>
-          <h2 class="text-sm font-semibold">{benefit.title}</h2>
+          <h2 class="text-sm font-bold">{benefit.title}</h2>
         </div>
       ))
     }
@@ -144,22 +144,22 @@ const securityPoints = [
 
 <!-- "izika Team, c'est" Section -->
 <section class="bg-soft-primary">
-  <div class="mx-auto max-w-3xl px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold">
+  <div class="mx-auto max-w-3xl px-4 pt-16 pb-8 text-center">
+    <h2 class="text-[2.5rem] font-bold">
       Izika <span class="text-primary">Team</span>, c'est :
     </h2>
-    <p class="mt-6 text-xl font-semibold">
+    <p class="mt-6 text-[1.3125rem] font-bold">
       Un <span class="text-primary">outil de calcul d'IK</span><br />
       pour vos collaborateurs roulants
     </p>
     <p class="my-4" aria-hidden="true">
       <span
-        class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-ink"
+        class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white"
       >
         +
       </span>
     </p>
-    <p class="text-xl font-semibold">
+    <p class="text-[1.3125rem] font-bold">
       Une interface d'<span class="text-primary">approbation des demandes d'IK</span><br />
       pour vos gestionnaires
     </p>
@@ -167,8 +167,8 @@ const securityPoints = [
 </section>
 
 <!-- Features Section: collaborateurs -->
-<section class="bg-beige">
-  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+<section class="bg-soft-neutral">
+  <div class="mx-auto max-w-6xl px-4 pt-16 pb-8 lg:pb-32">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <p class="mb-2 text-sm font-bold tracking-wide uppercase">Pour vos collaborateurs,</p>
@@ -179,7 +179,7 @@ const securityPoints = [
             collaboratorPoints.map((point) => (
               <li class="flex items-start gap-3">
                 <span
-                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
                   aria-hidden="true"
                 >
                   ✓
@@ -210,7 +210,7 @@ const securityPoints = [
 </section>
 
 <!-- Features Section: gestionnaires -->
-<section class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+<section class="mx-auto max-w-6xl px-4 pt-16 pb-8 lg:py-32">
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <div class="order-last flex snap-x snap-mandatory gap-4 overflow-x-auto lg:order-first">
       {
@@ -236,7 +236,7 @@ const securityPoints = [
           managerPoints.map((point) => (
             <li class="flex items-start gap-3">
               <span
-                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
                 aria-hidden="true"
               >
                 ✓
@@ -252,7 +252,7 @@ const securityPoints = [
 
 <!-- Security Section -->
 <section class="bg-soft-primary">
-  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-32">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <p class="mb-2 text-sm font-bold tracking-wide uppercase">Sécurité &amp; fiabilité</p>
@@ -265,7 +265,7 @@ const securityPoints = [
             securityPoints.map((point) => (
               <li class="flex items-start gap-3">
                 <span
-                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
                   aria-hidden="true"
                 >
                   ✓
@@ -292,7 +292,7 @@ const securityPoints = [
 </section>
 
 <!-- Testimonials Section -->
-<section class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+<section class="mx-auto max-w-6xl px-4 pt-16 pb-32">
   <div class="grid gap-6 md:grid-cols-2">
     <TestimonialCard author="Olivier" role="Expert-comptable">
       Nous avons suggéré à izika d’inclure dans la version Team la gestion de la chaîne

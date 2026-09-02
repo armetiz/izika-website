@@ -20,19 +20,19 @@ const description =
 >
   <!-- Hero -->
   <section
-    class="bg-cover bg-center py-20"
+    class="bg-cover bg-center pt-24 pb-16 lg:pt-32"
     style="background-image: url('/assets/img/laptop-screen-izika_blur-light.jpg');"
   >
     <div class="mx-auto max-w-6xl px-4 text-center">
-      <h1 class="text-3xl font-bold md:text-4xl">Questions fréquentes</h1>
+      <h1 class="text-[2.5rem] font-bold">Questions fréquentes</h1>
     </div>
   </section>
 
   <!-- FAQ accordion -->
-  <section class="mx-auto max-w-3xl px-4 py-16">
+  <section class="mx-auto max-w-3xl px-4 py-16 lg:pb-32">
     <div class="space-y-3">
       {faqEntries.map((entry) => (
-        <details class="group rounded-lg border border-beige-line bg-white p-4 shadow-card">
+        <details class="group rounded-[0.3125rem] border border-beige-line bg-white p-4">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
             {entry.question}
             <span class="shrink-0 text-xl" aria-hidden="true">

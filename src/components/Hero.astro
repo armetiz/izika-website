@@ -22,14 +22,14 @@ const { title, lead, ctaEventId, ctaLabel, trackingContext } = Astro.props;
   <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <h1 class="text-4xl font-bold lg:text-5xl">{title}</h1>
+        <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">{title}</h1>
         <p class="mt-4 text-lg">{lead}</p>
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <TrackedLink
             eventId={ctaEventId}
             trackingContext={trackingContext}
-            class="inline-block rounded-md bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+            class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white"
           >
             {ctaLabel}
           </TrackedLink>

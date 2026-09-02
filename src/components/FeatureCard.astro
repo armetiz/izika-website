@@ -16,7 +16,7 @@ interface Props {
 const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro.props;
 ---
 
-<div class="h-full rounded-lg bg-white p-6 shadow-card transition hover:-translate-y-1">
+<div class="btn-3d h-full rounded-[0.3125rem] bg-white p-6 shadow-card">
   <figure class="mb-4 w-full max-w-[8rem]">
     <img
       class="h-auto w-full"
@@ -27,7 +27,7 @@ const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro
       loading="lazy"
     />
   </figure>
-  <h3 class="text-lg font-semibold">
+  <h3 class="text-lg font-bold">
     {title}
     {
       badge && (

@@ -115,7 +115,7 @@ const pricingPlans: PricingPlan[] = [
       slot="secondary"
       type="button"
       id="video-demo-btn"
-      class="inline-flex items-center gap-2 rounded-md px-4 py-3 font-semibold transition hover:text-primary-hover"
+      class="btn-3d inline-flex items-center gap-2 rounded-full px-4 py-3 font-bold"
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path
@@ -133,14 +133,14 @@ const pricingPlans: PricingPlan[] = [
         height="1010"
       />
       <img
-        class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-lg border-4 border-white shadow-card"
+        class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-[0.3125rem] border-4 border-white shadow-card"
         src="/assets/landing-pages/header-screen-ipad-horizontal.jpg"
         alt="izika sur tablette"
         width="1618"
         height="1010"
       />
       <img
-        class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-lg border-4 border-white shadow-card"
+        class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-[0.3125rem] border-4 border-white shadow-card"
         src="/assets/landing-pages/header-screen-ipad.jpg"
         alt="izika sur ipad"
         width="533"
@@ -180,7 +180,7 @@ const pricingPlans: PricingPlan[] = [
   </dialog>
 
   <!-- Features Section -->
-  <section id="featuresSection" class="mx-auto max-w-6xl px-4 py-12">
+  <section id="featuresSection" class="mx-auto max-w-6xl px-4">
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <FeatureCard
         icon="/assets/landing-pages/icon_cal-to-rdv.png"
@@ -217,9 +217,9 @@ const pricingPlans: PricingPlan[] = [
       </FeatureCard>
     </div>
 
-    <div class="my-10 text-center">
+    <div class="my-8 text-center">
       <a
-        class="inline-block rounded-md bg-primary px-5 py-2 text-sm font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+        class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white transition hover:bg-primary-hover"
         href={localizedPath('features', locale)}
         target="_blank"
         rel="noopener"
@@ -230,14 +230,14 @@ const pricingPlans: PricingPlan[] = [
   </section>
 
   <!-- Testimonials Section -->
-  <section class="bg-beige py-16">
+  <section class="my-8 rounded-[0.3125rem] bg-soft-neutral py-8 lg:mt-16 lg:pt-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="mx-auto mb-10 max-w-2xl text-center">
         <h2 class="text-3xl font-bold">
           Plus de 3500 indépendants et entreprises ont choisi izika.
         </h2>
         <a
-          class="mt-4 inline-flex items-center justify-center gap-2 text-4xl font-bold"
+          class="mt-4 inline-flex items-center justify-center gap-2 text-[2.5rem] font-bold"
           href={reviews.trustpilotUrl}
           rel="nofollow"
         >
@@ -248,7 +248,7 @@ const pricingPlans: PricingPlan[] = [
       </div>
 
       <div
-        class="rounded-xl bg-cover bg-center p-4 sm:p-8 lg:p-12"
+        class="rounded-[0.3125rem] bg-cover bg-center p-4 sm:p-8 lg:p-12"
         style="background-image: url('/assets/img/mockup-liste-rdv.jpg');"
       >
         <div class="grid gap-6 md:grid-cols-3">
@@ -288,7 +288,7 @@ const pricingPlans: PricingPlan[] = [
         <!-- End TrustBox widget -->
         <div class="mt-4">
           <a
-            class="inline-block rounded-md bg-primary px-5 py-2 text-sm font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+            class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white transition hover:bg-primary-hover"
             href={reviews.trustpilotUrl}
             target="_blank"
             rel="noopener"
@@ -301,15 +301,15 @@ const pricingPlans: PricingPlan[] = [
   </section>
 
   <!-- Works Section -->
-  <section id="features" class="mx-auto max-w-6xl px-4 py-16">
-    <div class="mx-auto mb-12 max-w-2xl text-center">
+  <section id="features" class="mx-auto max-w-6xl px-4 py-8 lg:py-16">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
       <h2 class="text-3xl font-bold">
         Comment izika calcule les indemnités kilométriques pour vous ?
       </h2>
     </div>
 
     <div class="grid gap-6 md:grid-cols-2">
-      <div class="rounded-xl bg-soft-primary p-6 lg:p-10">
+      <div class="rounded-[0.3125rem] bg-soft-primary p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-calendar-import.png"
@@ -318,7 +318,7 @@ const pricingPlans: PricingPlan[] = [
           height="1334"
           loading="lazy"
         />
-        <h3 class="flex items-start justify-between gap-3 text-xl font-semibold">
+        <h3 class="flex items-start justify-between gap-3 text-[1.3125rem] font-bold">
           Importez et gérez vos RDV
           <span
             class="mt-1 inline-block shrink-0 rounded-full bg-success px-2 py-0.5 text-xs font-bold text-white"
@@ -341,7 +341,7 @@ const pricingPlans: PricingPlan[] = [
         />
       </div>
 
-      <div class="rounded-xl bg-beige p-6 lg:p-10">
+      <div class="rounded-[0.3125rem] bg-soft-neutral p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-mensual-provisions.png"
@@ -350,7 +350,7 @@ const pricingPlans: PricingPlan[] = [
           height="1299"
           loading="lazy"
         />
-        <h3 class="text-xl font-semibold">Vous déclarez des IK mensuelles ?</h3>
+        <h3 class="text-[1.3125rem] font-bold">Vous déclarez des IK mensuelles ?</h3>
         <p class="mt-1 mb-3 text-sm italic">Aucun problème, c'est prévu.</p>
         <p>
           izika calcule pour vous des provisions d'indemnités kilométriques mensuelles indicatives
@@ -360,7 +360,7 @@ const pricingPlans: PricingPlan[] = [
         </p>
       </div>
 
-      <div class="rounded-xl bg-soft-neutral p-6 lg:p-10">
+      <div class="rounded-[0.3125rem] bg-soft-neutral p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-mileage-allowances-export.png"
@@ -369,7 +369,7 @@ const pricingPlans: PricingPlan[] = [
           height="1764"
           loading="lazy"
         />
-        <h3 class="text-xl font-semibold">Éditez votre relevé d'IK</h3>
+        <h3 class="text-[1.3125rem] font-bold">Éditez votre relevé d'IK</h3>
         <p class="mt-1 mb-3 text-sm italic">C'est déjà fini 😮 ? Oui oui.</p>
         <p>
           Une fois vos RDV importés et vos déplacements affinés, éditez votre relevé de frais
@@ -379,7 +379,7 @@ const pricingPlans: PricingPlan[] = [
         </p>
       </div>
 
-      <div class="rounded-xl bg-beige-dark p-6 lg:p-10">
+      <div class="rounded-[0.3125rem] bg-beige-dark p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-parameters.png"
@@ -388,7 +388,7 @@ const pricingPlans: PricingPlan[] = [
           height="1454"
           loading="lazy"
         />
-        <h3 class="text-xl font-semibold">Besoin d'aller encore plus vite ? 🚀</h3>
+        <h3 class="text-[1.3125rem] font-bold">Besoin d'aller encore plus vite ? 🚀</h3>
         <p class="mt-1 mb-3 text-sm italic">C'est possible, izika s'apdate à vos habitudes.</p>
         <p>
           Vous pouvez affiner vos paramètres et optimiser les traitements automatiques de
@@ -403,7 +403,7 @@ const pricingPlans: PricingPlan[] = [
       <TrackedLink
         eventId="cta_middle"
         trackingContext={trackingContext}
-        class="inline-block rounded-md bg-primary px-8 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+        class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary-hover sm:px-8"
       >
         Tester izika
       </TrackedLink>
@@ -411,8 +411,8 @@ const pricingPlans: PricingPlan[] = [
   </section>
 
   <!-- CTA Section (izika Team) -->
-  <section class="overflow-hidden bg-beige">
-    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
+  <section class="overflow-hidden bg-beige-light pt-16 lg:pt-8">
+    <div class="mx-auto max-w-6xl px-4 pt-16 pb-32">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div>
           <p class="mb-2 text-sm font-bold tracking-wide uppercase">
@@ -427,7 +427,7 @@ const pricingPlans: PricingPlan[] = [
               teamBenefits.map((benefit) => (
                 <li class="flex items-start gap-3">
                   <span
-                    class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-ink"
+                    class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
                     aria-hidden="true"
                   >
                     ✓
@@ -440,7 +440,7 @@ const pricingPlans: PricingPlan[] = [
 
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a
-              class="inline-block rounded-full bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+              class="btn-3d inline-block min-w-40 rounded-full bg-primary px-6 py-3 text-center font-bold text-white hover:bg-primary-hover"
               href={localizedPath('team', locale)}
             >
               En savoir plus sur izika Team <span aria-hidden="true">›</span>
@@ -448,7 +448,7 @@ const pricingPlans: PricingPlan[] = [
             <TrackedLink
               eventId="cta_section_team"
               trackingContext={trackingContext}
-              class="inline-block rounded-full px-4 py-3 font-semibold transition hover:text-primary-hover"
+              class="btn-3d inline-block rounded-full px-4 py-3 font-bold"
             >
               Tester gratuitement pendant 2 mois <span aria-hidden="true">›</span>
             </TrackedLink>
@@ -457,7 +457,7 @@ const pricingPlans: PricingPlan[] = [
 
         <div>
           <img
-            class="h-auto w-full rounded-lg shadow-card"
+            class="h-auto w-full rounded-[0.3125rem] shadow-card"
             src="/assets/landing-pages/team/illu_liste-demandes.png"
             alt="izika team"
             width="920"
@@ -470,9 +470,9 @@ const pricingPlans: PricingPlan[] = [
   </section>
 
   <!-- Pricing Section -->
-  <section id="pricingSection" class="mx-auto max-w-6xl overflow-hidden px-4 py-16 lg:py-24">
-    <div class="mx-auto mb-12 max-w-2xl text-center">
-      <h2 class="text-4xl font-bold">Tarification</h2>
+  <section id="pricingSection" class="mx-auto max-w-6xl overflow-hidden px-4 py-16 lg:py-32">
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <h2 class="text-[2.5rem] font-bold">Tarification</h2>
     </div>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -491,12 +491,12 @@ const pricingPlans: PricingPlan[] = [
             )}
             <div
               class:list={[
-                'flex h-full flex-col rounded-lg bg-white p-6',
-                plan.featured ? 'shadow-card' : 'border border-beige-line',
+                'flex h-full flex-col rounded-[0.3125rem] bg-white p-6',
+                plan.featured && 'shadow-card',
               ]}
             >
               <div class="mb-6 text-center">
-                <p class="text-2xl font-bold">
+                <p class="text-[1.3125rem] font-bold">
                   {plan.name}
                   {plan.nameSuffix && <span aria-label="illimité">{plan.nameSuffix}</span>}
                 </p>
@@ -504,7 +504,7 @@ const pricingPlans: PricingPlan[] = [
                   <span
                     class:list={[
                       'font-bold',
-                      plan.bigPrice ? 'text-4xl' : 'text-base',
+                      plan.bigPrice ? 'text-4xl' : 'text-sm',
                     ]}
                   >
                     {plan.price}
@@ -541,10 +541,10 @@ const pricingPlans: PricingPlan[] = [
                   eventId={plan.eventId}
                   trackingContext={trackingContext}
                   class:list={[
-                    'block rounded-md px-4 py-2.5 text-center font-semibold transition hover:shadow-card',
+                    'btn-3d block rounded-[0.3125rem] px-4 py-3 text-center font-bold',
                     plan.featured
-                      ? 'bg-primary text-ink hover:bg-primary-hover'
-                      : 'border border-primary text-ink hover:bg-primary',
+                      ? 'bg-primary text-white hover:bg-primary-hover'
+                      : 'border border-primary text-primary hover:bg-primary hover:text-white',
                   ]}
                 >
                   {plan.ctaLabel}

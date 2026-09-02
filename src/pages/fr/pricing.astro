@@ -129,9 +129,9 @@ const featureCards = [
   schemaNodes={[webApplicationSchema()]}
 >
   <!-- Pricing section -->
-  <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 pt-8">
+  <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 pt-24 pb-16 lg:pt-32">
     <div class="mx-auto mb-12 max-w-3xl text-center">
-      <h2 class="text-2xl font-bold md:text-3xl">
+      <h2 class="text-3xl font-bold">
         Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché.
       </h2>
       <!-- Trustpilot -->
@@ -140,7 +140,7 @@ const featureCards = [
         href={reviews.trustpilotUrl}
         rel="nofollow"
       >
-        <span class="text-3xl font-bold">
+        <span class="text-[2.5rem] font-bold">
           {reviews.ratingValue} <span class="text-primary" aria-hidden="true">★</span>
         </span>
       </a>
@@ -154,7 +154,7 @@ const featureCards = [
             <th scope="col" class="w-2/5"></th>
             {tiers.map((tier) => (
               <th scope="col" class="w-1/5 border-x border-beige-line px-3 py-4 first:border-l-0 last:border-r-0">
-                <span class="block text-2xl font-bold">
+                <span class="block text-[1.3125rem] font-bold">
                   {tier.name}
                   {tier.infinity && <span aria-label="illimité"> ∞</span>}
                 </span>
@@ -197,10 +197,10 @@ const featureCards = [
   </section>
 
   <!-- Features section -->
-  <section id="featuresSection" class="mx-auto max-w-6xl px-4 py-16">
+  <section id="featuresSection" class="mx-auto max-w-6xl px-4 pb-16 lg:pb-32">
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {featureCards.map((card) => (
-        <div class="h-full rounded-lg bg-white p-6 shadow-card transition hover:-translate-y-1">
+        <div class="btn-3d h-full rounded-[0.3125rem] bg-white p-6 shadow-card">
           <figure class="mb-4 w-full max-w-44">
             <img class="h-auto max-w-full" src={card.icon} alt={card.alt} loading="lazy" />
           </figure>
@@ -214,9 +214,9 @@ const featureCards = [
         </div>
       ))}
     </div>
-    <div class="my-10 text-center">
+    <div class="my-12 text-center">
       <a
-        class="inline-block rounded-md bg-primary px-5 py-2 text-sm font-bold text-ink transition hover:bg-primary-hover hover:shadow-card"
+        class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white hover:bg-primary-hover"
         href={localizedPath('features', 'fr')}
         target="_blank"
         rel="noopener"
@@ -227,14 +227,14 @@ const featureCards = [
   </section>
 
   <!-- FAQ section -->
-  <section class="mx-auto max-w-4xl px-4 pb-8">
+  <section class="mx-auto max-w-4xl px-4 pb-16 lg:pb-32">
     <div class="mx-auto mb-10 text-center">
-      <h2 class="text-2xl font-bold md:text-3xl">Questions fréquentes concernant l'abonnement</h2>
+      <h2 class="text-3xl font-bold">Questions fréquentes concernant l'abonnement</h2>
     </div>
 
     <div class="space-y-3">
       {subscriptionFaq.map((entry) => (
-        <details class="group rounded-lg border border-beige-line bg-white p-4 shadow-card">
+        <details class="group rounded-[0.3125rem] border border-beige-line bg-white p-4 shadow-card">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
             {entry.question}
             <span class="shrink-0 text-xl" aria-hidden="true">

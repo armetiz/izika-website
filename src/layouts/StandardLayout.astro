@@ -12,7 +12,8 @@ const props = Astro.props;
 <BaseLayout {...props}>
   <slot name="head" slot="head" />
   <Header locale={props.locale} />
-  <main class="pt-12 pb-16">
+  <!-- Vertical rhythm is owned by each page's sections (like the old .space-* utilities). -->
+  <main>
     <slot />
   </main>
   <Footer locale={props.locale} />
