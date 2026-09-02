@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import StandardLayout from '../../../layouts/StandardLayout.astro';
+import SolutionPage from '../../../components/SolutionPage.astro';
+
+export async function getStaticPaths() {
+  const solutions = await getCollection('solutions', ({ id }) => id.startsWith('fr/'));
+  return solutions.map((entry) => ({
+    params: { slug: entry.id.replace(/^fr\//, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const slug = entry.id.replace(/^fr\//, '');
+---
+
+<StandardLayout
+  locale="fr"
+  title={entry.data.meta.title}
+  description={entry.data.meta.description}
+  image={entry.data.head.image.src}
+>
+  <SolutionPage data={entry.data} slug={slug} locale="fr" />
+</StandardLayout>

@@ -1,0 +1,56 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+
+// Ported from templates/content/legal.html.twig
+
+const toc = [
+  { href: '#intro', label: '1. Introduction' },
+  { href: '#rcp', label: '2. Responsabilité civile professionnelle' },
+  { href: '#cnil', label: '3. Déclaration CNIL' },
+  { href: '#hosting', label: '4. Hébergement' },
+] as const;
+
+// Default meta description from the old _base.html.twig (page sets none).
+const description =
+  'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.';
+---
+
+<StandardLayout locale="fr" routeKey="legal" title="Mentions légales" description={description}>
+  <LegalShell title="Mentions légales" toc={toc}>
+    <div class="prose prose-izika max-w-none">
+      <section id="intro">
+        <h2>1. Introduction</h2>
+        <p>Raison sociale : S.A.S. IZIKA</p>
+        <p>Siège social : 199 rue Hélène Boucher, 34170 Castelnau-le-Lez</p>
+        <p>RCS Montpellier : 807 746 524</p>
+        <p>Numéro de TVA intracommunautaire : FR37 807 746 524</p>
+        <p>SAS au Capital variable initial de 3.000 €</p>
+        <p>Directeur de la publication : Pierre Aulagne</p>
+      </section>
+
+      <section id="rcp">
+        <h3>2. Responsabilité civile professionnelle</h3>
+        <p>
+          IZIKA SAS est titulaire d&#8217;une assurance en responsabilité civile professionnelle
+          souscrite auprès de HISCOX sous le numéro de police : HSXPM310013343.
+        </p>
+      </section>
+
+      <section id="cnil">
+        <h3>3. Déclaration CNIL</h3>
+        <p>Déclaration CNIL sur le traitement des données : 1924022 v 0</p>
+      </section>
+
+      <section id="hosting">
+        <h3>4. Hébergement</h3>
+        <p>SCALEWAY SAS au capital de 214 410,50 €</p>
+        <p>RCS PARIS 433 115 904</p>
+        <p>Code APE 2620Z</p>
+        <p>N° TVA : FR 22 424 761 419</p>
+        <p>Siège social : SCALEWAY SAS BP 438 75366 PARIS CEDEX 08 &#8211; France.</p>
+        <p>Directeur de la publication : Arnaud Brindejonc de Bermingham</p>
+      </section>
+    </div>
+  </LegalShell>
+</StandardLayout>

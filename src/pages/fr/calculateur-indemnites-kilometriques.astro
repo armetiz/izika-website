@@ -1,0 +1,22 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+
+// Ported from templates/calculator.html.twig — mounts the prebuilt calculator
+// SPA (hashed bundle files copied into public/assets/calculator/).
+---
+
+<StandardLayout
+  locale="fr"
+  routeKey="calculator"
+  title="Calculateur d'Indemnités Kilométriques"
+  description="Calculez vos indemnités selon le barème fiscal français"
+>
+  <Fragment slot="head">
+    <script is:inline type="module" crossorigin="anonymous" src="/assets/calculator/index-DTxAKXJL.js"></script>
+    <link rel="stylesheet" crossorigin="anonymous" href="/assets/calculator/index-CsYrc_U-.css" />
+  </Fragment>
+
+  <div class="mt-10">
+    <div id="root"></div>
+  </div>
+</StandardLayout>

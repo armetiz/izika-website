@@ -1,0 +1,250 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import { localizedPath } from '../../i18n';
+import { webApplicationSchema } from '../../seo/schema';
+import { reviews } from '../../data/reviews';
+
+// Ported from templates/content/pricing.html.twig (CHF branches dropped, € only).
+
+interface PricingTier {
+  name: string;
+  /** Suffix appended after the name (Solo ∞). */
+  infinity?: boolean;
+  price: string;
+}
+
+const tiers: ReadonlyArray<PricingTier> = [
+  { name: 'Solo', price: 'Gratuit' },
+  { name: 'Solo', infinity: true, price: '99€  /an' },
+  { name: 'Team', price: '10€ /mois /utilisateur' },
+];
+
+/**
+ * One cell per tier: 'yes' → green check, 'no' → dash,
+ * { limited } → red cross with a note underneath.
+ */
+type Cell = 'yes' | 'no' | { limited: string };
+
+interface FeatureSection {
+  title: string;
+  rows: ReadonlyArray<{ label: string; cells: readonly [Cell, Cell, Cell] }>;
+}
+
+const featureSections: ReadonlyArray<FeatureSection> = [
+  {
+    title: 'Fonctionnalités conducteur',
+    rows: [
+      { label: 'Déplacements illimités', cells: [{ limited: '10 déplacements/mois' }, 'yes', 'yes'] },
+      { label: 'Calcul automatique des distances', cells: ['yes', 'yes', 'yes'] },
+      { label: 'Pièces justificatives', cells: ['yes', 'yes', 'yes'] },
+      { label: 'Gestion des provisions mensuelles', cells: ['yes', 'yes', 'no'] },
+      { label: 'Synchronisation avec les agendas', cells: ['yes', 'yes', 'yes'] },
+      { label: "Création d'adresses favorites", cells: ['yes', 'yes', 'yes'] },
+      { label: 'Gestion multi-véhicules / barême électrique', cells: ['yes', 'yes', 'yes'] },
+      { label: 'Paramétrage du comportement par défaut (étoile/tournée)', cells: ['yes', 'yes', 'yes'] },
+    ],
+  },
+  {
+    title: 'Fonctionnalités entreprise',
+    rows: [
+      { label: 'Gestion des utilisateurs (équipes/superviseurs)', cells: ['no', 'no', 'yes'] },
+      { label: "Flux d'approbation (validation, refus, pointage d'erreur)", cells: ['no', 'no', 'yes'] },
+      { label: 'Exports complets personnalisés (gestion analytique)', cells: ['no', 'no', 'yes'] },
+    ],
+  },
+];
+
+const subscriptionFaq: ReadonlyArray<{ question: string; answer: string }> = [
+  {
+    question: 'Puis-je annuler mon abonnement ?',
+    answer: `<p>
+        Oui, vous pouvez annuler votre abonnement quand vous le souhaitez, par e-mail ou depuis l'application.
+        Vous aurez alors accès à l'application jusqu'à la fin de votre souscription.
+    </p>`,
+  },
+  {
+    question: 'Avez-vous une politique de remboursement ?',
+    answer: `<p>Si vous n'êtes pas satisfait, et même si cela n'est pas systématique, nous pouvons effectuer un remboursement.</p>`,
+  },
+  {
+    question: 'Comment se passe la facturation?',
+    answer: `<p>Les entrepreneurs choisissant IZIKA Solo ont une facture annuelle par Utilisateur,
+        la souscription est renouvelée par tacite reconduction et vous pouvez annuler
+        le renouvellement à tout moment.
+        Les gestionnaires de flottes qui optent pour IZIKA Team ont une facture mensuelle
+        pour chaque Utilisateur et une facture annuelle pour le compte Manager.
+        L'abonnement peut aussi être annulé à tout moment.</p>`,
+  },
+  {
+    question: "Qu'en est il de la sécurité et confidentialité ?",
+    answer: `<p>
+        IZIKA SAS est une société Française qui existe depuis 2014, nous avons une
+        <a href="${localizedPath('security', 'fr')}" class="underline">politique de sécurité</a> que nous respectons scrupuleusement.
+    </p>`,
+  },
+  {
+    question: 'Est ce que je peux gérer mes indemnités kilométriques pour les années passées ?',
+    answer: `<p>Oui, en souscrivant vous accédez à toute l'année en cours, ainsi qu'aux 3 années précédentes,
+        à condition que votre agenda le permette (ce n'est pas le cas des agendas iCloud par exemple).</p>`,
+  },
+];
+
+const featureCards = [
+  {
+    icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+    alt: "Import des RDV depuis l'agenda",
+    title: 'Saisie automatique',
+    badge: false,
+    text: 'izika importe automatiquement vos rendez-vous depuis votre agenda électronique.',
+  },
+  {
+    icon: '/assets/landing-pages/icon_km-auto.png',
+    alt: 'Calculs des distances automatiques',
+    title: 'Calculs automatiques',
+    badge: false,
+    text: "izika calcule automatiquement les distances et le montant de vos IK sans quitter l'application.",
+  },
+  {
+    icon: '/assets/landing-pages/icon_report-conformity.png',
+    alt: 'Conforme aux règles fiscales',
+    title: 'Conformité fiscale',
+    badge: false,
+    text: "izika est approuvé et validé par les experts-comptables et l'administration.",
+  },
+  {
+    icon: '/assets/landing-pages/icon_team.png',
+    alt: 'Gestion des flottes de véhicules',
+    title: 'Gestion de flottes',
+    badge: true,
+    text: "izika team est le seul outil de gestion des flux d'approbation d'IK pour les entreprises.",
+  },
+] as const;
+---
+
+<StandardLayout
+  locale="fr"
+  routeKey="pricing"
+  title="Nos offres et tarifs"
+  description="Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché."
+  schemaNodes={[webApplicationSchema()]}
+>
+  <!-- Pricing section -->
+  <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 pt-8">
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <h2 class="text-2xl font-bold md:text-3xl">
+        Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché.
+      </h2>
+      <!-- Trustpilot -->
+      <a
+        class="mt-6 inline-flex items-center justify-center gap-2"
+        href={reviews.trustpilotUrl}
+        rel="nofollow"
+      >
+        <span class="text-3xl font-bold">
+          {reviews.ratingValue} <span class="text-primary" aria-hidden="true">★</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[40rem] border-collapse text-left">
+        <thead class="text-center">
+          <tr>
+            <th scope="col" class="w-2/5"></th>
+            {tiers.map((tier) => (
+              <th scope="col" class="w-1/5 border-x border-beige-line px-3 py-4 first:border-l-0 last:border-r-0">
+                <span class="block text-2xl font-bold">
+                  {tier.name}
+                  {tier.infinity && <span aria-label="illimité"> ∞</span>}
+                </span>
+                <span class="block text-lg font-normal">
+                  <Fragment set:html={tier.price.replace('€', '<sup>€</sup>')} />
+                </span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {featureSections.map((section) => (
+            <>
+              <tr class="border-y border-beige-line">
+                <th scope="row" class="px-4 pt-8 pb-3 text-lg font-bold" colspan="4">{section.title}</th>
+              </tr>
+              {section.rows.map((row, i) => (
+                <tr class={i % 2 === 0 ? 'bg-beige/50' : ''}>
+                  <th scope="row" class="px-4 py-3 text-sm font-semibold">{row.label}</th>
+                  {row.cells.map((cell) => (
+                    <td class="border-x border-beige-line p-3 text-center first:border-l-0 last:border-r-0">
+                      {cell === 'yes' && <span class="font-bold text-success" aria-label="inclus">✓</span>}
+                      {cell === 'no' && <span aria-label="non inclus">-</span>}
+                      {typeof cell === 'object' && (
+                        <>
+                          <span class="font-bold text-red-500" aria-label="limité">✕</span>
+                          <br />
+                          <small>{cell.limited}</small>
+                        </>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Features section -->
+  <section id="featuresSection" class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {featureCards.map((card) => (
+        <div class="h-full rounded-lg bg-white p-6 shadow-card transition hover:-translate-y-1">
+          <figure class="mb-4 w-full max-w-44">
+            <img class="h-auto max-w-full" src={card.icon} alt={card.alt} loading="lazy" />
+          </figure>
+          <h4 class="text-lg font-bold">
+            {card.title}
+            {card.badge && (
+              <span class="ml-1 rounded-full bg-success px-2 py-0.5 text-xs font-bold text-white">team</span>
+            )}
+          </h4>
+          <p class="mt-2 mb-0 text-sm">{card.text}</p>
+        </div>
+      ))}
+    </div>
+    <div class="my-10 text-center">
+      <a
+        class="inline-block rounded-md bg-primary px-5 py-2 text-sm font-bold text-ink transition hover:bg-primary-hover hover:shadow-card"
+        href={localizedPath('features', 'fr')}
+        target="_blank"
+        rel="noopener"
+      >
+        Découvrir toutes les fonctionnalités <span aria-hidden="true">›</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <section class="mx-auto max-w-4xl px-4 pb-8">
+    <div class="mx-auto mb-10 text-center">
+      <h2 class="text-2xl font-bold md:text-3xl">Questions fréquentes concernant l'abonnement</h2>
+    </div>
+
+    <div class="space-y-3">
+      {subscriptionFaq.map((entry) => (
+        <details class="group rounded-lg border border-beige-line bg-white p-4 shadow-card">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
+            {entry.question}
+            <span class="shrink-0 text-xl" aria-hidden="true">
+              <span class="group-open:hidden">+</span>
+              <span class="hidden group-open:inline">−</span>
+            </span>
+          </summary>
+          <div class="mt-3 space-y-3" set:html={entry.answer} />
+        </details>
+      ))}
+    </div>
+  </section>
+</StandardLayout>

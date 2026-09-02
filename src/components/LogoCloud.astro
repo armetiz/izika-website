@@ -1,0 +1,39 @@
+---
+/**
+ * Compact row of integration/partner logos (calendar providers, etc.).
+ * Optional trailing note (e.g. "+ d'autres") via the `note` prop.
+ */
+export interface Logo {
+  src: string;
+  alt: string;
+  title?: string;
+}
+
+interface Props {
+  logos: ReadonlyArray<Logo>;
+  /** Logo square size in px (rendered width/height). */
+  size?: number;
+  note?: string;
+  noteTitle?: string;
+  class?: string;
+}
+
+const { logos, size = 32, note, noteTitle, class: className } = Astro.props;
+---
+
+<div class:list={['flex flex-wrap items-center gap-2', className]}>
+  {
+    logos.map((logo) => (
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        title={logo.title ?? logo.alt}
+        width={size}
+        height={size}
+        loading="lazy"
+        class="h-auto"
+      />
+    ))
+  }
+  {note && <small class="ml-1 text-sm" title={noteTitle}>{note}</small>}
+</div>

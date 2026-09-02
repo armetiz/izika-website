@@ -1,0 +1,135 @@
+meta:
+  title: "Gestion des IK pour les agents immobilier - izika"
+  description: "izika est la meilleure solution pour la déclarations des indemnités kilométriques pour les agents immobilier et mandataires."
+trackingContext: page_solution_agent_immobilier
+
+head:
+  title1: Outil de gestion de trajets pour agents immobilier
+  title2: Gestion automatique des IK pour les agents immobilier
+  catch: >-
+    izika calcule automatiquement vos indemnités kilométriques à partir de vos rendez-vous.
+    Fini les notes papier, les oublis, et les heures perdues.
+  secondaryCta:
+    routeKey: features
+    text: Fonctionnalités
+  image:
+    src: /assets/solutions/agents-immobilier-mandataires-immobilier/rdv-template.png
+    alt: Export indemnites kilométriques pour les agents et mandataires immobilier
+    title: Export indemnites kilométriques pour les agents et mandataires immobilier
+
+featureHighlights:
+  title: La façon la plus simple pour les agents de gérer leurs indemnités kilométriques
+  image:
+    src: /assets/solutions/agents-immobilier-mandataires-immobilier/illu-screen.png
+    alt: Izika pour les agents immobiliers
+    title: Izika pour les agents immobiliers
+  ctaText: Tester izika
+  items:
+    - title: Fini les notes papier et les trajets oubliés
+      text: >-
+        Entre visites, estimations, signatures et prospection, il est facile d’oublier un déplacement.
+        Izika analyse vos rendez-vous et calcule automatiquement les distances et le montant de vos IK.
+    - title: Plus de bricolage en fin d’année
+      text: >-
+        Les agents passent souvent des heures à reconstituer leurs déplacements.
+        Avec izika, tout est déjà prêt quand vous en avez besoin.
+    - title: Terminé les approximations
+      text: >-
+        Plus besoin de calculer “à la louche”. Izika applique le bon barème fiscal et calcule pour vous
+        vos indemnirés kilométriques.
+    - title: Conformité garantie
+      text: >-
+        izika est approuvé et validé par les experts-comptables et l'administration.
+        Les rapports générés sont conforment à vos obligations fiscales.
+
+benefits:
+  title: "Avantages d'un outil de gestion de déplacements pour les agents immobiliers"
+  items:
+    - title: Vos déplacements reconstitués à partir de vos rendez-vous
+      image: /assets/solutions/agents-immobilier-mandataires-immobilier/calendar-to-ik.png
+      imageAlt: izika - déplacements des agents immobilier reconstitués à partir des rendez-vous
+      text: |
+        <p>Entre une estimation le matin, trois visites l’après-midi et une signature en fin de journée, vos trajets s’enchaînent vite.</p>
+        <p>Izika récupère automatiquement vos rendez-vous au fur et à mesure et génère vos déplacements sans aucune saisie manuelle :</p>
+        <ul>
+          <li>Chaque rendez-vous ou tournée devient un trajet prêt à déclarer</li>
+          <li>Plus aucun déplacement oublié</li>
+          <li>Aucun calcul manuel à faire</li>
+          <li>Calcul automatique en fonction de votre véhicule</li>
+        </ul>
+    - title: Un rapport fiscal clair pour vos obligations professionnelles
+      image: /assets/solutions/agents-immobilier-mandataires-immobilier/rapport-print-ombre.png
+      imageAlt: "izika - un rapport fiscal clair pour l'administration fiscale"
+      text: |
+        <p>Que ce soit pour votre déclaration annuelle ou pour répondre à votre comptable, tout est déjà structuré : kilomètres, trajets, montants, puissances fiscales.</p>
+        <p>izika vous permet de :</p>
+        <ul>
+          <li>Transmettre un document professionnel à votre comptable pour votre bilan</li>
+          <li>Être conforme aux obligations fiscales sans se poser de questions</li>
+          <li>Justifier vos déplacements lors d’un contrôle fiscal</li>
+        </ul>
+    - title: Une solution qui n’alourdit pas votre journée
+      image: /assets/solutions/agents-immobilier-mandataires-immobilier/laptop-screen-izika.jpg
+      imageAlt: izika - une solution qui n’alourdit pas le quotidien des agents immobilier
+      text: |
+        <p>Vous n’avez pas besoin d’utiliser izika en continu : vos déplacements s’enregistrent depuis vos rendez-vous, et vous générez votre rapport quand vous en avez besoin.</p>
+        <p>Les périodes de forte activité (printemps, rentrée, pics de visites) rendent les tâches administratives encore plus lourdes. Izika vous soulage exactement à ce moment-là : tout est déjà enregistré.</p>
+        <p><strong>Pensé pour votre réalité de terrain :</strong></p>
+        <ul>
+          <li>Pas d’application complexe à gérer</li>
+          <li>Pas de double saisie</li>
+          <li>Pas de nouvelle routine à intégrer</li>
+          <li>Un outil fiable quand vient le moment de déclarer</li>
+        </ul>
+  testimonial:
+    quote: >-
+      Izika m’a fait gagner plusieurs heures par mois. Je n’oublie plus aucun trajet, tout est automatique.
+    avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agente-immobiliere.jpg
+    avatarAlt: Julie M.
+    name: Julie M.
+    companyTitle: Agent immobilier indépendante
+
+customerCase:
+  title: izika est-il le meilleur outil pour gérer les trajets des agents et mandataires immobiliers ?
+  intro: |
+    <p>
+      Laissez d'autres utilisateurs d'izika vous convaincre.
+      Cédric, agent immobilier indépendant, utilise izika depuis ses débuts. Cédric est mandataire dans un réseau national.
+    </p>
+    <p>
+      Avant izika, il devait passer des heures à recalculer ses trajets en fin d'année.
+    </p>
+    <p>
+      Depuis qu’il utilise izika, il vérifie en quelques minutes ses rendez-vous et trajets dans l'application,
+      et il peut éditer un rapport détaillé professionnel, fiable et conforme pour son comptable.
+    </p>
+  avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agent-immobilier-cedric.jpg
+  avatarAlt: Cédric Fontaine
+  gainsTitle: "Voici ce que Cédric a gagné en utilisant izika :"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: Trajets automatiques depuis son agenda
+      text: >-
+        Tous ses rendez-vous pour des visites, estimations, signatures,
+        <strong>deviennent automatiquement des trajets</strong> sans aucune saisie.
+    - image: /assets/landing-pages/illu-tournee-etoile.png
+      imageAlt: Tournées automatiques
+      text: >-
+        Cédric a configuré izika pour <strong>calculer automatiquement les trajets de la journée en tournées</strong>.
+        A l'ouverture d'izika il n'a que quelques vérifications à faire avant d'exporter son rapport.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: "Déclaration d'IK et contrôle fiscale"
+      text: >-
+        <strong>Une tranquillité totale en cas de contrôle</strong>.
+        Avec un rapport clair et structuré, Cédric peut justifier chaque déplacement avec son agenda à l'appui.
+  testimonial:
+    quote: >-
+      Avant izika, je notais mes trajets quand j’avais le temps... et souvent trop tard.
+      Entre les visites, les estimations et les allers-retours, je finissais toujours par oublier des déplacements.
+      Avec izika, c’est simple : mon agenda suffit. Au moment voulu, j'exporte mon rapport en dix minutes.
+      Franchement, je n’ai plus jamais perdu de temps avec les IK. C’est propre, clair, et surtout je suis sûr de ce que je fais.
+    name: Cédric Fontaine
+    companyTitle: Agent mandataire indépendant
+  ctaBlock:
+    text: "Comme Cédric, gagnez du temps sur vos déclarations d'IK"
+    buttonText: Tester gratuitement

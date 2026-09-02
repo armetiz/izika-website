@@ -1,0 +1,45 @@
+---
+import TrackedLink from './TrackedLink.astro';
+
+/**
+ * Landing-page hero: headline + lead + primary tracked CTA on the left,
+ * optional extra actions (slot "secondary") and visual (slot "media") on the
+ * right. Reused by the home, solo and team landings.
+ */
+interface Props {
+  title: string;
+  lead: string;
+  ctaEventId: string;
+  ctaLabel: string;
+  /** Tracking context override (defaults to page_<segment> in TrackedLink). */
+  trackingContext?: string;
+}
+
+const { title, lead, ctaEventId, ctaLabel, trackingContext } = Astro.props;
+---
+
+<section class="bg-gradient-to-b from-white to-beige">
+  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-bold lg:text-5xl">{title}</h1>
+        <p class="mt-4 text-lg">{lead}</p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <TrackedLink
+            eventId={ctaEventId}
+            trackingContext={trackingContext}
+            class="inline-block rounded-md bg-primary px-6 py-3 font-semibold text-ink transition hover:bg-primary-hover hover:shadow-card"
+          >
+            {ctaLabel}
+          </TrackedLink>
+          <slot name="secondary" />
+        </div>
+      </div>
+
+      <div>
+        <slot name="media" />
+      </div>
+    </div>
+  </div>
+</section>

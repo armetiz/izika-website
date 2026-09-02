@@ -1,0 +1,133 @@
+meta:
+  title: "Gestion des trajets pour les agents d'assurances - izika"
+  description: "izika est la meilleure solution pour la gestion des indemnités kilométriques pour les agents d'assurance."
+trackingContext: page_solution_change_agent_assurance
+
+head:
+  title1: "Gestion de trajets pour les agents d'assurances"
+  title2: "Gestion des IK pour agent général d'assurances"
+  catch: >-
+    izika calcule automatiquement vos indemnités kilométriques à partir de vos tournées clients.
+    Fini les fichiers excels, les erreurs et le temps perdu.
+  secondaryCta:
+    routeKey: features
+    text: Fonctionnalités
+  image:
+    src: /assets/solutions/agent-general-assurances/rdv-template.png
+    alt: "Export indemnites kilométriques pour agent général d'assurances"
+    title: "Export indemnites kilométriques pour agent général d'assurances"
+
+featureHighlights:
+  title: La méthode la plus rapide pour les agents généraux pour gérer leurs déplacements
+  image:
+    src: /assets/solutions/agent-general-assurances/rdv-suivant.png
+    alt: "Izika pour agent général d'assurance"
+    title: "Izika pour agent général d'assurance"
+  ctaText: Tester izika
+  items:
+    - title: Les IK ne sont plus une charge mentale supplémentaire
+      text: >-
+        Plus de saisie, plus d'excel, plus de calcul d'itinéraire fastidieux dans Google Maps ou Mappy.
+        Vous n'avez quasiment plus rien à faire pour déclarer vos IK.
+        Vous continuez à travailler comme d’habitude : visites clients, rendez-vous de gestion, expertises, remises de documents...
+    - title: "Pas d'erreurs possible"
+      text: >-
+        Comme izika se base sur votre agenda professionnel, vous ne risquez plus d'oublier un déplacement.
+        Et l'application applique automatiquement le bon barème fiscal pour calculer vos indemnités kilométriques.
+    - title: Un export pour votre comptable en quelques clics
+      text: >-
+        Vous ouvrez izika, vous vérifiez en un coup d'oeil vos trajets.
+        Peut-être quelques clics pour ignorer des rendez-vous non concernés ou corriger certaines adresses dans votre agenda,
+        puis vous êtes prêts à éditer un rapport pour votre comptable.
+    - title: Conformité garantie
+      text: >-
+        izika est approuvé et validé par les experts-comptables et l'administration.
+        Les rapports générés sont conforment à vos obligations fiscales.
+
+benefits:
+  title: "Avantages d'une application de gestion de trajets pour les agents d'assurances"
+  items:
+    - title: Vos indemnités kilométriques calculées à partir de votre agenda
+      image: /assets/solutions/agent-general-assurances/calendar-to-ik.png
+      imageAlt: "izika - Indemnités kilométriques pour agent d'assurance calculées à partir de l'agenda"
+      text: |
+        <p>En tant qu’agent général, vos journées sont rythmées par des rendez-vous clients, des déplacements pour des déclarations de sinistres, des visites de suivi, des réunions partenaires...</p>
+        <p>Tout est dans votre agenda professionnel. izika se connecte à votre agenda et reconstitue tous vos trajets automatiquement :</p>
+        <ul>
+          <li>Gérez simplement votre agenda comme d’habitude</li>
+          <li>izika s’adapte en temps réel même si votre planning change souvent</li>
+          <li>Chaque rendez-vous ou tournée devient automatiquement un trajet</li>
+          <li>Les distances et les montants d’indemnités sont déjà calculés pour vous</li>
+        </ul>
+    - title: Un rapport fiscal conforme et prêt à envoyer à votre comptable
+      image: /assets/solutions/agent-general-assurances/rapport-print-ombre.png
+      imageAlt: "izika - Un rapport fiscal conforme et prêt à envoyer aux comptable pour les agents d'assurances"
+      text: |
+        <p>Que ce soit pour votre bilan comptable ou pour justifier ponctuellement vos déplacements, tout est regroupé dans un document propre et complet.</p>
+        <p>izika vous permet de :</p>
+        <ul>
+          <li>Générer des exports complets en 1 clic</li>
+          <li>Être conforme aux obligations fiscales imposées par l’administration</li>
+          <li>Justifier vos déplacements n’importe quand</li>
+        </ul>
+    - title: Vous n’avez pas à gérer izika au quotidien
+      image: /assets/solutions/agent-general-assurances/laptop-screen-izika.jpg
+      imageAlt: "izika - Vous n’avez pas à gérer izika au quotidien"
+      text: |
+        <p>izika n’ajoute pas d’outil supplémentaire à gérer au jour le jour. Vous vous connectez quand vous avez besoin et tout est déjà présent.</p>
+        <p><strong>izika a été conçu pour vous faire gagner un maximum de temps :</strong></p>
+        <ul>
+          <li>Pas besoin de vous connecter tous les jours</li>
+          <li>Pas de saisie, vos trajets sont déjà là</li>
+          <li>Un outil fiable quand vient le moment de déclarer</li>
+        </ul>
+  testimonial:
+    quote: >-
+      Je fais beaucoup de rendez-vous clients. izika m’évite de tout avoir à saisir et calculer en fin d’année,
+      je gagne un temps précieux !
+    avatar: /assets/solutions/agent-general-assurances/persona.jpg
+    avatarAlt: Marc T.
+    name: Marc T.
+    companyTitle: "Agent général d'assurance"
+
+customerCase:
+  title: "izika est-il le meilleur outil pour gérer les trajets des agents généraux d'assurance ?"
+  intro: |
+    <p>
+      Laissez d'autres utilisateurs d'izika vous convaincre.
+      Claire, agent d'assurance indépendante, utilise izika depuis quelques années.
+    </p>
+    <p>
+      Depuis qu’elle utilise izika, elle génère ses indemnités kilométriques en quelques minutes et peut
+      envoyer un rapport complet à son comptable sans stress ni perte de temps.
+    </p>
+  avatar: /assets/solutions/agent-general-assurances/customer-case-avatar.jpg
+  avatarAlt: Claire Montagnon
+  gainsTitle: "Voici ce que Claire a gagné en utilisant izika :"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: Indemnités calculées à partir son agenda
+      text: >-
+        Tous ses trajets pour des visites clients, sinistres, signatures,
+        <strong>sont importés automatiquement par izika et deviennent des indemnités kilométriques</strong>
+        sans aucune saisie.
+    - image: /assets/landing-pages/icon-provisions.png
+      imageAlt: Suivi des provisions mensuelles
+      text: >-
+        Claire a décidé de se reverser des <strong>provisions mensuelles</strong> pour ses <strong>indemnités kilométriques</strong>.
+        izika calcule sa provision chaque mois de manière conservative pour éviter d'avoir un trop perçu en fin d'année fiscale.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Solde de provisions & Bilan comptable
+      text: >-
+        En fin de période fiscale, izika indique à Claire le <strong>solde de ses provisions</strong> par rapport à ses indemnités réelles,
+        et génère un <strong>bilan complet</strong> à envoyer à son comptable en quelques clics.
+  testimonial:
+    quote: >-
+      J'utilise izika tous les mois et j'adore.
+      Je roule beaucoup du fait de mon métier et j'ai synchronisé mon agenda Google avec le logiciel,
+      ce qui me fait gagner un temps fou à chaque fin de mois !
+    name: Claire Montagnon
+    companyTitle: "Agent général d'assurance"
+  ctaBlock:
+    text: "Comme Claire, gagnez du temps sur vos déclarations d'IK"
+    buttonText: Tester gratuitement

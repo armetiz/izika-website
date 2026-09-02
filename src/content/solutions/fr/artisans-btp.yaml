@@ -1,0 +1,128 @@
+meta:
+  title: "Gestion des IK pour les artisans et le BTP - izika"
+  description: "izika est la solution idéale pour les artisans et les indépendants du BTP : calcul automatique des indemnités kilométriques depuis votre agenda, sans saisie ni carnet de bord."
+trackingContext: page_solution_artisans_btp
+
+head:
+  title1: Outil de gestion de trajets pour les artisans et le BTP
+  title2: Gestion automatique des IK pour les artisans indépendants
+  catch: >-
+    izika calcule automatiquement vos indemnités kilométriques à partir de vos chantiers et rendez-vous clients.
+    Fini les carnets de bord, les oublis et la reconstitution en fin d'exercice.
+  secondaryCta:
+    routeKey: features
+    text: Fonctionnalités
+  image:
+    src: /assets/solutions/artisans-btp/rdv-template.png
+    alt: Export indemnités kilométriques pour les artisans et le BTP
+    title: Export indemnités kilométriques pour les artisans et le BTP
+
+featureHighlights:
+  title: La méthode la plus rapide pour les artisans pour gérer leurs déplacements chantier
+  image:
+    src: /assets/solutions/visuel-agenda-professionnel.png
+    alt: izika pour les artisans et le BTP
+    title: izika pour les artisans et le BTP
+  ctaText: Tester izika
+  items:
+    - title: Chaque chantier et chaque rendez-vous client capturé automatiquement
+      text: >-
+        izika analyse vos rendez-vous et calcule distances et montants. Vous posez vos chantiers dans votre
+        agenda comme d'habitude — izika transforme chaque déplacement en IK.
+    - title: "Fini la reconstitution en fin d'exercice"
+      text: >-
+        Vos données sont déjà là quand votre comptable en a besoin. Plus besoin de retrouver des bons de
+        livraison ou des notes griffonnées dans la camionnette.
+    - title: Le bon barème appliqué automatiquement
+      text: >-
+        izika applique le barème fiscal correspondant à votre véhicule utilitaire ou personnel et à votre
+        puissance fiscale. Chaque kilomètre de chantier est comptabilisé au bon tarif.
+    - title: Conformité garantie
+      text: >-
+        izika est approuvé et validé par les experts-comptables et l'administration. Les rapports générés
+        sont conformes à vos obligations fiscales, que vous soyez en micro-entreprise, EI ou société.
+
+benefits:
+  title: "Avantages d'un outil de gestion des IK pour les artisans du BTP"
+  items:
+    - title: Vos trajets chantier générés automatiquement depuis votre agenda
+      image: /assets/solutions/artisans-btp/calendar-to-ik.png
+      imageAlt: "izika - Indemnités kilométriques pour artisans calculées à partir de l'agenda"
+      text: |
+        <p>Votre planning est rythmé par des visites de chantier, des rendez-vous clients pour des devis, des passages chez des fournisseurs. Autant de déplacements que vous n'avez pas le temps de noter un par un.</p>
+        <ul>
+          <li>Synchronisez votre agenda professionnel une seule fois</li>
+          <li>Chaque chantier ou rendez-vous devient automatiquement un trajet calculé</li>
+          <li>Les distances et les montants d'indemnités sont déjà là, sans aucune saisie</li>
+        </ul>
+    - title: Un rapport fiscal conforme, prêt à envoyer à votre comptable
+      image: /assets/solutions/artisans-btp/rapport-print-ombre.png
+      imageAlt: izika - Rapport fiscal conforme pour les artisans et le BTP
+      text: |
+        <p>
+          Que vous soyez en micro-entreprise, en EI ou en société, vos frais de déplacements doivent être justifiés.
+          izika génère un document structuré, clair et accepté par l'administration fiscale.
+        </p>
+        <ul>
+          <li>Exportez un rapport complet en quelques clics</li>
+          <li>Transmettez-le directement à votre expert-comptable</li>
+          <li>Justifiez chaque déplacement chantier en cas de contrôle fiscal</li>
+        </ul>
+    - title: Vous ne gérez pas izika au quotidien — il fonctionne en arrière plan
+      image: /assets/solutions/laptop-screen-izika.jpg
+      imageAlt: izika - Gestion des IK artisans sans gestion quotidienne
+      text: |
+        <p>Sur un chantier, vous n'avez pas le temps de noter vos kilomètres. izika ne vous demande rien au jour le jour : il travaille en arrière-plan, à partir de votre agenda.</p>
+        <ul>
+          <li>Pas de saisie manuelle, pas de carnet de bord à tenir dans la camionnette</li>
+          <li>Pas de double gestion avec votre outil d'agenda existant</li>
+          <li>Ouvrez izika quand vous en avez besoin — tout est déjà prêt</li>
+        </ul>
+  testimonial:
+    quote: >-
+      Je fais des chantiers dans un rayon de 30 km autour de chez moi, tous les jours. Avant, je ne déclarais
+      pas la moitié de mes trajets. Avec izika, tout est capturé et mon comptable a le rapport en deux clics.
+    avatar: /assets/solutions/testimonial-avatar.png
+    avatarAlt: Sébastien M.
+    name: Sébastien M.
+    companyTitle: Électricien indépendant
+
+customerCase:
+  title: izika est-il le meilleur outil pour gérer les trajets des artisans du BTP ?
+  intro: |
+    <p>
+      Julien et Clément sont les fondateurs d'Artisans de l'Ouest, une entreprise de couverture, charpente et zinguerie basée à Ouistreham, en Normandie.
+      Ils interviennent sur des chantiers dans un rayon de 30 km autour de leur base : toitures, extensions, rénovations de combles.
+    </p>
+    <p>
+      Clients izika depuis 2025, ils ne perdent plus de temps à reconstituer leurs déplacements en fin d'exercice.
+    </p>
+  avatar: /assets/solutions/artisans-btp/persona.jpg
+  avatarAlt: "Julien - Artisans de l'Ouest"
+  gainsTitle: "Voici ce qu'Artisans de l'Ouest a gagné en utilisant izika :"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: "Trajets chantier calculés automatiquement depuis l'agenda"
+      text: >-
+        Leurs déplacements quotidiens vers les chantiers de Lion-sur-Mer, Caen, Hérouville et toute la zone normande
+        <strong>sont automatiquement transformés en indemnités kilométriques</strong> sans aucune saisie.
+    - image: /assets/landing-pages/illu-tournee-etoile.png
+      imageAlt: Visites de chantier et rendez-vous devis
+      text: >-
+        Chaque visite de chantier, chaque rendez-vous pour un devis ou une livraison de matériau devient un trajet dans izika.
+        Ils vérifient leurs <strong>déplacements en quelques secondes</strong> avant d'exporter.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Rapport annuel transmis au comptable sans effort
+      text: >-
+        En fin d'exercice, <strong>le rapport est prêt en quelques minutes.</strong>
+        Ils le transmettent à leur comptable directement — chaque trajet chantier est justifié et conforme.
+  testimonial:
+    quote: >-
+      On roule tous les jours pour aller sur les chantiers, mais on n'avait jamais le temps de noter quoi que ce soit.
+      Depuis qu'on utilise izika, notre agenda fait le travail à notre place.
+      En fin d'année, on envoie le rapport à notre comptable en deux minutes — c'est tout.
+    name: Julien Amour
+    companyTitle: "Artisans de l'Ouest — Couverture, charpente & zinguerie"
+  ctaBlock:
+    text: "Comme Julien et Clément, arrêtez de perdre du temps sur vos déclarations d'IK"
+    buttonText: Tester gratuitement

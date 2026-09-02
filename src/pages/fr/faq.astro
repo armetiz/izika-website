@@ -1,0 +1,48 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import { faqPageSchema } from '../../seo/schema';
+import { faqEntries } from '../../data/faq.fr';
+
+// Ported from templates/content/faq.html.twig — the same faqEntries data
+// drives the visible accordion and the FAQPage JSON-LD.
+
+// Default meta description from the old _base.html.twig (page sets none).
+const description =
+  'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.';
+---
+
+<StandardLayout
+  locale="fr"
+  routeKey="faq"
+  title="Questions fréquentes"
+  description={description}
+  schemaNodes={[faqPageSchema(faqEntries)]}
+>
+  <!-- Hero -->
+  <section
+    class="bg-cover bg-center py-20"
+    style="background-image: url('/assets/img/laptop-screen-izika_blur-light.jpg');"
+  >
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <h1 class="text-3xl font-bold md:text-4xl">Questions fréquentes</h1>
+    </div>
+  </section>
+
+  <!-- FAQ accordion -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <div class="space-y-3">
+      {faqEntries.map((entry) => (
+        <details class="group rounded-lg border border-beige-line bg-white p-4 shadow-card">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
+            {entry.question}
+            <span class="shrink-0 text-xl" aria-hidden="true">
+              <span class="group-open:hidden">+</span>
+              <span class="hidden group-open:inline">−</span>
+            </span>
+          </summary>
+          <div class="mt-3 space-y-3 [&_a]:underline" set:html={entry.answer} />
+        </details>
+      ))}
+    </div>
+  </section>
+</StandardLayout>
