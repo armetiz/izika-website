@@ -12,7 +12,21 @@ import {
 } from '../data/bareme-ik';
 import { PERIODE_LABELS, labelTranche } from '../data/bareme-ik.labels.fr';
 import { makeFormatters } from '../lib/format';
-import { trackClickPayload } from '../lib/tracking';
+import { badgePill } from '../lib/ui';
+import {
+  SegmentedRadio,
+  StepBadge,
+  amountBoxClass,
+  ctaFooterClass,
+  ctaLinkClass,
+  ctaPayload,
+  emptyStateClass,
+  formClass,
+  inputClass,
+  kickerClass,
+  resultPanelClass,
+  stepListClass,
+} from './calculator/shared';
 
 /**
  * Simulateur d'indemnités kilométriques. Toute la logique de calcul vit dans
@@ -30,55 +44,6 @@ interface Props {
   currency: string;
   /** CTA de conversion du marché (getMarket(...).joinUrl). */
   joinUrl: string;
-}
-
-const inputClass =
-  'w-full rounded-card border border-beige-line bg-white px-3 py-2.5 text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/40';
-
-// Même contexte que le trackingContext de la page hôte.
-const ctaPayload = trackClickPayload('calculator_result_cta', 'page_calculator');
-
-function StepBadge({ n }: { n: number }) {
-  return (
-    <span
-      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
-      aria-hidden="true"
-    >
-      {n}
-    </span>
-  );
-}
-
-function SegmentedRadio<T extends string>(props: {
-  name: string;
-  legend: string;
-  value: T;
-  options: ReadonlyArray<{ value: T; label: string }>;
-  onChange: (value: T) => void;
-}) {
-  return (
-    <fieldset>
-      <legend className="mb-2 text-sm font-bold">{props.legend}</legend>
-      <div className="grid grid-cols-2 gap-2">
-        {props.options.map((option) => (
-          <label
-            key={option.value}
-            className="cursor-pointer rounded-full border border-beige-line bg-white px-3 py-2.5 text-center text-sm font-bold text-muted transition-colors has-checked:border-primary has-checked:bg-primary has-checked:text-white"
-          >
-            <input
-              type="radio"
-              name={props.name}
-              value={option.value}
-              checked={props.value === option.value}
-              onChange={() => props.onChange(option.value)}
-              className="sr-only"
-            />
-            {option.label}
-          </label>
-        ))}
-      </div>
-    </fieldset>
-  );
 }
 
 export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props) {
@@ -119,11 +84,11 @@ export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props)
     <div className="grid gap-6 lg:grid-cols-2">
       {/* Formulaire */}
       <form
-        className="space-y-5 rounded-card bg-white p-6 shadow-card lg:p-8"
+        className={formClass}
         onSubmit={(e) => e.preventDefault()}
         aria-label="Paramètres du calcul d'indemnités kilométriques"
       >
-        <p className="text-sm font-bold tracking-wide uppercase">Votre situation</p>
+        <p className={kickerClass}>Votre situation</p>
 
         <SegmentedRadio
           name="categorie"
@@ -223,19 +188,19 @@ export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props)
 
       {/* Résultat */}
       <div
-        className="flex flex-col rounded-card bg-white p-6 shadow-card lg:p-8"
+        className={resultPanelClass}
         aria-live="polite"
       >
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-lg leading-snug font-bold">Votre indemnité kilométrique</h2>
-          <span className="mt-1 inline-block shrink-0 rounded-full bg-primary-hover px-2 py-0.5 text-xs font-bold text-white">
+          <span className={badgePill}>
             barème {annee}
           </span>
         </div>
 
         {resultat ? (
           <div className="mt-4 flex flex-1 flex-col">
-            <p className="rounded-card bg-soft-primary px-6 py-5 text-center">
+            <p className={amountBoxClass}>
               <span className="block text-4xl font-bold">{formatCurrency(resultat.montant)}</span>
               <span className="mt-1 block text-sm text-muted">
                 par an — soit {formatCurrency(resultat.montant / 12)} / mois ou{' '}
@@ -243,9 +208,9 @@ export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props)
               </span>
             </p>
 
-            <p className="mt-5 text-sm font-bold tracking-wide uppercase">Le détail du calcul</p>
+            <p className={'mt-5 ' + kickerClass}>Le détail du calcul</p>
             {/* pb keeps the separator off the last step when mt-auto collapses to 0. */}
-            <ol className="mt-3 space-y-3 pb-4 text-sm text-muted">
+            <ol className={stepListClass}>
               <li className="flex items-start gap-3">
                 <StepBadge n={1} />
                 <span>
@@ -296,11 +261,11 @@ export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props)
               )}
             </ol>
 
-            <p className="mt-auto border-t border-beige-line pt-4 text-sm text-muted">
+            <p className={ctaFooterClass}>
               Ces kilomètres, izika peut les compter pour vous depuis votre agenda.{' '}
               <a
                 href={joinUrl}
-                className="font-bold text-ink underline hover:text-primary-hover"
+                className={ctaLinkClass}
                 data-track-click={ctaPayload}
               >
                 Essayez gratuitement <span aria-hidden="true">›</span>
@@ -308,7 +273,7 @@ export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props)
             </p>
           </div>
         ) : (
-          <div className="mt-4 flex flex-1 flex-col items-center justify-center rounded-card bg-soft-neutral px-6 py-10 text-center">
+          <div className={emptyStateClass}>
             <p className="max-w-xs text-sm text-muted">
               Saisissez la distance parcourue pour obtenir votre montant selon le barème fiscal{' '}
               {annee} — avec le détail du calcul, étape par étape.

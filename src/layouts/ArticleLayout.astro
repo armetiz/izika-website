@@ -4,9 +4,10 @@ import TrackedLink from '../components/TrackedLink.astro';
 import Card from '../components/Card.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import { articleSchema, breadcrumbSchema } from '../seo/schema';
-import { btnPill } from '../lib/cta';
+import { btnPill, btnPrimaryCompact } from '../lib/cta';
 import { getCollection } from 'astro:content';
-import { t, getMarket, MARKETS, articlePath, localizedPath, type MarketId } from '../i18n';
+import HreflangTags from '../components/HreflangTags.astro';
+import { t, getMarket, articlePath, localizedPath, splitContentId, type MarketId } from '../i18n';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
@@ -30,8 +31,8 @@ const dict = t(market);
 // fewer than 2 markets (same rule as Seo.astro for editorial routes).
 const siblings = hreflangKey
   ? (await getCollection('articles', (a) => a.data.hreflangKey === hreflangKey)).map((a) => {
-      const [m, ...rest] = a.id.split('/');
-      return { market: m as MarketId, href: articlePath(rest.join('/'), m as MarketId) };
+      const [m, slug] = splitContentId(a.id);
+      return { market: m, href: articlePath(slug, m) };
     })
   : [];
 const articleAlternates = siblings.length >= 2 ? siblings : [];
@@ -65,15 +66,7 @@ const schemaNodes = [
   schemaNodes={schemaNodes}
 >
   <Fragment slot="head">
-    {
-      articleAlternates.map((a) => (
-        <link
-          rel="alternate"
-          href={new URL(a.href, Astro.site).href}
-          hreflang={MARKETS[a.market].hreflang}
-        />
-      ))
-    }
+    <HreflangTags alternates={articleAlternates} />
   </Fragment>
 
   <!-- Top CTA banner (same copy as page.html.twig) -->
@@ -89,7 +82,7 @@ const schemaNodes = [
             eventId="cta_block_cta"
             class={btnPill}
           >
-            {dict.cta.join}
+            {dict.cta.try}
           </TrackedLink>
           <a
             class="btn-3d min-w-40 rounded-full bg-white px-4 py-3 text-center font-bold"
@@ -115,7 +108,7 @@ const schemaNodes = [
       <div class="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
         <h3 class="text-lg font-bold">{dict.article.bottomTitle}</h3>
         <a
-          class="btn-3d shrink-0 rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover"
+          class={btnPrimaryCompact}
           href={localizedPath('home', market)}
         >
           {dict.article.bottomButton}

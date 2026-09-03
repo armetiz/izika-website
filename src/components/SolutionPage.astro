@@ -1,10 +1,11 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import GradientHero from './GradientHero.astro';
+import QuoteIcon from './QuoteIcon.astro';
+import TrustpilotBadge from './TrustpilotBadge.astro';
 import TrackedLink from './TrackedLink.astro';
 import { t, getMarket, localizedPath, type MarketId } from '../i18n';
-import { btnPill, btnPrimary } from '../lib/cta';
-import { reviews } from '../data/reviews';
+import { btnPill, btnPrimary, btnPrimaryCompact } from '../lib/cta';
 
 /**
  * Solution landing page — Astro port of _solutions_base.html.twig.
@@ -15,7 +16,6 @@ import { reviews } from '../data/reviews';
  */
 interface Props {
   data: CollectionEntry<'solutions'>['data'];
-  slug: string;
   market: MarketId;
 }
 
@@ -23,10 +23,6 @@ const { data, market } = Astro.props;
 const { trackingContext, head, featureHighlights, benefits, customerCase } = data;
 const dict = t(market);
 const marketData = getMarket(market);
-const trustpilot = marketData.trustpilot;
-const ratingAria = dict.a11y.ratingAria
-  .replace('{rating}', reviews.ratingValue)
-  .replace('{max}', reviews.bestRating);
 
 const secondaryCtaHref = head.secondaryCta
   ? localizedPath(head.secondaryCta.routeKey, market)
@@ -55,7 +51,7 @@ const richText =
               trackingContext={trackingContext}
               class={btnPrimary}
             >
-              {head.primaryCtaText ?? dict.cta.testFree}
+              {head.primaryCtaText ?? dict.cta.try}
             </TrackedLink>
             {
               secondaryCtaHref && head.secondaryCta && (
@@ -141,7 +137,7 @@ const richText =
               trackingContext={trackingContext}
               class={btnPrimary}
             >
-              {featureHighlights.ctaText ?? dict.cta.test}
+              {featureHighlights.ctaText ?? dict.cta.try}
             </TrackedLink>
           </div>
         </div>
@@ -174,18 +170,7 @@ const richText =
       <div class="py-16">
         <div class="relative mx-auto max-w-xl">
           <figure class="absolute -top-10 -left-10 -z-10" aria-hidden="true">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="200"
-              height="200"
-              viewBox="0 0 8 8"
-            >
-              <path
-                class="fill-primary-band"
-                opacity=".3"
-                d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5 C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3 c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8 C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"
-              ></path>
-            </svg>
+            <QuoteIcon size={200} fillClass="fill-primary-band" opacity=".3" />
           </figure>
 
           <blockquote class="mb-6 text-center text-[1.3125rem] leading-relaxed font-bold">
@@ -205,23 +190,9 @@ const richText =
           </div>
 
           <!-- Trustpilot rating -->
-          {
-            trustpilot && (
-              <div class="mt-6 flex items-center justify-center gap-3">
-                <a class="text-[2.5rem] font-bold" href={trustpilot.url} rel="nofollow">
-                  {reviews.ratingValue}
-                </a>
-                <div class="flex flex-col">
-                  <a class="text-primary" href={trustpilot.url} rel="nofollow" aria-label={ratingAria}>
-                    <span aria-hidden="true">★★★★★</span>
-                  </a>
-                  <a class="text-sm underline" href={trustpilot.url} rel="nofollow">
-                    {dict.footer.seeAllReviews}
-                  </a>
-                </div>
-              </div>
-            )
-          }
+          <div class="mt-6 text-center">
+            <TrustpilotBadge market={market} />
+          </div>
         </div>
       </div>
     </div>
@@ -285,13 +256,7 @@ const richText =
     <div class="py-16">
       <div class="relative mx-auto max-w-2xl text-center">
         <figure class="absolute -top-10 -left-10 -z-10" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 8 8">
-            <path
-              class="fill-primary-band"
-              opacity=".3"
-              d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5 C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3 c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8 C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"
-            ></path>
-          </svg>
+          <QuoteIcon size={200} fillClass="fill-primary-band" opacity=".3" />
         </figure>
 
         <blockquote class="mb-6 text-xl leading-relaxed font-bold">
@@ -312,10 +277,10 @@ const richText =
         >
           <h3 class="text-[1.3125rem] font-bold">{customerCase.ctaBlock.text}</h3>
           <a
-            class="btn-3d inline-block shrink-0 rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover"
+            class={btnPrimaryCompact}
             href={customerCase.ctaBlock.buttonUrl ?? marketData.joinUrl}
           >
-            {customerCase.ctaBlock.buttonText ?? dict.cta.tryFree}
+            {customerCase.ctaBlock.buttonText ?? dict.cta.try}
           </a>
         </div>
       </div>

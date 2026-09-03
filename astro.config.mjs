@@ -7,6 +7,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import legacyRedirects from './src/integrations/legacy-redirects.mjs';
+import { site } from './src/config/site';
 
 // The public site is fully static — no adapter, no worker. The Keystatic
 // admin (/keystatic, SSR) is only mounted on the dev server, where it runs on
@@ -21,7 +22,7 @@ const enableKeystatic = process.env.KEYSTATIC_ADMIN !== '0';
 // injected /keystatic admin routes.
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://izika.com',
+  site: site.url,
   trailingSlash: 'never',
   build: { format: 'file' },
   output: 'static',

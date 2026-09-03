@@ -1,8 +1,11 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@import '@fontsource/open-sans/400.css';
-@import '@fontsource/open-sans/600.css';
+/* Site is FR/EN only: ship just the latin + latin-ext subsets. */
+@import '@fontsource/open-sans/latin-400.css';
+@import '@fontsource/open-sans/latin-ext-400.css';
+@import '@fontsource/open-sans/latin-600.css';
+@import '@fontsource/open-sans/latin-ext-600.css';
 
 /*
  * Live brand rules, extracted from the source theme

@@ -81,6 +81,13 @@ const teamItems = [
     ...menu.items.commerces,
   },
 ];
+
+// The solo and team columns share the exact same markup — render both from
+// this list so the structure lives once.
+const groups = [
+  { label: menu.soloGroup, items: soloItems, moreHref: soloUrl, moreLabel: menu.soloMore },
+  { label: menu.teamGroup, items: teamItems, moreHref: teamUrl, moreLabel: menu.teamMore },
+];
 ---
 
 {hasSolutions && (
@@ -102,64 +109,37 @@ const teamItems = [
     <div
       class="grid gap-6 pb-5 md:absolute md:left-1/2 md:z-30 md:mt-4 md:w-[min(64rem,90vw)] md:-translate-x-1/2 md:grid-cols-3 md:rounded-lg md:border-t-2 md:border-primary md:bg-white md:p-8 md:pb-8 md:shadow-card"
     >
-      <div>
-        <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
-          {menu.soloGroup}
-        </span>
-        <ul class="md:space-y-1">
-          {
-            soloItems.map((item) => (
-              <li>
-                <a
-                  class="flex items-center gap-3 rounded-md py-2 font-normal hover:bg-beige/60 md:p-2"
-                  href={item.href}
-                >
-                  <img class="h-7 w-7 md:h-9 md:w-9" src={item.icon} alt="" loading="lazy" />
-                  <span>
-                    <span class="block md:font-semibold">{item.title}</span>
-                    <span class="hidden text-sm text-muted md:block">{item.text}</span>
-                  </span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <a
-          class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
-          href={soloUrl}
-        >
-          {menu.soloMore}
-        </a>
-      </div>
-      <div>
-        <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
-          {menu.teamGroup}
-        </span>
-        <ul class="md:space-y-1">
-          {
-            teamItems.map((item) => (
-              <li>
-                <a
-                  class="flex items-center gap-3 rounded-md py-2 font-normal hover:bg-beige/60 md:p-2"
-                  href={item.href}
-                >
-                  <img class="h-7 w-7 md:h-9 md:w-9" src={item.icon} alt="" loading="lazy" />
-                  <span>
-                    <span class="block md:font-semibold">{item.title}</span>
-                    <span class="hidden text-sm text-muted md:block">{item.text}</span>
-                  </span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <a
-          class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
-          href={teamUrl}
-        >
-          {menu.teamMore}
-        </a>
-      </div>
+      {
+        groups.map((group) => (
+          <div>
+            <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
+              {group.label}
+            </span>
+            <ul class="md:space-y-1">
+              {group.items.map((item) => (
+                <li>
+                  <a
+                    class="flex items-center gap-3 rounded-md py-2 font-normal hover:bg-beige/60 md:p-2"
+                    href={item.href}
+                  >
+                    <img class="h-7 w-7 md:h-9 md:w-9" src={item.icon} alt="" loading="lazy" />
+                    <span>
+                      <span class="block md:font-semibold">{item.title}</span>
+                      <span class="hidden text-sm text-muted md:block">{item.text}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
+              href={group.moreHref}
+            >
+              {group.moreLabel}
+            </a>
+          </div>
+        ))
+      }
       <div class="hidden md:block">
         <img
           class="mb-3 rounded-lg"

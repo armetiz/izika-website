@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { localizedPath } from '../i18n';
+import { btnPrimaryCompact } from '../lib/cta';
 
 // Single root 404.html — Cloudflare Pages serves it for every missing URL,
 // whatever the market, so the page is bilingual and market-neutral (no
@@ -43,7 +44,7 @@ const enHome = localizedPath('home', 'en');
 
     <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
       <a
-        class="btn-3d inline-block rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover"
+        class={btnPrimaryCompact}
         href={frHome}
         hreflang="fr-FR"
         lang="fr"

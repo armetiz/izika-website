@@ -1,11 +1,11 @@
 ---
-import LandingLayout from '../../layouts/LandingLayout.astro';
+import StandardLayout from '../../layouts/StandardLayout.astro';
 import TeamLanding from '../../components/TeamLanding.astro';
 import LandingClosingCta from '../../components/LandingClosingCta.astro';
 import { teamLandingFr } from '../../data/team-landing.fr';
 ---
 
-<LandingLayout
+<StandardLayout
   market="fr"
   title="Gestion des IK pour les collectivités"
   description="Simplifiez le calcul des IK pour vos collaborateurs"
@@ -28,4 +28,4 @@ import { teamLandingFr } from '../../data/team-landing.fr';
       </p>
     </div>
   </LandingClosingCta>
-</LandingLayout>
+</StandardLayout>

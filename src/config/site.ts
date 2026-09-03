@@ -6,9 +6,9 @@
 export const site = {
   url: 'https://izika.com',
   /**
-   * Main conversion CTA — signup on the app. Kept here only as TrackedLink's
-   * default href. TODO multi-market: give TrackedLink a market prop and use
-   * getMarket(market).joinUrl instead.
+   * Main conversion CTA — signup on the app. Single source: TrackedLink's
+   * default href and every MARKETS.<id>.joinUrl point here. The day a market
+   * needs its own URL, override it in src/i18n/markets.ts.
    */
   joinUrl: 'https://go.izika.com/join',
   twitterHandle: '@izika',

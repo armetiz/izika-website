@@ -20,7 +20,7 @@ head:
 featureHighlights:
   title: The simplest way for agents to manage their mileage allowances
   image:
-    src: /assets/solutions/agents-immobilier-mandataires-immobilier/illu-screen.png
+    src: /assets/solutions/visuel-agenda-professionnel.png
     alt: Izika for real estate agents
     title: Izika for real estate agents
   ctaText: Try izika
@@ -69,7 +69,7 @@ benefits:
           <li>Justify your trips in the event of a tax audit</li>
         </ul>
     - title: A solution that doesn't weigh down your day
-      image: /assets/solutions/agents-immobilier-mandataires-immobilier/laptop-screen-izika.jpg
+      image: /assets/solutions/laptop-screen-izika.jpg
       imageAlt: izika - a solution that doesn't weigh down real estate agents' days
       text: |
         <p>You don't need to use izika continuously: your trips are recorded from your appointments, and you generate your report whenever you need it.</p>

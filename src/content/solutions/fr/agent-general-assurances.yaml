@@ -71,7 +71,7 @@ benefits:
           <li>Justifier vos déplacements n’importe quand</li>
         </ul>
     - title: Vous n’avez pas à gérer izika au quotidien
-      image: /assets/solutions/agent-general-assurances/laptop-screen-izika.jpg
+      image: /assets/solutions/laptop-screen-izika.jpg
       imageAlt: "izika - Vous n’avez pas à gérer izika au quotidien"
       text: |
         <p>izika n’ajoute pas d’outil supplémentaire à gérer au jour le jour. Vous vous connectez quand vous avez besoin et tout est déjà présent.</p>
@@ -85,7 +85,7 @@ benefits:
     quote: >-
       Je fais beaucoup de rendez-vous clients. izika m’évite de tout avoir à saisir et calculer en fin d’année,
       je gagne un temps précieux !
-    avatar: /assets/solutions/agent-general-assurances/persona.jpg
+    avatar: /assets/solutions/persona.jpg
     avatarAlt: Marc T.
     name: Marc T.
     companyTitle: "Agent général d'assurance"

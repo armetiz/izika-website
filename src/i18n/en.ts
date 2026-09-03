@@ -18,10 +18,7 @@ const en: Dict = {
     menuClose: 'Close navigation',
   },
   cta: {
-    join: 'Try it for free',
-    test: 'Try izika',
-    testFree: 'Try izika for free',
-    tryFree: 'Try for free',
+    try: 'Try for free',
     signupNow: 'Sign up now',
   },
   a11y: {
@@ -43,6 +40,17 @@ const en: Dict = {
     terms: 'Terms of sale',
     cookies: 'Cookie consent',
     seeAllReviews: 'See all reviews',
+  },
+  articlesHub: {
+    metaTitle: 'Articles — rates, guides and integrations | izika',
+    metaDescription:
+      'All izika articles: official mileage allowance rates, online calendar integrations and practical guides.',
+    heading: 'Articles',
+    lead: 'Official rates, practical guides and calendar integrations for your mileage allowances.',
+    baremesTitle: 'Mileage rates',
+    baremeCard: 'Mileage rate',
+    integrationsTitle: 'Calendar integrations',
+    guidesTitle: 'Guides & tips',
   },
   article: {
     ctaTitle: 'Want to save time on your mileage allowances?',

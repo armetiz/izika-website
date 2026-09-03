@@ -9,8 +9,22 @@ import {
   type TaxYear,
   type VehicleType,
 } from '../data/mileage-uk';
-import { makeFormatters } from '../lib/format';
-import { trackClickPayload } from '../lib/tracking';
+import { makeFormatters, pence } from '../lib/format';
+import { badgePill } from '../lib/ui';
+import {
+  SegmentedRadio,
+  StepBadge,
+  amountBoxClass,
+  ctaFooterClass,
+  ctaLinkClass,
+  ctaPayload,
+  emptyStateClass,
+  formClass,
+  inputClass,
+  kickerClass,
+  resultPanelClass,
+  stepListClass,
+} from './calculator/shared';
 
 /**
  * UK mileage allowance calculator (HMRC AMAP rates). All the maths lives in
@@ -30,31 +44,11 @@ interface Props {
   joinUrl: string;
 }
 
-const inputClass =
-  'w-full rounded-card border border-beige-line bg-white px-3 py-2.5 text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/40';
-
-// Same context as the host page's trackingContext.
-const ctaPayload = trackClickPayload('calculator_result_cta', 'page_calculator');
-
 const PERIOD_LABELS: Record<Period, { label: string; perLabel: string }> = {
   week: { label: 'Week (× 52)', perLabel: 'per week' },
   month: { label: 'Month (× 12)', perLabel: 'per month' },
   year: { label: 'Year', perLabel: 'per year' },
 };
-
-/** "0.55" → "55p". */
-const pence = (rate: number) => `${Math.round(rate * 100)}p`;
-
-function StepBadge({ n }: { n: number }) {
-  return (
-    <span
-      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
-      aria-hidden="true"
-    >
-      {n}
-    </span>
-  );
-}
 
 export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }: Props) {
   const { formatCurrency, formatNumber } = useMemo(
@@ -89,39 +83,24 @@ export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }:
     <div className="grid gap-6 lg:grid-cols-2">
       {/* Form */}
       <form
-        className="space-y-5 rounded-card bg-white p-6 shadow-card lg:p-8"
+        className={formClass}
         onSubmit={(e) => e.preventDefault()}
         aria-label="Mileage allowance calculation settings"
       >
-        <p className="text-sm font-bold tracking-wide uppercase">Your situation</p>
+        <p className={kickerClass}>Your situation</p>
 
-        <fieldset>
-          <legend className="mb-2 text-sm font-bold">Vehicle type</legend>
-          <div className="grid grid-cols-3 gap-2">
-            {(
-              [
-                { value: 'carVan', label: 'Car / van' },
-                { value: 'motorcycle', label: 'Motorcycle' },
-                { value: 'bicycle', label: 'Bicycle' },
-              ] as const
-            ).map((option) => (
-              <label
-                key={option.value}
-                className="cursor-pointer rounded-full border border-beige-line bg-white px-3 py-2.5 text-center text-sm font-bold text-muted transition-colors has-checked:border-primary has-checked:bg-primary has-checked:text-white"
-              >
-                <input
-                  type="radio"
-                  name="vehicle"
-                  value={option.value}
-                  checked={vehicle === option.value}
-                  onChange={() => setVehicle(option.value)}
-                  className="sr-only"
-                />
-                {option.label}
-              </label>
-            ))}
-          </div>
-        </fieldset>
+        <SegmentedRadio
+          name="vehicle"
+          legend="Vehicle type"
+          value={vehicle}
+          columns={3}
+          options={[
+            { value: 'carVan', label: 'Car / van' },
+            { value: 'motorcycle', label: 'Motorcycle' },
+            { value: 'bicycle', label: 'Bicycle' },
+          ]}
+          onChange={setVehicle}
+        />
 
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -200,19 +179,19 @@ export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }:
 
       {/* Result */}
       <div
-        className="flex flex-col rounded-card bg-white p-6 shadow-card lg:p-8"
+        className={resultPanelClass}
         aria-live="polite"
       >
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-lg leading-snug font-bold">Your mileage allowance</h2>
-          <span className="mt-1 inline-block shrink-0 rounded-full bg-primary-hover px-2 py-0.5 text-xs font-bold text-white">
+          <span className={badgePill}>
             {taxYear} rates
           </span>
         </div>
 
         {result ? (
           <div className="mt-4 flex flex-1 flex-col">
-            <p className="rounded-card bg-soft-primary px-6 py-5 text-center">
+            <p className={amountBoxClass}>
               <span className="block text-4xl font-bold">{formatCurrency(result.total)}</span>
               <span className="mt-1 block text-sm text-muted">
                 per year — that's {formatCurrency(result.total / 12)} / month or{' '}
@@ -220,9 +199,9 @@ export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }:
               </span>
             </p>
 
-            <p className="mt-5 text-sm font-bold tracking-wide uppercase">How it's worked out</p>
+            <p className={'mt-5 ' + kickerClass}>How it's worked out</p>
             {/* pb keeps the separator off the last step when mt-auto collapses to 0. */}
-            <ol className="mt-3 space-y-3 pb-4 text-sm text-muted">
+            <ol className={stepListClass}>
               <li className="flex items-start gap-3">
                 <StepBadge n={1} />
                 <span>
@@ -264,11 +243,11 @@ export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }:
               )}
             </ol>
 
-            <p className="mt-auto border-t border-beige-line pt-4 text-sm text-muted">
+            <p className={ctaFooterClass}>
               These miles, izika can count them for you straight from your calendar.{' '}
               <a
                 href={joinUrl}
-                className="font-bold text-ink underline hover:text-primary-hover"
+                className={ctaLinkClass}
                 data-track-click={ctaPayload}
               >
                 Try it for free <span aria-hidden="true">›</span>
@@ -276,7 +255,7 @@ export default function MileageCalculatorUK({ numberLocale, currency, joinUrl }:
             </p>
           </div>
         ) : (
-          <div className="mt-4 flex flex-1 flex-col items-center justify-center rounded-card bg-soft-neutral px-6 py-10 text-center">
+          <div className={emptyStateClass}>
             <p className="max-w-xs text-sm text-muted">
               Enter your business miles to get your tax-free amount at the {taxYear} HMRC approved
               rates — with the calculation detailed step by step.

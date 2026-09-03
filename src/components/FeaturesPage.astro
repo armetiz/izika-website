@@ -1,0 +1,107 @@
+---
+import Card from './Card.astro';
+import CtaCalendarCard from './CtaCalendarCard.astro';
+import GradientHero from './GradientHero.astro';
+import TrackedLink from './TrackedLink.astro';
+import { localizedPath, type MarketId } from '../i18n';
+import { btnPrimary } from '../lib/cta';
+import type { FeaturesPageCopy } from '../data/features-page';
+
+/**
+ * Body of the features page (ported from templates/content/features.html.twig).
+ * Text-free shell: every string comes from the `copy` prop
+ * (src/data/features-page.<market>.ts).
+ */
+interface Props {
+  market: MarketId;
+  copy: FeaturesPageCopy;
+}
+
+const { market, copy } = Astro.props;
+const trackingContext = 'page_features';
+---
+
+{/* Hero */}
+<GradientHero class="text-center">
+  <div class="mx-auto max-w-3xl">
+    <h1 class="text-[2.5rem] font-bold">{copy.hero.heading}</h1>
+    <h2 class="mt-4 text-3xl font-bold">{copy.hero.subheading}</h2>
+  </div>
+  <div class="mt-12">
+    <TrackedLink
+      eventId="cta_header"
+      trackingContext={trackingContext}
+      class:list={[btnPrimary, 'sm:px-12']}
+    >
+      {copy.hero.cta}
+    </TrackedLink>
+  </div>
+</GradientHero>
+
+{/* Icon blocks (centered on ~10/12 of the container like the source rows) */}
+<section class="mx-auto max-w-6xl px-4 py-8">
+  <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
+    {copy.iconBlocks.map((block) => (
+      <div class="flex items-start gap-4">
+        <figure class="w-full max-w-14 shrink-0">
+          <img class="h-auto max-w-full" src={block.icon} alt={block.alt} loading="lazy" />
+        </figure>
+        <div>
+          <h3 class="text-lg font-bold">{block.title}</h3>
+          <p class="mt-2">{block.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* Cards */}
+<section class="bg-soft-primary py-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {copy.cards.map((card) => (
+        <Card>
+          <img slot="top" class="w-full" src={card.image} alt={card.imageAlt} loading="lazy" />
+          <h3 class="text-lg font-bold">{card.title}</h3>
+          {card.paragraphsHtml.map((html, index) => (
+            <p
+              class:list={[
+                'mt-3',
+                index > 0 && index === card.paragraphsHtml.length - 1 && 'mb-0',
+              ]}
+              set:html={html}
+            />
+          ))}
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Team block (aligned on the same centered column as the icon blocks) */}
+<section class="mx-auto max-w-6xl px-4 py-8">
+  <div class="mx-auto max-w-5xl">
+    <div class="flex max-w-xl items-start gap-4">
+      <figure class="w-full max-w-14 shrink-0">
+        <img class="h-auto max-w-full" src="/assets/landing-pages/icon_team.png" alt={copy.team.iconAlt} loading="lazy" />
+      </figure>
+      <div>
+        <h3 class="text-lg font-bold">{copy.team.title}</h3>
+        <p class="mt-2">{copy.team.text}</p>
+        <a class="btn-3d mt-2 inline-block font-bold text-ink" href={localizedPath('team', market)}>
+          {copy.team.linkLabel}
+          <span aria-hidden="true">›</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* CTA */}
+<section class="mx-auto max-w-5xl px-4 pb-16">
+  <CtaCalendarCard
+    title={copy.cta.title}
+    ctaLabel={copy.cta.ctaLabel}
+    trackingContext={trackingContext}
+  />
+</section>

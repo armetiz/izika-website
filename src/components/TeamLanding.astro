@@ -1,6 +1,8 @@
 ---
 import GradientHero from './GradientHero.astro';
+import LandingChecklistSection from './LandingChecklistSection.astro';
 import LandingIconHighlights from './LandingIconHighlights.astro';
+import LandingScreenCarousel from './LandingScreenCarousel.astro';
 import TestimonialCard from './TestimonialCard.astro';
 import TrackedLink from './TrackedLink.astro';
 import { btnPrimary } from '../lib/cta';
@@ -22,6 +24,10 @@ interface Props {
 }
 
 const { audience, trackingContext, copy } = Astro.props;
+
+// The app screenshots of these landings share one aspect ratio.
+const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
+  screens.map((screen) => ({ ...screen, width: 920, height: 719 }));
 ---
 
 <!-- Hero Section -->
@@ -76,127 +82,46 @@ const { audience, trackingContext, copy } = Astro.props;
 </section>
 
 <!-- Features Section: collaborateurs -->
-<section class="bg-soft-neutral">
-  <div class="mx-auto max-w-6xl px-4 pt-16 pb-8 lg:pb-32">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
-      <div>
-        <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.collaborators.kicker}</p>
-        <h2 class="mb-6 text-3xl font-bold">{copy.collaborators.title}</h2>
-
-        <ul class="space-y-3">
-          {
-            copy.collaborators.points.map((point) => (
-              <li class="flex items-start gap-3">
-                <span
-                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
-                  aria-hidden="true"
-                >
-                  ✓
-                </span>
-                <p>{point}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto">
-        {
-          copy.collaborators.screens.map((screen) => (
-            <img
-              class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
-              src={screen.src}
-              alt={screen.alt}
-              width="920"
-              height="719"
-              loading="lazy"
-            />
-          ))
-        }
-      </div>
-    </div>
-  </div>
-</section>
+<LandingChecklistSection
+  class="bg-soft-neutral"
+  eyebrow={copy.collaborators.kicker}
+  title={copy.collaborators.title}
+  items={copy.collaborators.points}
+>
+  <LandingScreenCarousel
+    images={toCarousel(copy.collaborators.screens)}
+    label={copy.collaborators.title}
+  />
+</LandingChecklistSection>
 
 <!-- Features Section: gestionnaires -->
-<section class="mx-auto max-w-6xl px-4 pt-16 pb-8 lg:py-32">
-  <div class="grid items-center gap-12 lg:grid-cols-2">
-    <div class="order-last flex snap-x snap-mandatory gap-4 overflow-x-auto lg:order-first">
-      {
-        copy.managers.screens.map((screen) => (
-          <img
-            class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
-            src={screen.src}
-            alt={screen.alt}
-            width="920"
-            height="719"
-            loading="lazy"
-          />
-        ))
-      }
-    </div>
-
-    <div>
-      <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.managers.kicker}</p>
-      <h2 class="mb-6 text-3xl font-bold">{copy.managers.title}</h2>
-
-      <ul class="space-y-3">
-        {
-          copy.managers.points.map((point) => (
-            <li class="flex items-start gap-3">
-              <span
-                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
-                aria-hidden="true"
-              >
-                ✓
-              </span>
-              <p>{point}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
-</section>
+<LandingChecklistSection
+  reverse
+  eyebrow={copy.managers.kicker}
+  title={copy.managers.title}
+  items={copy.managers.points}
+>
+  <LandingScreenCarousel images={toCarousel(copy.managers.screens)} label={copy.managers.title} />
+</LandingChecklistSection>
 
 <!-- Security Section -->
-<section class="bg-soft-primary">
-  <div class="mx-auto max-w-6xl px-4 py-16 lg:py-32">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
-      <div>
-        <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.security.kicker}</p>
-        <h2 class="mb-6 text-3xl font-bold">{copy.security.title}</h2>
-
-        <ul class="space-y-3">
-          {
-            copy.security.points.map((point) => (
-              <li class="flex items-start gap-3">
-                <span
-                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
-                  aria-hidden="true"
-                >
-                  ✓
-                </span>
-                <p>{point}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <figure class="mx-auto w-4/5">
-        <img
-          class="h-auto w-full"
-          src="/assets/img/illustrations/expert-comptable-large.png"
-          alt={copy.security.imageAlt}
-          width="1203"
-          height="1349"
-          loading="lazy"
-        />
-      </figure>
-    </div>
-  </div>
-</section>
+<LandingChecklistSection
+  class="bg-soft-primary"
+  eyebrow={copy.security.kicker}
+  title={copy.security.title}
+  items={copy.security.points}
+>
+  <figure class="mx-auto w-4/5">
+    <img
+      class="h-auto w-full"
+      src="/assets/img/illustrations/expert-comptable-large.png"
+      alt={copy.security.imageAlt}
+      width="1203"
+      height="1349"
+      loading="lazy"
+    />
+  </figure>
+</LandingChecklistSection>
 
 <!-- Testimonials Section -->
 <section class="mx-auto max-w-6xl px-4 pt-16 pb-32">

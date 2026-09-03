@@ -20,7 +20,7 @@ head:
 featureHighlights:
   title: La façon la plus simple pour les agents de gérer leurs indemnités kilométriques
   image:
-    src: /assets/solutions/agents-immobilier-mandataires-immobilier/illu-screen.png
+    src: /assets/solutions/visuel-agenda-professionnel.png
     alt: Izika pour les agents immobiliers
     title: Izika pour les agents immobiliers
   ctaText: Tester izika
@@ -69,7 +69,7 @@ benefits:
           <li>Justifier vos déplacements lors d’un contrôle fiscal</li>
         </ul>
     - title: Une solution qui n’alourdit pas votre journée
-      image: /assets/solutions/agents-immobilier-mandataires-immobilier/laptop-screen-izika.jpg
+      image: /assets/solutions/laptop-screen-izika.jpg
       imageAlt: izika - une solution qui n’alourdit pas le quotidien des agents immobilier
       text: |
         <p>Vous n’avez pas besoin d’utiliser izika en continu : vos déplacements s’enregistrent depuis vos rendez-vous, et vous générez votre rapport quand vous en avez besoin.</p>

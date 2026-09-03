@@ -12,3 +12,7 @@ export const btnPrimarySm =
 
 export const btnPill =
   'btn-3d inline-block min-w-40 rounded-full bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary-hover';
+
+/** Primary button without the min-width/centering (inline CTAs in cards). */
+export const btnPrimaryCompact =
+  'btn-3d inline-block shrink-0 rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover';

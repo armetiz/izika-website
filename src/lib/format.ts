@@ -29,3 +29,6 @@ export function makeFormatters(options: { numberLocale: string; currency: string
     formatCoef: (n) => coef.format(n),
   };
 }
+
+/** UK pence rate: "0.55" → "55p". */
+export const pence = (rate: number) => `${Math.round(rate * 100)}p`;

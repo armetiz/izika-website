@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import { marketIds, routes, type MarketId } from '../../i18n';
+import { routes, splitContentId } from '../../i18n';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -12,15 +12,9 @@ export async function getStaticPaths() {
   );
 
   return articles.map((entry) => {
-    const [market, ...rest] = entry.id.split('/');
-    const slug = rest.join('/');
     // Orphan content directory (src/content/articles/<x>/ without a market)
-    // must fail the build, not silently publish under a ghost URL segment.
-    if (!(marketIds as readonly string[]).includes(market)) {
-      throw new Error(
-        `Article "${entry.id}": directory "${market}" is not a market id (${marketIds.join(', ')}).`,
-      );
-    }
+    // fails the build inside splitContentId instead of publishing a ghost URL.
+    const [market, slug] = splitContentId(entry.id);
     // An article slug shadowing an editorial route would produce a ghost page
     // (static routes win) — fail explicitly instead.
     if (reservedSlugs.has(entry.id)) {
@@ -30,7 +24,7 @@ export async function getStaticPaths() {
     }
     return {
       params: { market, slug },
-      props: { entry, market: market as MarketId },
+      props: { entry, market },
     };
   });
 }

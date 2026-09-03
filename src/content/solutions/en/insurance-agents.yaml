@@ -71,7 +71,7 @@ benefits:
           <li>Justify your trips at any time</li>
         </ul>
     - title: You don't have to manage izika day to day
-      image: /assets/solutions/agent-general-assurances/laptop-screen-izika.jpg
+      image: /assets/solutions/laptop-screen-izika.jpg
       imageAlt: "izika - You don't have to manage izika day to day"
       text: |
         <p>izika doesn't add another tool to manage every day. You log in when you need to and everything is already there.</p>
@@ -85,7 +85,7 @@ benefits:
     quote: >-
       I do a lot of client appointments. izika saves me from having to enter and compute everything at
       year-end — I save precious time!
-    avatar: /assets/solutions/agent-general-assurances/persona.jpg
+    avatar: /assets/solutions/persona.jpg
     avatarAlt: Marc T.
     name: Marc T.
     companyTitle: "Insurance agent"

@@ -1,5 +1,7 @@
 ---
+import { badgePill, badgePillInline, checkBullet, eyebrow, tableClass, thClass, tdClass } from '../../lib/ui';
 import StandardLayout from '../../layouts/StandardLayout.astro';
+import BaremeTable from '../../components/BaremeTable.astro';
 import Card from '../../components/Card.astro';
 import CtaCalendarCard from '../../components/CtaCalendarCard.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
@@ -34,6 +36,14 @@ const description =
 
 const baremeVoiture = BAREMES['2025'].voiture;
 const baremeMoto = BAREMES['2025'].moto;
+
+const tableFor = (bareme: typeof baremeVoiture) => ({
+  headers: bareme.classes[0].tranches.map((_, i) => labelTranche(bareme.classes[0], i)),
+  rows: bareme.classes.map((classe) => ({
+    label: classe.label,
+    cells: classe.tranches.map(formuleTranche),
+  })),
+});
 
 // Exemple didactique pré-calculé au build avec les mêmes fonctions que
 // l'island : 250 km/semaine, voiture électrique 5 CV, barème 2025.
@@ -74,9 +84,6 @@ const etapes = [
   },
 ] as const;
 
-const tableClass = 'w-full border-collapse text-sm';
-const thClass = 'border border-beige-line bg-table-head px-3 py-2 text-left font-bold';
-const tdClass = 'border border-beige-line px-3 py-2 text-muted';
 ---
 
 <StandardLayout
@@ -89,7 +96,7 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
   <!-- Hero (same construction as the features page) -->
   <GradientHero class="text-center">
     <div class="mx-auto max-w-3xl">
-      <p class="mb-2 text-sm font-bold tracking-wide uppercase">
+      <p class={eyebrow}>
         Simulateur gratuit — barème fiscal français
       </p>
       <h1 class="text-[2.5rem] font-bold">Calculateur d'indemnités kilométriques</h1>
@@ -138,7 +145,7 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
     <div class="mx-auto mb-10 max-w-3xl text-center">
       <h2 class="text-3xl font-bold">
         Le barème kilométrique en détail
-        <span class="ml-1 inline-block rounded-full bg-primary-hover px-2 py-0.5 align-middle text-xs font-bold text-white">
+        <span class={badgePillInline}>
           2023 · 2024 · 2025
         </span>
       </h2>
@@ -150,57 +157,17 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
     </div>
 
     <div class="space-y-10">
-      <div>
-        <h3 class="text-[1.3125rem] font-bold">Voitures (thermique ou hybride)</h3>
-        <div class="mt-4 overflow-x-auto rounded-card bg-white shadow-card">
-          <table class={tableClass}>
-            <thead>
-              <tr>
-                <th class={thClass} scope="col">Puissance fiscale</th>
-                {baremeVoiture.classes[0].tranches.map((_, i) => (
-                  <th class={thClass} scope="col">{labelTranche(baremeVoiture.classes[0], i)}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {baremeVoiture.classes.map((classe) => (
-                <tr>
-                  <th class={thClass} scope="row">{classe.label}</th>
-                  {classe.tranches.map((tranche) => (
-                    <td class={tdClass}>{formuleTranche(tranche)}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <BaremeTable
+        title="Voitures (thermique ou hybride)"
+        cornerLabel="Puissance fiscale"
+        {...tableFor(baremeVoiture)}
+      />
 
-      <div>
-        <h3 class="text-[1.3125rem] font-bold">Motos et deux-roues de plus de 50&nbsp;cm³</h3>
-        <div class="mt-4 overflow-x-auto rounded-card bg-white shadow-card">
-          <table class={tableClass}>
-            <thead>
-              <tr>
-                <th class={thClass} scope="col">Puissance fiscale</th>
-                {baremeMoto.classes[0].tranches.map((_, i) => (
-                  <th class={thClass} scope="col">{labelTranche(baremeMoto.classes[0], i)}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {baremeMoto.classes.map((classe) => (
-                <tr>
-                  <th class={thClass} scope="row">{classe.label}</th>
-                  {classe.tranches.map((tranche) => (
-                    <td class={tdClass}>{formuleTranche(tranche)}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <BaremeTable
+        title={'Motos et deux-roues de plus de 50\u00a0cm³'}
+        cornerLabel="Puissance fiscale"
+        {...tableFor(baremeMoto)}
+      />
 
       <p class="rounded-card bg-soft-primary px-6 py-5 text-center">
         <strong>Véhicule électrique&nbsp;:</strong> le montant issu de ces tables est majoré
@@ -215,28 +182,28 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
     <div class="mx-auto max-w-6xl px-4">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <p class="mb-2 text-sm font-bold tracking-wide uppercase">Un exemple concret</p>
+          <p class={eyebrow}>Un exemple concret</p>
           <h2 class="mb-6 text-3xl font-bold">
             250&nbsp;km par semaine en voiture électrique de 5&nbsp;CV
           </h2>
 
           <ol class="space-y-3">
             <li class="flex items-start gap-3">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">1</span>
+              <span class={checkBullet} aria-hidden="true">1</span>
               <p>
                 Distance annualisée&nbsp;: 250&nbsp;km × 52 =
                 <strong> {formatNombre(exemple.kmAnnuels)}&nbsp;km</strong> par an.
               </p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">2</span>
+              <span class={checkBullet} aria-hidden="true">2</span>
               <p>
                 Tranche applicable&nbsp;: {labelTranche(exempleClasse, exemple.trancheIndex).toLowerCase()},
                 soit la formule <strong>{formuleTranche(exemple.tranche)}</strong>.
               </p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">3</span>
+              <span class={checkBullet} aria-hidden="true">3</span>
               <p>
                 Calcul&nbsp;: ({formatNombre(exemple.kmAnnuels)} × {formatCoef(exemple.tranche.coef)}) +
                 {formatNombre(exemple.tranche.fixe)}&nbsp;€ =
@@ -244,7 +211,7 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
               </p>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">4</span>
+              <span class={checkBullet} aria-hidden="true">4</span>
               <p>
                 Majoration électrique de {MAJORATION_ELECTRIQUE * 100}&nbsp;%&nbsp;:
                 +&nbsp;{formatEuros(exemple.majoration)}.
@@ -262,7 +229,7 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
         <Card bodyClass="p-6 lg:p-8">
           <div class="flex items-start justify-between gap-3">
             <h3 class="text-lg font-bold text-ink">Indemnité annuelle</h3>
-            <span class="mt-1 inline-block shrink-0 rounded-full bg-primary-hover px-2 py-0.5 text-xs font-bold text-white">
+            <span class={badgePill}>
               barème 2025
             </span>
           </div>

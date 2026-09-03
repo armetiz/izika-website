@@ -1,4 +1,5 @@
 import type { Language } from './languages';
+import { site } from '../config/site';
 
 /**
  * A Market is a country-level deployment of izika.com (legal entity, currency,
@@ -69,7 +70,7 @@ export const MARKETS: Record<MarketId, Market> = {
     defaultDescription:
       'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.',
     label: 'français',
-    joinUrl: 'https://go.izika.com/join',
+    joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     cookiesVersion: 'izika-fr-EU',
     trustpilot: {
@@ -102,7 +103,7 @@ export const MARKETS: Record<MarketId, Market> = {
     defaultDescription:
       'Get your mileage allowances automatically from your online calendar: Google, Outlook, Dolibarr, Zimbra, ICS. Simple, declarative, fast.',
     label: 'English',
-    joinUrl: 'https://go.izika.com/join',
+    joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     // TODO: create an English consent version in Axeptio and switch this —
     // until then /en visitors get the French consent UI.

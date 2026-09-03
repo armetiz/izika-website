@@ -15,8 +15,8 @@ npx astro check           # vérification TypeScript
 
 ## Architecture
 
-- `src/pages/fr/` — pages françaises ; une future locale = un nouveau dossier
-  (`en/`, `de/`…). Les articles sont servis par `fr/[slug].astro`.
+- `src/pages/fr/` — pages françaises ; un futur marché = un nouveau dossier
+  (`en/`, `de/`…). Les articles sont servis par `[market]/[slug].astro`.
 - `src/i18n/routes.ts` — **source de vérité unique** des routes éditoriales :
   liens internes (`localizedPath`), hreflang et sitemap itèrent cette table.
   Une page ne peut pas exister sans être dans le sitemap.
@@ -39,7 +39,8 @@ npx astro check           # vérification TypeScript
 
 ## Ajouter une locale (ex. `de`)
 
-1. `src/i18n/locales.ts` : ajouter `'de'` au tuple → le typage force la suite.
+1. `src/i18n/markets.ts` (et `languages.ts` si nouvelle langue) : ajouter le
+   marché → le typage force la suite.
 2. `src/i18n/de.ts` : dictionnaire complet (les clés manquantes = erreurs).
 3. `src/i18n/routes.ts` : ajouter le slug `de` de chaque route lancée
    (`features: { fr: 'fonctionnalites', de: 'funktionen' }`). Une route sans

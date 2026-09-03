@@ -38,8 +38,8 @@ const routeKeys = Object.keys(routes) as [RouteKey, ...RouteKey[]];
  * articles: entry id is "<marketId>/<slug>"), mirroring the block structure of
  * the old _solutions_base.html.twig. Fields left optional carry defaults from
  * the base template, rendered by SolutionPage.astro:
- * - head.ctaHref → market.joinUrl; head.primaryCtaText → dict.cta.testFree
- * - featureHighlights.ctaText → dict.cta.test
+ * - head.ctaHref → market.joinUrl; head.primaryCtaText → dict.cta.try
+ * - featureHighlights.ctaText → dict.cta.try
  * - customerCase.ctaBlock.buttonUrl → market.joinUrl
  * The mid-page yellow CTA band had no per-page override in any child
  * template, so its copy lives in the dictionary (dict.solutionPage).

@@ -1,0 +1,115 @@
+---
+import FaqAccordion from './FaqAccordion.astro';
+import FeatureCard from './FeatureCard.astro';
+import GradientHero from './GradientHero.astro';
+import TrustpilotBadge from './TrustpilotBadge.astro';
+import { localizedPath, type MarketId } from '../i18n';
+import { btnPrimarySm } from '../lib/cta';
+import type { PricingPageCopy } from '../data/pricing-page';
+import type { ProductFeatureCard } from '../data/feature-cards';
+
+/**
+ * Body of the pricing page (ported from templates/content/pricing.html.twig,
+ * CHF branches dropped, € only). Text-free shell: strings come from `copy`
+ * (src/data/pricing-page.<market>.ts); the four product cards are shared with
+ * the home page (src/data/feature-cards.<market>.ts). The Trustpilot badge
+ * renders itself only for markets with a Trustpilot presence.
+ */
+interface Props {
+  market: MarketId;
+  copy: PricingPageCopy;
+  featureCards: ReadonlyArray<ProductFeatureCard>;
+}
+
+const { market, copy, featureCards } = Astro.props;
+---
+
+{/* Hero */}
+<GradientHero class="text-center">
+  <div class="mx-auto max-w-3xl">
+    <h1 class="text-3xl font-bold">{copy.hero.heading}</h1>
+    <TrustpilotBadge market={market} class="mt-6" />
+  </div>
+</GradientHero>
+
+{/* Pricing section */}
+<section id="fullPricingSection" class="mx-auto max-w-6xl px-4 py-16">
+  {/* Comparison table */}
+  <div class="overflow-x-auto">
+    <table class="w-full min-w-[40rem] border-collapse text-left">
+      <thead class="text-center">
+        <tr>
+          <th scope="col" class="w-2/5"></th>
+          {copy.tiers.map((tier) => (
+            <th scope="col" class="w-1/5 border-x border-beige-line px-3 py-4 first:border-l-0 last:border-r-0">
+              <span class="block text-[1.3125rem] font-bold">
+                {tier.name}
+                {tier.infinity && <span aria-label={copy.tableAria.infinity}> ∞</span>}
+              </span>
+              <span class="block text-lg font-normal">
+                <Fragment set:html={tier.priceHtml} />
+              </span>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {copy.featureSections.map((section) => (
+          <>
+            <tr class="border-y border-beige-line">
+              <th scope="row" class="px-4 pt-8 pb-3 text-lg font-bold" colspan="4">{section.title}</th>
+            </tr>
+            {section.rows.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-beige/50' : ''}>
+                <th scope="row" class="px-4 py-3 text-sm font-semibold">{row.label}</th>
+                {row.cells.map((cell) => (
+                  <td class="border-x border-beige-line p-3 text-center first:border-l-0 last:border-r-0">
+                    {cell === 'yes' && <span class="font-bold text-success" aria-label={copy.tableAria.included}>✓</span>}
+                    {cell === 'no' && <span aria-label={copy.tableAria.notIncluded}>-</span>}
+                    {typeof cell === 'object' && (
+                      <>
+                        <span class="font-bold text-danger" aria-label={copy.tableAria.limited}>✕</span>
+                        <br />
+                        <small>{cell.limited}</small>
+                      </>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{/* Features section */}
+<section id="featuresSection" class="mx-auto max-w-6xl px-4 pb-16 lg:pb-32">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {featureCards.map((card) => (
+      <FeatureCard icon={card.icon} iconAlt={card.alt} title={card.title} badge={card.badge}>
+        {card.text}
+      </FeatureCard>
+    ))}
+  </div>
+  <div class="my-12 text-center">
+    <a
+      class={btnPrimarySm}
+      href={localizedPath('features', market)}
+      target="_blank"
+      rel="noopener"
+    >
+      {copy.featuresCta} <span aria-hidden="true">›</span>
+    </a>
+  </div>
+</section>
+
+{/* FAQ section */}
+<section class="mx-auto max-w-4xl px-4 pb-16 lg:pb-32">
+  <div class="mx-auto mb-10 text-center">
+    <h2 class="text-3xl font-bold">{copy.faqTitle}</h2>
+  </div>
+
+  <FaqAccordion entries={copy.subscriptionFaq} />
+</section>

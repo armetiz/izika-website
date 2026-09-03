@@ -1,6 +1,7 @@
 ---
+import HreflangTags from './HreflangTags.astro';
 import { site } from '../config/site';
-import { marketIds, MARKETS, getMarket, xDefaultMarket, routes, localizedPath, type MarketId, type RouteKey } from '../i18n';
+import { getMarket, hreflangAlternates, type MarketId, type RouteKey } from '../i18n';
 
 interface Props {
   market: MarketId;
@@ -34,15 +35,9 @@ const description = Astro.props.description ?? marketData.defaultDescription;
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/(index)?$/, '') || '/';
 const canonical = new URL(path, Astro.site).href;
 
-// hreflang: only emitted when the page exists in >= 2 markets. fr-only launch
-// deliberately ships zero hreflang tags.
-const alternates = routeKey
-  ? marketIds
-      .map((market) => ({ market, href: localizedPath(routeKey, market) }))
-      .filter((a): a is { market: (typeof marketIds)[number]; href: string } => a.href !== null)
-  : [];
-const emitHreflang = alternates.length >= 2;
-const xDefaultHref = routeKey ? localizedPath(routeKey, xDefaultMarket) : null;
+// hreflang: only emitted when the page exists in >= 2 markets (rule owned by
+// hreflangAlternates) — an fr-only launch deliberately ships zero tags.
+const routeAlternates = routeKey ? hreflangAlternates(routeKey) : null;
 
 const ogImage = new URL(image, Astro.site).href;
 ---
@@ -53,14 +48,16 @@ const ogImage = new URL(image, Astro.site).href;
 <link rel="canonical" href={canonical} />
 
 {
-  emitHreflang && (
+  routeAlternates && (
     <>
-      {xDefaultHref && (
-        <link rel="alternate" href={new URL(xDefaultHref, Astro.site).href} hreflang="x-default" />
+      {routeAlternates.xDefaultHref && (
+        <link
+          rel="alternate"
+          href={new URL(routeAlternates.xDefaultHref, Astro.site).href}
+          hreflang="x-default"
+        />
       )}
-      {alternates.map((a) => (
-        <link rel="alternate" href={new URL(a.href, Astro.site).href} hreflang={MARKETS[a.market].hreflang} />
-      ))}
+      <HreflangTags alternates={routeAlternates.alternates} />
     </>
   )
 }

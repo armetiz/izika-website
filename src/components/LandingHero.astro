@@ -4,34 +4,57 @@ import TrackedLink from './TrackedLink.astro';
 import { btnPrimary } from '../lib/cta';
 
 /**
- * Solo/team landing hero: static headline prefix followed by a highlighted
- * rotating word (replaces the old Typed.js animation — the first word is
- * server-rendered so the page works without JS), a free-form lead
- * (slot "lead"), a primary tracked CTA and a visual (slot "media").
+ * Landing/home hero: headline on the left (either a static `title`, or a
+ * `titlePrefix` followed by a highlighted rotating word — the old Typed.js
+ * animation, first word server-rendered so the page works without JS), a
+ * lead (`lead` prop or slot "lead"), a primary tracked CTA plus optional
+ * extra actions (slot "secondary"), and a visual (slot "media").
  */
 interface Props {
-  titlePrefix: string;
+  /** Static headline (home pages). Exclusive with titlePrefix/words. */
+  title?: string;
+  titlePrefix?: string;
   /** Rotating highlighted words; the first one is the no-JS fallback. */
-  words: readonly string[];
+  words?: readonly string[];
+  /** Plain-text lead; use slot "lead" for rich content instead. */
+  lead?: string;
   ctaEventId: string;
   ctaLabel: string;
+  /** Tracking context override (defaults to page_<segment> in TrackedLink). */
   trackingContext?: string;
+  /** GradientHero pass-throughs (the home page uses beige/tall). */
+  tone?: 'primary' | 'beige';
+  size?: 'default' | 'tall' | 'short';
 }
 
-const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.props;
+const { title, titlePrefix, words, ctaEventId, ctaLabel, trackingContext, lead, tone, size } =
+  Astro.props;
 ---
 
-<GradientHero>
+<GradientHero tone={tone} size={size}>
   <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">
-          {titlePrefix}&nbsp;<span class="text-primary" data-rotating-words={JSON.stringify(words)}
-            >{words[0]}</span
-          >
-        </h1>
-        <div class="mt-4 text-lg">
-          <slot name="lead" />
-        </div>
+        {
+          title !== undefined ? (
+            <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">{title}</h1>
+          ) : (
+            <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">
+              {titlePrefix}&nbsp;<span
+                class="text-primary"
+                data-rotating-words={JSON.stringify(words)}
+              >{words?.[0]}</span>
+            </h1>
+          )
+        }
+        {
+          lead !== undefined ? (
+            <p class="mt-4 text-lg">{lead}</p>
+          ) : (
+            <div class="mt-4 text-lg">
+              <slot name="lead" />
+            </div>
+          )
+        }
 
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <TrackedLink

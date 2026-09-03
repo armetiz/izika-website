@@ -1,0 +1,115 @@
+---
+import LandingChecklistSection from './LandingChecklistSection.astro';
+import LandingClosingCta from './LandingClosingCta.astro';
+import LandingDeviceCollage from './LandingDeviceCollage.astro';
+import LandingHero from './LandingHero.astro';
+import LandingIconHighlights from './LandingIconHighlights.astro';
+import LandingScreenCarousel from './LandingScreenCarousel.astro';
+import TestimonialCard from './TestimonialCard.astro';
+import { checkBullet } from '../lib/ui';
+import type { ProductLandingCopy } from '../data/landing-page';
+
+/**
+ * Shared body of the /solo and /team product landings — same section
+ * sequence, the only structural difference is the hero lead (plain text on
+ * solo, checkmark list on team). Text-free shell: every string comes from
+ * `copy` (src/data/solo-page.<market>.ts / team-page.<market>.ts).
+ */
+interface Props {
+  /** 'page_solo' | 'page_team' — analytics context of the host page. */
+  trackingContext: string;
+  copy: ProductLandingCopy;
+}
+
+const { trackingContext, copy } = Astro.props;
+---
+
+{/* Hero Section */}
+<LandingHero
+  titlePrefix={copy.hero.titlePrefix}
+  words={copy.hero.words}
+  ctaEventId="cta_header"
+  ctaLabel={copy.hero.ctaLabel}
+  trackingContext={trackingContext}
+>
+  {copy.hero.lead !== undefined && <p slot="lead">{copy.hero.lead}</p>}
+  {
+    copy.hero.leadChecklist !== undefined && (
+      <ul slot="lead" class="space-y-3">
+        {copy.hero.leadChecklist.map((item) => (
+          <li class="flex items-start gap-3">
+            <span class={checkBullet} aria-hidden="true">
+              ✓
+            </span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <LandingDeviceCollage slot="media" {...copy.hero.collage} />
+</LandingHero>
+
+{/* Highlights row (old "Clients" section) */}
+<LandingIconHighlights items={copy.highlights} />
+
+{/* Features Section 1 */}
+<LandingChecklistSection
+  eyebrow={copy.simplify.eyebrow}
+  title={copy.simplify.title}
+  items={copy.simplify.items}
+  class="bg-soft-neutral"
+>
+  <LandingScreenCarousel images={copy.simplify.screens} label={copy.carouselLabel} />
+</LandingChecklistSection>
+
+{/* Features Section 2 */}
+<LandingChecklistSection
+  eyebrow={copy.speedUp.eyebrow}
+  title={copy.speedUp.title}
+  items={copy.speedUp.items}
+  reverse
+>
+  <LandingScreenCarousel images={copy.speedUp.screens} label={copy.carouselLabel} />
+</LandingChecklistSection>
+
+{/* Features Section 3 */}
+<LandingChecklistSection
+  eyebrow={copy.compliance.eyebrow}
+  title={copy.compliance.title}
+  items={copy.compliance.items}
+  class="bg-soft-primary pb-16 lg:pb-0"
+>
+  <figure class="mx-auto w-4/5">
+    <img
+      class="h-auto w-full"
+      src="/assets/img/illustrations/expert-comptable-large.png"
+      alt={copy.compliance.imageAlt}
+      width="1203"
+      height="1349"
+      loading="lazy"
+    />
+  </figure>
+</LandingChecklistSection>
+
+{/* Testimonials Section */}
+<section class="mx-auto max-w-6xl px-4 pt-16 pb-32">
+  <div class="grid gap-6 md:grid-cols-2">
+    {
+      copy.testimonials.map((testimonial) => (
+        <TestimonialCard author={testimonial.author} role={testimonial.role}>
+          {testimonial.text}
+        </TestimonialCard>
+      ))
+    }
+  </div>
+</section>
+
+<LandingClosingCta
+  title={copy.closing.title}
+  text={copy.closing.text}
+  ctaLabel={copy.closing.ctaLabel}
+  trackingContext={trackingContext}
+  class="bg-beige-pale"
+/>

@@ -1,5 +1,5 @@
 ---
-import LandingLayout from '../../layouts/LandingLayout.astro';
+import StandardLayout from '../../layouts/StandardLayout.astro';
 import TeamLanding from '../../components/TeamLanding.astro';
 import LandingClosingCta from '../../components/LandingClosingCta.astro';
 import { teamLandingEn } from '../../data/team-landing.en';
@@ -7,7 +7,7 @@ import { teamLandingEn } from '../../data/team-landing.en';
 // English counterpart of src/pages/fr/team-entreprises.astro.
 ---
 
-<LandingLayout
+<StandardLayout
   market="en"
   title="Mileage allowance management for companies"
   description="Simplify mileage allowance calculation for your employees"
@@ -30,4 +30,4 @@ import { teamLandingEn } from '../../data/team-landing.en';
       </p>
     </div>
   </LandingClosingCta>
-</LandingLayout>
+</StandardLayout>

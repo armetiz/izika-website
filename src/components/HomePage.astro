@@ -1,0 +1,316 @@
+---
+import FeatureCard from './FeatureCard.astro';
+import LandingDeviceCollage from './LandingDeviceCollage.astro';
+import LandingHero from './LandingHero.astro';
+import LogoCloud from './LogoCloud.astro';
+import TestimonialCard from './TestimonialCard.astro';
+import TrackedLink from './TrackedLink.astro';
+import TrustpilotBadge from './TrustpilotBadge.astro';
+import { getMarket, localizedPath, type MarketId } from '../i18n';
+import { btnPill, btnPrimary, btnPrimarySm } from '../lib/cta';
+import { badgePill, checkBullet, eyebrow } from '../lib/ui';
+import type { HomePageCopy, HomeWorksCard } from '../data/home-page';
+import type { ProductFeatureCard } from '../data/feature-cards';
+
+/**
+ * Body of the home page. Text-free shell: strings come from `copy`
+ * (src/data/home-page.<market>.ts); the four product cards are shared with
+ * pricing (feature-cards.<market>.ts). Market-specific extras plug into the
+ * named slots: "hero-secondary" (fr video button) and "after-hero" (fr video
+ * dialog). Trustpilot blocks only render for markets with a presence.
+ */
+interface Props {
+  market: MarketId;
+  copy: HomePageCopy;
+  featureCards: ReadonlyArray<ProductFeatureCard>;
+}
+
+const { market, copy, featureCards } = Astro.props;
+const trackingContext = 'page_home';
+const trustpilot = getMarket(market).trustpilot;
+
+const standardWorksCards: ReadonlyArray<{ card: HomeWorksCard; bg: string }> = [
+  { card: copy.works.provisionsCard, bg: 'bg-soft-neutral' },
+  { card: copy.works.exportCard, bg: 'bg-soft-neutral' },
+  { card: copy.works.settingsCard, bg: 'bg-beige-dark' },
+];
+---
+
+{/* Hero Section */}
+<LandingHero
+  tone="beige"
+  size="tall"
+  title={copy.hero.title}
+  lead={copy.hero.lead}
+  ctaEventId="cta_header"
+  ctaLabel={copy.hero.ctaLabel}
+  trackingContext={trackingContext}
+>
+  <slot name="hero-secondary" slot="secondary" />
+  <LandingDeviceCollage slot="media" {...copy.hero.collage} />
+</LandingHero>
+
+<slot name="after-hero" />
+
+{/* Features Section */}
+<section id="featuresSection" class="mx-auto max-w-6xl px-4">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      featureCards.map((card) => (
+        <FeatureCard icon={card.icon} iconAlt={card.alt} title={card.title} badge={card.badge}>
+          {card.text}
+        </FeatureCard>
+      ))
+    }
+  </div>
+
+  <div class="my-8 text-center">
+    <a
+      class={btnPrimarySm}
+      href={localizedPath('features', market)}
+      target="_blank"
+      rel="noopener"
+    >
+      {copy.featuresCta} <span aria-hidden="true">›</span>
+    </a>
+  </div>
+</section>
+
+{/* Testimonials Section */}
+<section class="my-8 rounded-card bg-soft-neutral py-8 lg:mt-16 lg:pt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">{copy.testimonials.title}</h2>
+      <TrustpilotBadge market={market} class="mt-4" />
+    </div>
+
+    <div
+      class="rounded-card bg-cover bg-center p-4 sm:p-8 lg:p-12"
+      style="background-image: url('/assets/img/mockup-liste-rdv.jpg');"
+    >
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          copy.testimonials.entries.map((testimonial) => (
+            <TestimonialCard author={testimonial.author} role={testimonial.role}>
+              <Fragment set:html={testimonial.textHtml} />
+            </TestimonialCard>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      trustpilot && (
+        <div class="mt-10 text-center">
+          <div
+            class="trustpilot-widget"
+            data-locale={trustpilot.widgetLocale}
+            data-template-id="56278e9abfbbba0bdcd568bc"
+            data-businessunit-id="5950be670000ff0005a55a73"
+            data-style-height="52px"
+            data-style-width="100%"
+          >
+            <a href={trustpilot.url} target="_blank" rel="noopener">
+              Trustpilot
+            </a>
+          </div>
+          <div class="mt-4">
+            <a class={btnPrimarySm} href={trustpilot.url} target="_blank" rel="noopener">
+              {copy.testimonials.readReviewsLabel} <span aria-hidden="true">›</span>
+            </a>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+{/* Works Section */}
+<section id="features" class="mx-auto max-w-6xl px-4 py-8 lg:py-16">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <h2 class="text-3xl font-bold">{copy.works.title}</h2>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="rounded-card bg-soft-primary p-6 lg:p-10">
+      <img
+        class="mb-8 h-auto w-full"
+        src={copy.works.importCard.image}
+        alt={copy.works.importCard.imageAlt}
+        width={copy.works.importCard.imageWidth}
+        height={copy.works.importCard.imageHeight}
+        loading="lazy"
+      />
+      <h3 class="flex items-start justify-between gap-3 text-[1.3125rem] font-bold">
+        {copy.works.importCard.title}
+        <span class={badgePill}>{copy.works.importCard.badge}</span>
+      </h3>
+      <p class="mt-1 mb-3 text-sm italic">{copy.works.importCard.tagline}</p>
+      <p set:html={copy.works.importCard.textHtml} />
+
+      <LogoCloud
+        class="mt-6"
+        logos={copy.calendarLogos}
+        note={copy.works.importCard.logosNote}
+        noteTitle={copy.works.importCard.logosNoteTitle}
+      />
+    </div>
+
+    {
+      standardWorksCards.map(({ card, bg }) => (
+        <div class:list={['rounded-card p-6 lg:p-10', bg]}>
+          <img
+            class="mb-8 h-auto w-full"
+            src={card.image}
+            alt={card.imageAlt}
+            width={card.imageWidth}
+            height={card.imageHeight}
+            loading="lazy"
+          />
+          <h3 class="text-[1.3125rem] font-bold">{card.title}</h3>
+          <p class="mt-1 mb-3 text-sm italic">{card.tagline}</p>
+          <p set:html={card.textHtml} />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-12 text-center">
+    <TrackedLink
+      eventId="cta_middle"
+      trackingContext={trackingContext}
+      class={btnPrimary + ' sm:px-8'}
+    >
+      {copy.works.ctaLabel}
+    </TrackedLink>
+  </div>
+</section>
+
+{/* CTA Section (izika Team) */}
+<section class="overflow-hidden bg-beige-light pt-16 lg:pt-8">
+  <div class="mx-auto max-w-6xl px-4 pt-16 pb-32">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class={eyebrow}>{copy.team.eyebrow}</p>
+        <h2 class="mb-6 text-3xl font-bold">{copy.team.title}</h2>
+
+        <ul class="space-y-3">
+          {
+            copy.team.benefits.map((benefit) => (
+              <li class="flex items-start gap-3">
+                <span class={checkBullet} aria-hidden="true">
+                  ✓
+                </span>
+                <p>{benefit}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a class={btnPill} href={localizedPath('team', market)}>
+            {copy.team.moreLabel} <span aria-hidden="true">›</span>
+          </a>
+          <TrackedLink
+            eventId="cta_section_team"
+            trackingContext={trackingContext}
+            class="btn-3d inline-block rounded-full px-4 py-3 font-bold"
+          >
+            {copy.team.tryLabel + ' '}<span aria-hidden="true">›</span>
+          </TrackedLink>
+        </div>
+      </div>
+
+      <div>
+        <img
+          class="h-auto w-full rounded-card shadow-card"
+          src="/assets/landing-pages/team/illu_liste-demandes.png"
+          alt={copy.team.imageAlt}
+          width="920"
+          height="719"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Pricing Section */}
+<section id="pricingSection" class="mx-auto max-w-6xl overflow-hidden px-4 py-16 lg:py-32">
+  <div class="mx-auto mb-16 max-w-2xl text-center">
+    <h2 class="text-[2.5rem] font-bold">{copy.pricing.title}</h2>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      copy.pricing.plans.map((plan) => (
+        <div class="relative">
+          {plan.featured && (
+            <figure class="absolute -top-6 -right-6 -z-10 w-32" aria-hidden="true">
+              <svg preserveAspectRatio="none" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <circle class="fill-primary-hover" cx="130" cy="130" r="130" />
+              </svg>
+            </figure>
+          )}
+          <div
+            class:list={[
+              'flex h-full flex-col rounded-card bg-white p-6',
+              plan.featured && 'shadow-card',
+            ]}
+          >
+            <div class="mb-6 text-center">
+              <p class="text-[1.3125rem] font-bold">
+                {plan.name}
+                {plan.nameSuffix && <span aria-label={copy.pricing.ariaUnlimited}>{plan.nameSuffix}</span>}
+              </p>
+              <p class="mt-3">
+                <span class:list={['font-bold', plan.bigPrice ? 'text-4xl' : 'text-sm']}>
+                  {plan.price}
+                </span>
+                {plan.priceSuffix && <span class="text-sm">{plan.priceSuffix}</span>}
+              </p>
+            </div>
+
+            <ul class="grow space-y-3 text-sm text-muted">
+              {plan.features.map((feature, index) => (
+                <>
+                  <li class="flex items-start gap-2">
+                    <svg
+                      class="mt-0.5 h-4 w-4 shrink-0 text-success"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.6-4.3-4.3 1.7-1.7 2.6 2.6 5.8-5.8 1.7 1.7-7.5 7.5Z" />
+                    </svg>
+                    {feature}
+                  </li>
+                  {plan.plusAfterFirst && index === 0 && (
+                    <li class="text-center text-lg font-bold" aria-hidden="true">
+                      +
+                    </li>
+                  )}
+                </>
+              ))}
+            </ul>
+
+            <div class="mt-6">
+              <TrackedLink
+                eventId={plan.eventId}
+                trackingContext={trackingContext}
+                class:list={[
+                  'btn-3d block rounded-card px-4 py-3 text-center font-bold',
+                  plan.featured
+                    ? 'bg-primary text-white hover:bg-primary-hover'
+                    : 'border border-primary text-primary hover:bg-primary hover:text-white',
+                ]}
+              >
+                {plan.ctaLabel}
+              </TrackedLink>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

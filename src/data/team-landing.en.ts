@@ -14,14 +14,14 @@ export const teamLandingEn: TeamLandingCopy = {
     imageAlt: 'izika on a desktop computer',
   },
   heroBenefits: [
-    { icon: '/assets/landing-pages/team/icon_cal-to-rdv.png', text: 'Smart appointment management' },
+    { icon: '/assets/landing-pages/icon_cal-to-rdv.png', text: 'Smart appointment management' },
     { icon: '/assets/landing-pages/team/icon_approval.png', text: 'Efficient approval workflows' },
     {
       icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
       text: 'Breakdown by team and by project',
     },
     {
-      icon: '/assets/landing-pages/team/icon_report-conformity.png',
+      icon: '/assets/landing-pages/icon_report-conformity.png',
       text: 'Reports compliant with tax rules',
     },
     {

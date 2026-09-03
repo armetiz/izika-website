@@ -7,10 +7,10 @@ import type { MarkdownHeading } from 'astro';
  */
 interface Props {
   headings: MarkdownHeading[];
-  title?: string;
+  title: string;
 }
 
-const { headings, title = 'Sommaire' } = Astro.props;
+const { headings, title } = Astro.props;
 const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 

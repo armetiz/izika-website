@@ -19,10 +19,8 @@ export default {
     menuClose: 'Fermer la navigation',
   },
   cta: {
-    join: 'Essayer gratuitement',
-    test: 'Tester izika',
-    testFree: 'Tester izika gratuitement',
-    tryFree: 'Tester gratuitement',
+    /** Libellé unique de tous les CTA d'essai (header, articles, solutions). */
+    try: 'Essayer gratuitement',
     signupNow: "S'inscrire maintenant",
   },
   a11y: {
@@ -45,6 +43,17 @@ export default {
     terms: 'CGV',
     cookies: 'Consentement des cookies',
     seeAllReviews: 'Voir tous les avis',
+  },
+  articlesHub: {
+    metaTitle: 'Articles — barèmes, guides et intégrations | izika',
+    metaDescription:
+      "Tous les articles izika : barèmes officiels d'indemnités kilométriques, intégrations d'agendas en ligne et guides pratiques.",
+    heading: 'Articles',
+    lead: "Barèmes officiels, guides pratiques et intégrations d'agendas pour vos indemnités kilométriques.",
+    baremesTitle: 'Barèmes kilométriques',
+    baremeCard: 'Barème kilométrique',
+    integrationsTitle: "Intégrations d'agendas",
+    guidesTitle: 'Guides & conseils',
   },
   article: {
     ctaTitle: 'Envie de gagner du temps sur le calcul de vos IK ?',

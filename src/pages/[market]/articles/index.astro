@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import StandardLayout from '../../../layouts/StandardLayout.astro';
 import GradientHero from '../../../components/GradientHero.astro';
 import Card from '../../../components/Card.astro';
-import { articlePath, getMarket, marketIds, routeSlug, type MarketId } from '../../../i18n';
+import { articlePath, getMarket, marketIds, routeSlug, t, type MarketId } from '../../../i18n';
 
 export function getStaticPaths() {
   // A market has an articles hub iff routes.articles defines its slug — and
@@ -44,35 +44,33 @@ const guides = articles
   .sort(byDateDesc);
 
 const dateFormat = new Intl.DateTimeFormat(getMarket(market).numberLocale, { dateStyle: 'long' });
+const hub = t(market).articlesHub;
 ---
 
 <StandardLayout
   market={market}
   routeKey="articles"
-  title="Articles — barèmes, guides et intégrations | izika"
-  description="Tous les articles izika : barèmes officiels d'indemnités kilométriques, intégrations d'agendas en ligne et guides pratiques."
+  title={hub.metaTitle}
+  description={hub.metaDescription}
 >
   <GradientHero class="text-center">
     <div class="mx-auto max-w-3xl">
-      <h1 class="text-[2.5rem] font-bold">Articles</h1>
-      <p class="mt-4 text-lg text-muted">
-        Barèmes officiels, guides pratiques et intégrations d'agendas pour vos indemnités
-        kilométriques.
-      </p>
+      <h1 class="text-[2.5rem] font-bold">{hub.heading}</h1>
+      <p class="mt-4 text-lg text-muted">{hub.lead}</p>
     </div>
   </GradientHero>
 
   <div class="mx-auto max-w-6xl px-4 py-16">
     <div class="mx-auto max-w-5xl space-y-16">
       <section id="baremes">
-        <h2 class="text-3xl font-bold">Barèmes kilométriques</h2>
+        <h2 class="text-3xl font-bold">{hub.baremesTitle}</h2>
         <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {
             baremes.map((a) => (
               <a class="block h-full" href={articlePath(slugOf(a), market)}>
                 <Card hover3d bodyClass="text-center">
                   <p class="text-3xl font-bold text-ink">{yearOf(a)}</p>
-                  <p class="mt-1 text-sm">Barème kilométrique</p>
+                  <p class="mt-1 text-sm">{hub.baremeCard}</p>
                 </Card>
               </a>
             ))
@@ -82,8 +80,8 @@ const dateFormat = new Intl.DateTimeFormat(getMarket(market).numberLocale, { dat
 
       {
         [
-          { id: 'integrations', title: "Intégrations d'agendas", items: integrations },
-          { id: 'guides', title: 'Guides & conseils', items: guides },
+          { id: 'integrations', title: hub.integrationsTitle, items: integrations },
+          { id: 'guides', title: hub.guidesTitle, items: guides },
         ].map(({ id, title, items }) => (
           <section id={id}>
             <h2 class="text-3xl font-bold">{title}</h2>

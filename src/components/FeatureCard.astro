@@ -1,4 +1,5 @@
 ---
+import { badgePillInline } from '../lib/ui';
 import Card from './Card.astro';
 
 /**
@@ -35,7 +36,7 @@ const { icon, iconAlt, iconWidth = 500, iconHeight = 500, title, badge } = Astro
     {title}
     {
       badge && (
-        <span class="ml-1 inline-block rounded-full bg-primary-hover px-2 py-0.5 align-middle text-xs font-bold text-white">
+        <span class={badgePillInline}>
           {badge}
         </span>
       )

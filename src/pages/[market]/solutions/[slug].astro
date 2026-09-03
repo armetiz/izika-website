@@ -2,13 +2,14 @@
 import { getCollection } from 'astro:content';
 import StandardLayout from '../../../layouts/StandardLayout.astro';
 import SolutionPage from '../../../components/SolutionPage.astro';
+import HreflangTags from '../../../components/HreflangTags.astro';
 import {
-  MARKETS,
   marketIds,
   solutionPath,
   solutionSlug,
   solutionSlugs,
   solutionsBaseSlug,
+  splitContentId,
   type MarketId,
   type SolutionKey,
 } from '../../../i18n';
@@ -34,13 +35,7 @@ export async function getStaticPaths() {
   }
 
   return solutions.map((entry) => {
-    const [market, ...rest] = entry.id.split('/');
-    const slug = rest.join('/');
-    if (!(marketIds as readonly string[]).includes(market)) {
-      throw new Error(
-        `Solution "${entry.id}": directory "${market}" is not a market id (${marketIds.join(', ')}).`,
-      );
-    }
+    const [market, slug] = splitContentId(entry.id);
     if (!declaredIds.has(entry.id)) {
       throw new Error(
         `Solution "${entry.id}" is not declared in solutionSlugs (src/i18n/routes.ts) — the mega menu would never link it.`,
@@ -49,20 +44,20 @@ export async function getStaticPaths() {
     // A market without a solutions base URL must not ship solution pages —
     // and this file's directory pins the URL segment to "solutions", so a
     // market wanting another segment needs its own route file.
-    if (solutionsBaseSlug(market as MarketId) !== 'solutions') {
+    if (solutionsBaseSlug(market) !== 'solutions') {
       throw new Error(
         `Solution "${entry.id}": market "${market}" has no 'solutions' base in routes.ts (solutionsBase).`,
       );
     }
     return {
       params: { market, slug },
-      props: { entry, market: market as MarketId },
+      props: { entry, market },
     };
   });
 }
 
 const { entry, market } = Astro.props;
-const slug = entry.id.split('/').slice(1).join('/');
+const [, slug] = splitContentId(entry.id);
 
 // hreflang alternates via the solutionSlugs table (same emission rule as the
 // editorial routes: nothing below 2 markets). The build locks above guarantee
@@ -86,16 +81,8 @@ const alternates = siblings.length >= 2 ? siblings : [];
   image={entry.data.head.image.src}
 >
   <Fragment slot="head">
-    {
-      alternates.map((a) => (
-        <link
-          rel="alternate"
-          href={new URL(a.href, Astro.site).href}
-          hreflang={MARKETS[a.market].hreflang}
-        />
-      ))
-    }
+    <HreflangTags alternates={alternates} />
   </Fragment>
 
-  <SolutionPage data={entry.data} slug={slug} market={market} />
+  <SolutionPage data={entry.data} market={market} />
 </StandardLayout>
