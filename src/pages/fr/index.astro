@@ -7,6 +7,7 @@ import LogoCloud from '../../components/LogoCloud.astro';
 import TrackedLink from '../../components/TrackedLink.astro';
 import { webApplicationSchema } from '../../seo/schema';
 import { reviews } from '../../data/reviews';
+import { btnPill, btnPrimarySm } from '../../lib/cta';
 import { localizedPath } from '../../i18n';
 
 const locale = 'fr';
@@ -133,14 +134,14 @@ const pricingPlans: PricingPlan[] = [
         height="1010"
       />
       <img
-        class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-[0.3125rem] border-4 border-white shadow-card"
+        class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-card border-4 border-white shadow-card"
         src="/assets/landing-pages/header-screen-ipad-horizontal.jpg"
         alt="izika sur tablette"
         width="1618"
         height="1010"
       />
       <img
-        class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-[0.3125rem] border-4 border-white shadow-card"
+        class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-card border-4 border-white shadow-card"
         src="/assets/landing-pages/header-screen-ipad.jpg"
         alt="izika sur ipad"
         width="533"
@@ -219,7 +220,7 @@ const pricingPlans: PricingPlan[] = [
 
     <div class="my-8 text-center">
       <a
-        class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white transition hover:bg-primary-hover"
+        class={btnPrimarySm}
         href={localizedPath('features', locale)}
         target="_blank"
         rel="noopener"
@@ -230,7 +231,7 @@ const pricingPlans: PricingPlan[] = [
   </section>
 
   <!-- Testimonials Section -->
-  <section class="my-8 rounded-[0.3125rem] bg-soft-neutral py-8 lg:mt-16 lg:pt-16">
+  <section class="my-8 rounded-card bg-soft-neutral py-8 lg:mt-16 lg:pt-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="mx-auto mb-10 max-w-2xl text-center">
         <h2 class="text-3xl font-bold">
@@ -248,7 +249,7 @@ const pricingPlans: PricingPlan[] = [
       </div>
 
       <div
-        class="rounded-[0.3125rem] bg-cover bg-center p-4 sm:p-8 lg:p-12"
+        class="rounded-card bg-cover bg-center p-4 sm:p-8 lg:p-12"
         style="background-image: url('/assets/img/mockup-liste-rdv.jpg');"
       >
         <div class="grid gap-6 md:grid-cols-3">
@@ -288,7 +289,7 @@ const pricingPlans: PricingPlan[] = [
         <!-- End TrustBox widget -->
         <div class="mt-4">
           <a
-            class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white transition hover:bg-primary-hover"
+            class={btnPrimarySm}
             href={reviews.trustpilotUrl}
             target="_blank"
             rel="noopener"
@@ -309,7 +310,7 @@ const pricingPlans: PricingPlan[] = [
     </div>
 
     <div class="grid gap-6 md:grid-cols-2">
-      <div class="rounded-[0.3125rem] bg-soft-primary p-6 lg:p-10">
+      <div class="rounded-card bg-soft-primary p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-calendar-import.png"
@@ -341,7 +342,7 @@ const pricingPlans: PricingPlan[] = [
         />
       </div>
 
-      <div class="rounded-[0.3125rem] bg-soft-neutral p-6 lg:p-10">
+      <div class="rounded-card bg-soft-neutral p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-mensual-provisions.png"
@@ -360,7 +361,7 @@ const pricingPlans: PricingPlan[] = [
         </p>
       </div>
 
-      <div class="rounded-[0.3125rem] bg-soft-neutral p-6 lg:p-10">
+      <div class="rounded-card bg-soft-neutral p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-mileage-allowances-export.png"
@@ -379,7 +380,7 @@ const pricingPlans: PricingPlan[] = [
         </p>
       </div>
 
-      <div class="rounded-[0.3125rem] bg-beige-dark p-6 lg:p-10">
+      <div class="rounded-card bg-beige-dark p-6 lg:p-10">
         <img
           class="mb-8 h-auto w-full"
           src="/assets/landing-pages/how-it-works-parameters.png"
@@ -403,7 +404,7 @@ const pricingPlans: PricingPlan[] = [
       <TrackedLink
         eventId="cta_middle"
         trackingContext={trackingContext}
-        class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary-hover sm:px-8"
+        class="btn-3d inline-block min-w-40 rounded-card bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary-hover sm:px-8"
       >
         Tester izika
       </TrackedLink>
@@ -440,7 +441,7 @@ const pricingPlans: PricingPlan[] = [
 
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a
-              class="btn-3d inline-block min-w-40 rounded-full bg-primary px-6 py-3 text-center font-bold text-white hover:bg-primary-hover"
+              class={btnPill}
               href={localizedPath('team', locale)}
             >
               En savoir plus sur izika Team <span aria-hidden="true">›</span>
@@ -457,7 +458,7 @@ const pricingPlans: PricingPlan[] = [
 
         <div>
           <img
-            class="h-auto w-full rounded-[0.3125rem] shadow-card"
+            class="h-auto w-full rounded-card shadow-card"
             src="/assets/landing-pages/team/illu_liste-demandes.png"
             alt="izika team"
             width="920"
@@ -485,13 +486,13 @@ const pricingPlans: PricingPlan[] = [
                 aria-hidden="true"
               >
                 <svg preserveAspectRatio="none" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-                  <circle fill="#fec000" cx="130" cy="130" r="130" />
+                  <circle class="fill-primary-hover" cx="130" cy="130" r="130" />
                 </svg>
               </figure>
             )}
             <div
               class:list={[
-                'flex h-full flex-col rounded-[0.3125rem] bg-white p-6',
+                'flex h-full flex-col rounded-card bg-white p-6',
                 plan.featured && 'shadow-card',
               ]}
             >
@@ -541,7 +542,7 @@ const pricingPlans: PricingPlan[] = [
                   eventId={plan.eventId}
                   trackingContext={trackingContext}
                   class:list={[
-                    'btn-3d block rounded-[0.3125rem] px-4 py-3 text-center font-bold',
+                    'btn-3d block rounded-card px-4 py-3 text-center font-bold',
                     plan.featured
                       ? 'bg-primary text-white hover:bg-primary-hover'
                       : 'border border-primary text-primary hover:bg-primary hover:text-white',

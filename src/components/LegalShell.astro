@@ -21,8 +21,8 @@ const { title, navTitle, toc } = Astro.props;
 </section>
 
 <section class="mx-auto grid max-w-6xl items-start gap-10 px-4 py-16 md:grid-cols-[16rem_minmax(0,1fr)] lg:grid-cols-[18rem_minmax(0,1fr)] lg:pb-32">
-  <nav class="self-start rounded-[0.3125rem] bg-beige-light p-6 md:sticky md:top-24" aria-label="Sommaire">
-    {navTitle && <h4 class="mb-3 text-lg font-bold">{navTitle}</h4>}
+  <nav class="self-start rounded-card bg-beige-light p-6 md:sticky md:top-24" aria-label="Sommaire">
+    {navTitle && <p class="mb-3 text-lg font-bold">{navTitle}</p>}
     <ul class="space-y-2 text-sm font-bold">
       {toc.map((item) => (
         <li>
@@ -33,6 +33,8 @@ const { title, navTitle, toc } = Astro.props;
   </nav>
 
   <div class="min-w-0">
-    <slot />
+    <div class="prose prose-izika max-w-none [&_h2]:text-[1.3125rem]!">
+      <slot />
+    </div>
   </div>
 </section>

@@ -1,0 +1,29 @@
+---
+/**
+ * FAQ accordion — the +/− <details> list shared by the FAQ, pricing and
+ * calculator pages. Entries usually also feed faqPageSchema() for the
+ * FAQPage JSON-LD; answers are trusted HTML strings.
+ */
+interface Props {
+  entries: ReadonlyArray<{ question: string; answer: string }>;
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="space-y-3">
+  {
+    entries.map((entry) => (
+      <details class="group rounded-card border border-beige-line bg-white p-4">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
+          {entry.question}
+          <span class="shrink-0 text-xl" aria-hidden="true">
+            <span class="group-open:hidden">+</span>
+            <span class="hidden group-open:inline">−</span>
+          </span>
+        </summary>
+        <div class="mt-3 space-y-3 [&_a]:underline" set:html={entry.answer} />
+      </details>
+    ))
+  }
+</div>

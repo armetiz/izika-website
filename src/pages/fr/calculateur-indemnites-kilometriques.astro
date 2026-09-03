@@ -1,25 +1,301 @@
 ---
 import StandardLayout from '../../layouts/StandardLayout.astro';
+import Card from '../../components/Card.astro';
+import CtaCalendarCard from '../../components/CtaCalendarCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import GradientHero from '../../components/GradientHero.astro';
+import SimulateurIK from '../../components/SimulateurIK.tsx';
+import { faqPageSchema } from '../../seo/schema';
+import { faqCalculateurEntries } from '../../data/faq-calculateur.fr';
+import {
+  BAREMES,
+  MAJORATION_ELECTRIQUE,
+  computeIK,
+  formatCoef,
+  formatEuros,
+  formatNombre,
+  formuleTranche,
+  labelTranche,
+} from '../../data/bareme-ik';
 
-// Ported from templates/calculator.html.twig — mounts the prebuilt calculator
-// SPA (hashed bundle files copied into public/assets/calculator/).
+// Page pré-rendue au build : contenu didactique (étapes, tables du barème,
+// exemple, FAQ) généré depuis src/data/bareme-ik.ts, seul le simulateur est
+// une island React hydratée côté client. Style aligné sur la charte
+// (hero dégradé + vague blanche de features, tuiles soft-* de la HP,
+// cercles jaunes, CTA avec illustration calendrier).
+
+const trackingContext = 'page_calculator';
+
+const description =
+  "Calculez vos indemnités kilométriques 2025 avec le barème fiscal français : voiture ou moto, thermique ou électrique, par semaine, mois ou année. Simulateur gratuit, formule et barèmes détaillés.";
+
+const baremeVoiture = BAREMES['2025'].voiture;
+const baremeMoto = BAREMES['2025'].moto;
+
+// Exemple didactique pré-calculé au build avec les mêmes fonctions que
+// l'island : 250 km/semaine, voiture électrique 5 CV, barème 2025.
+const exemple = computeIK({
+  categorie: 'voiture',
+  motorisation: 'electrique',
+  annee: '2025',
+  puissance: '5',
+  km: 250,
+  periode: 'semaine',
+})!;
+const exempleClasse = baremeVoiture.classes.find((c) => c.key === '5')!;
+
+const etapes = [
+  {
+    bg: 'bg-soft-primary',
+    title: 'La distance est annualisée',
+    subtitle: 'Semaine × 52, mois × 12.',
+    text: "Le barème fiscal raisonne toujours en kilomètres par an : 250 km par semaine deviennent 13 000 km sur l'année.",
+  },
+  {
+    bg: 'bg-soft-neutral',
+    title: 'La tranche est déterminée',
+    subtitle: '3 tranches de distance.',
+    text: "Jusqu'à 5 000 km, de 5 001 à 20 000 km ou au-delà pour une voiture — 3 000 et 6 000 km pour une moto.",
+  },
+  {
+    bg: 'bg-soft-neutral',
+    title: "La formule s'applique",
+    subtitle: 'distance × coefficient (+ forfait).',
+    text: 'Chaque tranche croise votre puissance fiscale dans les tables du barème ci-dessous, forfait fixe inclus pour la tranche intermédiaire.',
+  },
+  {
+    bg: 'bg-beige-dark',
+    title: `+ ${MAJORATION_ELECTRIQUE * 100} % si électrique`,
+    subtitle: 'Voiture comme deux-roues.',
+    text: 'Le montant final est majoré de 20 % pour un véhicule 100 % électrique. Un hybride suit le barème thermique.',
+  },
+] as const;
+
+const tableClass = 'w-full border-collapse text-sm';
+const thClass = 'border border-beige-line bg-table-head px-3 py-2 text-left font-bold';
+const tdClass = 'border border-beige-line px-3 py-2 text-muted';
 ---
 
 <StandardLayout
   locale="fr"
   routeKey="calculator"
   title="Calculateur d'Indemnités Kilométriques"
-  description="Calculez vos indemnités selon le barème fiscal français"
+  description={description}
+  schemaNodes={[faqPageSchema(faqCalculateurEntries)]}
 >
-  <Fragment slot="head">
-    <script is:inline type="module" crossorigin="anonymous" src="/assets/calculator/index-DTxAKXJL.js"></script>
-    <link rel="stylesheet" crossorigin="anonymous" href="/assets/calculator/index-CsYrc_U-.css" />
-  </Fragment>
+  <!-- Hero (same construction as the features page) -->
+  <GradientHero class="text-center">
+    <div class="mx-auto max-w-3xl">
+      <p class="mb-2 text-sm font-bold tracking-wide uppercase">
+        Simulateur gratuit — barème fiscal français
+      </p>
+      <h1 class="text-[2.5rem] font-bold">Calculateur d'indemnités kilométriques</h1>
+      <p class="mt-4 text-lg">
+        Voiture ou moto, thermique ou électrique : choisissez votre véhicule, sa puissance fiscale
+        et la distance parcourue — le montant s'affiche avec le détail du calcul, étape par étape.
+      </p>
+    </div>
+  </GradientHero>
 
-  {/* Twig had mt-10 to clear the absolutely-positioned header; our sticky
-      header already reserves that space, so keep only a small optical gap
-      and let the page own its bottom spacing before the footer. */}
-  <div class="pt-4 pb-16">
-    <div id="root"></div>
-  </div>
+  <!-- Simulateur (island React), pulled up over the wave -->
+  <section class="relative z-10 mx-auto -mt-12 max-w-5xl px-4 pb-4">
+    <SimulateurIK client:load />
+  </section>
+
+  <!-- Comment ça marche — tuiles soft-* de la HP -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">Comment est calculé le montant&nbsp;?</h2>
+      <p class="mt-3 text-muted">
+        Le barème kilométrique est un barème <strong>annuel</strong>, <strong>par tranches de
+        distance</strong> et <strong>par puissance fiscale</strong>. Le simulateur applique
+        exactement la méthode de l'administration fiscale, en quatre étapes.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {etapes.map((etape, i) => (
+        <div class:list={['rounded-card p-6', etape.bg]}>
+          <p class="text-xs font-bold tracking-wide text-muted uppercase">Étape {i + 1}</p>
+          <h3 class="mt-1 text-lg font-bold">{etape.title}</h3>
+          <p class="mt-1 mb-3 text-sm italic">{etape.subtitle}</p>
+          <p class="text-sm">{etape.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tables du barème -->
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="text-3xl font-bold">
+        Le barème kilométrique en détail
+        <span class="ml-1 inline-block rounded-full bg-primary-hover px-2 py-0.5 align-middle text-xs font-bold text-white">
+          2023 · 2024 · 2025
+        </span>
+      </h2>
+      <p class="mt-3 text-muted">
+        Dans les formules, <strong>d</strong> représente la distance professionnelle annuelle en
+        kilomètres. Les barèmes 2023, 2024 et 2025 sont identiques&nbsp;— la dernière revalorisation
+        date du barème 2023.
+      </p>
+    </div>
+
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-[1.3125rem] font-bold">Voitures (thermique ou hybride)</h3>
+        <div class="mt-4 overflow-x-auto rounded-card bg-white shadow-card">
+          <table class={tableClass}>
+            <thead>
+              <tr>
+                <th class={thClass} scope="col">Puissance fiscale</th>
+                {baremeVoiture.classes[0].tranches.map((_, i) => (
+                  <th class={thClass} scope="col">{labelTranche(baremeVoiture.classes[0], i)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {baremeVoiture.classes.map((classe) => (
+                <tr>
+                  <th class={thClass} scope="row">{classe.label}</th>
+                  {classe.tranches.map((tranche) => (
+                    <td class={tdClass}>{formuleTranche(tranche)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-[1.3125rem] font-bold">Motos et deux-roues de plus de 50&nbsp;cm³</h3>
+        <div class="mt-4 overflow-x-auto rounded-card bg-white shadow-card">
+          <table class={tableClass}>
+            <thead>
+              <tr>
+                <th class={thClass} scope="col">Puissance fiscale</th>
+                {baremeMoto.classes[0].tranches.map((_, i) => (
+                  <th class={thClass} scope="col">{labelTranche(baremeMoto.classes[0], i)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {baremeMoto.classes.map((classe) => (
+                <tr>
+                  <th class={thClass} scope="row">{classe.label}</th>
+                  {classe.tranches.map((tranche) => (
+                    <td class={tdClass}>{formuleTranche(tranche)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="rounded-card bg-soft-primary px-6 py-5 text-center">
+        <strong>Véhicule électrique&nbsp;:</strong> le montant issu de ces tables est majoré
+        de&nbsp;{MAJORATION_ELECTRIQUE * 100}&nbsp;%. Les indemnités kilométriques sont exonérées
+        d'impôt sur le revenu dans la limite du barème.
+      </p>
+    </div>
+  </section>
+
+  <!-- Exemple détaillé -->
+  <section class="overflow-hidden bg-beige-light py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="mb-2 text-sm font-bold tracking-wide uppercase">Un exemple concret</p>
+          <h2 class="mb-6 text-3xl font-bold">
+            250&nbsp;km par semaine en voiture électrique de 5&nbsp;CV
+          </h2>
+
+          <ol class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">1</span>
+              <p>
+                Distance annualisée&nbsp;: 250&nbsp;km × 52 =
+                <strong> {formatNombre(exemple.kmAnnuels)}&nbsp;km</strong> par an.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">2</span>
+              <p>
+                Tranche applicable&nbsp;: {labelTranche(exempleClasse, exemple.trancheIndex).toLowerCase()},
+                soit la formule <strong>{formuleTranche(exemple.tranche)}</strong>.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">3</span>
+              <p>
+                Calcul&nbsp;: ({formatNombre(exemple.kmAnnuels)} × {formatCoef(exemple.tranche.coef)}) +
+                {formatNombre(exemple.tranche.fixe)}&nbsp;€ =
+                <strong> {formatEuros(exemple.montantBase)}</strong>.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">4</span>
+              <p>
+                Majoration électrique de {MAJORATION_ELECTRIQUE * 100}&nbsp;%&nbsp;:
+                +&nbsp;{formatEuros(exemple.majoration)}.
+              </p>
+            </li>
+          </ol>
+
+          <p class="mt-6">
+            Le tout exonéré d'impôt et de cotisations sociales — à condition de justifier chaque
+            déplacement (date, motif, trajet, distance).
+          </p>
+        </div>
+
+        <!-- Relevé façon carte de résultat -->
+        <Card bodyClass="p-6 lg:p-8">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="text-lg font-bold text-ink">Indemnité annuelle</h3>
+            <span class="mt-1 inline-block shrink-0 rounded-full bg-primary-hover px-2 py-0.5 text-xs font-bold text-white">
+              barème 2025
+            </span>
+          </div>
+          <p class="mt-4 rounded-card bg-soft-primary px-6 py-5 text-center">
+            <span class="block text-4xl font-bold text-ink">{formatEuros(exemple.montant)}</span>
+            <span class="mt-1 block text-sm text-muted">
+              soit {formatEuros(exemple.montant / 12)} / mois
+            </span>
+          </p>
+          <dl class="mt-5 space-y-2 text-sm">
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>Barème 5&nbsp;CV, {formatNombre(exemple.kmAnnuels)}&nbsp;km</dt>
+              <dd class="font-bold text-ink">{formatEuros(exemple.montantBase)}</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>Majoration électrique +{MAJORATION_ELECTRIQUE * 100}&nbsp;%</dt>
+              <dd class="font-bold text-ink">+ {formatEuros(exemple.majoration)}</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-t border-beige-line pt-2">
+              <dt class="font-bold text-ink">Total exonéré</dt>
+              <dd class="font-bold text-ink">{formatEuros(exemple.montant)}</dd>
+            </div>
+          </dl>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <div class="mx-auto mb-8 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">Questions fréquentes sur le calcul des IK</h2>
+    </div>
+    <FaqAccordion entries={faqCalculateurEntries} />
+  </section>
+
+  <!-- CTA (same construction as the features page, calendar illustration included) -->
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <CtaCalendarCard title="Marre de calculer vos IK à la main ?" trackingContext={trackingContext}>
+      izika détecte vos déplacements depuis votre agenda en ligne et génère votre état de frais
+      kilométriques, barème à jour et justificatifs inclus.
+    </CtaCalendarCard>
+  </section>
 </StandardLayout>

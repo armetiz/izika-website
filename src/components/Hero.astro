@@ -1,10 +1,12 @@
 ---
+import GradientHero from './GradientHero.astro';
 import TrackedLink from './TrackedLink.astro';
+import { btnPrimary } from '../lib/cta';
 
 /**
- * Landing-page hero: headline + lead + primary tracked CTA on the left,
+ * Home-page hero: headline + lead + primary tracked CTA on the left,
  * optional extra actions (slot "secondary") and visual (slot "media") on the
- * right. Reused by the home, solo and team landings.
+ * right. The solo/team landings use LandingHero (rotating word variant).
  */
 interface Props {
   title: string;
@@ -18,9 +20,8 @@ interface Props {
 const { title, lead, ctaEventId, ctaLabel, trackingContext } = Astro.props;
 ---
 
-<section class="bg-gradient-to-b from-white to-beige">
-  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
+<GradientHero tone="beige" size="tall">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">{title}</h1>
         <p class="mt-4 text-lg">{lead}</p>
@@ -29,7 +30,7 @@ const { title, lead, ctaEventId, ctaLabel, trackingContext } = Astro.props;
           <TrackedLink
             eventId={ctaEventId}
             trackingContext={trackingContext}
-            class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white"
+            class={btnPrimary}
           >
             {ctaLabel}
           </TrackedLink>
@@ -41,5 +42,4 @@ const { title, lead, ctaEventId, ctaLabel, trackingContext } = Astro.props;
         <slot name="media" />
       </div>
     </div>
-  </div>
-</section>
+</GradientHero>

@@ -1,0 +1,23 @@
+---
+/**
+ * White wave closing a gradient hero (SVG bottom shape of the source theme).
+ * Height follows the 1920×100 viewBox ratio like the original, so the wave
+ * thins out on small screens. Rendered by GradientHero.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<figure class={className} aria-hidden="true">
+  <svg
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1920 100.1"
+    class="block aspect-[1920/100] w-full"
+  >
+    <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
+  </svg>
+</figure>

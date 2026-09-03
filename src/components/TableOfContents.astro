@@ -16,7 +16,7 @@ const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 {
   items.length > 0 && (
-    <nav class="mx-auto mb-8 max-w-[72ch] rounded-[0.3125rem] bg-beige-light p-6 lg:max-w-[85%]" aria-label={title}>
+    <nav class="mx-auto mb-8 max-w-[72ch] rounded-card bg-beige-light p-6 lg:max-w-[85%]" aria-label={title}>
       <p class="mb-2 font-semibold">{title}</p>
       <ul class="space-y-1 text-sm">
         {items.map((h) => (

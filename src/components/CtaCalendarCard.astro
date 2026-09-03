@@ -1,0 +1,55 @@
+---
+import Card from './Card.astro';
+import TrackedLink from './TrackedLink.astro';
+import { btnPrimary } from '../lib/cta';
+
+/**
+ * Closing CTA card with the calendar illustration pinned top-left (hidden on
+ * mobile, like the source theme). The default slot holds an optional
+ * paragraph under the title.
+ */
+interface Props {
+  title: string;
+  ctaLabel?: string;
+  eventId?: string;
+  trackingContext?: string;
+}
+
+const {
+  title,
+  ctaLabel = 'Créez votre compte',
+  eventId = 'cta_block_cta',
+  trackingContext,
+} = Astro.props;
+---
+
+<Card class="relative">
+  <div
+    class="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:pl-[25%] md:text-left"
+  >
+    <div class="md:max-w-md">
+      <h3 class="text-lg font-bold text-ink">{title}</h3>
+      {
+        Astro.slots.has('default') && (
+          <p class="mt-1 text-sm">
+            <slot />
+          </p>
+        )
+      }
+    </div>
+    <div class="md:text-right">
+      <TrackedLink eventId={eventId} trackingContext={trackingContext} class={btnPrimary}>
+        {ctaLabel}
+      </TrackedLink>
+    </div>
+  </div>
+
+  <figure class="absolute top-0 left-0 -mt-2 hidden w-1/4 md:block" aria-hidden="true">
+    <img
+      class="h-auto max-w-full"
+      src="/assets/svg/illustrations/calendar.svg"
+      alt=""
+      loading="lazy"
+    />
+  </figure>
+</Card>

@@ -1,0 +1,41 @@
+---
+import WaveDivider from './WaveDivider.astro';
+
+/**
+ * Shared shell of the gradient heroes so their rhythm stays identical across
+ * pages. Mirrors the source theme: yellow-tinted gradient (beige on the home
+ * page), `space-top-2/md-3 + mt-lg-11` above the content, `space-bottom-2`
+ * below, closed by the white wave. Solution pages are the only gradient
+ * heroes without the wave (and without `mt-lg-11`, hence `size="short"`).
+ */
+interface Props {
+  /** Gradient end color — the home page fades to beige, everything else to soft yellow. */
+  tone?: 'primary' | 'beige';
+  /** White closing wave; only the solution pages skip it. */
+  wave?: boolean;
+  /** 'tall' = home (airier on mobile, bigger lg bottom), 'short' = solution pages. */
+  size?: 'default' | 'tall' | 'short';
+  /** Extra classes on the inner container (e.g. text-center). */
+  class?: string;
+}
+
+const { tone = 'primary', wave = true, size = 'default', class: className } = Astro.props;
+
+const padding = {
+  default: 'pt-12 pb-16 lg:pt-32',
+  tall: 'pt-16 pb-16 lg:pt-32 lg:pb-32',
+  short: 'pt-12 pb-16 lg:pt-16',
+}[size];
+---
+
+<section
+  class:list={[
+    'bg-gradient-to-b from-transparent',
+    tone === 'beige' ? 'to-beige' : 'to-soft-primary',
+  ]}
+>
+  <div class:list={['mx-auto max-w-6xl px-4', padding, className]}>
+    <slot />
+  </div>
+  {wave && <WaveDivider />}
+</section>

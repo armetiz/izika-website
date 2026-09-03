@@ -1,5 +1,7 @@
 ---
+import GradientHero from './GradientHero.astro';
 import TrackedLink from './TrackedLink.astro';
+import { btnPrimary } from '../lib/cta';
 
 /**
  * Solo/team landing hero: static headline prefix followed by a highlighted
@@ -19,9 +21,8 @@ interface Props {
 const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.props;
 ---
 
-<section class="bg-gradient-to-b from-white to-soft-primary">
-  <div class="mx-auto max-w-6xl px-4 pt-10 pb-16 lg:pt-20 lg:pb-24">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
+<GradientHero>
+  <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">
           {titlePrefix}<br />
@@ -35,7 +36,7 @@ const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.prop
           <TrackedLink
             eventId={ctaEventId}
             trackingContext={trackingContext}
-            class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white"
+            class={btnPrimary}
           >
             {ctaLabel}
           </TrackedLink>
@@ -47,8 +48,7 @@ const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.prop
         <slot name="media" />
       </div>
     </div>
-  </div>
-</section>
+</GradientHero>
 
 <script>
   // Vanilla replacement for the old Typed.js hero animation

@@ -1,6 +1,9 @@
 ---
+import GradientHero from './GradientHero.astro';
+import LandingIconHighlights from './LandingIconHighlights.astro';
 import TestimonialCard from './TestimonialCard.astro';
 import TrackedLink from './TrackedLink.astro';
+import { btnPrimary } from '../lib/cta';
 
 /**
  * Shared body of the /team-collectivites and /team-entreprises landing pages
@@ -17,19 +20,19 @@ interface Props {
 const { audience, trackingContext } = Astro.props;
 
 const heroBenefits = [
-  { icon: '/assets/landing-pages/team/icon_cal-to-rdv.png', title: 'Gestion intelligente des RDV' },
-  { icon: '/assets/landing-pages/team/icon_approval.png', title: "Flux d'approbation efficaces" },
+  { icon: '/assets/landing-pages/team/icon_cal-to-rdv.png', text: 'Gestion intelligente des RDV' },
+  { icon: '/assets/landing-pages/team/icon_approval.png', text: "Flux d'approbation efficaces" },
   {
     icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
-    title: 'Ventilation par équipe et par dossier',
+    text: 'Ventilation par équipe et par dossier',
   },
   {
     icon: '/assets/landing-pages/team/icon_report-conformity.png',
-    title: 'Rapports conformes aux règles fiscales',
+    text: 'Rapports conformes aux règles fiscales',
   },
   {
     icon: '/assets/landing-pages/team/icon_security.png',
-    title: 'Sécurisé, fiable, hébergé en France',
+    text: 'Sécurisé, fiable, hébergé en France',
   },
 ];
 
@@ -82,9 +85,8 @@ const securityPoints = [
 ---
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-b from-transparent to-soft-primary">
-  <div class="mx-auto max-w-6xl px-4 pt-24 pb-16 lg:pt-32">
-    <div class="grid items-center gap-12 lg:grid-cols-2">
+<GradientHero>
+  <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <h1 class="text-[2.5rem] font-bold lg:text-[3.5rem]">
           Gestion des IK pour les<br />
@@ -99,7 +101,7 @@ const securityPoints = [
           <TrackedLink
             eventId="cta_header"
             trackingContext={trackingContext}
-            class="btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white"
+            class={btnPrimary}
           >
             Tester gratuitement izika
           </TrackedLink>
@@ -116,31 +118,10 @@ const securityPoints = [
         />
       </div>
     </div>
-  </div>
-</section>
+</GradientHero>
 
 <!-- Benefits icon row -->
-<section class="mx-auto max-w-6xl px-4 pt-8 pb-16">
-  <div class="grid grid-cols-2 gap-8 text-center sm:grid-cols-3 lg:grid-cols-5">
-    {
-      heroBenefits.map((benefit) => (
-        <div>
-          <figure class="mx-auto mb-4 max-w-[10rem]">
-            <img
-              class="h-auto w-full"
-              src={benefit.icon}
-              alt=""
-              width="500"
-              height="500"
-              loading="lazy"
-            />
-          </figure>
-          <h2 class="text-sm font-bold">{benefit.title}</h2>
-        </div>
-      ))
-    }
-  </div>
-</section>
+<LandingIconHighlights items={heroBenefits} />
 
 <!-- "izika Team, c'est" Section -->
 <section class="bg-soft-primary">

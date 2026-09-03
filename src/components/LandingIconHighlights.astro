@@ -23,7 +23,8 @@ const { items } = Astro.props;
     {
       items.map((item) => (
         <div class="flex w-36 flex-col items-center sm:w-40">
-          <figure class="mb-4 w-full max-w-[8rem]">
+          <!-- The theme's .max-w-10rem is actually 4.5rem -->
+          <figure class="mb-4 w-full max-w-18">
             <img
               class="h-auto w-full"
               src={item.icon}

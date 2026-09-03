@@ -4,7 +4,7 @@ import { locales, xDefaultLocale, routes, localizedPath, type RouteKey } from '.
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   /** Editorial pages: drives hreflang alternates from the routes table. */
   routeKey?: RouteKey;
   /** Absolute or root-relative og:image; defaults to the site banner. */
@@ -16,7 +16,7 @@ interface Props {
 
 const {
   title,
-  description,
+  description = site.defaultDescription,
   routeKey,
   image = site.defaultOgImage,
   robots = 'index, follow',

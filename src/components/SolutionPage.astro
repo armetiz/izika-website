@@ -1,8 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import GradientHero from './GradientHero.astro';
 import TrackedLink from './TrackedLink.astro';
 import { localizedPath, type Locale } from '../i18n';
 import { site } from '../config/site';
+import { btnPill, btnPrimary } from '../lib/cta';
 import { reviews } from '../data/reviews';
 
 /**
@@ -29,21 +31,18 @@ const secondaryCtaHref = head.secondaryCta
 const richText =
   '[&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_strong]:font-bold [&_strong]:text-ink';
 
-const btnPrimary =
-  'btn-3d inline-block min-w-40 rounded-[0.3125rem] bg-primary px-4 py-3 text-center font-bold text-white';
 ---
 
 <div>
-  <!-- Hero -->
-  <section class="bg-gradient-to-b from-transparent to-soft-primary">
-    <div class="mx-auto max-w-6xl px-4 pt-24 pb-16 md:pt-32">
+  <!-- Hero (no wave nor mt-lg-11 on the solution pages in the source theme) -->
+  <GradientHero wave={false} size="short">
       <div class="grid items-center gap-10 md:grid-cols-2">
         <div>
           <span class="mb-2 block text-sm font-bold tracking-wide uppercase">
             {head.title1}
           </span>
           <h1 class="mb-3 text-[2.5rem] font-bold">{head.title2}</h1>
-          <p class="mb-6 text-xl text-ink/80">{head.catch}</p>
+          <p class="mb-6 text-xl text-muted">{head.catch}</p>
           <div class="flex flex-wrap items-center gap-3">
             <TrackedLink
               eventId="cta_header"
@@ -86,8 +85,7 @@ const btnPrimary =
           />
         </div>
       </div>
-    </div>
-  </section>
+  </GradientHero>
 
   <!-- Feature highlights -->
   <section class="mx-auto max-w-6xl px-4 py-16">
@@ -114,7 +112,7 @@ const btnPrimary =
                 </span>
                 <div>
                   <p class="font-bold">{item.title}</p>
-                  <p class="text-ink/80">{item.text}</p>
+                  <p class="text-muted">{item.text}</p>
                 </div>
               </div>
             ))
@@ -123,7 +121,7 @@ const btnPrimary =
       </div>
 
       <div class="md:col-span-5">
-        <div class="rounded-[0.3125rem] bg-soft-neutral p-6 text-center lg:mx-auto lg:max-w-sm">
+        <div class="rounded-card bg-soft-neutral p-6 text-center lg:mx-auto lg:max-w-sm">
           <img
             class="mx-auto rounded-lg shadow-sm"
             src={featureHighlights.image.src}
@@ -132,7 +130,7 @@ const btnPrimary =
           />
           <div class="px-2 pt-4">
             <h4 class="text-lg font-bold">Testez gratuitement</h4>
-            <p class="mb-4 text-sm text-ink/70">
+            <p class="mb-4 text-sm text-muted">
               Pas de besoin de carte de crédit &bull; Vos IK en 5 min
             </p>
             <TrackedLink
@@ -159,7 +157,7 @@ const btnPrimary =
             <div class="grid items-center gap-10 lg:grid-cols-12">
               <div class:list={['lg:col-span-5', index % 2 === 1 && 'lg:order-2']}>
                 <h3 class="mb-3 text-3xl font-bold">{item.title}</h3>
-                <div class:list={['text-ink/80', richText]} set:html={item.text} />
+                <div class:list={['text-muted', richText]} set:html={item.text} />
               </div>
               <div class:list={['lg:col-span-7', index % 2 === 1 && 'lg:order-1']}>
                 <img class="w-full rounded-lg" src={item.image} alt={item.imageAlt} />
@@ -180,7 +178,7 @@ const btnPrimary =
               viewBox="0 0 8 8"
             >
               <path
-                fill="#fabd004a"
+                class="fill-primary-band"
                 opacity=".3"
                 d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5 C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3 c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8 C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"
               ></path>
@@ -199,7 +197,7 @@ const btnPrimary =
             />
             <div>
               <p class="text-lg font-bold">{benefits.testimonial.name}</p>
-              <p class="text-sm text-ink/60">{benefits.testimonial.companyTitle}</p>
+              <p class="text-sm text-muted">{benefits.testimonial.companyTitle}</p>
             </div>
           </div>
 
@@ -243,7 +241,7 @@ const btnPrimary =
         <TrackedLink
           eventId="cta_mid"
           trackingContext={trackingContext}
-          class="btn-3d inline-block min-w-40 rounded-full bg-primary px-4 py-3 text-center font-bold text-white"
+          class={btnPill}
         >
           S'inscrire maintenant
         </TrackedLink>
@@ -256,7 +254,7 @@ const btnPrimary =
     <div class="grid items-center gap-10 lg:grid-cols-2">
       <div>
         <h2 class="mb-3 text-3xl font-bold">{customerCase.title}</h2>
-        <div class:list={['text-ink/80', richText]} set:html={customerCase.intro} />
+        <div class:list={['text-muted', richText]} set:html={customerCase.intro} />
       </div>
       <div class="lg:pl-4">
         <img
@@ -277,7 +275,7 @@ const btnPrimary =
               <figure class="mb-3">
                 <img width="71" src={gain.image} alt={gain.imageAlt} />
               </figure>
-              <div class:list={['text-ink/80', richText]} set:html={gain.text} />
+              <div class:list={['text-muted', richText]} set:html={gain.text} />
             </div>
           ))
         }
@@ -290,7 +288,7 @@ const btnPrimary =
         <figure class="absolute -top-10 -left-10 -z-10" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 8 8">
             <path
-              fill="#fabd004a"
+              class="fill-primary-band"
               opacity=".3"
               d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5 C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3 c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8 C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"
             ></path>
@@ -302,20 +300,20 @@ const btnPrimary =
         </blockquote>
 
         <span class="block text-lg font-bold">{customerCase.testimonial.name}</span>
-        <small class="text-ink/60">{customerCase.testimonial.companyTitle}</small>
+        <small class="text-muted">{customerCase.testimonial.companyTitle}</small>
       </div>
     </div>
 
     <!-- Final CTA card -->
     <div class="mx-auto lg:max-w-4xl">
       <!-- .card.bg-primary → translucent #fabd004a in prod -->
-      <div class="rounded-[0.3125rem] bg-primary-band p-6">
+      <div class="rounded-card bg-primary-band p-6">
         <div
           class="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left"
         >
           <h3 class="text-[1.3125rem] font-bold">{customerCase.ctaBlock.text}</h3>
           <a
-            class="btn-3d inline-block shrink-0 rounded-[0.3125rem] bg-primary px-4 py-3 font-bold text-white"
+            class="btn-3d inline-block shrink-0 rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover"
             href={customerCase.ctaBlock.buttonUrl ?? site.joinUrl}
           >
             {customerCase.ctaBlock.buttonText ?? 'Tester gratuitement'}

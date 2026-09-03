@@ -25,7 +25,7 @@ const { images } = Astro.props;
   {
     images.map((image) => (
       <img
-        class="w-full shrink-0 snap-center rounded-[0.3125rem] border border-beige-line shadow-card"
+        class="w-full shrink-0 snap-center rounded-card border border-beige-line shadow-card"
         src={image.src}
         alt={image.alt}
         width={image.width}

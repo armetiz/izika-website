@@ -1,6 +1,8 @@
 ---
 import StandardLayout from '../../layouts/StandardLayout.astro';
 import FeatureCard from '../../components/FeatureCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { btnPrimarySm } from '../../lib/cta';
 import { localizedPath } from '../../i18n';
 import { webApplicationSchema } from '../../seo/schema';
 import { reviews } from '../../data/reviews';
@@ -135,9 +137,9 @@ const featureCards: ReadonlyArray<{
   <!-- Pricing section -->
   <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 pt-24 pb-16 lg:pt-32">
     <div class="mx-auto mb-12 max-w-3xl text-center">
-      <h2 class="text-3xl font-bold">
+      <h1 class="text-3xl font-bold">
         Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché.
-      </h2>
+      </h1>
       <!-- Trustpilot -->
       <a
         class="mt-6 inline-flex items-center justify-center gap-2"
@@ -184,7 +186,7 @@ const featureCards: ReadonlyArray<{
                       {cell === 'no' && <span aria-label="non inclus">-</span>}
                       {typeof cell === 'object' && (
                         <>
-                          <span class="font-bold text-red-500" aria-label="limité">✕</span>
+                          <span class="font-bold text-danger" aria-label="limité">✕</span>
                           <br />
                           <small>{cell.limited}</small>
                         </>
@@ -211,7 +213,7 @@ const featureCards: ReadonlyArray<{
     </div>
     <div class="my-12 text-center">
       <a
-        class="inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm font-bold text-white hover:bg-primary-hover"
+        class={btnPrimarySm}
         href={localizedPath('features', 'fr')}
         target="_blank"
         rel="noopener"
@@ -227,19 +229,6 @@ const featureCards: ReadonlyArray<{
       <h2 class="text-3xl font-bold">Questions fréquentes concernant l'abonnement</h2>
     </div>
 
-    <div class="space-y-3">
-      {subscriptionFaq.map((entry) => (
-        <details class="group rounded-[0.3125rem] border border-beige-line bg-white p-4 shadow-card">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
-            {entry.question}
-            <span class="shrink-0 text-xl" aria-hidden="true">
-              <span class="group-open:hidden">+</span>
-              <span class="hidden group-open:inline">−</span>
-            </span>
-          </summary>
-          <div class="mt-3 space-y-3" set:html={entry.answer} />
-        </details>
-      ))}
-    </div>
+    <FaqAccordion entries={subscriptionFaq} />
   </section>
 </StandardLayout>

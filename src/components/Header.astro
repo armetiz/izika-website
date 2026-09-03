@@ -1,6 +1,7 @@
 ---
 import { t, localizedPath, type Locale } from '../i18n';
 import { site } from '../config/site';
+import { btnPrimarySm } from '../lib/cta';
 import SolutionsMenu from './SolutionsMenu.astro';
 import TrackedLink from './TrackedLink.astro';
 
@@ -49,17 +50,14 @@ const dict = t(locale);
         </li>
         <li>
           <a
-            class="btn-3d inline-block rounded border border-primary px-[1.125rem] py-2.5 text-sm text-primary"
+            class="btn-3d inline-block rounded-card border border-primary px-[1.125rem] py-2.5 text-sm text-primary"
             href={site.appUrl}
           >
             {dict.nav.login}
           </a>
         </li>
         <li>
-          <TrackedLink
-            eventId="cta_menu"
-            class="btn-3d inline-block rounded bg-primary px-[1.125rem] py-2.5 text-sm text-white"
-          >
+          <TrackedLink eventId="cta_menu" class={btnPrimarySm}>
             Tester izika
           </TrackedLink>
         </li>

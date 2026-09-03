@@ -10,7 +10,8 @@ import type { Locale } from '../i18n';
 interface Props {
   locale: Locale;
   title: string;
-  description: string;
+  /** Falls back to site.defaultDescription in Seo.astro. */
+  description?: string;
   routeKey?: RouteKey;
   image?: string;
   robots?: string;

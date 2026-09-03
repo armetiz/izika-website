@@ -40,470 +40,464 @@ const toc = articleTitles.map((title, i) => ({
   href: `#article-${i + 1}`,
   label: `${i + 1}. ${title}`,
 }));
-
-// Default meta description from the old _base.html.twig (page sets none).
-const description =
-  'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.';
 ---
 
-<StandardLayout locale="fr" routeKey="terms" title="Conditions Générales de Vente" description={description}>
+<StandardLayout locale="fr" routeKey="terms" title="Conditions Générales de Vente">
   <LegalShell title="Conditions Générales de Vente" navTitle="Les articles" toc={toc}>
-    <div class="prose prose-izika max-w-none [&_h2]:text-[1.3125rem]!">
-      <section id="article-1">
-        <h2>Article 1. PRÉAMBULE</h2>
-        <p>La société IZIKA, immatriculée au Registre du Commerce et des Sociétés de Montpellier sous le
-          numéro 807 746 524, dont le siège social est 199 rue Hélène Boucher, 34170 Castelnau-le-Lez,
-          est une société de services en Informatique.</p>
-        <p>Elle développe et commercialise l’offre IZIKA, logiciel dédié au service de calcul
-          automatique des déplacements routiers effectués à titre professionnel et des <strong>indemnités
-            kilométriques</strong> en résultant. le logiciel IZIKA permet notamment :</p>
-        <ol>
-          <li>la connexion d&#8217;agendas en ligne tels que et sans que cela soit restrictif : Google
-            Agenda, iCloud Agenda, Outlook Agenda, agendas divers au format de fichier ICS, listes
-            de rendez-vous au format CSV, permettant d&#8217;importer dans le logiciel IZIKA une
-            copie des rendez-vous du ou des agendas connectés.
-          </li>
-          <li>à partir de ces rendez-vous importés, d&#8217;obtenir un calcul automatique des
-            distances parcourues à partir d&#8217;un point de départ (exemple : le bureau de l&#8217;utilisateur)
-            vers un lieu de rendez-vous puis le retour au point de départ. La possibilité de
-            configurer des tournées (pas de retour au point de départ entre deux rendez-vous) est
-            donnée également aux utilisateurs.
-          </li>
-          <li>en fonction des distances calculées par ses fournisseurs de cartographies, IZIKA fournit
-            une estimation du montant des indemnités kilométriques.
-          </li>
-          <li>les distances calculées et les indemnités kilométriques qui en découlent sont fournies à
-            titre indicatif et sous la responsabilité de l&#8217;utilisateur qui doit vérifier
-            impérativement que les distances calculées et les montants d&#8217;indemnités
-            kilométriques ne comportent pas d&#8217;erreur.
-          </li>
-        </ol>
-        <p>LE CLIENT reconnaît avoir été pleinement informé de la liste des services et des applicatifs
-          fournis par IZIKA susceptibles d’être mis à sa disposition dans le cadre du présent contrat.
-          Les présentes conditions générales définissent les conditions de souscription et
-          d’utilisation de IZIKA.</p>
-        <p>Toute personne utilisant les services proposés par IZIKA est irréfragablement présumé avoir
-          pris connaissance et accepté les présentes conditions générales.</p>
-      </section>
+    <section id="article-1">
+      <h2>Article 1. PRÉAMBULE</h2>
+      <p>La société IZIKA, immatriculée au Registre du Commerce et des Sociétés de Montpellier sous le
+        numéro 807 746 524, dont le siège social est 199 rue Hélène Boucher, 34170 Castelnau-le-Lez,
+        est une société de services en Informatique.</p>
+      <p>Elle développe et commercialise l’offre IZIKA, logiciel dédié au service de calcul
+        automatique des déplacements routiers effectués à titre professionnel et des <strong>indemnités
+          kilométriques</strong> en résultant. le logiciel IZIKA permet notamment :</p>
+      <ol>
+        <li>la connexion d&#8217;agendas en ligne tels que et sans que cela soit restrictif : Google
+          Agenda, iCloud Agenda, Outlook Agenda, agendas divers au format de fichier ICS, listes
+          de rendez-vous au format CSV, permettant d&#8217;importer dans le logiciel IZIKA une
+          copie des rendez-vous du ou des agendas connectés.
+        </li>
+        <li>à partir de ces rendez-vous importés, d&#8217;obtenir un calcul automatique des
+          distances parcourues à partir d&#8217;un point de départ (exemple : le bureau de l&#8217;utilisateur)
+          vers un lieu de rendez-vous puis le retour au point de départ. La possibilité de
+          configurer des tournées (pas de retour au point de départ entre deux rendez-vous) est
+          donnée également aux utilisateurs.
+        </li>
+        <li>en fonction des distances calculées par ses fournisseurs de cartographies, IZIKA fournit
+          une estimation du montant des indemnités kilométriques.
+        </li>
+        <li>les distances calculées et les indemnités kilométriques qui en découlent sont fournies à
+          titre indicatif et sous la responsabilité de l&#8217;utilisateur qui doit vérifier
+          impérativement que les distances calculées et les montants d&#8217;indemnités
+          kilométriques ne comportent pas d&#8217;erreur.
+        </li>
+      </ol>
+      <p>LE CLIENT reconnaît avoir été pleinement informé de la liste des services et des applicatifs
+        fournis par IZIKA susceptibles d’être mis à sa disposition dans le cadre du présent contrat.
+        Les présentes conditions générales définissent les conditions de souscription et
+        d’utilisation de IZIKA.</p>
+      <p>Toute personne utilisant les services proposés par IZIKA est irréfragablement présumé avoir
+        pris connaissance et accepté les présentes conditions générales.</p>
+    </section>
 
-      <section id="article-2">
-        <h2>Article 2. DÉFINITIONS</h2>
-        <p>IZIKA : LOGICIEL édité par la société IZIKA et proposé en abonnement au CLIENT</p>
-        <p>CLIENT : personne physique ou morale contractant avec la société IZIKA</p>
-        <p>CONDITIONS PARTICULIERES : contrat définissant les obligations spécifiques des parties au
-          contrat et constituant un ensemble contractuel indissociable avec les présentes conditions
-          générales.</p>
-        <p>DYSFONCTIONNEMENT(S): anomalie(s) fonctionnelle(s) affectant à des degrés variables
-          l’utilisation de IZIKA.</p>
-        <p>INTERNET : réseau ouvert et informel constitué par l’interconnexion à l’échelle
-          internationale de réseaux informatiques utilisant la norme TCP/IP dont la gestion n’est
-          soumise à aucune unité centrale et chaque portion de ce réseau appartient soit à un
-          organisme public soit privé ou indépendant. Son fonctionnement repose sur la coopération
-          entre les opérateurs des différents réseaux sans qu’il n’y ait obligation de fourniture ou
-          de qualité de fourniture entre opérateurs. Les réseaux peuvent avoir des capacités de
-          transmission inégales et des politiques d’utilisation propres. Nul ne peut garantir le bon
-          fonctionnement de l’internet dans son ensemble.</p>
-        <p>OBLIGATION DE MOYENS : engagement contractuel qui astreint son débiteur à mettre en œuvre les
-          moyens et techniques les plus efficaces connus au jour de la signature de la convention pour
-          atteindre le résultat fixé par le contrat.</p>
-        <p>LOGICIEL : ensemble des programmes, des procédés, des règles et de la documentation, relatifs
-          au fonctionnement d’un ensemble de traitements de données (Arrêté du 22.12.1981 relatif à
-          l’enrichissement du vocabulaire de l’informatique – JO du 17.01.1982).</p>
-        <p>NAVIGATEUR WEB : logiciel conçu pour consulter les contenus du WEB.</p>
-        <p>OPÉRATEUR : fournisseur d’accès à l’Internet.</p>
-        <p>OS : operating system ou système d’exploitation : logiciel interne à un appareil informatique
-          et permettant son fonctionnement et l’exploitation de logiciels tiers.</p>
-        <p>SAAS : (software as a service) application logicielle accessible à distance, comme un
-          service, via le WEB.</p>
-        <p>SERVEUR(S) : dispositif informatique de type matériel ou de type logiciel permettant
-          d’accéder à certains services accessibles ou non via le Web.</p>
-        <p>SERVICE(S) APPLICATIF(S) : Service disponible en ligne sur abonnement, permettant d’utiliser
-          un logiciel dont l’hébergement, la gestion et la maintenance est assurée par le fournisseur
-          de services.</p>
-        <p>SITE WEB : ensemble de pages organisées destinées à être diffusées sur le WEB sous un même
-          nom de domaine.</p>
-        <p>URL : Uniform resource locator : localisation sur le Web d’une ressource numérique.</p>
-        <p>ANNEXE: document contractuel contraignant relié au CONTRAT</p>
-        <p>WEB : ou World Wide Web : système fonctionnant sur la base de liens hypertextes et utilisant
-          le protocole http (hyper text transfer protocol) permettant de consulter le contenu des
-          pages présentes sur le réseau Internet.</p>
-      </section>
+    <section id="article-2">
+      <h2>Article 2. DÉFINITIONS</h2>
+      <p>IZIKA : LOGICIEL édité par la société IZIKA et proposé en abonnement au CLIENT</p>
+      <p>CLIENT : personne physique ou morale contractant avec la société IZIKA</p>
+      <p>CONDITIONS PARTICULIERES : contrat définissant les obligations spécifiques des parties au
+        contrat et constituant un ensemble contractuel indissociable avec les présentes conditions
+        générales.</p>
+      <p>DYSFONCTIONNEMENT(S): anomalie(s) fonctionnelle(s) affectant à des degrés variables
+        l’utilisation de IZIKA.</p>
+      <p>INTERNET : réseau ouvert et informel constitué par l’interconnexion à l’échelle
+        internationale de réseaux informatiques utilisant la norme TCP/IP dont la gestion n’est
+        soumise à aucune unité centrale et chaque portion de ce réseau appartient soit à un
+        organisme public soit privé ou indépendant. Son fonctionnement repose sur la coopération
+        entre les opérateurs des différents réseaux sans qu’il n’y ait obligation de fourniture ou
+        de qualité de fourniture entre opérateurs. Les réseaux peuvent avoir des capacités de
+        transmission inégales et des politiques d’utilisation propres. Nul ne peut garantir le bon
+        fonctionnement de l’internet dans son ensemble.</p>
+      <p>OBLIGATION DE MOYENS : engagement contractuel qui astreint son débiteur à mettre en œuvre les
+        moyens et techniques les plus efficaces connus au jour de la signature de la convention pour
+        atteindre le résultat fixé par le contrat.</p>
+      <p>LOGICIEL : ensemble des programmes, des procédés, des règles et de la documentation, relatifs
+        au fonctionnement d’un ensemble de traitements de données (Arrêté du 22.12.1981 relatif à
+        l’enrichissement du vocabulaire de l’informatique – JO du 17.01.1982).</p>
+      <p>NAVIGATEUR WEB : logiciel conçu pour consulter les contenus du WEB.</p>
+      <p>OPÉRATEUR : fournisseur d’accès à l’Internet.</p>
+      <p>OS : operating system ou système d’exploitation : logiciel interne à un appareil informatique
+        et permettant son fonctionnement et l’exploitation de logiciels tiers.</p>
+      <p>SAAS : (software as a service) application logicielle accessible à distance, comme un
+        service, via le WEB.</p>
+      <p>SERVEUR(S) : dispositif informatique de type matériel ou de type logiciel permettant
+        d’accéder à certains services accessibles ou non via le Web.</p>
+      <p>SERVICE(S) APPLICATIF(S) : Service disponible en ligne sur abonnement, permettant d’utiliser
+        un logiciel dont l’hébergement, la gestion et la maintenance est assurée par le fournisseur
+        de services.</p>
+      <p>SITE WEB : ensemble de pages organisées destinées à être diffusées sur le WEB sous un même
+        nom de domaine.</p>
+      <p>URL : Uniform resource locator : localisation sur le Web d’une ressource numérique.</p>
+      <p>ANNEXE: document contractuel contraignant relié au CONTRAT</p>
+      <p>WEB : ou World Wide Web : système fonctionnant sur la base de liens hypertextes et utilisant
+        le protocole http (hyper text transfer protocol) permettant de consulter le contenu des
+        pages présentes sur le réseau Internet.</p>
+    </section>
 
-      <section id="article-3">
-        <h2>Article 3. OBJET</h2>
-        <p>IZIKA met à disposition du Client qui l’accepte un ensemble de services, comprenant entre
-          autres et sans que cela soit exhaustif ni engageant pour IZIKA un droit d’accès aux
-          fonctionnalités du LOGICIEL IZIKA et un droit d’utilisation desdits SERVICES applicatifs
-          conformément aux termes et conditions ci-après exposées.</p>
-        <p>Le logiciel IZIKA permet la connection des agendas électroniques du CLIENT (agendas Google ou
-          iCAL sans que cela soit restrictif) à un système de cartographie et de calculs permettant
-          d’extraire les rendez-vous des agendas électroniques liés aux comptes Google (ou autres
-          fournisseurs), de calculer les distances parcourues, d’estimer le temps passé en voiture, la
-          consommation moyenne de carburant et les émissions de CO2 (dioxyde de carbone).</p>
-        <p>Ce logiciel est fourni sans aucune garantie d’exactitude concernant les valeurs de
-          kilométrage, durée, consommation de carburant ou émissions de CO2.</p>
-        <p>Il appartient au client de vérifier par lui-même le tableau récapitulatif des rendez-vous, en
-          vérifiant le bien-fondé du rendez-vous (sa justification comptable), les adresses de départ
-          et d’arrivée, le kilométrage calculé ainsi que les données de temps, carburant et CO2.</p>
-      </section>
+    <section id="article-3">
+      <h2>Article 3. OBJET</h2>
+      <p>IZIKA met à disposition du Client qui l’accepte un ensemble de services, comprenant entre
+        autres et sans que cela soit exhaustif ni engageant pour IZIKA un droit d’accès aux
+        fonctionnalités du LOGICIEL IZIKA et un droit d’utilisation desdits SERVICES applicatifs
+        conformément aux termes et conditions ci-après exposées.</p>
+      <p>Le logiciel IZIKA permet la connection des agendas électroniques du CLIENT (agendas Google ou
+        iCAL sans que cela soit restrictif) à un système de cartographie et de calculs permettant
+        d’extraire les rendez-vous des agendas électroniques liés aux comptes Google (ou autres
+        fournisseurs), de calculer les distances parcourues, d’estimer le temps passé en voiture, la
+        consommation moyenne de carburant et les émissions de CO2 (dioxyde de carbone).</p>
+      <p>Ce logiciel est fourni sans aucune garantie d’exactitude concernant les valeurs de
+        kilométrage, durée, consommation de carburant ou émissions de CO2.</p>
+      <p>Il appartient au client de vérifier par lui-même le tableau récapitulatif des rendez-vous, en
+        vérifiant le bien-fondé du rendez-vous (sa justification comptable), les adresses de départ
+        et d’arrivée, le kilométrage calculé ainsi que les données de temps, carburant et CO2.</p>
+    </section>
 
-      <section id="article-4">
-        <h2>Article 4. DURÉE</h2>
-        <p>Le contrat est conclu pour une durée de un an à compter de sa signature par les deux parties.
-          A défaut de résiliation exprès intervenant par lettre recommandée avec accusé de réception
-          ou tout autre moyen comportant date de réception certaine, adressé 30 jours calendaires au
-          moins (sauf disposition contraire prévue aux CONDITIONS PARTICULIERES) avant la date
-          d’échéance du contrat, il est tacitement renouvelé pour la même période.</p>
-      </section>
+    <section id="article-4">
+      <h2>Article 4. DURÉE</h2>
+      <p>Le contrat est conclu pour une durée de un an à compter de sa signature par les deux parties.
+        A défaut de résiliation exprès intervenant par lettre recommandée avec accusé de réception
+        ou tout autre moyen comportant date de réception certaine, adressé 30 jours calendaires au
+        moins (sauf disposition contraire prévue aux CONDITIONS PARTICULIERES) avant la date
+        d’échéance du contrat, il est tacitement renouvelé pour la même période.</p>
+    </section>
 
-      <section id="article-5">
-        <h2>Article 5. INFORMATION PRÉCONTRACTUELLE</h2>
-        <p>Le CLIENT reconnaît avoir pu exprimer l’ensemble de ses besoins à IZIKA dans le cadre des
-          échanges ayant précédé la souscription à l’offre retenue. IZIKA a pu échanger le temps
-          nécessaire à sa parfaite information par le CLIENT de ses besoins et a obtenu toute
-          précision utile de sorte que son offre a été émise en parfaite connaissance des contraintes
-          techniques, organisationnelles et fonctionnelles du CLIENT.</p>
-      </section>
+    <section id="article-5">
+      <h2>Article 5. INFORMATION PRÉCONTRACTUELLE</h2>
+      <p>Le CLIENT reconnaît avoir pu exprimer l’ensemble de ses besoins à IZIKA dans le cadre des
+        échanges ayant précédé la souscription à l’offre retenue. IZIKA a pu échanger le temps
+        nécessaire à sa parfaite information par le CLIENT de ses besoins et a obtenu toute
+        précision utile de sorte que son offre a été émise en parfaite connaissance des contraintes
+        techniques, organisationnelles et fonctionnelles du CLIENT.</p>
+    </section>
 
-      <section id="article-6">
-        <h2>Article 6. DESCRIPTION DES SERVICES APPLICATIFS</h2>
-        <p>IZIKA est un logiciel de calcul automatique des déplacements routiers effectués à titre
-          professionnel et des indemnités kilométriques en résultant. Il est accessible depuis tous
-          types d’équipements mobiles et fixes sous Linux, Androïd, Mac ou Windows. IZIKA est proposé
-          en mode hébergé (SAAS). Le CLIENT dispose d’un accès sécurisé sur le Web via une Url dédiée
-          communiquée lors de la souscription du contrat. Le CLIENT bénéficie du droit d’utiliser de
-          façon non exclusive les services offerts par IZIKA dans les conditions prévues par les
-          CONDITIONS GENERALES et les CONDITIONS PARTICULIERES qu’il a signés. IZIKA assure
-          l’hébergement des données, la maintenance et la sécurité du logiciel. La sauvegarde des
-          données utilisées par le CLIENT est réalisée dans les conditions définies dans les
-          CONDITIONS PARTICULIERES. La liste exhaustive des Services applicatifs est définie dans les
-          conditions particulières. Les fonctionnalités, le type et le nombre de Services applicatifs
-          sont susceptibles d’évoluer dans le temps et il appartiendra le cas échéant au CLIENT de se
-          former à ces nouveautés ou évolutions, avec l’aide des documents dédiés à cet usage mis à sa
-          disposition par IZIKA et au travers de session de formation proposées par IZIKA.</p>
-      </section>
+    <section id="article-6">
+      <h2>Article 6. DESCRIPTION DES SERVICES APPLICATIFS</h2>
+      <p>IZIKA est un logiciel de calcul automatique des déplacements routiers effectués à titre
+        professionnel et des indemnités kilométriques en résultant. Il est accessible depuis tous
+        types d’équipements mobiles et fixes sous Linux, Androïd, Mac ou Windows. IZIKA est proposé
+        en mode hébergé (SAAS). Le CLIENT dispose d’un accès sécurisé sur le Web via une Url dédiée
+        communiquée lors de la souscription du contrat. Le CLIENT bénéficie du droit d’utiliser de
+        façon non exclusive les services offerts par IZIKA dans les conditions prévues par les
+        CONDITIONS GENERALES et les CONDITIONS PARTICULIERES qu’il a signés. IZIKA assure
+        l’hébergement des données, la maintenance et la sécurité du logiciel. La sauvegarde des
+        données utilisées par le CLIENT est réalisée dans les conditions définies dans les
+        CONDITIONS PARTICULIERES. La liste exhaustive des Services applicatifs est définie dans les
+        conditions particulières. Les fonctionnalités, le type et le nombre de Services applicatifs
+        sont susceptibles d’évoluer dans le temps et il appartiendra le cas échéant au CLIENT de se
+        former à ces nouveautés ou évolutions, avec l’aide des documents dédiés à cet usage mis à sa
+        disposition par IZIKA et au travers de session de formation proposées par IZIKA.</p>
+    </section>
 
-      <section id="article-7">
-        <h2>Article 7. PRÉREQUIS TECHNIQUES</h2>
-        <p>Le CLIENT reconnaît avoir été informé par IZIKA de l’ensemble des prérequis techniques
-          nécessaires au bon fonctionnement de IZIKA. Le CLIENT est par ailleurs informé du fait que
-          ces prérequis peuvent évoluer, notamment pour des raisons techniques. Si une évolution
-          intervient en cours de contrat, le CLIENT en sera informé au préalable.</p>
-      </section>
+    <section id="article-7">
+      <h2>Article 7. PRÉREQUIS TECHNIQUES</h2>
+      <p>Le CLIENT reconnaît avoir été informé par IZIKA de l’ensemble des prérequis techniques
+        nécessaires au bon fonctionnement de IZIKA. Le CLIENT est par ailleurs informé du fait que
+        ces prérequis peuvent évoluer, notamment pour des raisons techniques. Si une évolution
+        intervient en cours de contrat, le CLIENT en sera informé au préalable.</p>
+    </section>
 
-      <section id="article-8">
-        <h2>Article 8. RÉSEAU ET ACCÈS A IZIKA</h2>
-        <p>L’accès au logiciel IZIKA nécessite une connexion à l’Internet. Le CLIENT doit être attentif
-          au choix de l’Opérateur lui permettant l’accès à l’Internet et il lui appartient
-          éventuellement de mettre en place une solution d’accès alternative s’il souhaite réduire les
-          risques d’interruption d’accès à ce réseau. IZIKA n’est pas responsable du bon
-          fonctionnement de ce réseau. Sous réserve des dispositions des présentes conditions
-          générales et des conditions particulières, l’accès à IZIKA est possible 24 heures sur 24 et
-          7 jours sur 7, y compris les dimanches et jours fériés depuis n’importe quel ordinateur,
-          smartphone ou tablette connecté à l’Internet et disposant d’un navigateur Web, depuis
-          n’importe quel lieu dès lors que les conditions précédentes sont remplies, sauf cas de force
-          majeure incluant des opérations de maintenance du logiciel ou une interruption du
-          fonctionnement du logiciel ou de son hébergement.</p>
-      </section>
+    <section id="article-8">
+      <h2>Article 8. RÉSEAU ET ACCÈS A IZIKA</h2>
+      <p>L’accès au logiciel IZIKA nécessite une connexion à l’Internet. Le CLIENT doit être attentif
+        au choix de l’Opérateur lui permettant l’accès à l’Internet et il lui appartient
+        éventuellement de mettre en place une solution d’accès alternative s’il souhaite réduire les
+        risques d’interruption d’accès à ce réseau. IZIKA n’est pas responsable du bon
+        fonctionnement de ce réseau. Sous réserve des dispositions des présentes conditions
+        générales et des conditions particulières, l’accès à IZIKA est possible 24 heures sur 24 et
+        7 jours sur 7, y compris les dimanches et jours fériés depuis n’importe quel ordinateur,
+        smartphone ou tablette connecté à l’Internet et disposant d’un navigateur Web, depuis
+        n’importe quel lieu dès lors que les conditions précédentes sont remplies, sauf cas de force
+        majeure incluant des opérations de maintenance du logiciel ou une interruption du
+        fonctionnement du logiciel ou de son hébergement.</p>
+    </section>
 
-      <section id="article-9">
-        <h2>Article 9. SÉCURISATION DE l’ACCÈS A IZIKA</h2>
-        <p>La connexion à IZIKA est assurée et sécurisée par l’API Google « OpenID Connect (OAuth2.0) »
-          qui utilise un jeton de connexion unique et sécurisé par Google.</p>
-      </section>
+    <section id="article-9">
+      <h2>Article 9. SÉCURISATION DE l’ACCÈS A IZIKA</h2>
+      <p>La connexion à IZIKA est assurée et sécurisée par l’API Google « OpenID Connect (OAuth2.0) »
+        qui utilise un jeton de connexion unique et sécurisé par Google.</p>
+    </section>
 
-      <section id="article-10">
-        <h2>Article 10. PROTECTION DES ÉQUIPEMENTS</h2>
-        <p>LE CLIENT assume la responsabilité de la protection des équipements lui permettant d’accéder
-          au logiciel IZIKA, lui assurant la préservation de ses données contre toute atteinte
-          malintentionnée (sans que cela soit exhaustif : logiciel anti-virus, mise à jour de l’OS en
-          suivant les recommandations émanant de son concepteur, mise à jour régulière de son
-          navigateur web mais également protection physique des équipements…). IZIKA n’est pas
-          responsable des dommages causés aux équipements et/ou données du CLIENT via le réseau
-          Internet ou par d’autres biais.</p>
-      </section>
+    <section id="article-10">
+      <h2>Article 10. PROTECTION DES ÉQUIPEMENTS</h2>
+      <p>LE CLIENT assume la responsabilité de la protection des équipements lui permettant d’accéder
+        au logiciel IZIKA, lui assurant la préservation de ses données contre toute atteinte
+        malintentionnée (sans que cela soit exhaustif : logiciel anti-virus, mise à jour de l’OS en
+        suivant les recommandations émanant de son concepteur, mise à jour régulière de son
+        navigateur web mais également protection physique des équipements…). IZIKA n’est pas
+        responsable des dommages causés aux équipements et/ou données du CLIENT via le réseau
+        Internet ou par d’autres biais.</p>
+    </section>
 
-      <section id="article-11">
-        <h2>Article 11. QUALITÉ DES SERVICES</h2>
-        <p>IZIKA s’engage à mettre tout en œuvre pour assurer au CLIENT un accès et une utilisation des
-          services offerts par IZIKA conformes aux dispositions des présentes CONDITIONS GENERALES.
-          IZIKA ne peut être tenu pour responsable des problèmes liés à la connexion du CLIENT à
-          l’Internet, aux virus informatiques véhiculés via ce réseau ou par un autre biais, ou à tous
-          actes de malveillance réalisé via ce réseau ou par un autre biais, matériel ou immatériel.
-          LE CLIENT reconnaît que le réseau Internet est sujet à de possibles interruptions et/ou à
-          des ralentissements de son fonctionnement et que IZIKA ne peut pas en être tenu pour
-          responsable. Au regard de ce qui précède, IZIKA ne peut donc pas garantir la continuité de
-          l’utilisation de IZIKA, qui est utilisable par le CLIENT grâce à une connexion à distance
-          via le réseau Internet.</p>
-      </section>
+    <section id="article-11">
+      <h2>Article 11. QUALITÉ DES SERVICES</h2>
+      <p>IZIKA s’engage à mettre tout en œuvre pour assurer au CLIENT un accès et une utilisation des
+        services offerts par IZIKA conformes aux dispositions des présentes CONDITIONS GENERALES.
+        IZIKA ne peut être tenu pour responsable des problèmes liés à la connexion du CLIENT à
+        l’Internet, aux virus informatiques véhiculés via ce réseau ou par un autre biais, ou à tous
+        actes de malveillance réalisé via ce réseau ou par un autre biais, matériel ou immatériel.
+        LE CLIENT reconnaît que le réseau Internet est sujet à de possibles interruptions et/ou à
+        des ralentissements de son fonctionnement et que IZIKA ne peut pas en être tenu pour
+        responsable. Au regard de ce qui précède, IZIKA ne peut donc pas garantir la continuité de
+        l’utilisation de IZIKA, qui est utilisable par le CLIENT grâce à une connexion à distance
+        via le réseau Internet.</p>
+    </section>
 
-      <section id="article-12">
-        <h2>Article 12. SUSPENSION DES SERVICES</h2>
-        <p>L’accès à IZIKA ou à certaines de ses fonctionnalités peut être occasionnellement suspendu
-          pour permettre les interventions et la maintenance nécessaire au bon fonctionnement du
-          logiciel. Si une intervention est envisagée, le CLIENT est informé par tous moyens afin
-          qu’il puisse prendre toute mesure utile pour éviter que son activité ne soit perturbée. En
-          cas d’extrême urgence, d’impérieuse nécessité, ou de mise en jeu de la sécurité du LOGICIEL
-          ou des données des CLIENTS, IZIKA est dispensée de ce devoir d’information préalable, à
-          charge pour elle de fournir toutes les explications utiles après la réalisation de
-          l’intervention. La responsabilité de IZIKA ne saurait être retenue pour les conséquences
-          éventuelles de l’indisponibilité du service en raison d’une opération de maintenance ou de
-          mise à jour des services.</p>
-      </section>
+    <section id="article-12">
+      <h2>Article 12. SUSPENSION DES SERVICES</h2>
+      <p>L’accès à IZIKA ou à certaines de ses fonctionnalités peut être occasionnellement suspendu
+        pour permettre les interventions et la maintenance nécessaire au bon fonctionnement du
+        logiciel. Si une intervention est envisagée, le CLIENT est informé par tous moyens afin
+        qu’il puisse prendre toute mesure utile pour éviter que son activité ne soit perturbée. En
+        cas d’extrême urgence, d’impérieuse nécessité, ou de mise en jeu de la sécurité du LOGICIEL
+        ou des données des CLIENTS, IZIKA est dispensée de ce devoir d’information préalable, à
+        charge pour elle de fournir toutes les explications utiles après la réalisation de
+        l’intervention. La responsabilité de IZIKA ne saurait être retenue pour les conséquences
+        éventuelles de l’indisponibilité du service en raison d’une opération de maintenance ou de
+        mise à jour des services.</p>
+    </section>
 
-      <section id="article-13">
-        <h2>Article 13. MAINTENANCE ET ASSISTANCE</h2>
-        <p>IZIKA assure la maintenance corrective et évolutive de IZIKA sans supplément de frais pour le
-          CLIENT. La maintenance de IZIKA peut occasionner une suspension d’accès au service comme il
-          est précisé à l’article 12 des CONDITIONS GENERALES. IZIKA veille à corriger dans les
-          meilleurs délais les éventuels dysfonctionnements qui affecteraient IZIKA et à y apporter
-          toutes les améliorations qu’elle estimerait utile. Le CLIENT bénéficie des mises à jour et
-          des évolutions fonctionnelles de IZIKA, sans supplément tarifaire. Toute modification
-          apportée au logiciel est irréfragablement présumée l’être pour l’amélioration de son
-          fonctionnement et/ou l’élargissement de ses fonctions. Les corrections et les évolutions du
-          logiciel sont donc expressément soumises aux présentes CONDITIONS GENERALES et à ses
-          annexes. IZIKA s’engage à mettre à jour et à mettre à disposition du CLIENT la documentation
-          relative aux modifications apportées à IZIKA. Le CLIENT bénéficie de surcroît d’un accès au
-          service de l’assistance via le formulaire en ligne ou par courrier électronique dédié à
-          l’aide en ligne : contact (à) izika.com. LE CLIENT s’engage à signaler à IZIKA sans délais
-          toute DYSFONCTIONNEMENT de IZIKA.</p>
-      </section>
+    <section id="article-13">
+      <h2>Article 13. MAINTENANCE ET ASSISTANCE</h2>
+      <p>IZIKA assure la maintenance corrective et évolutive de IZIKA sans supplément de frais pour le
+        CLIENT. La maintenance de IZIKA peut occasionner une suspension d’accès au service comme il
+        est précisé à l’article 12 des CONDITIONS GENERALES. IZIKA veille à corriger dans les
+        meilleurs délais les éventuels dysfonctionnements qui affecteraient IZIKA et à y apporter
+        toutes les améliorations qu’elle estimerait utile. Le CLIENT bénéficie des mises à jour et
+        des évolutions fonctionnelles de IZIKA, sans supplément tarifaire. Toute modification
+        apportée au logiciel est irréfragablement présumée l’être pour l’amélioration de son
+        fonctionnement et/ou l’élargissement de ses fonctions. Les corrections et les évolutions du
+        logiciel sont donc expressément soumises aux présentes CONDITIONS GENERALES et à ses
+        annexes. IZIKA s’engage à mettre à jour et à mettre à disposition du CLIENT la documentation
+        relative aux modifications apportées à IZIKA. Le CLIENT bénéficie de surcroît d’un accès au
+        service de l’assistance via le formulaire en ligne ou par courrier électronique dédié à
+        l’aide en ligne : contact (à) izika.com. LE CLIENT s’engage à signaler à IZIKA sans délais
+        toute DYSFONCTIONNEMENT de IZIKA.</p>
+    </section>
 
-      <section id="article-14">
-        <h2>Article 14. LICENCE D’UTILISATION</h2>
-        <p>Le fait générateur de l’obtention et du renouvellement de la Licence d’utilisation du
-          logiciel IZIKA est le règlement pécuniaire de l’abonnement. Le titulaire de la licence
-          d’utilisation est donc présumé être le titulaire de l’instrument de paiement ayant servi au
-          règlement de la location du logiciel. IZIKA accorde au CLIENT une licence d’utilisation de
-          IZIKA valable uniquement pendant la durée de l’abonnement et exclusivement destinée à lui
-          permettre d’utiliser le logiciel et les services associés à l’exclusion de toute autre
-          finalité. Sous réserve des exceptions prévues aux CONDITIONS PARTICULIERES, elle accorde un
-          droit personnel, non exclusif, non cessible et non transférable pour utiliser IZIKA, pendant
-          toute la durée du CONTRAT et pour le monde entier. Le droit d’utilisation s’entend du droit
-          de représenter et de mettre en œuvre IZIKA conformément à sa destination, en mode SAAS via
-          une connexion à l’Internet. Sous réserve des articles qui suivent, Le CLIENT ne pourra en
-          aucun cas mettre IZIKA à disposition d’un tiers, et s’interdit strictement toute autre
-          utilisation, en particulier toute adaptation, modification, traduction, arrangement,
-          diffusion, décompilation, sans que cette liste soit limitative. IZIKA est un outil LOGICIEL
-          destiné aux professionnels. La licence d’utilisation comprend pour le CLIENT le droit
-          d’accéder au LOGICIEL et d’en user dans la limite des autorisations qui lui sont
-          allouées.</p>
-      </section>
+    <section id="article-14">
+      <h2>Article 14. LICENCE D’UTILISATION</h2>
+      <p>Le fait générateur de l’obtention et du renouvellement de la Licence d’utilisation du
+        logiciel IZIKA est le règlement pécuniaire de l’abonnement. Le titulaire de la licence
+        d’utilisation est donc présumé être le titulaire de l’instrument de paiement ayant servi au
+        règlement de la location du logiciel. IZIKA accorde au CLIENT une licence d’utilisation de
+        IZIKA valable uniquement pendant la durée de l’abonnement et exclusivement destinée à lui
+        permettre d’utiliser le logiciel et les services associés à l’exclusion de toute autre
+        finalité. Sous réserve des exceptions prévues aux CONDITIONS PARTICULIERES, elle accorde un
+        droit personnel, non exclusif, non cessible et non transférable pour utiliser IZIKA, pendant
+        toute la durée du CONTRAT et pour le monde entier. Le droit d’utilisation s’entend du droit
+        de représenter et de mettre en œuvre IZIKA conformément à sa destination, en mode SAAS via
+        une connexion à l’Internet. Sous réserve des articles qui suivent, Le CLIENT ne pourra en
+        aucun cas mettre IZIKA à disposition d’un tiers, et s’interdit strictement toute autre
+        utilisation, en particulier toute adaptation, modification, traduction, arrangement,
+        diffusion, décompilation, sans que cette liste soit limitative. IZIKA est un outil LOGICIEL
+        destiné aux professionnels. La licence d’utilisation comprend pour le CLIENT le droit
+        d’accéder au LOGICIEL et d’en user dans la limite des autorisations qui lui sont
+        allouées.</p>
+    </section>
 
-      <section id="article-15">
-        <h2>Article 15. DONNÉES PERSONNELLES</h2>
-        <p>Le CLIENT a au regard des lois en vigueur la qualité de responsable du traitement des données
-          qu’il exploite. Il garantit à IZIKA qu’il a procédé à l’ensemble des obligations qui lui
-          incombent au terme de la loi n°78-17 du 6 janvier 1978 dite « Informatique &amp; Libertés ».
-          Pour les besoins du respect de ses obligations, il est informé par IZIKA que la localisation
-          des serveurs de IZIKA est la suivante :</p>
-        <p>SCALEWAY SAS au capital de 214 410,50 €</p>
-        <p>433 115 904 RCS Paris</p>
-        <p>N° TVA : FR 35 433115904</p>
-        <p>Siège social : 8 rue de la Ville l’Evêque, 75008 Paris.</p>
-        <p>Concernant la transmission de données à caractères personnelles, il garantit qu’il a informé
-          les personnes physiques concernées de l’usage qui en est fait. Le CLIENT relève et garantit
-          SCALEWAY SAS contre tout recours, plainte ou réclamation émanant d’une personne physique dont les
-          données personnelles seraient reproduites et hébergées via SCALEWAY SAS.</p>
-        <p>IZIKA se réserve le droit de modifier la localisation de l’hébergement de ces données et
-          conserve le libre choix du prestataire en charge de cette mission, sous réserve du maintien
-          des lieux de stockage sur le territoire français.</p>
-      </section>
+    <section id="article-15">
+      <h2>Article 15. DONNÉES PERSONNELLES</h2>
+      <p>Le CLIENT a au regard des lois en vigueur la qualité de responsable du traitement des données
+        qu’il exploite. Il garantit à IZIKA qu’il a procédé à l’ensemble des obligations qui lui
+        incombent au terme de la loi n°78-17 du 6 janvier 1978 dite « Informatique &amp; Libertés ».
+        Pour les besoins du respect de ses obligations, il est informé par IZIKA que la localisation
+        des serveurs de IZIKA est la suivante :</p>
+      <p>SCALEWAY SAS au capital de 214 410,50 €</p>
+      <p>433 115 904 RCS Paris</p>
+      <p>N° TVA : FR 35 433115904</p>
+      <p>Siège social : 8 rue de la Ville l’Evêque, 75008 Paris.</p>
+      <p>Concernant la transmission de données à caractères personnelles, il garantit qu’il a informé
+        les personnes physiques concernées de l’usage qui en est fait. Le CLIENT relève et garantit
+        SCALEWAY SAS contre tout recours, plainte ou réclamation émanant d’une personne physique dont les
+        données personnelles seraient reproduites et hébergées via SCALEWAY SAS.</p>
+      <p>IZIKA se réserve le droit de modifier la localisation de l’hébergement de ces données et
+        conserve le libre choix du prestataire en charge de cette mission, sous réserve du maintien
+        des lieux de stockage sur le territoire français.</p>
+    </section>
 
-      <section id="article-16">
-        <h2>Article 16. SECURITÉ DES DONNÉES</h2>
-        <p>IZIKA utilise les mesures techniques et organisationnelles de nature à empêcher tout accès ou
-          utilisation frauduleuse des données qui lui sont transmises et à prévenir leur perte, leur
-          altération et/ou leur destruction. IZIKA sauvegarde de manière régulière et redondante les
-          données utilisées par le CLIENT pour la réalisation, la maintenance et l’administration
-          d’IZIKA, conformément notamment à l’article 34 de la loi n° 78-17 du 6 janvier 1978 relative
-          à l’informatique, aux fichiers et aux libertés qui prévoit : « Le responsable du traitement
-          est tenu de prendre toutes précautions utiles, au regard de la nature des données et des
-          risques présentés par le traitement, pour préserver la sécurité des données et, notamment,
-          empêcher qu’elles soient déformées, endommagées, ou que des tiers non autorisés y aient
-          accès(…)». Il appartient néanmoins au CLIENT de mettre en œuvre une procédure indépendante,
-          redondante, récurrente et fiable de sauvegarde des données utilisées via IZIKA.</p>
-      </section>
+    <section id="article-16">
+      <h2>Article 16. SECURITÉ DES DONNÉES</h2>
+      <p>IZIKA utilise les mesures techniques et organisationnelles de nature à empêcher tout accès ou
+        utilisation frauduleuse des données qui lui sont transmises et à prévenir leur perte, leur
+        altération et/ou leur destruction. IZIKA sauvegarde de manière régulière et redondante les
+        données utilisées par le CLIENT pour la réalisation, la maintenance et l’administration
+        d’IZIKA, conformément notamment à l’article 34 de la loi n° 78-17 du 6 janvier 1978 relative
+        à l’informatique, aux fichiers et aux libertés qui prévoit : « Le responsable du traitement
+        est tenu de prendre toutes précautions utiles, au regard de la nature des données et des
+        risques présentés par le traitement, pour préserver la sécurité des données et, notamment,
+        empêcher qu’elles soient déformées, endommagées, ou que des tiers non autorisés y aient
+        accès(…)». Il appartient néanmoins au CLIENT de mettre en œuvre une procédure indépendante,
+        redondante, récurrente et fiable de sauvegarde des données utilisées via IZIKA.</p>
+    </section>
 
-      <section id="article-17">
-        <h2>Article 17. CONDITIONS FINANCIÈRES</h2>
-        <p>
-          Les conditions tarifaires de souscription à IZIKA sont détaillées dans la page web de souscription du
-          logiciel IZIKA, au moment de la souscription par le Client. Ces conditions peuvent être modifiées sans
-          préavis à tout moment avant la souscription par le Client. La souscription par le client vaut acceptation
-          des Conditions Générales de Vente et acceptation du prix affiché au moment de la souscription. Le montant
-          de l'abonnement aux services peut évoluer, les clients seront avertis par email avec un préavis de 30
-          jours, ces évolutions leur donnant droit à résiliation du contrat avec préavis de 15 jours. Les prix sont
-          exprimés en Euros (€), hors taxe.
-          L'adresse de facturation est irréfragablement considérée comme étant celle fournie par le Client lors de
-          son inscription à IZIKA dans la page web de souscription. Il lui appartient d'informer IZIKA de la
-          nécessité de mettre à jour ses coordonnées par email à contact@izika.com.
-        </p>
-      </section>
+    <section id="article-17">
+      <h2>Article 17. CONDITIONS FINANCIÈRES</h2>
+      <p>
+        Les conditions tarifaires de souscription à IZIKA sont détaillées dans la page web de souscription du
+        logiciel IZIKA, au moment de la souscription par le Client. Ces conditions peuvent être modifiées sans
+        préavis à tout moment avant la souscription par le Client. La souscription par le client vaut acceptation
+        des Conditions Générales de Vente et acceptation du prix affiché au moment de la souscription. Le montant
+        de l'abonnement aux services peut évoluer, les clients seront avertis par email avec un préavis de 30
+        jours, ces évolutions leur donnant droit à résiliation du contrat avec préavis de 15 jours. Les prix sont
+        exprimés en Euros (€), hors taxe.
+        L'adresse de facturation est irréfragablement considérée comme étant celle fournie par le Client lors de
+        son inscription à IZIKA dans la page web de souscription. Il lui appartient d'informer IZIKA de la
+        nécessité de mettre à jour ses coordonnées par email à contact@izika.com.
+      </p>
+    </section>
 
-      <section id="article-18">
-        <h2>Article 18. PROPRIÉTÉ</h2>
-        <p>Le CLIENT est propriétaire de l’ensemble des données qu’il utilise via IZIKA dans le cadre du
-          présent CONTRAT. IZIKA est titulaire des droits de propriété relatifs à tout élément issu de
-          IZIKA et mis à disposition du CLIENT. La souscription à IZIKA ne donne au CLIENT aucun droit
-          de propriété sur le logiciel mis à sa disposition en mode SAAS et ne constitue pas une
-          cession de droit de propriété intellectuelle à son bénéfice au sens du Code de la propriété
-          intellectuelle français. Il est interdit au CLIENT de reproduire tout élément de IZIKA, ou
-          toute documentation s’y rapportant par quelque moyen que ce soit, sous quelque forme que ce
-          soit et sur quelque support que ce soit.</p>
-      </section>
+    <section id="article-18">
+      <h2>Article 18. PROPRIÉTÉ</h2>
+      <p>Le CLIENT est propriétaire de l’ensemble des données qu’il utilise via IZIKA dans le cadre du
+        présent CONTRAT. IZIKA est titulaire des droits de propriété relatifs à tout élément issu de
+        IZIKA et mis à disposition du CLIENT. La souscription à IZIKA ne donne au CLIENT aucun droit
+        de propriété sur le logiciel mis à sa disposition en mode SAAS et ne constitue pas une
+        cession de droit de propriété intellectuelle à son bénéfice au sens du Code de la propriété
+        intellectuelle français. Il est interdit au CLIENT de reproduire tout élément de IZIKA, ou
+        toute documentation s’y rapportant par quelque moyen que ce soit, sous quelque forme que ce
+        soit et sur quelque support que ce soit.</p>
+    </section>
 
-      <section id="article-19">
-        <h2>Article 19. DROIT DES TIERS</h2>
-        <p>Le développement de IZIKA a nécessité l’utilisation de logiciels soumis à licence libre. La
-          licence a été respectée par IZIKA.</p>
-      </section>
+    <section id="article-19">
+      <h2>Article 19. DROIT DES TIERS</h2>
+      <p>Le développement de IZIKA a nécessité l’utilisation de logiciels soumis à licence libre. La
+        licence a été respectée par IZIKA.</p>
+    </section>
 
-      <section id="article-20">
-        <h2>Article 20. GARANTIE D’ÉVICTION</h2>
-        <p>Sous réserve de l’article 20 des présentes conditions, IZIKA garantie que IZIKA est un
-          logiciel original au sens du Code de la propriété intellectuelle français et qu’il est
-          titulaire de tous les droits de propriété intellectuelle qui lui permettent de conclure la
-          présente convention. Sur cette base, IZIKA garantit que IZIKA est insusceptible de porter
-          atteinte aux droits des tiers.</p>
-      </section>
+    <section id="article-20">
+      <h2>Article 20. GARANTIE D’ÉVICTION</h2>
+      <p>Sous réserve de l’article 20 des présentes conditions, IZIKA garantie que IZIKA est un
+        logiciel original au sens du Code de la propriété intellectuelle français et qu’il est
+        titulaire de tous les droits de propriété intellectuelle qui lui permettent de conclure la
+        présente convention. Sur cette base, IZIKA garantit que IZIKA est insusceptible de porter
+        atteinte aux droits des tiers.</p>
+    </section>
 
-      <section id="article-21">
-        <h2>Article 21. RESPONSABILITÉ</h2>
-        <p>La mesure des distances et l’interprétation des adresses repose sur des API tierces et des
-          fournisseurs tiers de technologies externes à IZIKA. Pour ces motifs, IZIKA ne peut être
-          tenu responsable d’inexactitudes, d’imprécisions ou d’erreurs dans le géocodage des adresses
-          ou le calcul des distances. IZIKA n’est tenu dans le cadre de l’exécution de l’ensemble de
-          ses obligations que d’une obligation de moyen ce qui suppose la démonstration de l’existence
-          d’une faute à sa charge pour que puisse être engagée sa responsabilité. En outre, en cas de
-          faute prouvée par le CLIENT, IZIKA ne sera tenu que de la réparation des conséquences
-          pécuniaires des dommages directs et prévisibles du fait de l’exécution des services offerts
-          par IZIKA. IZIKA ne pourra pas voir sa responsabilité être engagée au titre des pertes ou
-          dommages indirects ou imprévisibles du CLIENT ou des tiers tel que, sans que cette
-          énonciation ait un caractère exhaustif : tout gain manqué, perte totale ou partielle,
-          inexactitude ou corruption partielle ou totale de fichiers ou de données, préjudice
-          commercial, perte de chiffre d’affaires ou de bénéfice, perte de clientèle, perte d’une
-          chance, coût de l’obtention d’un produit, d’un service ou de technologie de substitution, en
-          relation ou provenant de l’inexécution ou de l’exécution fautive des prestations. Dans tous
-          les cas, le montant de la responsabilité de IZIKA est strictement limité au remboursement du
-          montant des sommes effectivement payées par le CLIENT à la date de survenance du fait
-          générateur. Aucune responsabilité de IZIKA ne pourra être retenue du fait de la destruction
-          accidentelle des données par le CLIENT ou par un tiers accédant à IZIKA grâce aux
-          identifiants remis au CLIENT</p>
-      </section>
+    <section id="article-21">
+      <h2>Article 21. RESPONSABILITÉ</h2>
+      <p>La mesure des distances et l’interprétation des adresses repose sur des API tierces et des
+        fournisseurs tiers de technologies externes à IZIKA. Pour ces motifs, IZIKA ne peut être
+        tenu responsable d’inexactitudes, d’imprécisions ou d’erreurs dans le géocodage des adresses
+        ou le calcul des distances. IZIKA n’est tenu dans le cadre de l’exécution de l’ensemble de
+        ses obligations que d’une obligation de moyen ce qui suppose la démonstration de l’existence
+        d’une faute à sa charge pour que puisse être engagée sa responsabilité. En outre, en cas de
+        faute prouvée par le CLIENT, IZIKA ne sera tenu que de la réparation des conséquences
+        pécuniaires des dommages directs et prévisibles du fait de l’exécution des services offerts
+        par IZIKA. IZIKA ne pourra pas voir sa responsabilité être engagée au titre des pertes ou
+        dommages indirects ou imprévisibles du CLIENT ou des tiers tel que, sans que cette
+        énonciation ait un caractère exhaustif : tout gain manqué, perte totale ou partielle,
+        inexactitude ou corruption partielle ou totale de fichiers ou de données, préjudice
+        commercial, perte de chiffre d’affaires ou de bénéfice, perte de clientèle, perte d’une
+        chance, coût de l’obtention d’un produit, d’un service ou de technologie de substitution, en
+        relation ou provenant de l’inexécution ou de l’exécution fautive des prestations. Dans tous
+        les cas, le montant de la responsabilité de IZIKA est strictement limité au remboursement du
+        montant des sommes effectivement payées par le CLIENT à la date de survenance du fait
+        générateur. Aucune responsabilité de IZIKA ne pourra être retenue du fait de la destruction
+        accidentelle des données par le CLIENT ou par un tiers accédant à IZIKA grâce aux
+        identifiants remis au CLIENT</p>
+    </section>
 
-      <section id="article-22">
-        <h2>Article 22. FORCE MAJEURE</h2>
-        <p>Tout manquement à l’une quelconque des obligations de la présente convention et de ses
-          annexes occasionné par un cas de force majeure, telle qu’elle est reconnue et admise
-          traditionnellement par la jurisprudence de la Cour de Cassation française exonérera les
-          parties de leur responsabilité (la force majeure s’entendant notamment d’un évènement
-          imprévisible, irrésistible et extérieur au débiteur d’obligation). Si un tel événement se
-          produit, la partie empêchée par l’évènement d’exécuter sa prestation en informe l’autre par
-          tous moyens dans les meilleurs délais. La suspension des obligations ou le retard ne pourra
-          en aucun cas être une cause de responsabilité pour non-exécution de l’obligation en cause,
-          ni induire le versement de dommages et intérêts ou pénalités de retard.</p>
-      </section>
+    <section id="article-22">
+      <h2>Article 22. FORCE MAJEURE</h2>
+      <p>Tout manquement à l’une quelconque des obligations de la présente convention et de ses
+        annexes occasionné par un cas de force majeure, telle qu’elle est reconnue et admise
+        traditionnellement par la jurisprudence de la Cour de Cassation française exonérera les
+        parties de leur responsabilité (la force majeure s’entendant notamment d’un évènement
+        imprévisible, irrésistible et extérieur au débiteur d’obligation). Si un tel événement se
+        produit, la partie empêchée par l’évènement d’exécuter sa prestation en informe l’autre par
+        tous moyens dans les meilleurs délais. La suspension des obligations ou le retard ne pourra
+        en aucun cas être une cause de responsabilité pour non-exécution de l’obligation en cause,
+        ni induire le versement de dommages et intérêts ou pénalités de retard.</p>
+    </section>
 
-      <section id="article-23">
-        <h2>Article 23. ASSURANCE</h2>
-        <p>IZIKA a souscrit les assurances nécessaires afin de couvrir les risques liés à l’exercice de
-          son activité. IZIKA SAS est titulaire d&#8217;une assurance en responsabilité civile
-          professionnelle et responsabilité civile d&#8217;exploitation souscrite auprès de HISCOX
-          sous le numéro de police : HSXPM310013343.</p>
-      </section>
+    <section id="article-23">
+      <h2>Article 23. ASSURANCE</h2>
+      <p>IZIKA a souscrit les assurances nécessaires afin de couvrir les risques liés à l’exercice de
+        son activité. IZIKA SAS est titulaire d&#8217;une assurance en responsabilité civile
+        professionnelle et responsabilité civile d&#8217;exploitation souscrite auprès de HISCOX
+        sous le numéro de police : HSXPM310013343.</p>
+    </section>
 
-      <section id="article-24">
-        <h2>Article 24. RÉSILIATION</h2>
-        <p>Le CONTRAT peut être résilié en cas de manquement par l’une des parties à l’une de ses
-          obligations contractuelles ou à la demande du CLIENT. La partie souhaitant résilier adresse
-          un email à l'autre partie, pour izika l'email doit être envoyé depuis la page
-          izika.com/contact. La partie ayant des griefs à faire valoir adresse alors une mise en
-          demeure par courrier recommandé avec accusé de réception à la partie, selon elle,
-          défaillante.</p>
-        <p>L’adresse de destination des courriers est pour IZIKA: 199 rue Hélène Boucher, 34170
-          Castelnau-le-Lez et pour le CLIENT, l’adresse figurant aux CONDITIONS PARTICULIERES. Quinze
-          jours après réception dudit courrier, l’accusé de réception faisant foi, si aucune réponse
-          n’a été formulée par la partie destinataire, le CONTRAT est résilié de plein droit sous
-          réserve du sérieux et de la réalité des défaillances constatées. Dès la signification de la
-          résiliation du CONTRAT les codes d’accès à IZIKA seront désactivés. Les prestations de
-          réversibilité sont mises en œuvre conformément à l’article 26 des CONDITIONS GENERALES.</p>
-      </section>
+    <section id="article-24">
+      <h2>Article 24. RÉSILIATION</h2>
+      <p>Le CONTRAT peut être résilié en cas de manquement par l’une des parties à l’une de ses
+        obligations contractuelles ou à la demande du CLIENT. La partie souhaitant résilier adresse
+        un email à l'autre partie, pour izika l'email doit être envoyé depuis la page
+        izika.com/contact. La partie ayant des griefs à faire valoir adresse alors une mise en
+        demeure par courrier recommandé avec accusé de réception à la partie, selon elle,
+        défaillante.</p>
+      <p>L’adresse de destination des courriers est pour IZIKA: 199 rue Hélène Boucher, 34170
+        Castelnau-le-Lez et pour le CLIENT, l’adresse figurant aux CONDITIONS PARTICULIERES. Quinze
+        jours après réception dudit courrier, l’accusé de réception faisant foi, si aucune réponse
+        n’a été formulée par la partie destinataire, le CONTRAT est résilié de plein droit sous
+        réserve du sérieux et de la réalité des défaillances constatées. Dès la signification de la
+        résiliation du CONTRAT les codes d’accès à IZIKA seront désactivés. Les prestations de
+        réversibilité sont mises en œuvre conformément à l’article 26 des CONDITIONS GENERALES.</p>
+    </section>
 
-      <section id="article-25">
-        <h2>Article 25. REVERSIBILITÉ</h2>
-        <p>A la fin de relation contractuelle, le CLIENT peut récupérer ses données ou demander leur
-          destruction définitive. La restitution des données n’intervient que sur demande expresse du
-          CLIENT formulée exclusivement par courrier recommandée avec accusé de réception adressé à
-          IZIKA à l’adresse suivante : 199 rue Hélène Boucher, 34170 Castelnau-le-Lez. La demande est
-          adressée par le CLIENT 15 jours maximum après le terme du CONTRAT représenté par le
-          versement correspondant au dernier trimestre d’abonnement. Il est satisfait à la demande
-          dans un délai de 8 jours à compter de la réception de la demande, l’accusé de réception
-          faisant foi entre les parties. Cette restitution s’opère par la restitution d’un ou
-          plusieurs fichiers de format standard lisible dans un environnement technique équivalent. Le
-          CLIENT collaborera activement avec IZIKA afin de faciliter la récupération de ses propres
-          données et répondra à première demande à toute sollicitation de cette dernière pour
-          faciliter cette transmission et permettre la poursuite de l’exploitation desdites données,
-          dans les meilleurs conditions possibles de continuité d’exploitation, directement ou avec
-          l’assistance d’un autre prestataire. Sans demande de restitution formulée dans les formes
-          indiquées aux présentes conditions, des données sont détruites dans les 30 jours suivant la
-          résiliation du contrat.</p>
-      </section>
+    <section id="article-25">
+      <h2>Article 25. REVERSIBILITÉ</h2>
+      <p>A la fin de relation contractuelle, le CLIENT peut récupérer ses données ou demander leur
+        destruction définitive. La restitution des données n’intervient que sur demande expresse du
+        CLIENT formulée exclusivement par courrier recommandée avec accusé de réception adressé à
+        IZIKA à l’adresse suivante : 199 rue Hélène Boucher, 34170 Castelnau-le-Lez. La demande est
+        adressée par le CLIENT 15 jours maximum après le terme du CONTRAT représenté par le
+        versement correspondant au dernier trimestre d’abonnement. Il est satisfait à la demande
+        dans un délai de 8 jours à compter de la réception de la demande, l’accusé de réception
+        faisant foi entre les parties. Cette restitution s’opère par la restitution d’un ou
+        plusieurs fichiers de format standard lisible dans un environnement technique équivalent. Le
+        CLIENT collaborera activement avec IZIKA afin de faciliter la récupération de ses propres
+        données et répondra à première demande à toute sollicitation de cette dernière pour
+        faciliter cette transmission et permettre la poursuite de l’exploitation desdites données,
+        dans les meilleurs conditions possibles de continuité d’exploitation, directement ou avec
+        l’assistance d’un autre prestataire. Sans demande de restitution formulée dans les formes
+        indiquées aux présentes conditions, des données sont détruites dans les 30 jours suivant la
+        résiliation du contrat.</p>
+    </section>
 
-      <section id="article-26">
-        <h2>Article 26. CONFIDENTIALITÉ</h2>
-        <p>Sous réserve des impératifs légaux, réglementaires ou judiciaires, les parties s’obligent à
-          respecter la confidentialité de toutes les informations qu’elle recevra de l’autre Partie.
-          La communication des informations confidentielles transmises entre parties n’est autorisée
-          qu’aux employés ou intervenant ayant besoin de les connaître, que pour les besoins du
-          respect et la bonne exécution du CONTRAT et de ses annexes. Cette obligation générale de
-          confidentialité demeure imposée aux parties durant toute la durée du CONTRAT et aussi
-          longtemps, après son terme, que les informations concernées demeureront confidentielles pour
-          la Partie les divulguant et, en toute hypothèse, pendant une période de 2 années après le
-          terme du CONTRAT. Les parties s’obligent à restituer toutes les copies des documents et
-          supports contenant des informations confidentielles de l’autre partie, dès la fin du
-          CONTRAT. Les Parties s’engagent par ailleurs à faire respecter ces dispositions par leur
-          personnel, et par tout préposé ou tiers qui pourrait intervenir à quelque titre que ce soit
-          dans le cadre du CONTRAT.</p>
-      </section>
+    <section id="article-26">
+      <h2>Article 26. CONFIDENTIALITÉ</h2>
+      <p>Sous réserve des impératifs légaux, réglementaires ou judiciaires, les parties s’obligent à
+        respecter la confidentialité de toutes les informations qu’elle recevra de l’autre Partie.
+        La communication des informations confidentielles transmises entre parties n’est autorisée
+        qu’aux employés ou intervenant ayant besoin de les connaître, que pour les besoins du
+        respect et la bonne exécution du CONTRAT et de ses annexes. Cette obligation générale de
+        confidentialité demeure imposée aux parties durant toute la durée du CONTRAT et aussi
+        longtemps, après son terme, que les informations concernées demeureront confidentielles pour
+        la Partie les divulguant et, en toute hypothèse, pendant une période de 2 années après le
+        terme du CONTRAT. Les parties s’obligent à restituer toutes les copies des documents et
+        supports contenant des informations confidentielles de l’autre partie, dès la fin du
+        CONTRAT. Les Parties s’engagent par ailleurs à faire respecter ces dispositions par leur
+        personnel, et par tout préposé ou tiers qui pourrait intervenir à quelque titre que ce soit
+        dans le cadre du CONTRAT.</p>
+    </section>
 
-      <section id="article-27">
-        <h2>Article 27. DONNÉES NOMINATIVES – DROIT D’ACCÈS</h2>
-        <p>Les données nominatives concernant le Client pour l’accès à IZIKA sont destinées aux services
-          techniques, comptables et commerciaux de IZIKA, en sa qualité de responsable du traitement,
-          et de ses partenaires contractuels. Conformément à la loi n°78-17 du 6 janvier 1978 relative
-          à l’Informatique, aux fichiers et aux libertés, le CLIENT dispose d’un droit d’accès, de
-          rectification et d’opposition relatif aux données le concernant qui peut s’exercer en
-          adressant un courrier à IZIKA – 199 rue Hélène Boucher, 34170 Castelnau-le-Lez.</p>
-      </section>
+    <section id="article-27">
+      <h2>Article 27. DONNÉES NOMINATIVES – DROIT D’ACCÈS</h2>
+      <p>Les données nominatives concernant le Client pour l’accès à IZIKA sont destinées aux services
+        techniques, comptables et commerciaux de IZIKA, en sa qualité de responsable du traitement,
+        et de ses partenaires contractuels. Conformément à la loi n°78-17 du 6 janvier 1978 relative
+        à l’Informatique, aux fichiers et aux libertés, le CLIENT dispose d’un droit d’accès, de
+        rectification et d’opposition relatif aux données le concernant qui peut s’exercer en
+        adressant un courrier à IZIKA – 199 rue Hélène Boucher, 34170 Castelnau-le-Lez.</p>
+    </section>
 
-      <section id="article-28">
-        <h2>Article 28. DIVERS</h2>
-        <p>En cas de litige, seuls feront foi entre les parties les registres informatiques contenant la
-          trace des échanges entre les parties, détenus par IZIKA et conservés dans des conditions de
-          nature à en garantir l’intégrité. La nullité, la caducité, l’absence de force obligatoire ou
-          l’inopposabilité de l’une ou quelconque des stipulations du CONTRAT n’emporte pas nullité,
-          la caducité, l’absence de force obligatoire ou l’inopposabilité des autres stipulations, qui
-          conserveront tous leurs effets. Cependant, les Parties pourront, d’un commun accord,
-          convenir de remplacer la ou les stipulations invalidées.</p>
-      </section>
+    <section id="article-28">
+      <h2>Article 28. DIVERS</h2>
+      <p>En cas de litige, seuls feront foi entre les parties les registres informatiques contenant la
+        trace des échanges entre les parties, détenus par IZIKA et conservés dans des conditions de
+        nature à en garantir l’intégrité. La nullité, la caducité, l’absence de force obligatoire ou
+        l’inopposabilité de l’une ou quelconque des stipulations du CONTRAT n’emporte pas nullité,
+        la caducité, l’absence de force obligatoire ou l’inopposabilité des autres stipulations, qui
+        conserveront tous leurs effets. Cependant, les Parties pourront, d’un commun accord,
+        convenir de remplacer la ou les stipulations invalidées.</p>
+    </section>
 
-      <section id="article-29">
-        <h2>Article 29. DROIT APPLICABLE – ARBITRAGE – JURIDICTION COMPÉTENTE</h2>
-        <p>Le CONTRAT ainsi que l’ensemble des documents contractuels s’y rapportant sont soumis au
-          droit français, à l’exclusion de toute autre législation. Les différends ou les litiges nés
-          à l’occasion de l’exécution du CONTRAT ou de ses annexes doivent faire l’objet, avant toute
-          procédure judiciaire, d’une tentative de règlement amiable. A cette fin, les parties
-          conviennent de se rencontrer dans les 30 jours de la naissance du différend, dans un lieu
-          situé dans le ressort de la Cour d’Appel de Montpellier, Hérault, France. A défaut d’accord
-          trouvé entre les parties dans les 15 jours qui suivent cette rencontre, les parties
-          retrouvent leur liberté d’ester en justice. Aucune action judiciaire visant à engager la
-          responsabilité civile de IZIKA ne pourra être engagée plus d’une année civile suivant la
-          naissance de la prétention conformément aux dispositions de l’article 2254 du code civil. En
-          cas de survenance d’un litige, né à l’occasion de la contestation ou de l’exécution du
-          CONTRAT ou de ses annexes, les juridictions compétentes sont celles du ressort de la Cour
-          d’Appel de Montpellier.</p>
-      </section>
-    </div>
+    <section id="article-29">
+      <h2>Article 29. DROIT APPLICABLE – ARBITRAGE – JURIDICTION COMPÉTENTE</h2>
+      <p>Le CONTRAT ainsi que l’ensemble des documents contractuels s’y rapportant sont soumis au
+        droit français, à l’exclusion de toute autre législation. Les différends ou les litiges nés
+        à l’occasion de l’exécution du CONTRAT ou de ses annexes doivent faire l’objet, avant toute
+        procédure judiciaire, d’une tentative de règlement amiable. A cette fin, les parties
+        conviennent de se rencontrer dans les 30 jours de la naissance du différend, dans un lieu
+        situé dans le ressort de la Cour d’Appel de Montpellier, Hérault, France. A défaut d’accord
+        trouvé entre les parties dans les 15 jours qui suivent cette rencontre, les parties
+        retrouvent leur liberté d’ester en justice. Aucune action judiciaire visant à engager la
+        responsabilité civile de IZIKA ne pourra être engagée plus d’une année civile suivant la
+        naissance de la prétention conformément aux dispositions de l’article 2254 du code civil. En
+        cas de survenance d’un litige, né à l’occasion de la contestation ou de l’exécution du
+        CONTRAT ou de ses annexes, les juridictions compétentes sont celles du ressort de la Cour
+        d’Appel de Montpellier.</p>
+    </section>
   </LegalShell>
 </StandardLayout>

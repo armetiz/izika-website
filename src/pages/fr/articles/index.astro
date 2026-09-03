@@ -16,7 +16,7 @@ const articles = (await getCollection('articles', ({ id }) => id.startsWith('fr/
   robots="noindex, nofollow"
 >
   <div class="mx-auto max-w-4xl px-4 pt-12 pb-16 md:pt-16">
-    <h1 class="mb-8 text-3xl font-semibold">Articles</h1>
+    <h1 class="mb-8 text-[2.5rem] font-bold">Articles</h1>
     <ul class="space-y-3">
       {
         articles.map((a) => (
@@ -24,7 +24,7 @@ const articles = (await getCollection('articles', ({ id }) => id.startsWith('fr/
             <a class="font-semibold underline" href={articlePath(a.id.replace(/^fr\//, ''), 'fr')}>
               {a.data.title}
             </a>
-            <span class="ml-2 text-sm text-ink/60">{a.data.date.toISOString().slice(0, 10)}</span>
+            <span class="ml-2 text-sm text-muted">{a.data.date.toISOString().slice(0, 10)}</span>
           </li>
         ))
       }
