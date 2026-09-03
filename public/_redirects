@@ -34,3 +34,7 @@
 /fr_FR/*                               /fr/:splat                                301
 /fr_CH/*                               /fr/:splat                                301
 /solutions/*                           /fr/solutions/:splat                      301
+# Old Symfony front-controller URLs (.htaccess did the same strip).
+# /index.php/fr_FR/… chains through the /fr_FR/* rule above (2 hops, edge case).
+/index.php                             /fr                                       301
+/index.php/*                           /:splat                                   301
