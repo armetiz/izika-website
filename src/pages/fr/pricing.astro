@@ -1,5 +1,6 @@
 ---
 import StandardLayout from '../../layouts/StandardLayout.astro';
+import GradientHero from '../../components/GradientHero.astro';
 import FeatureCard from '../../components/FeatureCard.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import { btnPrimarySm } from '../../lib/cta';
@@ -134,9 +135,9 @@ const featureCards: ReadonlyArray<{
   description="Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché."
   schemaNodes={[webApplicationSchema()]}
 >
-  <!-- Pricing section -->
-  <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 pt-24 pb-16 lg:pt-32">
-    <div class="mx-auto mb-12 max-w-3xl text-center">
+  <!-- Hero -->
+  <GradientHero class="text-center">
+    <div class="mx-auto max-w-3xl">
       <h1 class="text-3xl font-bold">
         Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché.
       </h1>
@@ -151,7 +152,10 @@ const featureCards: ReadonlyArray<{
         </span>
       </a>
     </div>
+  </GradientHero>
 
+  <!-- Pricing section -->
+  <section id="fullPricingSection" class="mx-auto max-w-6xl px-4 py-16">
     <!-- Comparison table -->
     <div class="overflow-x-auto">
       <table class="w-full min-w-[40rem] border-collapse text-left">

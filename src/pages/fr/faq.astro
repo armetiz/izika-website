@@ -1,5 +1,6 @@
 ---
 import StandardLayout from '../../layouts/StandardLayout.astro';
+import GradientHero from '../../components/GradientHero.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import { faqPageSchema } from '../../seo/schema';
 import { faqEntries } from '../../data/faq.fr';
@@ -15,14 +16,9 @@ import { faqEntries } from '../../data/faq.fr';
   schemaNodes={[faqPageSchema(faqEntries)]}
 >
   <!-- Hero -->
-  <section
-    class="bg-cover bg-center pt-24 pb-16 lg:pt-32"
-    style="background-image: url('/assets/img/laptop-screen-izika_blur-light.jpg');"
-  >
-    <div class="mx-auto max-w-6xl px-4 text-center">
-      <h1 class="text-[2.5rem] font-bold">Questions fréquentes</h1>
-    </div>
-  </section>
+  <GradientHero class="text-center">
+    <h1 class="text-[2.5rem] font-bold">Questions fréquentes</h1>
+  </GradientHero>
 
   <!-- FAQ accordion -->
   <section class="mx-auto max-w-3xl px-4 py-16 lg:pb-32">

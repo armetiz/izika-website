@@ -1,8 +1,11 @@
 ---
+import GradientHero from './GradientHero.astro';
+
 /**
  * Shared shell for the legal-style pages (mentions légales, charte de
- * confidentialité, CGV, politique de sécurité): beige hero title band, then a
- * two-column layout with a sticky in-page nav card and the document body.
+ * confidentialité, CGV, politique de sécurité): gradient hero title band
+ * closed by the white wave, then a two-column layout with a sticky in-page
+ * nav card and the document body.
  */
 interface Props {
   title: string;
@@ -14,11 +17,9 @@ interface Props {
 const { title, navTitle, toc } = Astro.props;
 ---
 
-<section class="bg-beige-light pt-12 pb-16 md:pt-16">
-  <div class="mx-auto max-w-6xl px-4 text-center">
-    <h1 class="text-[2.5rem] font-bold">{title}</h1>
-  </div>
-</section>
+<GradientHero class="text-center">
+  <h1 class="text-[2.5rem] font-bold">{title}</h1>
+</GradientHero>
 
 <section class="mx-auto grid max-w-6xl items-start gap-10 px-4 py-16 md:grid-cols-[16rem_minmax(0,1fr)] lg:grid-cols-[18rem_minmax(0,1fr)] lg:pb-32">
   <nav class="self-start rounded-card bg-beige-light p-6 md:sticky md:top-24" aria-label="Sommaire">

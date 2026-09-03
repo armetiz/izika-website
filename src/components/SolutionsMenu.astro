@@ -8,6 +8,9 @@ interface Props {
 const { locale } = Astro.props;
 const dict = t(locale);
 const teamUrl = localizedPath('team', locale);
+const soloUrl = localizedPath('solo', locale);
+const entreprisesUrl = localizedPath('teamEntreprises', locale);
+const collectivitesUrl = localizedPath('teamCollectivites', locale);
 
 // Same entries as the old solutions_menu.html.twig mega menu.
 const soloItems = [
@@ -45,31 +48,31 @@ const soloItems = [
 
 const teamItems = [
   {
-    href: teamUrl,
+    href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/reseau-agences.svg',
     title: 'Réseaux d’agences',
     text: 'Suivi homogène des IK',
   },
   {
-    href: teamUrl,
+    href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/bank-insurance.svg',
     title: 'Banque & Assurance',
     text: "Gestion d'IK pour vos conseillers terrain",
   },
   {
-    href: teamUrl,
+    href: collectivitesUrl,
     icon: '/assets/solutions/menu/team/administration.svg',
     title: 'Administrations',
     text: 'IK pour collectivités, associations, ...',
   },
   {
-    href: teamUrl,
+    href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/btp-services-techniques.svg',
     title: 'BTP / Services techniques',
     text: 'Gérez les trajets de vos équipes mobiles',
   },
   {
-    href: teamUrl,
+    href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/commerce-distribution-commercial.svg',
     title: 'Commerces & Distribution',
     text: 'Déplacements de vos équipes, simplifiés',
@@ -107,6 +110,9 @@ const teamItems = [
             ))
           }
         </ul>
+        <a class="mt-2 inline-block p-2 text-sm font-semibold text-primary hover:underline" href={soloUrl}>
+          Découvrir izika pour les indépendants →
+        </a>
       </div>
       <div>
         <span class="mb-3 block text-sm font-bold uppercase tracking-wide">PME et Équipes</span>
@@ -125,6 +131,9 @@ const teamItems = [
             ))
           }
         </ul>
+        <a class="mt-2 inline-block p-2 text-sm font-semibold text-primary hover:underline" href={teamUrl}>
+          Découvrir izika pour les équipes →
+        </a>
       </div>
       <div class="hidden md:block">
         <img

@@ -73,6 +73,9 @@ const backgroundClass = {
               Entreprises, associations & collectivités
             </a>
           </li>
+          <li>
+            <a class="hover:underline" href={localizedPath('security', locale)}>{dict.footer.security}</a>
+          </li>
         </ul>
       </div>
 
@@ -111,6 +114,8 @@ const backgroundClass = {
     <div class="mt-12 pb-4 text-center">
       <p class="text-[80%]">
         <a class="underline" href={localizedPath('legal', locale)}>{dict.footer.legal}</a>
+        {' | '}
+        <a class="underline" href={localizedPath('privacy', locale)}>{dict.footer.privacy}</a>
         {' | '}
         <a class="underline" href={localizedPath('terms', locale)}>{dict.footer.terms}</a>
         {' | '}
