@@ -80,7 +80,7 @@ const teamItems = [
 ];
 ---
 
-<li class="group relative md:static">
+<li id="solutions-menu" class="group relative md:static">
   <details class="md:[&[open]>summary]:text-primary-hover">
     <summary
       class="flex cursor-pointer list-none items-center gap-1 py-2 font-bold hover:text-primary-hover md:py-0"
@@ -150,3 +150,32 @@ const teamItems = [
     </div>
   </details>
 </li>
+
+<script>
+  // Desktop only: open the mega menu on hover, keep it open while the pointer
+  // stays inside (summary or panel), close shortly after it leaves.
+  const menu = document.getElementById('solutions-menu');
+  const details = menu?.querySelector('details');
+  const summary = details?.querySelector('summary');
+  const hoverMode = window.matchMedia('(min-width: 768px) and (hover: hover)');
+  let closeTimer: ReturnType<typeof setTimeout> | undefined;
+
+  menu?.addEventListener('mouseenter', () => {
+    if (!hoverMode.matches || !details) return;
+    clearTimeout(closeTimer);
+    details.open = true;
+  });
+
+  menu?.addEventListener('mouseleave', () => {
+    if (!hoverMode.matches || !details) return;
+    closeTimer = setTimeout(() => {
+      details.open = false;
+    }, 200);
+  });
+
+  // In hover mode a mouse click on the summary would toggle the menu closed
+  // while still hovering; keyboard activation (event.detail === 0) keeps working.
+  summary?.addEventListener('click', (event) => {
+    if (hoverMode.matches && event.detail > 0) event.preventDefault();
+  });
+</script>
