@@ -25,8 +25,9 @@ const { titlePrefix, words, ctaEventId, ctaLabel, trackingContext } = Astro.prop
   <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <h1 class="text-4xl leading-[1.2] font-bold lg:text-[3.5rem]">
-          {titlePrefix}<br />
-          <span class="text-primary" data-rotating-words={JSON.stringify(words)}>{words[0]}</span>
+          {titlePrefix}&nbsp;<span class="text-primary" data-rotating-words={JSON.stringify(words)}
+            >{words[0]}</span
+          >
         </h1>
         <div class="mt-4 text-lg">
           <slot name="lead" />
