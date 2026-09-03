@@ -80,58 +80,79 @@ const teamItems = [
 ];
 ---
 
-<li id="solutions-menu" class="group relative md:static">
-  <details class="md:[&[open]>summary]:text-primary-hover">
+<li id="solutions-menu" class="relative border-b border-beige-line md:static md:border-0">
+  <details class="group md:[&[open]>summary]:text-primary-hover">
     <summary
-      class="flex cursor-pointer list-none items-center gap-1 py-2 font-bold hover:text-primary-hover md:py-0"
+      class="flex cursor-pointer list-none items-center justify-between gap-1 py-4 font-bold hover:text-primary-hover md:justify-start md:py-0"
     >
       {dict.nav.solutions}
-      <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <svg
+        class="h-3 w-3 transition-transform group-open:rotate-180 md:group-open:rotate-0"
+        viewBox="0 0 12 12"
+        fill="none"
+        aria-hidden="true"
+      >
         <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
       </svg>
     </summary>
     <div
-      class="mt-2 grid gap-6 rounded-lg bg-white p-4 md:absolute md:left-1/2 md:z-30 md:mt-4 md:w-[min(64rem,90vw)] md:-translate-x-1/2 md:grid-cols-3 md:border-t-2 md:border-primary md:p-8 md:shadow-card"
+      class="grid gap-6 pb-5 md:absolute md:left-1/2 md:z-30 md:mt-4 md:w-[min(64rem,90vw)] md:-translate-x-1/2 md:grid-cols-3 md:rounded-lg md:border-t-2 md:border-primary md:bg-white md:p-8 md:pb-8 md:shadow-card"
     >
       <div>
-        <span class="mb-3 block text-sm font-bold uppercase tracking-wide">Solos et Indépendants</span>
-        <ul class="space-y-1">
+        <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
+          Solos et Indépendants
+        </span>
+        <ul class="md:space-y-1">
           {
             soloItems.map((item) => (
               <li>
-                <a class="flex items-center gap-3 rounded-md p-2 hover:bg-beige/60" href={item.href}>
-                  <img class="h-9 w-9" src={item.icon} alt="" loading="lazy" />
+                <a
+                  class="flex items-center gap-3 rounded-md py-2 font-normal hover:bg-beige/60 md:p-2"
+                  href={item.href}
+                >
+                  <img class="h-7 w-7 md:h-9 md:w-9" src={item.icon} alt="" loading="lazy" />
                   <span>
-                    <span class="block font-semibold">{item.title}</span>
-                    <span class="block text-sm text-muted">{item.text}</span>
+                    <span class="block md:font-semibold">{item.title}</span>
+                    <span class="hidden text-sm text-muted md:block">{item.text}</span>
                   </span>
                 </a>
               </li>
             ))
           }
         </ul>
-        <a class="mt-2 inline-block p-2 text-sm font-semibold text-primary hover:underline" href={soloUrl}>
+        <a
+          class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
+          href={soloUrl}
+        >
           Découvrir izika pour les indépendants →
         </a>
       </div>
       <div>
-        <span class="mb-3 block text-sm font-bold uppercase tracking-wide">PME et Équipes</span>
-        <ul class="space-y-1">
+        <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
+          PME et Équipes
+        </span>
+        <ul class="md:space-y-1">
           {
             teamItems.map((item) => (
               <li>
-                <a class="flex items-center gap-3 rounded-md p-2 hover:bg-beige/60" href={item.href}>
-                  <img class="h-9 w-9" src={item.icon} alt="" loading="lazy" />
+                <a
+                  class="flex items-center gap-3 rounded-md py-2 font-normal hover:bg-beige/60 md:p-2"
+                  href={item.href}
+                >
+                  <img class="h-7 w-7 md:h-9 md:w-9" src={item.icon} alt="" loading="lazy" />
                   <span>
-                    <span class="block font-semibold">{item.title}</span>
-                    <span class="block text-sm text-muted">{item.text}</span>
+                    <span class="block md:font-semibold">{item.title}</span>
+                    <span class="hidden text-sm text-muted md:block">{item.text}</span>
                   </span>
                 </a>
               </li>
             ))
           }
         </ul>
-        <a class="mt-2 inline-block p-2 text-sm font-semibold text-primary hover:underline" href={teamUrl}>
+        <a
+          class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
+          href={teamUrl}
+        >
           Découvrir izika pour les équipes →
         </a>
       </div>
