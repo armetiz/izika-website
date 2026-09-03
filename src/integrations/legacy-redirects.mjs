@@ -9,6 +9,9 @@ import path from 'node:path';
  * never drift from the collection. A blanket /:slug catch-all is forbidden on
  * Cloudflare Pages (_redirects is evaluated before static assets).
  */
+// The hardcoded `articles/fr/` path is deliberate: this legacy URL space is a
+// 100% French inheritance from the pre-Astro site — new markets have no
+// legacy root-level URLs to redirect.
 export default function legacyRedirects() {
   return {
     name: 'izika:legacy-redirects',

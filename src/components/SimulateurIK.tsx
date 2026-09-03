@@ -5,24 +5,32 @@ import {
   MAJORATION_ELECTRIQUE,
   PERIODES,
   computeIK,
-  formatCoef,
-  formatEuros,
-  formatNombre,
-  labelTranche,
   type Annee,
   type Categorie,
   type Motorisation,
   type Periode,
 } from '../data/bareme-ik';
-import { site } from '../config/site';
+import { PERIODE_LABELS, labelTranche } from '../data/bareme-ik.labels.fr';
+import { makeFormatters } from '../lib/format';
 import { trackClickPayload } from '../lib/tracking';
 
 /**
  * Simulateur d'indemnités kilométriques. Toute la logique de calcul vit dans
  * src/data/bareme-ik.ts, partagée avec les tables pré-rendues de la page.
+ * Composant PAYS-spécifique (barème CGI, copy française inline) : il n'existe
+ * que sous routes.calculator du marché fr ; le formatage vient du Market via
+ * les props sérialisables numberLocale/currency (l'île ne bundle pas la
+ * config du site).
  * Le style suit la charte du thème : pastilles rounded-full jaune/blanc,
  * cartes blanches shadow-card, panneaux soft-primary, cercles jaunes numérotés.
  */
+
+interface Props {
+  numberLocale: string;
+  currency: string;
+  /** CTA de conversion du marché (getMarket(...).joinUrl). */
+  joinUrl: string;
+}
 
 const inputClass =
   'w-full rounded-card border border-beige-line bg-white px-3 py-2.5 text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/40';
@@ -73,7 +81,11 @@ function SegmentedRadio<T extends string>(props: {
   );
 }
 
-export default function SimulateurIK() {
+export default function SimulateurIK({ numberLocale, currency, joinUrl }: Props) {
+  const { formatCurrency, formatNumber, formatCoef } = useMemo(
+    () => makeFormatters({ numberLocale, currency }),
+    [numberLocale, currency]
+  );
   const [categorie, setCategorie] = useState<Categorie>('voiture');
   const [motorisation, setMotorisation] = useState<Motorisation>('thermique');
   const [annee, setAnnee] = useState<Annee>('2025');
@@ -201,7 +213,7 @@ export default function SimulateurIK() {
             >
               {(Object.keys(PERIODES) as Periode[]).map((p) => (
                 <option key={p} value={p}>
-                  {PERIODES[p].label}
+                  {PERIODE_LABELS[p].label}
                 </option>
               ))}
             </select>
@@ -224,25 +236,26 @@ export default function SimulateurIK() {
         {resultat ? (
           <div className="mt-4 flex flex-1 flex-col">
             <p className="rounded-card bg-soft-primary px-6 py-5 text-center">
-              <span className="block text-4xl font-bold">{formatEuros(resultat.montant)}</span>
+              <span className="block text-4xl font-bold">{formatCurrency(resultat.montant)}</span>
               <span className="mt-1 block text-sm text-muted">
-                par an — soit {formatEuros(resultat.montant / 12)} / mois ou{' '}
-                {formatEuros(resultat.montant / 52)} / semaine
+                par an — soit {formatCurrency(resultat.montant / 12)} / mois ou{' '}
+                {formatCurrency(resultat.montant / 52)} / semaine
               </span>
             </p>
 
             <p className="mt-5 text-sm font-bold tracking-wide uppercase">Le détail du calcul</p>
-            <ol className="mt-3 space-y-3 text-sm text-muted">
+            {/* pb keeps the separator off the last step when mt-auto collapses to 0. */}
+            <ol className="mt-3 space-y-3 pb-4 text-sm text-muted">
               <li className="flex items-start gap-3">
                 <StepBadge n={1} />
                 <span>
                   <strong className="text-ink">Distance annualisée :</strong>{' '}
                   {periode === 'annee' ? (
-                    <>{formatNombre(resultat.kmAnnuels)} km par an.</>
+                    <>{formatNumber(resultat.kmAnnuels)} km par an.</>
                   ) : (
                     <>
-                      {formatNombre(km)} km {PERIODES[periode].parLabel} ×{' '}
-                      {PERIODES[periode].facteur} = {formatNombre(resultat.kmAnnuels)} km par an.
+                      {formatNumber(km)} km {PERIODE_LABELS[periode].parLabel} ×{' '}
+                      {PERIODES[periode].facteur} = {formatNumber(resultat.kmAnnuels)} km par an.
                     </>
                   )}
                 </span>
@@ -251,7 +264,7 @@ export default function SimulateurIK() {
                 <StepBadge n={2} />
                 <span>
                   <strong className="text-ink">Tranche du barème :</strong>{' '}
-                  {labelTranche(classe, resultat.trancheIndex).toLowerCase()} — {classe.label} (
+                  {labelTranche({ formatCurrency, formatNumber, formatCoef }, classe, resultat.trancheIndex).toLowerCase()} — {classe.label} (
                   {bareme.label.toLowerCase()}).
                 </span>
               </li>
@@ -261,13 +274,13 @@ export default function SimulateurIK() {
                   <strong className="text-ink">Formule appliquée :</strong>{' '}
                   {resultat.tranche.fixe > 0 ? (
                     <>
-                      ({formatNombre(resultat.kmAnnuels)} × {formatCoef(resultat.tranche.coef)}) +{' '}
-                      {formatNombre(resultat.tranche.fixe)} € = {formatEuros(resultat.montantBase)}
+                      ({formatNumber(resultat.kmAnnuels)} × {formatCoef(resultat.tranche.coef)}) +{' '}
+                      {formatNumber(resultat.tranche.fixe)} € = {formatCurrency(resultat.montantBase)}
                     </>
                   ) : (
                     <>
-                      {formatNombre(resultat.kmAnnuels)} × {formatCoef(resultat.tranche.coef)} ={' '}
-                      {formatEuros(resultat.montantBase)}
+                      {formatNumber(resultat.kmAnnuels)} × {formatCoef(resultat.tranche.coef)} ={' '}
+                      {formatCurrency(resultat.montantBase)}
                     </>
                   )}
                 </span>
@@ -277,7 +290,7 @@ export default function SimulateurIK() {
                   <StepBadge n={4} />
                   <span>
                     <strong className="text-ink">Véhicule électrique :</strong> majoration de{' '}
-                    {MAJORATION_ELECTRIQUE * 100} %, soit + {formatEuros(resultat.majoration)}.
+                    {MAJORATION_ELECTRIQUE * 100} %, soit + {formatCurrency(resultat.majoration)}.
                   </span>
                 </li>
               )}
@@ -286,7 +299,7 @@ export default function SimulateurIK() {
             <p className="mt-auto border-t border-beige-line pt-4 text-sm text-muted">
               Ces kilomètres, izika peut les compter pour vous depuis votre agenda.{' '}
               <a
-                href={site.joinUrl}
+                href={joinUrl}
                 className="font-bold text-ink underline hover:text-primary-hover"
                 data-track-click={ctaPayload}
               >

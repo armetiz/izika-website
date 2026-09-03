@@ -1,85 +1,89 @@
 ---
-import { t, localizedPath, solutionPath, type Locale } from '../i18n';
+import {
+  t,
+  localizedPath,
+  solutionPath,
+  solutionSlug,
+  solutionsBaseSlug,
+  type MarketId,
+  type SolutionKey,
+} from '../i18n';
 
 interface Props {
-  locale: Locale;
+  market: MarketId;
 }
 
-const { locale } = Astro.props;
-const dict = t(locale);
-const teamUrl = localizedPath('team', locale);
-const soloUrl = localizedPath('solo', locale);
-const entreprisesUrl = localizedPath('teamEntreprises', locale);
-const collectivitesUrl = localizedPath('teamCollectivites', locale);
+const { market } = Astro.props;
+const dict = t(market);
 
-// Same entries as the old solutions_menu.html.twig mega menu.
-const soloItems = [
-  {
-    href: solutionPath('agents-immobilier-mandataires-immobilier', locale),
-    icon: '/assets/solutions/menu/solo/agent-immobilier-mandataire.svg',
-    title: 'Agent Immobilier',
-    text: 'Agents & mandataires',
-  },
-  {
-    href: solutionPath('agent-general-assurances', locale),
-    icon: '/assets/solutions/menu/solo/agent-general-assurance.svg',
-    title: "Agent Général d'assurances",
-    text: 'Déplacements clients et IK sans saisie',
-  },
-  {
-    href: solutionPath('professions-liberales', locale),
-    icon: '/assets/solutions/menu/solo/professions-liberales.svg',
-    title: 'Professions libérales',
-    text: 'Médecins, kinés, infirmiers, avocats…',
-  },
-  {
-    href: solutionPath('artisans-btp', locale),
-    icon: '/assets/solutions/menu/solo/artisan-btp.svg',
-    title: 'Artisans & BTP',
-    text: 'Déplacements chantiers',
-  },
-  {
-    href: solutionPath('consultants', locale),
-    icon: '/assets/solutions/menu/solo/consultant.svg',
-    title: 'Consultants',
-    text: 'Vos trajets clients sans effort',
-  },
-];
+const teamUrl = localizedPath('team', market);
+const soloUrl = localizedPath('solo', market);
+const entreprisesUrl = localizedPath('teamEntreprises', market);
+const collectivitesUrl = localizedPath('teamCollectivites', market);
+
+// Same entries as the old solutions_menu.html.twig mega menu — labels come
+// from the language dictionary, hrefs from the solutionSlugs table (an entry
+// is masked in markets where its slug is undefined; the [market]/solutions
+// route guarantees at build time that the table matches the content).
+const menu = dict.solutionsMenu;
+const SOLO_ICONS: Record<SolutionKey, string> = {
+  agentsImmobilier: '/assets/solutions/menu/solo/agent-immobilier-mandataire.svg',
+  agentAssurances: '/assets/solutions/menu/solo/agent-general-assurance.svg',
+  professionsLiberales: '/assets/solutions/menu/solo/professions-liberales.svg',
+  artisansBtp: '/assets/solutions/menu/solo/artisan-btp.svg',
+  consultants: '/assets/solutions/menu/solo/consultant.svg',
+};
+const soloItems = (
+  [
+    'agentsImmobilier',
+    'agentAssurances',
+    'professionsLiberales',
+    'artisansBtp',
+    'consultants',
+  ] as const
+)
+  .map((key) => ({ key, slug: solutionSlug(key, market) }))
+  .filter((item): item is { key: SolutionKey; slug: string } => item.slug !== undefined)
+  .map(({ key, slug }) => ({
+    href: solutionPath(slug, market),
+    icon: SOLO_ICONS[key],
+    ...menu.items[key],
+  }));
+
+// The mega menu only exists for markets with solutions content — hidden
+// entirely otherwise (table/route partiality masks chrome).
+const hasSolutions = solutionsBaseSlug(market) !== undefined && soloItems.length > 0;
 
 const teamItems = [
   {
     href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/reseau-agences.svg',
-    title: 'Réseaux d’agences',
-    text: 'Suivi homogène des IK',
+    ...menu.items.reseauxAgences,
   },
   {
     href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/bank-insurance.svg',
-    title: 'Banque & Assurance',
-    text: "Gestion d'IK pour vos conseillers terrain",
+    ...menu.items.banqueAssurance,
   },
   {
     href: collectivitesUrl,
     icon: '/assets/solutions/menu/team/administration.svg',
-    title: 'Administrations',
-    text: 'IK pour collectivités, associations, ...',
+    ...menu.items.administrations,
   },
   {
     href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/btp-services-techniques.svg',
-    title: 'BTP / Services techniques',
-    text: 'Gérez les trajets de vos équipes mobiles',
+    ...menu.items.btpServices,
   },
   {
     href: entreprisesUrl,
     icon: '/assets/solutions/menu/team/commerce-distribution-commercial.svg',
-    title: 'Commerces & Distribution',
-    text: 'Déplacements de vos équipes, simplifiés',
+    ...menu.items.commerces,
   },
 ];
 ---
 
+{hasSolutions && (
 <li id="solutions-menu" class="relative border-b border-beige-line md:static md:border-0">
   <details class="group md:[&[open]>summary]:text-primary-hover">
     <summary
@@ -100,7 +104,7 @@ const teamItems = [
     >
       <div>
         <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
-          Solos et Indépendants
+          {menu.soloGroup}
         </span>
         <ul class="md:space-y-1">
           {
@@ -124,12 +128,12 @@ const teamItems = [
           class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
           href={soloUrl}
         >
-          Découvrir izika pour les indépendants →
+          {menu.soloMore}
         </a>
       </div>
       <div>
         <span class="mb-1 block text-xs font-bold uppercase tracking-wide text-muted md:mb-3 md:text-sm md:text-current">
-          PME et Équipes
+          {menu.teamGroup}
         </span>
         <ul class="md:space-y-1">
           {
@@ -153,24 +157,22 @@ const teamItems = [
           class="mt-1 inline-block py-2 text-sm font-semibold text-primary hover:underline md:mt-2 md:p-2"
           href={teamUrl}
         >
-          Découvrir izika pour les équipes →
+          {menu.teamMore}
         </a>
       </div>
       <div class="hidden md:block">
         <img
           class="mb-3 rounded-lg"
           src="/assets/landing-pages/icon_report-conformity.png"
-          alt="Conforme aux règles fiscales"
+          alt={menu.blurbImageAlt}
           loading="lazy"
         />
-        <p class="text-sm text-muted">
-          izika est la solution de déclaration d'IK recommandée par les experts comptables pour les
-          entrepreneurs et les PME.
-        </p>
+        <p class="text-sm text-muted">{menu.blurb}</p>
       </div>
     </div>
   </details>
 </li>
+)}
 
 <script>
   // Desktop only: open the mega menu on hover, keep it open while the pointer

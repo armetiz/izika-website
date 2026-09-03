@@ -5,12 +5,12 @@ import JsonLd from '../components/JsonLd.astro';
 import Analytics from '../components/Analytics.astro';
 import { graph, organizationSchema, webSiteSchema } from '../seo/schema';
 import type { RouteKey } from '../i18n';
-import type { Locale } from '../i18n';
+import { getMarket, type MarketId } from '../i18n';
 
 interface Props {
-  locale: Locale;
+  market: MarketId;
   title: string;
-  /** Falls back to site.defaultDescription in Seo.astro. */
+  /** Falls back to the market's defaultDescription in Seo.astro. */
   description?: string;
   routeKey?: RouteKey;
   image?: string;
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const {
-  locale,
+  market,
   title,
   description,
   routeKey,
@@ -33,17 +33,19 @@ const {
   schemaNodes = [],
 } = Astro.props;
 
-const schema = graph(organizationSchema(), webSiteSchema(), ...schemaNodes);
+const marketData = getMarket(market);
+const schema = graph(organizationSchema(marketData), webSiteSchema(marketData), ...schemaNodes);
 
 const pageViewPayload = JSON.stringify({ name: 'pageViewed', properties: {} });
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={getMarket(market).language}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Seo
+      market={market}
       title={title}
       description={description}
       routeKey={routeKey}
@@ -58,17 +60,22 @@ const pageViewPayload = JSON.stringify({ name: 'pageViewed', properties: {} });
     <link rel="icon" href="/favicon-32.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- TrustBox script -->
-    <script
-      is:inline
-      type="text/javascript"
-      src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-      async></script>
+    <!-- TrustBox script — only for markets with a Trustpilot presence -->
+    {
+      marketData.trustpilot && (
+        <script
+          is:inline
+          type="text/javascript"
+          src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+          async
+        />
+      )
+    }
 
     <slot name="head" />
   </head>
   <body data-track-page-view={pageViewPayload}>
     <slot />
-    <Analytics />
+    <Analytics cookiesVersion={marketData.cookiesVersion} />
   </body>
 </html>

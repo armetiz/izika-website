@@ -6,6 +6,7 @@ import FaqAccordion from '../../components/FaqAccordion.astro';
 import { btnPrimarySm } from '../../lib/cta';
 import { localizedPath } from '../../i18n';
 import { webApplicationSchema } from '../../seo/schema';
+import { getMarket } from '../../i18n';
 import { reviews } from '../../data/reviews';
 
 // Ported from templates/content/pricing.html.twig (CHF branches dropped, € only).
@@ -16,6 +17,8 @@ interface PricingTier {
   infinity?: boolean;
   price: string;
 }
+
+const trustpilot = getMarket('fr').trustpilot!;
 
 const tiers: ReadonlyArray<PricingTier> = [
   { name: 'Solo', price: 'Gratuit' },
@@ -129,11 +132,11 @@ const featureCards: ReadonlyArray<{
 ---
 
 <StandardLayout
-  locale="fr"
+  market="fr"
   routeKey="pricing"
   title="Nos offres et tarifs"
   description="Simplifiez vos frais kilométriques avec le logiciel le plus performant du marché."
-  schemaNodes={[webApplicationSchema()]}
+  schemaNodes={[webApplicationSchema(getMarket('fr'))]}
 >
   <!-- Hero -->
   <GradientHero class="text-center">
@@ -144,7 +147,7 @@ const featureCards: ReadonlyArray<{
       <!-- Trustpilot -->
       <a
         class="mt-6 inline-flex items-center justify-center gap-2"
-        href={reviews.trustpilotUrl}
+        href={trustpilot.url}
         rel="nofollow"
       >
         <span class="text-[2.5rem] font-bold">

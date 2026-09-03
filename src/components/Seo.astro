@@ -1,8 +1,9 @@
 ---
 import { site } from '../config/site';
-import { locales, xDefaultLocale, routes, localizedPath, type RouteKey } from '../i18n';
+import { marketIds, MARKETS, getMarket, xDefaultMarket, routes, localizedPath, type MarketId, type RouteKey } from '../i18n';
 
 interface Props {
+  market: MarketId;
   title: string;
   description?: string;
   /** Editorial pages: drives hreflang alternates from the routes table. */
@@ -15,8 +16,8 @@ interface Props {
 }
 
 const {
+  market,
   title,
-  description = site.defaultDescription,
   routeKey,
   image = site.defaultOgImage,
   robots = 'index, follow',
@@ -24,21 +25,24 @@ const {
   articlePublishedTime,
 } = Astro.props;
 
+const marketData = getMarket(market);
+const description = Astro.props.description ?? marketData.defaultDescription;
+
 // Self-referencing absolute canonical, no trailing slash and no .html
 // (build.format 'file' bakes it into pathname at build time). Fixes the old
 // hardcoded og:url by construction: canonical and og:url share this value.
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/(index)?$/, '') || '/';
 const canonical = new URL(path, Astro.site).href;
 
-// hreflang: only emitted when the page exists in >= 2 locales. fr-only launch
+// hreflang: only emitted when the page exists in >= 2 markets. fr-only launch
 // deliberately ships zero hreflang tags.
 const alternates = routeKey
-  ? locales
-      .map((locale) => ({ locale, href: localizedPath(routeKey, locale) }))
-      .filter((a): a is { locale: (typeof locales)[number]; href: string } => a.href !== null)
+  ? marketIds
+      .map((market) => ({ market, href: localizedPath(routeKey, market) }))
+      .filter((a): a is { market: (typeof marketIds)[number]; href: string } => a.href !== null)
   : [];
 const emitHreflang = alternates.length >= 2;
-const xDefaultHref = routeKey ? localizedPath(routeKey, xDefaultLocale) : null;
+const xDefaultHref = routeKey ? localizedPath(routeKey, xDefaultMarket) : null;
 
 const ogImage = new URL(image, Astro.site).href;
 ---
@@ -55,18 +59,18 @@ const ogImage = new URL(image, Astro.site).href;
         <link rel="alternate" href={new URL(xDefaultHref, Astro.site).href} hreflang="x-default" />
       )}
       {alternates.map((a) => (
-        <link rel="alternate" href={new URL(a.href, Astro.site).href} hreflang={a.locale} />
+        <link rel="alternate" href={new URL(a.href, Astro.site).href} hreflang={MARKETS[a.market].hreflang} />
       ))}
     </>
   )
 }
 
-<meta property="og:locale" content="fr_FR" />
+<meta property="og:locale" content={marketData.ogLocale} />
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-<meta property="og:site_name" content="IZIKA : Calcul indemnité kilométrique" />
+<meta property="og:site_name" content={marketData.siteName} />
 <meta property="article:publisher" content="https://www.facebook.com/izikacom/" />
 {
   articlePublishedTime && (

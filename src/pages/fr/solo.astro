@@ -8,7 +8,7 @@ import LandingScreenCarousel from '../../components/LandingScreenCarousel.astro'
 import TestimonialCard from '../../components/TestimonialCard.astro';
 import LandingClosingCta from '../../components/LandingClosingCta.astro';
 
-const locale = 'fr';
+const market = 'fr';
 const trackingContext = 'page_solo';
 
 const highlights = [
@@ -101,7 +101,7 @@ const complianceItems = [
 ---
 
 <LandingLayout
-  locale={locale}
+  market={market}
   title="Gestion automatique des indemnités kilométriques"
   description="izika est la solution n°1 en Europe de calcul d'indemnités kilométriques pour les indépendants"
   routeKey="solo"
@@ -129,6 +129,8 @@ const complianceItems = [
       tabletAlt="paramétrez izika pour accélérer le traitement de vos IK"
       tabletWidth={1642}
       tabletHeight={1202}
+      ipadAlt="izika sur ipad"
+      mobileAlt="izika sur mobile"
     />
   </LandingHero>
 
@@ -142,7 +144,7 @@ const complianceItems = [
     items={simplifyItems}
     class="bg-soft-neutral"
   >
-    <LandingScreenCarousel images={simplifyScreens} />
+    <LandingScreenCarousel images={simplifyScreens} label="Captures d'écran de l'application" />
   </LandingChecklistSection>
 
   <!-- Features Section 2 -->
@@ -152,7 +154,7 @@ const complianceItems = [
     items={adaptItems}
     reverse
   >
-    <LandingScreenCarousel images={adaptScreens} />
+    <LandingScreenCarousel images={adaptScreens} label="Captures d'écran de l'application" />
   </LandingChecklistSection>
 
   <!-- Features Section 3 -->

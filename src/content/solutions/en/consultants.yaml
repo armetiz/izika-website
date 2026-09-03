@@ -1,0 +1,130 @@
+meta:
+  title: "Mileage allowance management for independent consultants - izika"
+  description: "izika is the ideal solution for independent consultants who travel to their clients: automatic mileage allowance calculation from your calendar, no data entry."
+trackingContext: page_solution_consultants
+
+head:
+  title1: Trip management tool for consultants
+  title2: Automatic mileage allowance management for independent consultants
+  catch: >-
+    izika turns your client appointments into mileage allowances.
+    No data entry, nothing forgotten, a report ready for your accountant.
+  secondaryCta:
+    routeKey: features
+    text: Features
+  image:
+    src: /assets/solutions/consultants/rdv-template.png
+    alt: Mileage allowance export for independent consultants
+    title: Mileage allowance export for independent consultants
+
+featureHighlights:
+  title: The fastest way for consultants to manage their client travel
+  image:
+    src: /assets/solutions/visuel-agenda-professionnel.png
+    alt: izika for independent consultants
+    title: izika for independent consultants
+  ctaText: Try izika
+  items:
+    - title: Your calendar does the work for you
+      text: >-
+        Every client appointment, every trip on assignment automatically becomes a computed journey.
+        You keep managing your calendar as usual — izika takes care of the rest.
+    - title: "No more year-end reconstruction"
+      text: >-
+        Your data is already there when your accountant needs it. No more spreadsheets, logbooks
+        and hours lost chasing forgotten trips.
+    - title: The right scale applied automatically
+      text: >-
+        izika applies the mileage scale matching your vehicle — the official French scales or your
+        own custom scale. Every kilometre is counted at the right rate, with no calculation on your part.
+    - title: Guaranteed compliance
+      text: >-
+        izika is approved and validated by chartered accountants and the tax administration. The
+        generated reports comply with your tax obligations, whatever your legal structure.
+
+benefits:
+  title: "Benefits of a mileage allowance management tool for consultants"
+  items:
+    - title: Your client trips computed automatically from your calendar
+      image: /assets/solutions/consultants/calendar-to-ik.png
+      imageAlt: "izika - consultants' mileage allowances computed from the calendar"
+      text: |
+        <p>As a consultant, your days are a string of meetings at your clients', trips on assignment, prospecting visits… all journeys you have no time to write down one by one.</p>
+        <ul>
+          <li>Sync your business calendar once</li>
+          <li>Every appointment automatically becomes a computed journey</li>
+          <li>Distances and allowance amounts are already there, with zero data entry</li>
+        </ul>
+    - title: A compliant tax report, ready to send to your accountant
+      image: /assets/solutions/consultants/rapport-print-ombre.png
+      imageAlt: izika - Compliant tax report for independent consultants
+      text: |
+        <p>
+          Whatever your legal structure, your travel expenses must be substantiated.
+          izika generates a structured, clear document accepted by the tax administration.
+        </p>
+        <ul>
+          <li>Export a complete report in a few clicks</li>
+          <li>Send it straight to your chartered accountant</li>
+          <li>Justify every trip in the event of a tax audit</li>
+        </ul>
+    - title: izika runs in the background, with no mental load
+      image: /assets/solutions/laptop-screen-izika.jpg
+      imageAlt: izika - Consultant mileage management with no daily burden
+      text: |
+        <p>izika doesn't ask you to log in every day or enter a single trip. It works in the background, from your calendar.</p>
+        <ul>
+          <li>No manual entry, no logbook</li>
+          <li>No double bookkeeping with your existing calendar tool</li>
+          <li>Open izika whenever you need it — everything is already ready</li>
+        </ul>
+  testimonial:
+    quote: >-
+      I travel a lot: clients, prospects, partners. Before izika, I'd scribble things down somewhere
+      and reconstruct everything at year-end with my accountant. Now it's all already there.
+      I save at least two hours a month.
+    avatar: /assets/solutions/testimonial-avatar.png
+    avatarAlt: Thomas V.
+    name: Thomas V.
+    companyTitle: "IT systems consultant"
+
+customerCase:
+  title: Is izika the best tool for managing independent consultants' trips?
+  intro: |
+    <p>
+      Joseph Darves is an expert in the repair of and consulting on wind instruments — clarinets, saxophones, flutes, oboes, bassoons.
+      He operates from two addresses: his workshop in Quincy-sous-Sénart and his Paris shop in the 17th arrondissement.
+    </p>
+    <p>
+      He regularly travels to partners, music schools and orchestras for on-site appraisals.
+      An izika premium customer since 2023, he no longer wastes a minute on his mileage allowances.
+    </p>
+  avatar: /assets/solutions/consultants/persona.jpg
+  avatarAlt: Joseph Darves - JD Atelier des Bois
+  gainsTitle: "Here is what Joseph gained by using izika:"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: Trips between his two addresses computed automatically
+      text: >-
+        His round trips between Quincy-sous-Sénart and Paris, his visits to partners and music schools
+        <strong>are automatically turned into mileage allowances</strong> with zero data entry.
+    - image: /assets/landing-pages/illu-tournee-etoile.png
+      imageAlt: Appraisals and consultations on the road
+      text: >-
+        Every on-site appraisal, every consulting appointment at a client's automatically becomes a journey in izika.
+        Joseph reviews his <strong>trips in a few seconds</strong> and fixes anything needed before exporting.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Annual report sent to the accountant in minutes
+      text: >-
+        At the end of the financial year, <strong>the report is ready in five minutes.</strong>
+        Joseph sends it straight to his accountant — every trip is substantiated and compliant, stress-free in case of an audit.
+  testimonial:
+    quote: >-
+      I have two addresses and I travel a lot — to partners, schools, orchestras.
+      Before izika, I never quite knew what to declare at year-end. Now my calendar does all the work.
+      There's almost nothing left for me to do, and my accountant gets a complete report within minutes.
+    name: Joseph Darves
+    companyTitle: JD Atelier des Bois — Wind instrument expert
+  ctaBlock:
+    text: "Like Joseph, stop wasting time on your mileage reporting"
+    buttonText: Try for free

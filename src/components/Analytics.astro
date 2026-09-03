@@ -5,6 +5,12 @@
  * Every id comes from env; an empty id disables its block, so dev/preview
  * deployments track nothing by default.
  */
+interface Props {
+  /** Axeptio consent configuration version (market-specific). */
+  cookiesVersion: string;
+}
+
+const { cookiesVersion } = Astro.props;
 const gtmId = import.meta.env.PUBLIC_GTM_ID ?? '';
 const brevoClientKey = import.meta.env.PUBLIC_BREVO_TRACKER_CLIENT_KEY ?? '';
 const axeptioClientId = import.meta.env.PUBLIC_AXEPTIO_CLIENT_ID ?? '';
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const axeptioInit = `
 window.axeptioSettings = {
 	clientId: ${JSON.stringify(axeptioClientId)},
-	cookiesVersion: "izika-fr-EU",
+	cookiesVersion: ${JSON.stringify(cookiesVersion)},
 	googleConsentMode: {
 		default: {
 			analytics_storage: "denied",

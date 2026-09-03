@@ -14,10 +14,10 @@ const { footerBackground, ...props } = Astro.props;
 
 <BaseLayout {...props}>
   <slot name="head" slot="head" />
-  <Header locale={props.locale} />
+  <Header market={props.market} />
   <!-- Vertical rhythm is owned by each page's sections (like the old .space-* utilities). -->
   <main>
     <slot />
   </main>
-  <Footer locale={props.locale} background={footerBackground} />
+  <Footer market={props.market} routeKey={props.routeKey} background={footerBackground} />
 </BaseLayout>

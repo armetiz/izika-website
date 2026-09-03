@@ -1,0 +1,123 @@
+meta:
+  title: "Mileage allowance management for independent professionals - izika"
+  description: "izika is the best solution for mileage allowance management for independent professionals: doctors, nurses, physiotherapists, lawyers..."
+trackingContext: page_solution_professions_liberales
+
+head:
+  title1: Trip management tool for independent professionals
+  title2: Automatic mileage allowance management for independent professionals
+  catch: >-
+    izika automatically computes your mileage allowances from your consultations and visits.
+    No more paper logbook, no more forgotten trips, no more year-end reconstruction.
+  secondaryCta:
+    routeKey: features
+    text: Features
+  image:
+    src: /assets/solutions/professions-liberales/rdv-template.png
+    alt: Mileage allowance export for independent professionals
+    title: Mileage allowance export for independent professionals
+
+featureHighlights:
+  title: The fastest way for independent professionals to manage their trips
+  image:
+    src: /assets/solutions/visuel-agenda-professionnel.png
+    alt: izika for independent professionals
+    title: izika for independent professionals
+  ctaText: Try izika
+  items:
+    - title: Every trip is captured automatically
+      text: izika analyses your appointments and computes distances and amounts. No data entry.
+    - title: "No more year-end reconstruction"
+      text: >-
+        Your data is already there when your accountant needs it. Nothing to reconstruct, nothing to chase.
+    - title: No more rough estimates and forgotten trips
+      text: >-
+        izika applies the right scale based on your vehicle and its tax rating.
+        Every journey is counted, even the most routine ones.
+    - title: Guaranteed compliance
+      text: >-
+        izika is approved and validated by chartered accountants and the tax administration. The
+        generated reports comply with your tax obligations and your professional income tax return.
+
+benefits:
+  title: "Benefits of a mileage allowance management tool for independent professionals"
+  items:
+    - title: Your trips generated automatically from your appointments
+      image: /assets/solutions/professions-liberales/calendar-to-ik.png
+      imageAlt: "izika - Independent professionals' mileage allowances computed from the calendar"
+      text: |
+        <p>Your schedule revolves around consultations, home visits and practice meetings. All journeys you have no time to write down one by one.</p>
+        <ul>
+          <li>Sync your business calendar once</li>
+          <li>Every appointment or visit automatically becomes a computed journey</li>
+          <li>Distances and amounts are already there, with no entry on your part</li>
+        </ul>
+    - title: A compliant tax report for your income tax return
+      image: /assets/solutions/professions-liberales/rapport-print-ombre.png
+      imageAlt: izika - A compliant tax report for independent professionals' income tax returns
+      text: |
+        <p>
+          As an independent professional, your travel expenses must be substantiated, including for your income tax return.
+          izika generates a structured, clear document accepted by the tax administration.
+        </p>
+        <ul>
+          <li>Export a complete report in a few clicks</li>
+          <li>Send it straight to your chartered accountant</li>
+          <li>Justify every trip in the event of a tax audit</li>
+        </ul>
+    - title: "You don't have to manage izika day to day"
+      image: /assets/solutions/laptop-screen-izika.jpg
+      imageAlt: "izika - You don't have to manage izika day to day"
+      text: |
+        <p>izika doesn't ask you to log in every day or enter a single trip. It works in the background, from your calendar.</p>
+        <ul>
+          <li>No manual entry, no logbook to keep</li>
+          <li>No double bookkeeping with your existing calendar tool</li>
+          <li>Open izika whenever you need it — everything is already ready</li>
+        </ul>
+  testimonial:
+    quote: >-
+      Between my home visits and my consultations at the practice, I no longer had time to write anything
+      down. izika does it for me, and my accountant receives a detailed mileage report at year-end.
+    avatar: /assets/solutions/testimonial-avatar.png
+    avatarAlt: Nathalie R.
+    name: Nathalie R.
+    companyTitle: Independent nurse
+
+customerCase:
+  title: Is izika the best tool for managing independent professionals' trips?
+  intro: |
+    <p>
+      Sophie, an independent physiotherapist, splits her time between her practice and home visits.
+      Since she started using izika, her calendar does the work for her — and she sends her report to her accountant in a few minutes.
+    </p>
+  avatar: /assets/solutions/professions-liberales/customer-case-avatar.jpg
+  avatarAlt: Sophie L.
+  gainsTitle: "Here is what Sophie gained by using izika:"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: "Trips generated automatically from the calendar"
+      text: >-
+        All her home visits and her journeys between the practice and her patients
+        <strong>are automatically turned into mileage allowances</strong> with no manual entry.
+    - image: /assets/landing-pages/illu-tournee-etoile.png
+      imageAlt: Quick review of her rounds
+      text: >-
+        Sophie set up her <strong>usual rounds</strong> in izika.
+        At the end of the week she quickly reviews her trips in a few seconds and fixes anything needed before exporting.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Guaranteed tax compliance
+      text: >-
+        <strong>No stress in the event of a tax audit.</strong>
+        Her izika report is clear and structured, and every trip is substantiated by the matching calendar entry.
+  testimonial:
+    quote: >-
+      I used to write my trips down in a notebook that I systematically left in my car.
+      At year-end, I would spend hours reconstructing it all with my accountant — and we were never sure we had everything.
+      With izika, that's over. My Google calendar is synced, and when my accountant needs the report, it's ready in five minutes.
+      I don't even think about it anymore.
+    name: Sophie L.
+    companyTitle: Independent physiotherapist
+  ctaBlock:
+    text: "Like Sophie, stop wasting time on your mileage reporting"
+    buttonText: Try for free

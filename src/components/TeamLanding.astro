@@ -4,84 +4,24 @@ import LandingIconHighlights from './LandingIconHighlights.astro';
 import TestimonialCard from './TestimonialCard.astro';
 import TrackedLink from './TrackedLink.astro';
 import { btnPrimary } from '../lib/cta';
+import type { TeamLandingCopy } from '../data/team-landing';
 
 /**
  * Shared body of the /team-collectivites and /team-entreprises landing pages
  * (ported from templates/landing/team-*.html.twig, which were identical except
  * for the meta title, the tracking context and the hero audience word).
+ * Text-free shell: every string comes from the `copy` prop, provided by the
+ * market's pages (see src/data/team-landing.fr.ts).
  */
 interface Props {
   /** Highlighted audience word in the hero H1 (e.g. "collectivités"). */
   audience: string;
   /** Analytics context, e.g. "page_collectivites" (matches the old Twig pages). */
   trackingContext: string;
+  copy: TeamLandingCopy;
 }
 
-const { audience, trackingContext } = Astro.props;
-
-const heroBenefits = [
-  { icon: '/assets/landing-pages/team/icon_cal-to-rdv.png', text: 'Gestion intelligente des RDV' },
-  { icon: '/assets/landing-pages/team/icon_approval.png', text: "Flux d'approbation efficaces" },
-  {
-    icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
-    text: 'Ventilation par équipe et par dossier',
-  },
-  {
-    icon: '/assets/landing-pages/team/icon_report-conformity.png',
-    text: 'Rapports conformes aux règles fiscales',
-  },
-  {
-    icon: '/assets/landing-pages/team/icon_security.png',
-    text: 'Sécurisé, fiable, hébergé en France',
-  },
-];
-
-const collaboratorPoints = [
-  'Mise en route simplissime sur invitation.',
-  "Import des RDV depuis un agenda électronique et/ou saisie manuelle intuitive.",
-  'Calcul des distances pour chaque déplacement.',
-  'Paramétrage des déplacements en tournée ou en étoile.',
-  'Gestion des justificatifs et des attributions à des dossiers ou projets.',
-];
-
-const collaboratorScreens = [
-  {
-    src: '/assets/landing-pages/team/illu_rdv-etoiles.png',
-    alt: 'Configuration des déplacements en étoile ou en tournée',
-  },
-  {
-    src: '/assets/landing-pages/team/illu_dossiers.png',
-    alt: 'catégorisation des rendez-vous en dossiers',
-  },
-  {
-    src: '/assets/landing-pages/team/illu_justificatifs.png',
-    alt: 'association des justificatifs aux rendez-vous',
-  },
-];
-
-const managerPoints = [
-  'Toutes les demandes sont centralisées et organisées (par équipe, par dossier, etc.) pour simplifier la vie des gestionnaires.',
-  "Demandes d'indemnisations ultra-lisibles, simples à parcourir, justificatifs à portée de clic.",
-  "Acceptez des demandes en un clin d'oeil. Refusez des demandes en deux clins d'oeil. Les managers pointent les RDV problématiques.",
-  'Organisez vos équipes comme bon vous semble. Assignez à chaque équipe des managers, des dossiers ou des projets.',
-  'Editez des rapports complets et conformes aux règles comptables et fiscales.',
-];
-
-const managerScreens = [
-  {
-    src: '/assets/landing-pages/team/illu_liste-demandes.png',
-    alt: "Liste des demandes d'indemnisation",
-  },
-  { src: '/assets/landing-pages/team/illu_approve.png', alt: 'approuver une demande' },
-  { src: '/assets/landing-pages/team/illu_voir-itineraire.png', alt: "Voir l'itinéraire en détail" },
-];
-
-const securityPoints = [
-  'Un support ultra-efficace en français et non sous-traité, à votre écoute pour répondre à toutes vos questions.',
-  'Hébergé en France, sur des serveurs français sécurisés.',
-  "Conforme aux règles fiscales françaises et européennes. Rapports d'IK validés par l'administration et les experts comptables.",
-  'Conforme à la RGPD et aux règles de confidentialité et de sécurité.',
-];
+const { audience, trackingContext, copy } = Astro.props;
 ---
 
 <!-- Hero Section -->
@@ -89,12 +29,9 @@ const securityPoints = [
   <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
         <h1 class="text-[2.5rem] font-bold lg:text-[3.5rem]">
-          Gestion des IK pour les&nbsp;<span class="text-primary">{audience}</span>
+          {copy.hero.titlePrefix}<span class="text-primary">{audience}</span>
         </h1>
-        <p class="mt-4 text-xl">
-          Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités
-          kilométriques.
-        </p>
+        <p class="mt-4 text-xl">{copy.hero.catch}</p>
 
         <div class="mt-8">
           <TrackedLink
@@ -102,7 +39,7 @@ const securityPoints = [
             trackingContext={trackingContext}
             class={btnPrimary}
           >
-            Tester gratuitement izika
+            {copy.hero.cta}
           </TrackedLink>
         </div>
       </div>
@@ -111,7 +48,7 @@ const securityPoints = [
         <img
           class="w-full rounded-xl border border-beige-line shadow-card"
           src="/assets/landing-pages/header-screen-macbook.jpg"
-          alt="izika sur ordinateur de bureau"
+          alt={copy.hero.imageAlt}
           width="1618"
           height="1010"
         />
@@ -120,18 +57,13 @@ const securityPoints = [
 </GradientHero>
 
 <!-- Benefits icon row -->
-<LandingIconHighlights items={heroBenefits} />
+<LandingIconHighlights items={copy.heroBenefits} />
 
 <!-- "izika Team, c'est" Section -->
 <section class="bg-soft-primary">
   <div class="mx-auto max-w-3xl px-4 pt-16 pb-8 text-center">
-    <h2 class="text-[2.5rem] font-bold">
-      Izika <span class="text-primary">Team</span>, c'est :
-    </h2>
-    <p class="mt-6 text-[1.3125rem] font-bold">
-      Un <span class="text-primary">outil de calcul d'IK</span><br />
-      pour vos collaborateurs roulants
-    </p>
+    <h2 class="text-[2.5rem] font-bold" set:html={copy.intro.titleHtml} />
+    <p class="mt-6 text-[1.3125rem] font-bold" set:html={copy.intro.collaboratorsHtml} />
     <p class="my-4" aria-hidden="true">
       <span
         class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white"
@@ -139,10 +71,7 @@ const securityPoints = [
         +
       </span>
     </p>
-    <p class="text-[1.3125rem] font-bold">
-      Une interface d'<span class="text-primary">approbation des demandes d'IK</span><br />
-      pour vos gestionnaires
-    </p>
+    <p class="text-[1.3125rem] font-bold" set:html={copy.intro.managersHtml} />
   </div>
 </section>
 
@@ -151,12 +80,12 @@ const securityPoints = [
   <div class="mx-auto max-w-6xl px-4 pt-16 pb-8 lg:pb-32">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <p class="mb-2 text-sm font-bold tracking-wide uppercase">Pour vos collaborateurs,</p>
-        <h2 class="mb-6 text-3xl font-bold">Une application de calcul d'IK rapide et facile</h2>
+        <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.collaborators.kicker}</p>
+        <h2 class="mb-6 text-3xl font-bold">{copy.collaborators.title}</h2>
 
         <ul class="space-y-3">
           {
-            collaboratorPoints.map((point) => (
+            copy.collaborators.points.map((point) => (
               <li class="flex items-start gap-3">
                 <span
                   class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
@@ -173,7 +102,7 @@ const securityPoints = [
 
       <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto">
         {
-          collaboratorScreens.map((screen) => (
+          copy.collaborators.screens.map((screen) => (
             <img
               class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
               src={screen.src}
@@ -194,7 +123,7 @@ const securityPoints = [
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <div class="order-last flex snap-x snap-mandatory gap-4 overflow-x-auto lg:order-first">
       {
-        managerScreens.map((screen) => (
+        copy.managers.screens.map((screen) => (
           <img
             class="w-full shrink-0 snap-center rounded-lg border border-beige-line shadow-card"
             src={screen.src}
@@ -208,12 +137,12 @@ const securityPoints = [
     </div>
 
     <div>
-      <p class="mb-2 text-sm font-bold tracking-wide uppercase">Pour vos gestionnaires,</p>
-      <h2 class="mb-6 text-3xl font-bold">Des flux d'approbation limpides et efficaces</h2>
+      <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.managers.kicker}</p>
+      <h2 class="mb-6 text-3xl font-bold">{copy.managers.title}</h2>
 
       <ul class="space-y-3">
         {
-          managerPoints.map((point) => (
+          copy.managers.points.map((point) => (
             <li class="flex items-start gap-3">
               <span
                 class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
@@ -235,14 +164,12 @@ const securityPoints = [
   <div class="mx-auto max-w-6xl px-4 py-16 lg:py-32">
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <p class="mb-2 text-sm font-bold tracking-wide uppercase">Sécurité &amp; fiabilité</p>
-        <h2 class="mb-6 text-3xl font-bold">
-          izika, fabriqué en France, pour des entreprises françaises et européennes.
-        </h2>
+        <p class="mb-2 text-sm font-bold tracking-wide uppercase">{copy.security.kicker}</p>
+        <h2 class="mb-6 text-3xl font-bold">{copy.security.title}</h2>
 
         <ul class="space-y-3">
           {
-            securityPoints.map((point) => (
+            copy.security.points.map((point) => (
               <li class="flex items-start gap-3">
                 <span
                   class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
@@ -261,7 +188,7 @@ const securityPoints = [
         <img
           class="h-auto w-full"
           src="/assets/img/illustrations/expert-comptable-large.png"
-          alt="izika validé par les experts-comptables"
+          alt={copy.security.imageAlt}
           width="1203"
           height="1349"
           loading="lazy"
@@ -274,28 +201,12 @@ const securityPoints = [
 <!-- Testimonials Section -->
 <section class="mx-auto max-w-6xl px-4 pt-16 pb-32">
   <div class="grid gap-6 md:grid-cols-2">
-    <TestimonialCard author="Olivier" role="Expert-comptable">
-      Nous avons suggéré à izika d’inclure dans la version Team la gestion de la chaîne
-      d’approbation des indemnités kilométriques depuis le conducteur jusqu’à la paie. Et le
-      résultat dépasse nos espérances! Merci beaucoup.
-    </TestimonialCard>
-
-    <TestimonialCard author="Romain F" role="Dirigeant de groupement d’agences immobilières">
-      J’aime beaucoup le fait de remplacer des déclarations sous Excel avec des kilométrages
-      fantaisistes de la part de certains des salariés par un calcul effectué par un tiers sur la
-      base des RDV de l’agenda Outlook des techniciens de maintenance (...)
-    </TestimonialCard>
-
-    <TestimonialCard author="France" role="Comptable (SARL de climatisation)">
-      IZIKA gère les distances et les IK, mais aussi les pièces jointes comme les tickets de
-      parking. Cela nous permet de tout centraliser du commercial à son manager puis à la
-      comptabilité.
-    </TestimonialCard>
-
-    <TestimonialCard author="Mohed" role="président d’association">
-      Je trouve que le système des approbations et refus des relevés d’IK des salariés est super
-      bien pensé, mais on apprécie surtout de recevoir des données fiables de la part des
-      commerciaux terrain.
-    </TestimonialCard>
+    {
+      copy.testimonials.map((testimonial) => (
+        <TestimonialCard author={testimonial.author} role={testimonial.role}>
+          {testimonial.text}
+        </TestimonialCard>
+      ))
+    }
   </div>
 </section>

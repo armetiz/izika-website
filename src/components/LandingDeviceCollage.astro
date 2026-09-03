@@ -13,6 +13,9 @@ interface Props {
   tabletAlt: string;
   tabletWidth: number;
   tabletHeight: number;
+  /** Alt texts of the shared ipad/iphone screens (language of the page). */
+  ipadAlt: string;
+  mobileAlt: string;
 }
 
 const {
@@ -24,6 +27,8 @@ const {
   tabletAlt,
   tabletWidth,
   tabletHeight,
+  ipadAlt,
+  mobileAlt,
 } = Astro.props;
 ---
 
@@ -45,14 +50,14 @@ const {
   <img
     class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-card border-4 border-white shadow-card"
     src="/assets/landing-pages/header-screen-ipad.jpg"
-    alt="izika sur ipad"
+    alt={ipadAlt}
     width="533"
     height="711"
   />
   <img
     class="absolute -right-4 -bottom-8 w-24 rounded-2xl border-4 border-white shadow-card"
     src="/assets/landing-pages/header-screen-iphone-x.jpg"
-    alt="izika sur mobile"
+    alt={mobileAlt}
     width="407"
     height="867"
   />

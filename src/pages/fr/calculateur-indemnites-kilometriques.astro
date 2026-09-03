@@ -7,16 +7,13 @@ import GradientHero from '../../components/GradientHero.astro';
 import SimulateurIK from '../../components/SimulateurIK.tsx';
 import { faqPageSchema } from '../../seo/schema';
 import { faqCalculateurEntries } from '../../data/faq-calculateur.fr';
+import { BAREMES, MAJORATION_ELECTRIQUE, computeIK } from '../../data/bareme-ik';
 import {
-  BAREMES,
-  MAJORATION_ELECTRIQUE,
-  computeIK,
-  formatCoef,
-  formatEuros,
-  formatNombre,
-  formuleTranche,
-  labelTranche,
-} from '../../data/bareme-ik';
+  formuleTranche as formuleTrancheFr,
+  labelTranche as labelTrancheFr,
+} from '../../data/bareme-ik.labels.fr';
+import { makeFormatters } from '../../lib/format';
+import { getMarket } from '../../i18n';
 
 // Page pré-rendue au build : contenu didactique (étapes, tables du barème,
 // exemple, FAQ) généré depuis src/data/bareme-ik.ts, seul le simulateur est
@@ -25,6 +22,12 @@ import {
 // cercles jaunes, CTA avec illustration calendrier).
 
 const trackingContext = 'page_calculator';
+
+const market = getMarket('fr');
+const fmt = makeFormatters({ numberLocale: market.numberLocale, currency: market.currency });
+const { formatCurrency: formatEuros, formatNumber: formatNombre, formatCoef } = fmt;
+const labelTranche = labelTrancheFr.bind(null, fmt);
+const formuleTranche = formuleTrancheFr.bind(null, fmt);
 
 const description =
   "Calculez vos indemnités kilométriques 2025 avec le barème fiscal français : voiture ou moto, thermique ou électrique, par semaine, mois ou année. Simulateur gratuit, formule et barèmes détaillés.";
@@ -77,7 +80,7 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
 ---
 
 <StandardLayout
-  locale="fr"
+  market="fr"
   routeKey="calculator"
   title="Calculateur d'Indemnités Kilométriques"
   description={description}
@@ -99,7 +102,12 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
 
   <!-- Simulateur (island React), pulled up over the wave -->
   <section class="relative z-10 mx-auto -mt-12 max-w-5xl px-4 pb-4">
-    <SimulateurIK client:load />
+    <SimulateurIK
+      client:load
+      numberLocale={market.numberLocale}
+      currency={market.currency}
+      joinUrl={market.joinUrl}
+    />
   </section>
 
   <!-- Comment ça marche — tuiles soft-* de la HP -->
@@ -293,7 +301,11 @@ const tdClass = 'border border-beige-line px-3 py-2 text-muted';
 
   <!-- CTA (same construction as the features page, calendar illustration included) -->
   <section class="mx-auto max-w-5xl px-4 pb-16">
-    <CtaCalendarCard title="Marre de calculer vos IK à la main ?" trackingContext={trackingContext}>
+    <CtaCalendarCard
+      title="Marre de calculer vos IK à la main ?"
+      ctaLabel="Créez votre compte"
+      trackingContext={trackingContext}
+    >
       izika détecte vos déplacements depuis votre agenda en ligne et génère votre état de frais
       kilométriques, barème à jour et justificatifs inclus.
     </CtaCalendarCard>

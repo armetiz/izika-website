@@ -3,16 +3,35 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import StandardLayout from '../../../layouts/StandardLayout.astro';
 import GradientHero from '../../../components/GradientHero.astro';
 import Card from '../../../components/Card.astro';
-import { articlePath } from '../../../i18n';
+import { articlePath, getMarket, marketIds, routeSlug, type MarketId } from '../../../i18n';
+
+export function getStaticPaths() {
+  // A market has an articles hub iff routes.articles defines its slug — and
+  // this file's directory pins the URL segment to "articles", so a market
+  // wanting another segment needs its own route file.
+  return marketIds
+    .filter((market) => {
+      const slug = routeSlug('articles', market);
+      if (slug !== undefined && slug !== 'articles') {
+        throw new Error(
+          `routes.articles["${market}"] is "${slug}" but the [market]/articles/ directory pins the segment to "articles".`,
+        );
+      }
+      return slug !== undefined;
+    })
+    .map((market) => ({ params: { market }, props: { market } }));
+}
 
 type Article = CollectionEntry<'articles'>;
 
+const { market } = Astro.props as { market: MarketId };
+
 // Successor of the old /pages index, now a real editorial hub.
-const articles = (await getCollection('articles', ({ id }) => id.startsWith('fr/'))).filter(
+const articles = (await getCollection('articles', ({ id }) => id.startsWith(`${market}/`))).filter(
   (a) => !a.data.robots?.includes('noindex'),
 );
 
-const slugOf = (a: Article) => a.id.replace(/^fr\//, '');
+const slugOf = (a: Article) => a.id.split('/').slice(1).join('/');
 const byDateDesc = (a: Article, b: Article) => b.data.date.valueOf() - a.data.date.valueOf();
 const yearOf = (a: Article) => slugOf(a).match(/(\d{4})$/)?.[1] ?? '';
 
@@ -24,11 +43,11 @@ const guides = articles
   .filter((a) => !slugOf(a).startsWith('bareme-') && !slugOf(a).startsWith('integration-'))
   .sort(byDateDesc);
 
-const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+const dateFormat = new Intl.DateTimeFormat(getMarket(market).numberLocale, { dateStyle: 'long' });
 ---
 
 <StandardLayout
-  locale="fr"
+  market={market}
   routeKey="articles"
   title="Articles — barèmes, guides et intégrations | izika"
   description="Tous les articles izika : barèmes officiels d'indemnités kilométriques, intégrations d'agendas en ligne et guides pratiques."
@@ -50,7 +69,7 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
         <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {
             baremes.map((a) => (
-              <a class="block h-full" href={articlePath(slugOf(a), 'fr')}>
+              <a class="block h-full" href={articlePath(slugOf(a), market)}>
                 <Card hover3d bodyClass="text-center">
                   <p class="text-3xl font-bold text-ink">{yearOf(a)}</p>
                   <p class="mt-1 text-sm">Barème kilométrique</p>
@@ -70,7 +89,7 @@ const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
             <h2 class="text-3xl font-bold">{title}</h2>
             <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((a) => (
-                <a class="block h-full" href={articlePath(slugOf(a), 'fr')}>
+                <a class="block h-full" href={articlePath(slugOf(a), market)}>
                   <Card hover3d>
                     <h3 class="text-lg font-bold">{a.data.title}</h3>
                     <p class="mt-2 line-clamp-3 text-sm">{a.data.description}</p>

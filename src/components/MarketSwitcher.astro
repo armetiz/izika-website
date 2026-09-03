@@ -1,0 +1,40 @@
+---
+import { t, marketIds, getMarket, localizedPath, type MarketId, type RouteKey } from '../i18n';
+
+interface Props {
+  market: MarketId;
+  /** Current page's route key — links point to the same page in the other
+   * market when it exists there (fallback: its home). */
+  routeKey?: RouteKey;
+}
+
+const { market, routeKey } = Astro.props;
+const dict = t(market);
+
+// Renders nothing while only one market exists; expands automatically when
+// markets are added to src/i18n/markets.ts.
+const entries = marketIds.map((m) => ({
+  market: m,
+  href: (routeKey ? localizedPath(routeKey, m) : null) ?? localizedPath('home', m),
+  name: getMarket(m).label,
+  hreflang: getMarket(m).hreflang,
+  lang: getMarket(m).language,
+}));
+---
+
+{
+  entries.length >= 2 && (
+    <p class="text-sm">
+      <span aria-label={dict.a11y.marketSwitcher}>
+        {entries.map((e, i) => (
+          <>
+            {i > 0 && ' - '}
+            <a class="underline" href={e.href} hreflang={e.hreflang} lang={e.lang} rel="alternate">
+              {e.name}
+            </a>
+          </>
+        ))}
+      </span>
+    </p>
+  )
+}

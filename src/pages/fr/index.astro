@@ -6,11 +6,14 @@ import TestimonialCard from '../../components/TestimonialCard.astro';
 import LogoCloud from '../../components/LogoCloud.astro';
 import TrackedLink from '../../components/TrackedLink.astro';
 import { webApplicationSchema } from '../../seo/schema';
+import { getMarket } from '../../i18n';
 import { reviews } from '../../data/reviews';
 import { btnPill, btnPrimarySm } from '../../lib/cta';
 import { localizedPath } from '../../i18n';
 
-const locale = 'fr';
+const market = 'fr';
+// Page du marché fr : le bloc Trustpilot existe forcément pour ce marché.
+const trustpilot = getMarket('fr').trustpilot!;
 const trackingContext = 'page_home';
 
 const calendarLogos = [
@@ -98,11 +101,11 @@ const pricingPlans: PricingPlan[] = [
 ---
 
 <LandingLayout
-  locale={locale}
+  market={market}
   title="Gestion automatique des indemnités kilométriques"
   description="izika est l'application n°1 en Europe de gestion des indemnités kilométriques pour les indépendants et les équipes"
   routeKey="home"
-  schemaNodes={[webApplicationSchema()]}
+  schemaNodes={[webApplicationSchema(getMarket('fr'))]}
 >
   <!-- Hero Section -->
   <Hero
@@ -221,7 +224,7 @@ const pricingPlans: PricingPlan[] = [
     <div class="my-8 text-center">
       <a
         class={btnPrimarySm}
-        href={localizedPath('features', locale)}
+        href={localizedPath('features', market)}
         target="_blank"
         rel="noopener"
       >
@@ -239,7 +242,7 @@ const pricingPlans: PricingPlan[] = [
         </h2>
         <a
           class="mt-4 inline-flex items-center justify-center gap-2 text-[2.5rem] font-bold"
-          href={reviews.trustpilotUrl}
+          href={trustpilot.url}
           rel="nofollow"
         >
           {reviews.ratingValue}
@@ -278,19 +281,19 @@ const pricingPlans: PricingPlan[] = [
         <!-- TrustBox widget - Review Collector -->
         <div
           class="trustpilot-widget"
-          data-locale="fr-FR"
+          data-locale={trustpilot.widgetLocale}
           data-template-id="56278e9abfbbba0bdcd568bc"
           data-businessunit-id="5950be670000ff0005a55a73"
           data-style-height="52px"
           data-style-width="100%"
         >
-          <a href={reviews.trustpilotUrl} target="_blank" rel="noopener">Trustpilot</a>
+          <a href={trustpilot.url} target="_blank" rel="noopener">Trustpilot</a>
         </div>
         <!-- End TrustBox widget -->
         <div class="mt-4">
           <a
             class={btnPrimarySm}
-            href={reviews.trustpilotUrl}
+            href={trustpilot.url}
             target="_blank"
             rel="noopener"
           >
@@ -442,7 +445,7 @@ const pricingPlans: PricingPlan[] = [
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a
               class={btnPill}
-              href={localizedPath('team', locale)}
+              href={localizedPath('team', market)}
             >
               En savoir plus sur izika Team <span aria-hidden="true">›</span>
             </a>

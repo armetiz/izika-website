@@ -1,0 +1,27 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import GradientHero from '../../components/GradientHero.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { faqPageSchema } from '../../seo/schema';
+import { faqEntries } from '../../data/faq.en';
+
+// English counterpart of src/pages/fr/faq.astro — the same faqEntries data
+// drives the visible accordion and the FAQPage JSON-LD.
+---
+
+<StandardLayout
+  market="en"
+  routeKey="faq"
+  title="Frequently asked questions"
+  schemaNodes={[faqPageSchema(faqEntries)]}
+>
+  <!-- Hero -->
+  <GradientHero class="text-center">
+    <h1 class="text-[2.5rem] font-bold">Frequently asked questions</h1>
+  </GradientHero>
+
+  <!-- FAQ accordion -->
+  <section class="mx-auto max-w-3xl px-4 py-16 lg:pb-32">
+    <FaqAccordion entries={faqEntries} />
+  </section>
+</StandardLayout>

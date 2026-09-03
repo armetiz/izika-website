@@ -8,5 +8,4 @@ export const reviews = {
   reviewCount: '265',
   bestRating: '5',
   worstRating: '1',
-  trustpilotUrl: 'https://fr.trustpilot.com/review/izika.com',
 } as const;

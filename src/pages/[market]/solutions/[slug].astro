@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+import StandardLayout from '../../../layouts/StandardLayout.astro';
+import SolutionPage from '../../../components/SolutionPage.astro';
+import {
+  MARKETS,
+  marketIds,
+  solutionPath,
+  solutionSlug,
+  solutionSlugs,
+  solutionsBaseSlug,
+  type MarketId,
+  type SolutionKey,
+} from '../../../i18n';
+
+export async function getStaticPaths() {
+  const solutions = await getCollection('solutions');
+
+  // The solutionSlugs table and the content collection must match both ways:
+  // the mega menu links from the table, the pages build from the content, so
+  // any drift is a broken link or a ghost page — fail the build instead.
+  const declaredIds = new Set(
+    Object.values(solutionSlugs).flatMap((byMarket) =>
+      Object.entries(byMarket).map(([market, slug]) => `${market}/${slug}`),
+    ),
+  );
+  const existingIds = new Set(solutions.map((entry) => entry.id));
+  for (const id of declaredIds) {
+    if (!existingIds.has(id)) {
+      throw new Error(
+        `solutionSlugs declares "${id}" but src/content/solutions/${id}.yaml does not exist.`,
+      );
+    }
+  }
+
+  return solutions.map((entry) => {
+    const [market, ...rest] = entry.id.split('/');
+    const slug = rest.join('/');
+    if (!(marketIds as readonly string[]).includes(market)) {
+      throw new Error(
+        `Solution "${entry.id}": directory "${market}" is not a market id (${marketIds.join(', ')}).`,
+      );
+    }
+    if (!declaredIds.has(entry.id)) {
+      throw new Error(
+        `Solution "${entry.id}" is not declared in solutionSlugs (src/i18n/routes.ts) — the mega menu would never link it.`,
+      );
+    }
+    // A market without a solutions base URL must not ship solution pages —
+    // and this file's directory pins the URL segment to "solutions", so a
+    // market wanting another segment needs its own route file.
+    if (solutionsBaseSlug(market as MarketId) !== 'solutions') {
+      throw new Error(
+        `Solution "${entry.id}": market "${market}" has no 'solutions' base in routes.ts (solutionsBase).`,
+      );
+    }
+    return {
+      params: { market, slug },
+      props: { entry, market: market as MarketId },
+    };
+  });
+}
+
+const { entry, market } = Astro.props;
+const slug = entry.id.split('/').slice(1).join('/');
+
+// hreflang alternates via the solutionSlugs table (same emission rule as the
+// editorial routes: nothing below 2 markets). The build locks above guarantee
+// every declared slug has its content.
+const solutionKey = (Object.keys(solutionSlugs) as SolutionKey[]).find(
+  (key) => solutionSlug(key, market) === slug,
+);
+const siblings = solutionKey
+  ? marketIds
+      .map((m) => ({ market: m, slug: solutionSlug(solutionKey, m) }))
+      .filter((a): a is { market: MarketId; slug: string } => a.slug !== undefined)
+      .map((a) => ({ market: a.market, href: solutionPath(a.slug, a.market)! }))
+  : [];
+const alternates = siblings.length >= 2 ? siblings : [];
+---
+
+<StandardLayout
+  market={market}
+  title={entry.data.meta.title}
+  description={entry.data.meta.description}
+  image={entry.data.head.image.src}
+>
+  <Fragment slot="head">
+    {
+      alternates.map((a) => (
+        <link
+          rel="alternate"
+          href={new URL(a.href, Astro.site).href}
+          hreflang={MARKETS[a.market].hreflang}
+        />
+      ))
+    }
+  </Fragment>
+
+  <SolutionPage data={entry.data} slug={slug} market={market} />
+</StandardLayout>

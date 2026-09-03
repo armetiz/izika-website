@@ -12,15 +12,17 @@ export interface CarouselImage {
 
 interface Props {
   images: readonly CarouselImage[];
+  /** Accessible name of the group (language of the page). */
+  label: string;
 }
 
-const { images } = Astro.props;
+const { images, label } = Astro.props;
 ---
 
 <div
   class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
   role="group"
-  aria-label="Captures d'écran de l'application"
+  aria-label={label}
 >
   {
     images.map((image) => (

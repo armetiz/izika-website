@@ -1,0 +1,490 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureCard from '../../components/FeatureCard.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import LogoCloud from '../../components/LogoCloud.astro';
+import TrackedLink from '../../components/TrackedLink.astro';
+import { webApplicationSchema } from '../../seo/schema';
+import { getMarket, localizedPath } from '../../i18n';
+import { btnPill, btnPrimarySm } from '../../lib/cta';
+
+// English translation of src/pages/fr/index.astro, adapted for the
+// international market: no Trustpilot blocks (market.trustpilot is null) and
+// no French video demo.
+const market = 'en';
+const trackingContext = 'page_home';
+
+const calendarLogos = [
+  { src: '/assets/landing-pages/google-icon.svg', alt: 'Mileage import from Google Calendar' },
+  { src: '/assets/landing-pages/icloud-icon.svg', alt: 'Mileage import from iCloud' },
+  { src: '/assets/landing-pages/outlook-icon.svg', alt: 'Mileage import from Microsoft Outlook' },
+  { src: '/assets/landing-pages/office365-icon.png', alt: 'Mileage import from Microsoft Office 365' },
+  { src: '/assets/landing-pages/ics-icon.svg', alt: 'Mileage import from ICS file' },
+  { src: '/assets/landing-pages/dolibarr-icon.png', alt: 'Mileage import from Dolibarr' },
+];
+
+const teamBenefits = [
+  'All the izika Solo features for your employees',
+  'Ultra-reliable mapping for precise, error-free distance calculation',
+  'Centralized mileage allowance claims',
+  'Streamlined approval workflows',
+  'Team and project management',
+  'Custom exports',
+];
+
+interface PricingPlan {
+  name: string;
+  nameSuffix?: string;
+  price: string;
+  priceSuffix?: string;
+  bigPrice?: boolean;
+  featured?: boolean;
+  features: string[];
+  /** Team card: "+" separator rendered after the first feature. */
+  plusAfterFirst?: boolean;
+  eventId: string;
+  ctaLabel: string;
+}
+
+const pricingPlans: PricingPlan[] = [
+  {
+    name: 'Solo',
+    price: 'Free',
+    features: [
+      '10 trips/month',
+      '1 user',
+      'Favourite addresses and vehicles',
+      'Connects to every type of calendar',
+      'Monthly mileage provision management',
+      'Mileage reports limited to 10 trips / month',
+    ],
+    eventId: 'cta_section_pricing_free',
+    ctaLabel: 'Try for free',
+  },
+  {
+    name: 'Solo',
+    nameSuffix: '∞',
+    price: '€99',
+    priceSuffix: '/ year',
+    bigPrice: true,
+    featured: true,
+    features: [
+      'Unlimited trips',
+      '1 user',
+      'Favourite addresses and vehicles',
+      'Connects to every type of calendar',
+      'Monthly mileage provision management',
+      'Complete mileage reports',
+    ],
+    eventId: 'cta_section_pricing_solo',
+    ctaLabel: 'Try for free',
+  },
+  {
+    name: 'Team',
+    price: 'Custom quote',
+    features: [
+      'All Solo features',
+      'Multiple users',
+      'User management (team creation, supervisor/manager roles)',
+      'Smart approval workflows for mileage claims',
+      'Analytical appointment management',
+      'Attachments linked to appointments',
+      'Complete custom exports',
+    ],
+    plusAfterFirst: true,
+    eventId: 'cta_section_pricing_team',
+    ctaLabel: 'Try free for 2 months',
+  },
+];
+---
+
+<LandingLayout
+  market={market}
+  title="Automatic mileage allowance management"
+  description="izika is Europe's #1 mileage allowance management application for freelancers and teams"
+  routeKey="home"
+  schemaNodes={[webApplicationSchema(getMarket('en'))]}
+>
+  <!-- Hero Section -->
+  <Hero
+    title="Your mileage report in record time"
+    lead="Your time is precious — get your mileage allowances in 10 minutes without the headache."
+    ctaEventId="cta_header"
+    ctaLabel="Try izika for free"
+    trackingContext={trackingContext}
+  >
+    <div slot="media" class="relative hidden lg:block">
+      <img
+        class="w-full rounded-xl border border-beige-line shadow-card"
+        src="/assets/landing-pages/team/screen-next-rdv.jpg"
+        alt="izika on a desktop computer"
+        width="1618"
+        height="1010"
+      />
+      <img
+        class="absolute -top-10 -left-6 w-52 -rotate-3 rounded-card border-4 border-white shadow-card"
+        src="/assets/landing-pages/header-screen-ipad-horizontal.jpg"
+        alt="izika on a tablet"
+        width="1618"
+        height="1010"
+      />
+      <img
+        class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-card border-4 border-white shadow-card"
+        src="/assets/landing-pages/header-screen-ipad.jpg"
+        alt="izika on an iPad"
+        width="533"
+        height="711"
+      />
+      <img
+        class="absolute -right-4 -bottom-8 w-24 rounded-2xl border-4 border-white shadow-card"
+        src="/assets/landing-pages/header-screen-iphone-x.jpg"
+        alt="izika on a mobile phone"
+        width="407"
+        height="867"
+      />
+    </div>
+  </Hero>
+
+  <!-- Features Section -->
+  <section id="featuresSection" class="mx-auto max-w-6xl px-4">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <FeatureCard
+        icon="/assets/landing-pages/icon_cal-to-rdv.png"
+        iconAlt="Appointments imported from the calendar"
+        title="Automatic entry"
+      >
+        izika automatically imports your appointments from your electronic calendar.
+      </FeatureCard>
+
+      <FeatureCard
+        icon="/assets/landing-pages/icon_km-auto.png"
+        iconAlt="Automatic distance calculation"
+        title="Automatic calculations"
+      >
+        izika automatically computes the distances and the amount of your mileage allowances
+        without leaving the application.
+      </FeatureCard>
+
+      <FeatureCard
+        icon="/assets/landing-pages/icon_report-conformity.png"
+        iconAlt="Compliant with tax rules"
+        title="Tax compliance"
+      >
+        izika is approved and validated by chartered accountants and the tax administration.
+      </FeatureCard>
+
+      <FeatureCard
+        icon="/assets/landing-pages/icon_team.png"
+        iconAlt="Vehicle fleet management"
+        title="Fleet management"
+        badge="team"
+      >
+        izika team is the only tool managing mileage allowance approval workflows for companies.
+      </FeatureCard>
+    </div>
+
+    <div class="my-8 text-center">
+      <a
+        class={btnPrimarySm}
+        href={localizedPath('features', market)}
+        target="_blank"
+        rel="noopener"
+      >
+        Discover all the features <span aria-hidden="true">›</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="my-8 rounded-card bg-soft-neutral py-8 lg:mt-16 lg:pt-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <h2 class="text-3xl font-bold">
+          More than 3,500 freelancers and companies have chosen izika.
+        </h2>
+      </div>
+
+      <div
+        class="rounded-card bg-cover bg-center p-4 sm:p-8 lg:p-12"
+        style="background-image: url('/assets/img/mockup-liste-rdv.jpg');"
+      >
+        <div class="grid gap-6 md:grid-cols-3">
+          <TestimonialCard author="Pierre-Louis" role="Phone & IT repair technician">
+            Really great — it syncs with every calendar. The service saved me hours, even weeks, of
+            mileage expense calculations for my trips to clients. Customer support is very fast and
+            responsive.
+          </TestimonialCard>
+
+          <TestimonialCard author="Martial" role="Real estate agent">
+            Exceptionally simple!<br />
+            I have never enjoyed doing my mileage expenses this much! It used to be a real chore…
+            with IZIKA it has become child's play!
+          </TestimonialCard>
+
+          <TestimonialCard author="Romain" role="Sales agent">
+            Very satisfied with the app. Really practical and well thought out. Customer support is
+            great — very responsive and full of good advice.
+            <br />
+            I recommend it with my eyes closed.
+          </TestimonialCard>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works Section -->
+  <section id="features" class="mx-auto max-w-6xl px-4 py-8 lg:py-16">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">
+        How does izika compute your mileage allowances for you?
+      </h2>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="rounded-card bg-soft-primary p-6 lg:p-10">
+        <img
+          class="mb-8 h-auto w-full"
+          src="/assets/landing-pages/how-it-works-calendar-import.png"
+          alt="izika imports appointments from the calendar"
+          width="2000"
+          height="1334"
+          loading="lazy"
+        />
+        <h3 class="flex items-start justify-between gap-3 text-[1.3125rem] font-bold">
+          Import and manage your appointments
+          <span
+            class="mt-1 inline-block shrink-0 rounded-full bg-primary-hover px-2 py-0.5 text-xs font-bold text-white"
+          >
+            automatic
+          </span>
+        </h3>
+        <p class="mt-1 mb-3 text-sm italic">A few clicks — child's play!</p>
+        <p>
+          Connect izika to your calendar and your appointments automatically appear on the trip
+          management screen. Distances are already computed from the addresses in your calendar! 👌
+        </p>
+
+        <LogoCloud
+          class="mt-6"
+          logos={calendarLogos}
+          note="+ more"
+          noteTitle="Every application compatible with CalDAV"
+        />
+      </div>
+
+      <div class="rounded-card bg-soft-neutral p-6 lg:p-10">
+        <img
+          class="mb-8 h-auto w-full"
+          src="/assets/landing-pages/how-it-works-mensual-provisions.png"
+          alt="izika monthly mileage provisions"
+          width="2000"
+          height="1299"
+          loading="lazy"
+        />
+        <h3 class="text-[1.3125rem] font-bold">Do you report monthly mileage allowances?</h3>
+        <p class="mt-1 mb-3 text-sm italic">No problem, we've got you covered.</p>
+        <p>
+          izika computes indicative monthly mileage allowance provisions for you throughout the tax
+          period. Enter the actual provision amounts you receive month by month and izika will
+          automatically account for them when generating the final report at the end of the tax
+          period.
+        </p>
+      </div>
+
+      <div class="rounded-card bg-soft-neutral p-6 lg:p-10">
+        <img
+          class="mb-8 h-auto w-full"
+          src="/assets/landing-pages/how-it-works-mileage-allowances-export.png"
+          alt="izika mileage allowance report"
+          width="2000"
+          height="1764"
+          loading="lazy"
+        />
+        <h3 class="text-[1.3125rem] font-bold">Generate your mileage report</h3>
+        <p class="mt-1 mb-3 text-sm italic">Done already 😮? Yes indeed.</p>
+        <p>
+          Once your appointments are imported and your trips fine-tuned, generate your mileage
+          expense report, ready to hand to your accountant or include in your annual accounts.
+          izika lists every business trip with all the required information, standardized in
+          compliance with accounting and tax rules.
+        </p>
+      </div>
+
+      <div class="rounded-card bg-beige-dark p-6 lg:p-10">
+        <img
+          class="mb-8 h-auto w-full"
+          src="/assets/landing-pages/how-it-works-parameters.png"
+          alt="izika settings"
+          width="2000"
+          height="1454"
+          loading="lazy"
+        />
+        <h3 class="text-[1.3125rem] font-bold">Need to go even faster? 🚀</h3>
+        <p class="mt-1 mb-3 text-sm italic">You can — izika adapts to your habits.</p>
+        <p>
+          Fine-tune your settings and optimize the application's automatic processing:<br />
+          Set your usual departure and return addresses, your main vehicle, your travel habits —
+          round trips or star pattern...
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <TrackedLink
+        eventId="cta_middle"
+        trackingContext={trackingContext}
+        class="btn-3d inline-block min-w-40 rounded-card bg-primary px-4 py-3 text-center font-bold text-white hover:bg-primary-hover sm:px-8"
+      >
+        Try izika
+      </TrackedLink>
+    </div>
+  </section>
+
+  <!-- CTA Section (izika Team) -->
+  <section class="overflow-hidden bg-beige-light pt-16 lg:pt-8">
+    <div class="mx-auto max-w-6xl px-4 pt-16 pb-32">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="mb-2 text-sm font-bold tracking-wide uppercase">
+            Companies, local authorities, non-profits
+          </p>
+          <h2 class="mb-6 text-3xl font-bold">
+            Managing your employees' mileage allowances? izika Team gives you:
+          </h2>
+
+          <ul class="space-y-3">
+            {
+              teamBenefits.map((benefit) => (
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </span>
+                  <p>{benefit}</p>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              class={btnPill}
+              href={localizedPath('team', market)}
+            >
+              Learn more about izika Team <span aria-hidden="true">›</span>
+            </a>
+            <TrackedLink
+              eventId="cta_section_team"
+              trackingContext={trackingContext}
+              class="btn-3d inline-block rounded-full px-4 py-3 font-bold"
+            >
+              Try free for 2 months <span aria-hidden="true">›</span>
+            </TrackedLink>
+          </div>
+        </div>
+
+        <div>
+          <img
+            class="h-auto w-full rounded-card shadow-card"
+            src="/assets/landing-pages/team/illu_liste-demandes.png"
+            alt="izika team"
+            width="920"
+            height="719"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricingSection" class="mx-auto max-w-6xl overflow-hidden px-4 py-16 lg:py-32">
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <h2 class="text-[2.5rem] font-bold">Pricing</h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        pricingPlans.map((plan) => (
+          <div class="relative">
+            {plan.featured && (
+              <figure
+                class="absolute -top-6 -right-6 -z-10 w-32"
+                aria-hidden="true"
+              >
+                <svg preserveAspectRatio="none" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="fill-primary-hover" cx="130" cy="130" r="130" />
+                </svg>
+              </figure>
+            )}
+            <div
+              class:list={[
+                'flex h-full flex-col rounded-card bg-white p-6',
+                plan.featured && 'shadow-card',
+              ]}
+            >
+              <div class="mb-6 text-center">
+                <p class="text-[1.3125rem] font-bold">
+                  {plan.name}
+                  {plan.nameSuffix && <span aria-label="unlimited">{plan.nameSuffix}</span>}
+                </p>
+                <p class="mt-3">
+                  <span
+                    class:list={[
+                      'font-bold',
+                      plan.bigPrice ? 'text-4xl' : 'text-sm',
+                    ]}
+                  >
+                    {plan.price}
+                  </span>
+                  {plan.priceSuffix && <span class="text-sm">{plan.priceSuffix}</span>}
+                </p>
+              </div>
+
+              <ul class="grow space-y-3 text-sm text-muted">
+                {plan.features.map((feature, index) => (
+                  <>
+                    <li class="flex items-start gap-2">
+                      <svg
+                        class="mt-0.5 h-4 w-4 shrink-0 text-success"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.6-4.3-4.3 1.7-1.7 2.6 2.6 5.8-5.8 1.7 1.7-7.5 7.5Z" />
+                      </svg>
+                      {feature}
+                    </li>
+                    {plan.plusAfterFirst && index === 0 && (
+                      <li class="text-center text-lg font-bold" aria-hidden="true">
+                        +
+                      </li>
+                    )}
+                  </>
+                ))}
+              </ul>
+
+              <div class="mt-6">
+                <TrackedLink
+                  eventId={plan.eventId}
+                  trackingContext={trackingContext}
+                  class:list={[
+                    'btn-3d block rounded-card px-4 py-3 text-center font-bold',
+                    plan.featured
+                      ? 'bg-primary text-white hover:bg-primary-hover'
+                      : 'border border-primary text-primary hover:bg-primary hover:text-white',
+                  ]}
+                >
+                  {plan.ctaLabel}
+                </TrackedLink>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</LandingLayout>

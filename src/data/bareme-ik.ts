@@ -1,7 +1,13 @@
 /**
- * Barème kilométrique fiscal français — source de vérité unique pour le
- * simulateur (island React), les tables HTML pré-rendues au build et
- * l'exemple de calcul de la page calculateur.
+ * Barème kilométrique fiscal français — données + calcul purs, source de
+ * vérité unique pour le simulateur (island React), les tables HTML
+ * pré-rendues au build et l'exemple de calcul de la page calculateur.
+ *
+ * Ce module est PAYS-spécifique (barème CGI) : un barème suisse serait un
+ * module de données distinct, pas une abstraction commune. Aucun formatage ni
+ * copy générée ici — formatters dans src/lib/format.ts (pilotés par le
+ * Market), libellés dans src/data/bareme-ik.labels.fr.ts. Les labels
+ * réglementaires (« 3 CV et moins ») restent : indissociables du barème.
  *
  * Montant d'une tranche : d × coef + fixe (d = distance annuelle en km).
  * Véhicule électrique : montant final majoré de 20 % (art. 6 B ann. IV CGI).
@@ -25,7 +31,8 @@ export interface Tranche {
 export interface ClassePuissance {
   key: string;
   label: string;
-  tranches: readonly [Tranche, Tranche, Tranche];
+  /** Au moins une tranche ; la dernière a maxKm === null. */
+  tranches: readonly [Tranche, ...Tranche[]];
 }
 
 export interface Bareme {
@@ -131,15 +138,15 @@ export const BAREMES: Record<Annee, Record<Categorie, Bareme>> = {
   '2023': { voiture: BAREME_VOITURE, moto: BAREME_MOTO },
 };
 
-export const PERIODES: Record<Periode, { label: string; parLabel: string; facteur: number }> = {
-  semaine: { label: 'Semaine (× 52)', parLabel: 'par semaine', facteur: 52 },
-  mois: { label: 'Mois (× 12)', parLabel: 'par mois', facteur: 12 },
-  annee: { label: 'Année', parLabel: 'par an', facteur: 1 },
+export const PERIODES: Record<Periode, { facteur: number }> = {
+  semaine: { facteur: 52 },
+  mois: { facteur: 12 },
+  annee: { facteur: 1 },
 };
 
 export interface ResultatIK {
   kmAnnuels: number;
-  trancheIndex: 0 | 1 | 2;
+  trancheIndex: number;
   tranche: Tranche;
   /** Montant issu du barème, avant majoration électrique. */
   montantBase: number;
@@ -163,37 +170,10 @@ export function computeIK(input: {
   const kmAnnuels = input.km * PERIODES[input.periode].facteur;
   const trancheIndex = classe.tranches.findIndex(
     (t) => t.maxKm === null || kmAnnuels <= t.maxKm
-  ) as 0 | 1 | 2;
+  );
   const tranche = classe.tranches[trancheIndex];
   const montantBase = kmAnnuels * tranche.coef + tranche.fixe;
   const majoration = input.motorisation === 'electrique' ? montantBase * MAJORATION_ELECTRIQUE : 0;
 
   return { kmAnnuels, trancheIndex, tranche, montantBase, majoration, montant: montantBase + majoration };
-}
-
-const nfEuros = new Intl.NumberFormat('fr-FR', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
-const nfNombre = new Intl.NumberFormat('fr-FR');
-const nfCoef = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-
-export const formatEuros = (n: number) => nfEuros.format(n);
-export const formatNombre = (n: number) => nfNombre.format(n);
-export const formatCoef = (n: number) => nfCoef.format(n);
-
-/** Libellé d'une tranche, ex. « De 5 001 à 20 000 km » / « Au-delà de 20 000 km ». */
-export function labelTranche(classe: ClassePuissance, index: number): string {
-  const tranche = classe.tranches[index];
-  if (index === 0) return `Jusqu'à ${formatNombre(tranche.maxKm!)} km`;
-  if (tranche.maxKm === null) return `Au-delà de ${formatNombre(classe.tranches[index - 1].maxKm!)} km`;
-  return `De ${formatNombre(classe.tranches[index - 1].maxKm! + 1)} à ${formatNombre(tranche.maxKm)} km`;
-}
-
-/** Formule d'une tranche, ex. « d × 0,529 » ou « (d × 0,316) + 1 065 € ». */
-export function formuleTranche(tranche: Tranche): string {
-  const produit = `d × ${nfCoef.format(tranche.coef)}`;
-  return tranche.fixe > 0 ? `(${produit}) + ${formatNombre(tranche.fixe)} €` : produit;
 }

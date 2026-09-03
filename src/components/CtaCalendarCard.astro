@@ -10,14 +10,15 @@ import { btnPrimary } from '../lib/cta';
  */
 interface Props {
   title: string;
-  ctaLabel?: string;
+  /** CTA label — provided by the page (language of the page, no default). */
+  ctaLabel: string;
   eventId?: string;
   trackingContext?: string;
 }
 
 const {
   title,
-  ctaLabel = 'Créez votre compte',
+  ctaLabel,
   eventId = 'cta_block_cta',
   trackingContext,
 } = Astro.props;

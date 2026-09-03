@@ -1,0 +1,146 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import TrackedLink from '../../components/TrackedLink.astro';
+import Card from '../../components/Card.astro';
+import CtaCalendarCard from '../../components/CtaCalendarCard.astro';
+import GradientHero from '../../components/GradientHero.astro';
+import { btnPrimary } from '../../lib/cta';
+import { localizedPath } from '../../i18n';
+
+// English translation of src/pages/fr/fonctionnalites.astro.
+const trackingContext = 'page_features';
+
+const iconBlocks = [
+  {
+    icon: '/assets/landing-pages/icon_km-auto.png',
+    alt: 'izika imports appointments from the calendar',
+    title: 'Automatic trip generation',
+    text: 'izika builds your trip list from the appointments in your calendar.',
+  },
+  {
+    icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+    alt: 'SVG',
+    title: 'Connects to your online calendar',
+    text: 'Connect your favourite online calendar: Google Calendar, Outlook, Office 365, iCloud, .ics link…',
+  },
+  {
+    icon: '/assets/landing-pages/icon_bareme-personnalise.png',
+    alt: 'configure your default travel mode',
+    title: 'Mileage allowance scales',
+    text: 'Choose between the official scales or create your own custom mileage scale.',
+  },
+  {
+    icon: '/assets/landing-pages/icon_report-conformity.png',
+    alt: 'SVG',
+    title: 'Exports compliant with current tax rules',
+    text: 'You get a complete monthly and/or yearly export — readable, reliable and tax-compliant.',
+  },
+] as const;
+---
+
+<StandardLayout
+  market="en"
+  routeKey="features"
+  title="Features"
+  description="Reliable features that keep saving you more time on your mileage allowances"
+>
+  <!-- Hero -->
+  <GradientHero class="text-center">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="text-[2.5rem] font-bold">Features</h1>
+      <h2 class="mt-4 text-3xl font-bold">
+        Reliable features that keep saving you more time on your mileage allowances
+      </h2>
+    </div>
+    <div class="mt-12">
+      <TrackedLink
+        eventId="cta_header"
+        trackingContext={trackingContext}
+        class:list={[btnPrimary, 'sm:px-12']}
+      >
+        Try it for free
+      </TrackedLink>
+    </div>
+  </GradientHero>
+
+  <!-- Icon blocks (centered on ~10/12 of the container like the source rows) -->
+  <section class="mx-auto max-w-6xl px-4 py-8">
+    <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
+      {iconBlocks.map((block) => (
+        <div class="flex items-start gap-4">
+          <figure class="w-full max-w-14 shrink-0">
+            <img class="h-auto max-w-full" src={block.icon} alt={block.alt} loading="lazy" />
+          </figure>
+          <div>
+            <h3 class="text-lg font-bold">{block.title}</h3>
+            <p class="mt-2">{block.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="bg-soft-primary py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <Card>
+          <img slot="top" class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-vehicules.jpg" alt="Multi-vehicle management" loading="lazy" />
+          <h3 class="text-lg font-bold">Multi-vehicle management</h3>
+          <p class="mt-3">
+            🚘 Set up your vehicles and their tax horsepower, and define your default vehicle.
+          </p>
+          <p class="mt-3 mb-0">
+            ⚡ The specific scale for <strong>electric vehicles</strong> is taken into account.
+          </p>
+        </Card>
+
+        <Card>
+          <img slot="top" class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-adresses.jpg" alt="Favourite addresses" loading="lazy" />
+          <h3 class="text-lg font-bold">Favourite addresses</h3>
+          <p class="mt-3">
+            🏢 Save your favourite addresses so they are automatically used as the start and end points of your regular trips.
+          </p>
+        </Card>
+
+        <Card>
+          <img slot="top" class="w-full" src="/assets/img/fonctionnalites/fonctionnalites-mode-deplacement.jpg" alt="Travel modes" loading="lazy" />
+          <h3 class="text-lg font-bold">Travel modes</h3>
+          <p class="mt-3">Choose your default travel mode:</p>
+          <p class="mt-3 mb-0">
+            ⏭️ <strong>Round trip</strong> if you chain appointments one after another<br />
+            ✴️ <strong>Star pattern</strong> if you return to your starting point between appointments.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team block (aligned on the same centered column as the icon blocks) -->
+  <section class="mx-auto max-w-6xl px-4 py-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="flex max-w-xl items-start gap-4">
+        <figure class="w-full max-w-14 shrink-0">
+          <img class="h-auto max-w-full" src="/assets/landing-pages/icon_team.png" alt="fleet management" loading="lazy" />
+        </figure>
+        <div>
+          <h3 class="text-lg font-bold">Fleet management</h3>
+          <p class="mt-2">Approval workflows for employees' mileage allowance claims, built for companies.</p>
+          <a class="btn-3d mt-2 inline-block font-bold text-ink" href={localizedPath('team', 'en')}>
+            Learn more about izika Team
+            <span aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <CtaCalendarCard
+      title="Ready to try? Test it for free, with no obligation to buy"
+      ctaLabel="Create your account"
+      trackingContext={trackingContext}
+    />
+  </section>
+</StandardLayout>

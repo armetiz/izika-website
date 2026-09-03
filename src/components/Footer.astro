@@ -1,10 +1,12 @@
 ---
-import { t, localizedPath, type Locale } from '../i18n';
+import { t, getMarket, localizedPath, type MarketId, type RouteKey } from '../i18n';
 import { reviews } from '../data/reviews';
-import LanguageSwitcher from './LanguageSwitcher.astro';
+import MarketSwitcher from './MarketSwitcher.astro';
 
 interface Props {
-  locale: Locale;
+  market: MarketId;
+  /** Forwarded to MarketSwitcher for page-to-page equivalence. */
+  routeKey?: RouteKey;
   /**
    * Footer-zone background: 'beige' (default site-wide), 'gradient' (the
    * solo/team landing gradient), 'soft' (the collectivités/entreprises
@@ -14,8 +16,9 @@ interface Props {
   background?: 'beige' | 'gradient' | 'soft';
 }
 
-const { locale, background = 'beige' } = Astro.props;
-const dict = t(locale);
+const { market, routeKey, background = 'beige' } = Astro.props;
+const dict = t(market);
+const marketData = getMarket(market);
 const year = new Date().getFullYear();
 
 const backgroundClass = {
@@ -23,108 +26,109 @@ const backgroundClass = {
   gradient: 'footer-gradient',
   soft: 'bg-soft-neutral',
 }[background];
+
+const ratingAria = dict.a11y.ratingAria
+  .replace('{rating}', reviews.ratingValue)
+  .replace('{max}', reviews.bestRating);
+
+// Route partiality masks chrome links: a market without the route simply
+// doesn't render the entry.
+const navLinks = [
+  { href: localizedPath('features', market), label: dict.nav.features },
+  { href: localizedPath('calculator', market), label: dict.footer.calculator },
+  { href: localizedPath('articles', market), label: dict.nav.articles },
+  { href: localizedPath('faq', market), label: dict.nav.faq },
+  { href: localizedPath('team', market), label: dict.footer.team },
+  { href: localizedPath('security', market), label: dict.footer.security },
+].filter((l): l is { href: string; label: string } => l.href !== null);
 ---
 
 <footer class={backgroundClass}>
   <div class="mx-auto max-w-6xl px-4 pt-12">
     <div class="grid gap-10 lg:grid-cols-[2fr_1.5fr_1fr]">
       <div>
-        <a class="mb-4 inline-flex items-center" href={localizedPath('home', locale)} aria-label="izika">
-          <img src="/assets/img/logo/izika-logo.png" alt="Logo izika" width="159" height="56" class="h-12 w-auto" />
+        <a class="mb-4 inline-flex items-center" href={localizedPath('home', market)} aria-label="izika">
+          <img src="/assets/img/logo/izika-logo.png" alt={dict.a11y.logoAlt} width="159" height="56" class="h-12 w-auto" />
         </a>
 
         <div class="mb-4">
-          <p class="text-lg font-semibold">Consacrez-vous à ce qui compte vraiment !</p>
+          <p class="text-lg font-semibold">{dict.footer.mission}</p>
           <p>
-            <em>
-              "Notre ambition est de gérer intégralement les frais kilométriques et de libérer du
-              temps pour les collaborateurs et les dirigeants avec un logiciel intelligent et
-              solide."
-            </em>
+            <em>{dict.footer.quote}</em>
           </p>
         </div>
         <div class="flex items-center gap-2">
           <img
             class="h-8 w-8 rounded-full"
             src="/assets/landing-pages/team/pierre-aulagne.jpg"
-            alt="Pierre A., cofondateur d'izika"
+            alt={dict.footer.founderAvatarAlt}
             loading="lazy"
           />
-          <p class="text-lg font-semibold">Pierre A., cofondateur</p>
+          <p class="text-lg font-semibold">{dict.footer.founderName}</p>
         </div>
       </div>
 
       <div class="lg:pt-8">
         <ul class="space-y-2">
-          <li>
-            <a class="hover:underline" href={localizedPath('features', locale)}>{dict.nav.features}</a>
-          </li>
-          <li>
-            <a class="hover:underline" href={localizedPath('calculator', locale)}>
-              Calculateur d'indemnités kilométriques
-            </a>
-          </li>
-          <li>
-            <a class="hover:underline" href={localizedPath('articles', locale)}>{dict.nav.articles}</a>
-          </li>
-          <li><a class="hover:underline" href={localizedPath('faq', locale)}>{dict.nav.faq}</a></li>
-          <li>
-            <a class="hover:underline" href={localizedPath('team', locale)}>
-              Entreprises, associations & collectivités
-            </a>
-          </li>
-          <li>
-            <a class="hover:underline" href={localizedPath('security', locale)}>{dict.footer.security}</a>
-          </li>
+          {
+            navLinks.map((link) => (
+              <li>
+                <a class="hover:underline" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
-      <div class="lg:pt-8">
-        <div class="flex items-center gap-3">
-          <a class="text-[2.5rem] font-bold" href={reviews.trustpilotUrl} rel="nofollow">
-            {reviews.ratingValue}
-          </a>
-          <div class="flex flex-col">
-            <a
-              class="flex items-center gap-0.5 text-primary"
-              rel="nofollow"
-              href={reviews.trustpilotUrl}
-              aria-label={`Note ${reviews.ratingValue} sur 5`}
-            >
-              {/* 4 full stars + 1 half star, like the fa-star/fa-star-half icons */}
-              {
-                [0, 1, 2, 3].map(() => (
+      {
+        marketData.trustpilot && (
+          <div class="lg:pt-8">
+            <div class="flex items-center gap-3">
+              <a class="text-[2.5rem] font-bold" href={marketData.trustpilot.url} rel="nofollow">
+                {reviews.ratingValue}
+              </a>
+              <div class="flex flex-col">
+                <a
+                  class="flex items-center gap-0.5 text-primary"
+                  rel="nofollow"
+                  href={marketData.trustpilot.url}
+                  aria-label={ratingAria}
+                >
+                  {/* 4 full stars + 1 half star, like the fa-star/fa-star-half icons */}
+                  {[0, 1, 2, 3].map(() => (
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
                   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    <path d="M12 2v15.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
-                ))
-              }
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2v15.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
-            </a>
-            <a href={reviews.trustpilotUrl} class="underline" rel="nofollow">
-              Voir tous les avis
-            </a>
+                </a>
+                <a href={marketData.trustpilot.url} class="underline" rel="nofollow">
+                  {dict.footer.seeAllReviews}
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      }
     </div>
 
     <div class="mt-12 pb-4 text-center">
       <p class="text-[80%]">
-        <a class="underline" href={localizedPath('legal', locale)}>{dict.footer.legal}</a>
+        <a class="underline" href={localizedPath('legal', market)}>{dict.footer.legal}</a>
         {' | '}
-        <a class="underline" href={localizedPath('privacy', locale)}>{dict.footer.privacy}</a>
+        <a class="underline" href={localizedPath('privacy', market)}>{dict.footer.privacy}</a>
         {' | '}
-        <a class="underline" href={localizedPath('terms', locale)}>{dict.footer.terms}</a>
+        <a class="underline" href={localizedPath('terms', market)}>{dict.footer.terms}</a>
         {' | '}
-        <a class="underline" href="javascript:openAxeptioCookies()">Consentement des cookies</a>
+        <a class="underline" href="javascript:openAxeptioCookies()">{dict.footer.cookies}</a>
         {' | '}
-        &copy;Copyright {year} izika SAS - RCS Montpellier 807746524 - 199 rue Hélène Boucher 34170
-        Castelnau-le-Lez, France
+        ©Copyright {year} {marketData.legal.entity} - {marketData.legal.footerLines.join(' - ')}
       </p>
-      <LanguageSwitcher locale={locale} />
+      <MarketSwitcher market={market} routeKey={routeKey} />
     </div>
   </div>
 </footer>

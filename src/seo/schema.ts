@@ -1,16 +1,19 @@
 import { site } from '../config/site';
 import { reviews } from '../data/reviews';
+import type { Market } from '../i18n/markets';
 
 /**
  * Typed JSON-LD builders. Rule: no literal numbers or Q&A text here — social
  * proof comes from src/data/reviews.ts and FAQ entries from the same data
- * module that renders the visible accordion.
+ * module that renders the visible accordion. Language/currency signals come
+ * from the Market. The Organization itself (name, sameAs) is the one French
+ * publishing entity, shared across markets.
  */
 
 const ORG_ID = `${site.url}/#organization`;
 const WEBSITE_ID = `${site.url}/#website`;
 
-export function organizationSchema() {
+export function organizationSchema(market: Market) {
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
@@ -26,7 +29,7 @@ export function organizationSchema() {
     logo: {
       '@type': 'ImageObject',
       '@id': `${site.url}/#logo`,
-      inLanguage: 'fr-FR',
+      inLanguage: market.schemaInLanguage,
       url: `${site.url}/assets/img/logo/izika-logo.png`,
       width: 318,
       height: 112,
@@ -36,20 +39,20 @@ export function organizationSchema() {
   };
 }
 
-export function webSiteSchema() {
+export function webSiteSchema(market: Market) {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     url: `${site.url}/`,
-    name: 'IZIKA : Calcul indemnité kilométrique',
-    description: 'Gestion automatique des indemnités kilométriques',
+    name: market.siteName,
+    description: market.websiteDescription,
     publisher: { '@id': ORG_ID },
-    inLanguage: 'fr-FR',
+    inLanguage: market.schemaInLanguage,
   };
 }
 
 /** Home + pricing only. */
-export function webApplicationSchema() {
+export function webApplicationSchema(market: Market) {
   return {
     '@type': 'WebApplication',
     name: 'izika',
@@ -66,8 +69,8 @@ export function webApplicationSchema() {
       worstRating: reviews.worstRating,
     },
     offers: [
-      { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
-      { '@type': 'Offer', price: '99', priceCurrency: 'EUR' },
+      { '@type': 'Offer', price: '0', priceCurrency: market.currency },
+      { '@type': 'Offer', price: market.pricing.yearly, priceCurrency: market.currency },
     ],
   };
 }
@@ -85,7 +88,7 @@ export function faqPageSchema(entries: ReadonlyArray<{ question: string; answer:
 }
 
 /** Articles only. */
-export function articleSchema(input: {
+export function articleSchema(market: Market, input: {
   url: string;
   title: string;
   description: string;
@@ -103,7 +106,7 @@ export function articleSchema(input: {
     author: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: input.url,
-    inLanguage: 'fr-FR',
+    inLanguage: market.schemaInLanguage,
   };
 }
 

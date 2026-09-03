@@ -1,0 +1,215 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import LandingHero from '../../components/LandingHero.astro';
+import LandingDeviceCollage from '../../components/LandingDeviceCollage.astro';
+import LandingIconHighlights from '../../components/LandingIconHighlights.astro';
+import LandingChecklistSection from '../../components/LandingChecklistSection.astro';
+import LandingScreenCarousel from '../../components/LandingScreenCarousel.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import LandingClosingCta from '../../components/LandingClosingCta.astro';
+
+// English translation of src/pages/fr/solo.astro.
+const market = 'en';
+const trackingContext = 'page_solo';
+
+const highlights = [
+  {
+    icon: '/assets/landing-pages/team/icon_cal-to-rdv.png',
+    text: 'Appointments imported from your calendar',
+  },
+  {
+    icon: '/assets/landing-pages/icon_km-auto.png',
+    text: 'Automatic distance calculation',
+  },
+  {
+    icon: '/assets/landing-pages/team/icon_report-conformity.png',
+    text: 'Reports compliant with tax rules',
+  },
+  {
+    icon: '/assets/landing-pages/team/icon_security.png',
+    text: 'Security, privacy —<br /> built and hosted in France',
+  },
+];
+
+const simplifyItems = [
+  'Instant calculation of the distances and mileage allowances of every trip',
+  'Synced with online calendars (Outlook, Google...)',
+  'Attach supporting documents, receipts, visit reports',
+  'Generate in one click your mileage expense report, ready to hand to your accountant or include in your annual accounts.',
+];
+
+const simplifyScreens = [
+  {
+    src: '/assets/landing-pages/team/illu_rdv-etoiles.png',
+    alt: 'Configuring star-pattern or round trips',
+    width: 920,
+    height: 719,
+  },
+  {
+    src: '/assets/landing-pages/team/illu_justificatifs.png',
+    alt: 'attaching supporting documents to appointments',
+    width: 920,
+    height: 719,
+  },
+  {
+    src: '/assets/landing-pages/screens/rapport-comptable.png',
+    alt: 'generate your accounting report in 1 click',
+    width: 1078,
+    height: 790,
+  },
+];
+
+const adaptItems = [
+  'Save your favourite addresses (home, office...) to speed up data entry',
+  'Choose your default travel mode (star pattern or round trip)',
+  'Add your different vehicles (izika also handles electric vehicles!)',
+  'Report your monthly provisions — izika computes the remaining balance at the end of your tax period',
+];
+
+const adaptScreens = [
+  {
+    src: '/assets/landing-pages/screens/parametres-adresses.png',
+    alt: 'List your main addresses',
+    width: 1644,
+    height: 1204,
+  },
+  {
+    src: '/assets/landing-pages/screens/parametres_mode-deplacement.png',
+    alt: 'Configure your default travel mode',
+    width: 1640,
+    height: 1208,
+  },
+  {
+    src: '/assets/landing-pages/screens/parametres-vehicules.png',
+    alt: 'List your different vehicles',
+    width: 1642,
+    height: 1200,
+  },
+  {
+    src: '/assets/landing-pages/screens/provisions.png',
+    alt: 'Record your monthly provisions',
+    width: 1076,
+    height: 792,
+  },
+];
+
+const complianceItems = [
+  'Compliant with tax rules. Mileage reports approved by chartered accountants',
+  'Ultra-reliable mapping for precise, error-free distance calculation',
+  'GDPR compliance, advanced encryption keys for privacy and security, data sovereignty',
+  'Support based in France, attentive and responsive',
+];
+---
+
+<LandingLayout
+  market={market}
+  title="Automatic mileage allowance management"
+  description="izika is Europe's #1 mileage allowance calculation solution for freelancers"
+  routeKey="solo"
+  footerBackground="gradient"
+>
+  <!-- Hero Section -->
+  <LandingHero
+    titlePrefix="Mileage allowance management for"
+    words={['freelancers', 'entrepreneurs']}
+    ctaEventId="cta_header"
+    ctaLabel="Try izika for free"
+    trackingContext={trackingContext}
+  >
+    <p slot="lead">
+      Your time is precious — get your mileage allowances in 10 minutes without the headache.
+    </p>
+
+    <LandingDeviceCollage
+      slot="media"
+      desktopSrc="/assets/landing-pages/team/screen-next-rdv.jpg"
+      desktopAlt="izika on a desktop computer"
+      desktopWidth={1618}
+      desktopHeight={1010}
+      tabletSrc="/assets/landing-pages/screens/parametres.png"
+      tabletAlt="configure izika to speed up your mileage processing"
+      tabletWidth={1642}
+      tabletHeight={1202}
+      ipadAlt="izika on an iPad"
+      mobileAlt="izika on a mobile phone"
+    />
+  </LandingHero>
+
+  <!-- Highlights row (old "Clients" section) -->
+  <LandingIconHighlights items={highlights} />
+
+  <!-- Features Section 1 -->
+  <LandingChecklistSection
+    eyebrow="Your mileage reports in 2 min."
+    title="Simplify your mileage allowance calculation"
+    items={simplifyItems}
+    class="bg-soft-neutral"
+  >
+    <LandingScreenCarousel images={simplifyScreens} label="Application screenshots" />
+  </LandingChecklistSection>
+
+  <!-- Features Section 2 -->
+  <LandingChecklistSection
+    eyebrow="To go even faster"
+    title="Izika adapts to your habits"
+    items={adaptItems}
+    reverse
+  >
+    <LandingScreenCarousel images={adaptScreens} label="Application screenshots" />
+  </LandingChecklistSection>
+
+  <!-- Features Section 3 -->
+  <LandingChecklistSection
+    eyebrow="Compliance, security, reliability"
+    title="Compliant with tax rules. Mileage reports approved by chartered accountants"
+    items={complianceItems}
+    class="bg-soft-primary pb-16 lg:pb-0"
+  >
+    <figure class="mx-auto w-4/5">
+      <img
+        class="h-auto w-full"
+        src="/assets/img/illustrations/expert-comptable-large.png"
+        alt="izika validated by chartered accountants"
+        width="1203"
+        height="1349"
+        loading="lazy"
+      />
+    </figure>
+  </LandingChecklistSection>
+
+  <!-- Testimonials Section -->
+  <section class="mx-auto max-w-6xl px-4 pt-16 pb-32">
+    <div class="grid gap-6 md:grid-cols-2">
+      <TestimonialCard author="Eleonore" role="">
+        I have been using Izika for a little over a year and I did my research before subscribing
+        to this app: it was the only one that let me compute the distances between several
+        appointment locations noted in my electronic calendar.
+      </TestimonialCard>
+
+      <TestimonialCard author="Arnaud Philippe" role="">
+        Practical interface connected to Google Calendar, quick generation of the mileage table,
+        significant time savings. Great ergonomics.
+      </TestimonialCard>
+
+      <TestimonialCard author="Christian Dumay" role="">
+        I have been using IZIKA for 3 years and recommend it around me. The time I save every month
+        goes to other activities! Everything is simple and ergonomic. The daily discipline of
+        appointments, once automated, no longer matters. Thank you
+      </TestimonialCard>
+
+      <TestimonialCard author="Frédéric Bessede" role="">
+        My whole year's mileage accounting in 15 minutes tops, with just a bit of discipline in my
+        Gmail calendar to note my appointment locations (which is the least I can do) — really
+        spotless (...)
+      </TestimonialCard>
+    </div>
+  </section>
+
+  <LandingClosingCta
+    title="Want to try the best mileage allowance calculation tool?"
+    text="Izika is free up to 10 trips per month! Try every feature with no commitment."
+    ctaLabel="Try izika for free"
+    trackingContext="page_solo"
+    class="bg-beige-pale"
+  />
+</LandingLayout>

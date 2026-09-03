@@ -1,0 +1,128 @@
+meta:
+  title: "Mileage allowance management for craftsmen and construction - izika"
+  description: "izika is the ideal solution for craftsmen and independent construction workers: automatic mileage allowance calculation from your calendar, with no data entry or logbook."
+trackingContext: page_solution_artisans_btp
+
+head:
+  title1: Trip management tool for craftsmen and construction
+  title2: Automatic mileage allowance management for independent craftsmen
+  catch: >-
+    izika automatically computes your mileage allowances from your work sites and client appointments.
+    No more logbooks, forgotten trips and year-end reconstruction.
+  secondaryCta:
+    routeKey: features
+    text: Features
+  image:
+    src: /assets/solutions/artisans-btp/rdv-template.png
+    alt: Mileage allowance export for craftsmen and construction
+    title: Mileage allowance export for craftsmen and construction
+
+featureHighlights:
+  title: The fastest way for craftsmen to manage their work-site trips
+  image:
+    src: /assets/solutions/visuel-agenda-professionnel.png
+    alt: izika for craftsmen and construction
+    title: izika for craftsmen and construction
+  ctaText: Try izika
+  items:
+    - title: Every work site and client appointment captured automatically
+      text: >-
+        izika analyses your appointments and computes distances and amounts. You put your work sites in
+        your calendar as usual — izika turns every trip into a mileage allowance.
+    - title: "No more year-end reconstruction"
+      text: >-
+        Your data is already there when your accountant needs it. No more hunting for delivery notes
+        or scribbles left in the van.
+    - title: The right scale applied automatically
+      text: >-
+        izika applies the mileage scale matching your utility or personal vehicle and its tax rating.
+        Every work-site kilometre is counted at the right rate.
+    - title: Guaranteed compliance
+      text: >-
+        izika is approved and validated by chartered accountants and the tax administration. The
+        generated reports comply with your tax obligations, whatever your legal structure.
+
+benefits:
+  title: "Benefits of a mileage allowance management tool for construction craftsmen"
+  items:
+    - title: Your work-site trips generated automatically from your calendar
+      image: /assets/solutions/artisans-btp/calendar-to-ik.png
+      imageAlt: "izika - Craftsmen's mileage allowances computed from the calendar"
+      text: |
+        <p>Your schedule revolves around site visits, client appointments for quotes and trips to suppliers. All journeys you have no time to write down one by one.</p>
+        <ul>
+          <li>Sync your business calendar once</li>
+          <li>Every work site or appointment automatically becomes a computed journey</li>
+          <li>Distances and allowance amounts are already there, with zero data entry</li>
+        </ul>
+    - title: A compliant tax report, ready to send to your accountant
+      image: /assets/solutions/artisans-btp/rapport-print-ombre.png
+      imageAlt: izika - Compliant tax report for craftsmen and construction
+      text: |
+        <p>
+          Whether you are a sole trader or run a company, your travel expenses must be substantiated.
+          izika generates a structured, clear document accepted by the tax administration.
+        </p>
+        <ul>
+          <li>Export a complete report in a few clicks</li>
+          <li>Send it straight to your chartered accountant</li>
+          <li>Justify every work-site trip in the event of a tax audit</li>
+        </ul>
+    - title: You don't manage izika day to day — it works in the background
+      image: /assets/solutions/laptop-screen-izika.jpg
+      imageAlt: izika - Craftsmen's mileage management with no daily upkeep
+      text: |
+        <p>On a work site, you have no time to write down your kilometres. izika asks nothing of you day to day: it works in the background, from your calendar.</p>
+        <ul>
+          <li>No manual entry, no logbook to keep in the van</li>
+          <li>No double bookkeeping with your existing calendar tool</li>
+          <li>Open izika whenever you need it — everything is already ready</li>
+        </ul>
+  testimonial:
+    quote: >-
+      I work on sites within 30 km of home, every day. I used not to report half of my trips.
+      With izika, everything is captured and my accountant gets the report in two clicks.
+    avatar: /assets/solutions/testimonial-avatar.png
+    avatarAlt: Sébastien M.
+    name: Sébastien M.
+    companyTitle: Independent electrician
+
+customerCase:
+  title: Is izika the best tool for managing construction craftsmen's trips?
+  intro: |
+    <p>
+      Julien and Clément are the founders of Artisans de l'Ouest, a roofing, carpentry and zinc-work company based in Ouistreham, Normandy.
+      They work on sites within 30 km of their base: roofs, extensions, attic renovations.
+    </p>
+    <p>
+      izika customers since 2025, they no longer waste time reconstructing their trips at the end of the financial year.
+    </p>
+  avatar: /assets/solutions/artisans-btp/persona.jpg
+  avatarAlt: "Julien - Artisans de l'Ouest"
+  gainsTitle: "Here is what Artisans de l'Ouest gained by using izika:"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: "Work-site trips computed automatically from the calendar"
+      text: >-
+        Their daily trips to the work sites of Lion-sur-Mer, Caen, Hérouville and the whole Normandy area
+        <strong>are automatically turned into mileage allowances</strong> with zero data entry.
+    - image: /assets/landing-pages/illu-tournee-etoile.png
+      imageAlt: Site visits and quote appointments
+      text: >-
+        Every site visit, every appointment for a quote or a material delivery becomes a journey in izika.
+        They review their <strong>trips in a few seconds</strong> before exporting.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Annual report sent to the accountant effortlessly
+      text: >-
+        At the end of the financial year, <strong>the report is ready in a few minutes.</strong>
+        They send it straight to their accountant — every work-site trip is substantiated and compliant.
+  testimonial:
+    quote: >-
+      We drive to work sites every day, but we never had time to write anything down.
+      Since we started using izika, our calendar does the work for us.
+      At year-end, we send the report to our accountant in two minutes — that's it.
+    name: Julien Amour
+    companyTitle: "Artisans de l'Ouest — Roofing, carpentry & zinc work"
+  ctaBlock:
+    text: "Like Julien and Clément, stop wasting time on your mileage reporting"
+    buttonText: Try for free

@@ -2,8 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import GradientHero from './GradientHero.astro';
 import TrackedLink from './TrackedLink.astro';
-import { localizedPath, type Locale } from '../i18n';
-import { site } from '../config/site';
+import { t, getMarket, localizedPath, type MarketId } from '../i18n';
 import { btnPill, btnPrimary } from '../lib/cta';
 import { reviews } from '../data/reviews';
 
@@ -17,14 +16,20 @@ import { reviews } from '../data/reviews';
 interface Props {
   data: CollectionEntry<'solutions'>['data'];
   slug: string;
-  locale?: Locale;
+  market: MarketId;
 }
 
-const { data, locale = 'fr' } = Astro.props;
+const { data, market } = Astro.props;
 const { trackingContext, head, featureHighlights, benefits, customerCase } = data;
+const dict = t(market);
+const marketData = getMarket(market);
+const trustpilot = marketData.trustpilot;
+const ratingAria = dict.a11y.ratingAria
+  .replace('{rating}', reviews.ratingValue)
+  .replace('{max}', reviews.bestRating);
 
 const secondaryCtaHref = head.secondaryCta
-  ? localizedPath(head.secondaryCta.routeKey, locale)
+  ? localizedPath(head.secondaryCta.routeKey, market)
   : null;
 
 /* Styling for the rich-text fields (p/ul/li/strong HTML from the YAML). */
@@ -46,11 +51,11 @@ const richText =
           <div class="flex flex-wrap items-center gap-3">
             <TrackedLink
               eventId="cta_header"
-              href={head.ctaHref ?? site.joinUrl}
+              href={head.ctaHref ?? marketData.joinUrl}
               trackingContext={trackingContext}
               class={btnPrimary}
             >
-              {head.primaryCtaText ?? 'Tester izika gratuitement'}
+              {head.primaryCtaText ?? dict.cta.testFree}
             </TrackedLink>
             {
               secondaryCtaHref && head.secondaryCta && (
@@ -129,16 +134,14 @@ const richText =
             title={featureHighlights.image.title}
           />
           <div class="px-2 pt-4">
-            <h4 class="text-lg font-bold">Testez gratuitement</h4>
-            <p class="mb-4 text-sm text-muted">
-              Pas de besoin de carte de crédit &bull; Vos IK en 5 min
-            </p>
+            <h4 class="text-lg font-bold">{dict.solutionPage.signupTitle}</h4>
+            <p class="mb-4 text-sm text-muted">{dict.solutionPage.signupText}</p>
             <TrackedLink
               eventId="cta_feature_highlights"
               trackingContext={trackingContext}
               class={btnPrimary}
             >
-              {featureHighlights.ctaText ?? 'Tester izika'}
+              {featureHighlights.ctaText ?? dict.cta.test}
             </TrackedLink>
           </div>
         </div>
@@ -202,24 +205,23 @@ const richText =
           </div>
 
           <!-- Trustpilot rating -->
-          <div class="mt-6 flex items-center justify-center gap-3">
-            <a class="text-[2.5rem] font-bold" href={reviews.trustpilotUrl} rel="nofollow">
-              {reviews.ratingValue}
-            </a>
-            <div class="flex flex-col">
-              <a
-                class="text-primary"
-                href={reviews.trustpilotUrl}
-                rel="nofollow"
-                aria-label={`Note ${reviews.ratingValue} sur ${reviews.bestRating}`}
-              >
-                <span aria-hidden="true">★★★★★</span>
-              </a>
-              <a class="text-sm underline" href={reviews.trustpilotUrl} rel="nofollow">
-                Voir tous les avis
-              </a>
-            </div>
-          </div>
+          {
+            trustpilot && (
+              <div class="mt-6 flex items-center justify-center gap-3">
+                <a class="text-[2.5rem] font-bold" href={trustpilot.url} rel="nofollow">
+                  {reviews.ratingValue}
+                </a>
+                <div class="flex flex-col">
+                  <a class="text-primary" href={trustpilot.url} rel="nofollow" aria-label={ratingAria}>
+                    <span aria-hidden="true">★★★★★</span>
+                  </a>
+                  <a class="text-sm underline" href={trustpilot.url} rel="nofollow">
+                    {dict.footer.seeAllReviews}
+                  </a>
+                </div>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
@@ -232,18 +234,15 @@ const richText =
         class="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left"
       >
         <div class="max-w-xl">
-          <h2 class="text-3xl font-bold">Votre temps est précieux !</h2>
-          <p>
-            Laissez izika faire vos indemnités kilométriques pour vous et utilisez votre temps
-            autrement.
-          </p>
+          <h2 class="text-3xl font-bold">{dict.solutionPage.bandTitle}</h2>
+          <p>{dict.solutionPage.bandText}</p>
         </div>
         <TrackedLink
           eventId="cta_mid"
           trackingContext={trackingContext}
           class={btnPill}
         >
-          S'inscrire maintenant
+          {dict.cta.signupNow}
         </TrackedLink>
       </div>
     </div>
@@ -314,9 +313,9 @@ const richText =
           <h3 class="text-[1.3125rem] font-bold">{customerCase.ctaBlock.text}</h3>
           <a
             class="btn-3d inline-block shrink-0 rounded-card bg-primary px-4 py-3 font-bold text-white hover:bg-primary-hover"
-            href={customerCase.ctaBlock.buttonUrl ?? site.joinUrl}
+            href={customerCase.ctaBlock.buttonUrl ?? marketData.joinUrl}
           >
-            {customerCase.ctaBlock.buttonText ?? 'Tester gratuitement'}
+            {customerCase.ctaBlock.buttonText ?? dict.cta.tryFree}
           </a>
         </div>
       </div>

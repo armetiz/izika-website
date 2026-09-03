@@ -1,0 +1,133 @@
+meta:
+  title: "Trip management for insurance agents - izika"
+  description: "izika is the best solution for mileage allowance management for insurance agents."
+trackingContext: page_solution_change_agent_assurance
+
+head:
+  title1: "Trip management for insurance agents"
+  title2: "Mileage allowance management for insurance agents"
+  catch: >-
+    izika automatically computes your mileage allowances from your client rounds.
+    No more Excel files, errors and wasted time.
+  secondaryCta:
+    routeKey: features
+    text: Features
+  image:
+    src: /assets/solutions/agent-general-assurances/rdv-template.png
+    alt: "Mileage allowance export for insurance agents"
+    title: "Mileage allowance export for insurance agents"
+
+featureHighlights:
+  title: The fastest way for insurance agents to manage their trips
+  image:
+    src: /assets/solutions/agent-general-assurances/rdv-suivant.png
+    alt: "Izika for insurance agents"
+    title: "Izika for insurance agents"
+  ctaText: Try izika
+  items:
+    - title: Mileage allowances are no longer an extra mental load
+      text: >-
+        No more data entry, no more Excel, no more tedious route calculations in Google Maps.
+        There is almost nothing left for you to do to report your mileage allowances.
+        You keep working as usual: client visits, portfolio reviews, claim assessments, document handovers...
+    - title: "No errors possible"
+      text: >-
+        Since izika relies on your business calendar, you can no longer forget a trip.
+        And the application automatically applies the right mileage scale to compute your allowances.
+    - title: An export for your accountant in a few clicks
+      text: >-
+        You open izika and review your trips at a glance.
+        Maybe a few clicks to skip unrelated appointments or fix a few addresses in your calendar,
+        and you are ready to generate a report for your accountant.
+    - title: Guaranteed compliance
+      text: >-
+        izika is approved and validated by chartered accountants and the tax administration.
+        The generated reports comply with your tax obligations.
+
+benefits:
+  title: "Benefits of a trip management application for insurance agents"
+  items:
+    - title: Your mileage allowances computed from your calendar
+      image: /assets/solutions/agent-general-assurances/calendar-to-ik.png
+      imageAlt: "izika - Insurance agents' mileage allowances computed from the calendar"
+      text: |
+        <p>As an insurance agent, your days revolve around client appointments, trips for claim reports, follow-up visits, partner meetings...</p>
+        <p>It's all in your business calendar. izika connects to it and reconstructs all your trips automatically:</p>
+        <ul>
+          <li>Simply manage your calendar as usual</li>
+          <li>izika adapts in real time even if your schedule changes often</li>
+          <li>Every appointment or round automatically becomes a trip</li>
+          <li>Distances and allowance amounts are already computed for you</li>
+        </ul>
+    - title: A compliant tax report, ready to send to your accountant
+      image: /assets/solutions/agent-general-assurances/rapport-print-ombre.png
+      imageAlt: "izika - A compliant tax report ready to send to the accountant, for insurance agents"
+      text: |
+        <p>Whether for your annual accounts or to occasionally substantiate your trips, everything is gathered in one clean, complete document.</p>
+        <p>izika lets you:</p>
+        <ul>
+          <li>Generate complete exports in 1 click</li>
+          <li>Stay compliant with the tax administration's requirements</li>
+          <li>Justify your trips at any time</li>
+        </ul>
+    - title: You don't have to manage izika day to day
+      image: /assets/solutions/agent-general-assurances/laptop-screen-izika.jpg
+      imageAlt: "izika - You don't have to manage izika day to day"
+      text: |
+        <p>izika doesn't add another tool to manage every day. You log in when you need to and everything is already there.</p>
+        <p><strong>izika was designed to save you a maximum of time:</strong></p>
+        <ul>
+          <li>No need to log in every day</li>
+          <li>No data entry — your trips are already there</li>
+          <li>A reliable tool when reporting time comes</li>
+        </ul>
+  testimonial:
+    quote: >-
+      I do a lot of client appointments. izika saves me from having to enter and compute everything at
+      year-end — I save precious time!
+    avatar: /assets/solutions/agent-general-assurances/persona.jpg
+    avatarAlt: Marc T.
+    name: Marc T.
+    companyTitle: "Insurance agent"
+
+customerCase:
+  title: "Is izika the best tool for managing insurance agents' trips?"
+  intro: |
+    <p>
+      Let other izika users convince you.
+      Claire, an independent insurance agent, has been using izika for a few years.
+    </p>
+    <p>
+      Since she started using izika, she generates her mileage allowances in a few minutes and can
+      send a complete report to her accountant with no stress and no wasted time.
+    </p>
+  avatar: /assets/solutions/agent-general-assurances/customer-case-avatar.jpg
+  avatarAlt: Claire Montagnon
+  gainsTitle: "Here is what Claire gained by using izika:"
+  gains:
+    - image: /assets/landing-pages/icon_cal-to-rdv.png
+      imageAlt: Allowances computed from her calendar
+      text: >-
+        All her trips for client visits, claims and signings
+        <strong>are automatically imported by izika and become mileage allowances</strong>
+        with zero data entry.
+    - image: /assets/landing-pages/icon-provisions.png
+      imageAlt: Monthly provision tracking
+      text: >-
+        Claire decided to pay herself <strong>monthly provisions</strong> for her <strong>mileage allowances</strong>.
+        izika computes her provision conservatively each month to avoid an overpayment at the end of the tax year.
+    - image: /assets/landing-pages/icon_report-conformity.png
+      imageAlt: Provision balance & annual accounts
+      text: >-
+        At the end of the tax period, izika shows Claire the <strong>balance of her provisions</strong> against her actual allowances,
+        and generates a <strong>complete summary</strong> to send to her accountant in a few clicks.
+  testimonial:
+    quote: >-
+      I use izika every month and I love it.
+      I drive a lot for my job and I synced my Google calendar with the software,
+      which saves me a huge amount of time at the end of every month!
+    name: Claire Montagnon
+    companyTitle: "Insurance agent"
+  ctaBlock:
+    text: "Like Claire, save time on your mileage reporting"
+    buttonText: Try for free

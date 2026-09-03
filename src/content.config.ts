@@ -3,10 +3,12 @@ import { glob } from 'astro/loaders';
 import { routes, type RouteKey } from './i18n/routes';
 
 /**
- * Articles are per-locale directories (fr/, later en/, de/…): entry id is
- * "<locale>/<slug>". IK articles are country-specific content, not
- * translations of each other; `translationOf` marks the rare genuinely
- * translated article and drives its hreflang pair.
+ * Articles are per-MARKET directories (fr/, later en/, ch-fr/…): entry id is
+ * "<marketId>/<slug>". IK articles are country-specific content, not
+ * translations of each other; articles of different markets sharing a
+ * `hreflangKey` are hreflang alternates of one another (wired in
+ * ArticleLayout and the sitemap — zero emission while a key exists in a
+ * single market).
  */
 const articles = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
@@ -18,7 +20,7 @@ const articles = defineCollection({
     note: z.string().optional(),
     robots: z.string().optional(),
     toc: z.boolean().default(false),
-    translationOf: z.string().optional(),
+    hreflangKey: z.string().optional(),
   }),
 });
 
@@ -32,14 +34,15 @@ const solutionImage = z.object({
 const routeKeys = Object.keys(routes) as [RouteKey, ...RouteKey[]];
 
 /**
- * Solution landing pages — one YAML per page, mirroring the block structure of
+ * Solution landing pages — one YAML per page (per-market directories like the
+ * articles: entry id is "<marketId>/<slug>"), mirroring the block structure of
  * the old _solutions_base.html.twig. Fields left optional carry defaults from
  * the base template, rendered by SolutionPage.astro:
- * - head.ctaHref → site.joinUrl; head.primaryCtaText → 'Tester izika gratuitement'
- * - featureHighlights.ctaText → 'Tester izika'
- * - customerCase.ctaBlock.buttonUrl → site.joinUrl
- * The mid-page yellow CTA band ("Votre temps est précieux !") had no per-page
- * override in any child template, so it is hardcoded in SolutionPage.astro.
+ * - head.ctaHref → market.joinUrl; head.primaryCtaText → dict.cta.testFree
+ * - featureHighlights.ctaText → dict.cta.test
+ * - customerCase.ctaBlock.buttonUrl → market.joinUrl
+ * The mid-page yellow CTA band had no per-page override in any child
+ * template, so its copy lives in the dictionary (dict.solutionPage).
  * `text`/`intro` fields may contain inline HTML (p, ul, li, strong).
  */
 const solutions = defineCollection({
