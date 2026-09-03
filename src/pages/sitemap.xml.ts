@@ -7,14 +7,12 @@ import { locales, routes, localizedPath, articlePath, solutionPath, type RouteKe
  * Hand-rolled sitemap iterating the same sources of truth as the router:
  * the routes table (editorial pages x available locales), the solutions
  * collection and the articles collection (lastmod from frontmatter). A page
- * cannot exist without appearing here. The /articles index is noindex, so it
- * is excluded.
+ * cannot exist without appearing here.
  */
 export const GET: APIRoute = async () => {
   const urls: Array<{ loc: string; lastmod?: string; alternates?: Array<{ hreflang: string; href: string }> }> = [];
 
   for (const key of Object.keys(routes) as RouteKey[]) {
-    if (key === 'articles') continue; // noindex listing
     const available = locales
       .map((locale) => ({ locale, path: localizedPath(key, locale) }))
       .filter((a): a is { locale: (typeof locales)[number]; path: string } => a.path !== null);
