@@ -39,7 +39,8 @@ export interface Market {
   websiteDescription: string;
   /** Fallback meta description for pages without a dedicated one. */
   defaultDescription: string;
-  /** Endonym shown by the MarketSwitcher. */
+  /** Endonym shown by the MarketSwitcher, capitalised (« Français », not the
+   * French lowercase spelling « français ») — treated as a proper noun. */
   label: string;
   /** Main conversion CTA — signup on the app. */
   joinUrl: string;
@@ -69,7 +70,7 @@ export const MARKETS: Record<MarketId, Market> = {
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
       'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.',
-    label: 'français',
+    label: 'Français',
     joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     cookiesVersion: 'izika-fr-EU',

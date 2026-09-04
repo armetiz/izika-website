@@ -6,35 +6,72 @@ interface Props {
   /** Current page's route key — links point to the same page in the other
    * market when it exists there (fallback: its home). */
   routeKey?: RouteKey;
+  /** Extra classes on the <nav> wrapper. */
+  class?: string;
 }
 
-const { market, routeKey } = Astro.props;
+const { market, routeKey, class: className = '' } = Astro.props;
 const dict = t(market);
 
 // Renders nothing while only one market exists; expands automatically when
-// markets are added to src/i18n/markets.ts.
+// markets are added to src/i18n/markets.ts. Beyond ~4 markets the segmented
+// pill row stops fitting a footer line and should become a dropdown.
 const entries = marketIds.map((m) => ({
   market: m,
   href: (routeKey ? localizedPath(routeKey, m) : null) ?? localizedPath('home', m),
   name: getMarket(m).label,
   hreflang: getMarket(m).hreflang,
   lang: getMarket(m).language,
+  current: m === market,
 }));
+
+// Shared geometry so the current pill and the links stay on the same baseline.
+const pill = 'rounded-full px-3 py-1.5 text-sm leading-5 transition-colors';
 ---
 
 {
   entries.length >= 2 && (
-    <p class="text-sm">
-      <span aria-label={dict.a11y.marketSwitcher}>
-        {entries.map((e, i) => (
-          <>
-            {i > 0 && ' - '}
-            <a class="underline" href={e.href} hreflang={e.hreflang} lang={e.lang} rel="alternate">
-              {e.name}
-            </a>
-          </>
-        ))}
-      </span>
-    </p>
+    <nav aria-label={dict.a11y.marketSwitcher} class={className}>
+      <ul class="inline-flex items-center gap-1 rounded-full border border-beige-line bg-white/70 p-1">
+        <li aria-hidden="true" class="pl-2 pr-0.5 text-muted">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            class="block"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18" />
+          </svg>
+        </li>
+        {entries.map((e) =>
+          e.current ? (
+            <li>
+              {/* Not a link: the current language is state, not a destination.
+                  hreflang alternates for crawlers live in <head>. */}
+              <span aria-current="true" lang={e.lang} class={`${pill} block bg-primary font-semibold`}>
+                {e.name}
+              </span>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={e.href}
+                hreflang={e.hreflang}
+                lang={e.lang}
+                rel="alternate"
+                class={`${pill} block text-muted hover:bg-beige-dark/60 hover:text-ink`}
+              >
+                {e.name}
+              </a>
+            </li>
+          )
+        )}
+      </ul>
+    </nav>
   )
 }

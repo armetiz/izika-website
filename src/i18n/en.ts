@@ -24,6 +24,7 @@ const en: Dict = {
   a11y: {
     logoAlt: 'izika logo',
     marketSwitcher: 'Language selector',
+    legalNav: 'Legal information',
     ratingAria: 'Rated {rating} out of {max}',
   },
   footer: {

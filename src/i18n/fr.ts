@@ -26,6 +26,7 @@ export default {
   a11y: {
     logoAlt: 'Logo izika',
     marketSwitcher: 'Sélecteur de langue',
+    legalNav: 'Informations légales',
     /** Placeholders {rating}/{max} filled from src/data/reviews.ts. */
     ratingAria: 'Note {rating} sur {max}',
   },

@@ -37,11 +37,32 @@ const navLinks = [
   { href: localizedPath('team', market), label: dict.footer.team },
   { href: localizedPath('security', market), label: dict.footer.security },
 ].filter((l): l is { href: string; label: string } => l.href !== null);
+
+const legalLinks = [
+  { href: localizedPath('legal', market), label: dict.footer.legal },
+  { href: localizedPath('privacy', market), label: dict.footer.privacy },
+  { href: localizedPath('terms', market), label: dict.footer.terms },
+].filter((l): l is { href: string; label: string } => l.href !== null);
+
+// The consent widget can only be reopened when Axeptio is actually loaded —
+// same env switch as Analytics.astro, so dev/preview never show a dead button.
+const consentEnabled = Boolean(import.meta.env.PUBLIC_AXEPTIO_CLIENT_ID);
+
+// Tap-target sized (≥40px) hit area, underline reserved for hover so the row
+// doesn't read as a wall of links.
+const legalLink =
+  'block rounded-card px-1 py-2.5 text-muted underline-offset-4 transition-colors hover:text-ink hover:underline focus-visible:text-ink';
+
+// The trustpilot column only exists on markets that have reviews; without it
+// the nav must not float in the middle of an empty grid.
+const gridClass = marketData.trustpilot
+  ? 'lg:grid-cols-[2fr_1.5fr_1fr]'
+  : 'lg:grid-cols-[2fr_1.5fr]';
 ---
 
 <footer class={backgroundClass}>
   <div class="mx-auto max-w-6xl px-4 pt-12">
-    <div class="grid gap-10 lg:grid-cols-[2fr_1.5fr_1fr]">
+    <div class={`grid gap-x-10 gap-y-8 lg:gap-10 ${gridClass}`}>
       <div>
         <a class="mb-4 inline-flex items-center" href={localizedPath('home', market)} aria-label="izika">
           <img src="/assets/img/logo/izika-logo.png" alt={dict.a11y.logoAlt} width="159" height="56" class="h-12 w-auto" />
@@ -64,13 +85,22 @@ const navLinks = [
         </div>
       </div>
 
+      {/* Mobile: a divided, thumb-sized list — same affordance as the header's
+          mobile panel, so the links stop reading as plain text. Desktop keeps
+          the plain footer column. */}
       <div class="lg:pt-8">
-        <ul class="space-y-2">
+        <ul class="border-t border-beige-line lg:space-y-2 lg:border-0">
           {
             navLinks.map((link) => (
-              <li>
-                <a class="hover:underline" href={link.href}>
+              <li class="border-b border-beige-line lg:border-0">
+                <a
+                  class="flex items-center justify-between gap-4 py-3.5 hover:underline lg:block lg:py-0"
+                  href={link.href}
+                >
                   {link.label}
+                  <span aria-hidden="true" class="text-muted lg:hidden">
+                    ›
+                  </span>
                 </a>
               </li>
             ))
@@ -87,19 +117,55 @@ const navLinks = [
       }
     </div>
 
-    <div class="mt-12 pb-4 text-center">
-      <p class="text-[80%]">
-        <a class="underline" href={localizedPath('legal', market)}>{dict.footer.legal}</a>
-        {' | '}
-        <a class="underline" href={localizedPath('privacy', market)}>{dict.footer.privacy}</a>
-        {' | '}
-        <a class="underline" href={localizedPath('terms', market)}>{dict.footer.terms}</a>
-        {' | '}
-        <a class="underline" href="javascript:openAxeptioCookies()">{dict.footer.cookies}</a>
-        {' | '}
+    <div class="mt-8 border-t border-beige-line pt-4 pb-8 text-sm lg:mt-12">
+      <div class="flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <nav aria-label={dict.a11y.legalNav} class="lg:order-1">
+          <ul class="-ml-1 flex flex-wrap items-center gap-x-5">
+            {
+              legalLinks.map((link) => (
+                <li>
+                  <a class={legalLink} href={link.href}>
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+            {
+              consentEnabled && (
+                <li>
+                  {/* A button, not a fake javascript: link — it opens a widget,
+                      it doesn't navigate. */}
+                  <button type="button" id="footer-consent" class={legalLink}>
+                    {dict.footer.cookies}
+                  </button>
+                </li>
+              )
+            }
+          </ul>
+        </nav>
+
+        <MarketSwitcher market={market} routeKey={routeKey} class="lg:order-2" />
+      </div>
+
+      <p class="mt-4 text-xs text-muted">
         ©Copyright {year} {marketData.legal.entity} - {marketData.legal.footerLines.join(' - ')}
       </p>
-      <MarketSwitcher market={market} routeKey={routeKey} />
     </div>
   </div>
 </footer>
+
+{
+  consentEnabled && (
+    <script>
+      // Axeptio drains `_axcb` once its SDK is ready, so queuing works even if
+      // the visitor clicks before the CMP has loaded.
+      document.getElementById('footer-consent')?.addEventListener('click', () => {
+        const w = window as unknown as {
+          _axcb?: Array<(sdk: { requestConsent: () => void }) => void>;
+        };
+        w._axcb = w._axcb || [];
+        w._axcb.push((sdk) => sdk.requestConsent());
+      });
+    </script>
+  )
+}
