@@ -59,7 +59,7 @@ Les motifs sont tous indiqués conformément à la **norme fiscale**, ainsi que 
 
 Si vous utilisez un **agenda Google**, **iCal** ou **Outlook**, vous pouvez aussi utiliser une solution de **gestion automatique des IK.**
 
-Izika **récupère les RDV dans votre agenda** et **calcule automatiquement les distances**.
+izika **récupère les RDV dans votre agenda** et **calcule automatiquement les distances**.
 
 Déclaratif, vous pouvez revenir en arrière et tout ce qui est dans votre **agenda professionnel** sera pris en compte, automatiquement.
 

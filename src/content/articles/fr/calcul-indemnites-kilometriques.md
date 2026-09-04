@@ -47,7 +47,7 @@ Parce qu'izika est entièrement automatique. Une fois paramétrée, l'applicatio
 
 Voici donc comment ça marche :
 
-1. IZIKA se synchronise avec votre **agenda**,
+1. izika se synchronise avec votre **agenda**,
 2. importe automatiquement tous vos RDV,
 3. **extrait les adresses et calcule les distances** de chaque RDV.
 

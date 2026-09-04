@@ -30,7 +30,7 @@ export const teamLandingFr: TeamLandingCopy = {
     },
   ],
   intro: {
-    titleHtml: `Izika <span class="text-primary">Team</span>, c'est :`,
+    titleHtml: `izika <span class="text-primary">Team</span>, c'est :`,
     collaboratorsHtml: `Un <span class="text-primary">outil de calcul d'IK</span><br>pour vos collaborateurs roulants`,
     managersHtml: `Une interface d'<span class="text-primary">approbation des demandes d'IK</span><br>pour vos gestionnaires`,
   },
@@ -103,7 +103,7 @@ export const teamLandingFr: TeamLandingCopy = {
     {
       author: 'France',
       role: 'Comptable (SARL de climatisation)',
-      text: 'IZIKA gère les distances et les IK, mais aussi les pièces jointes comme les tickets de parking. Cela nous permet de tout centraliser du commercial à son manager puis à la comptabilité.',
+      text: 'izika gère les distances et les IK, mais aussi les pièces jointes comme les tickets de parking. Cela nous permet de tout centraliser du commercial à son manager puis à la comptabilité.',
     },
     {
       author: 'Mohed',

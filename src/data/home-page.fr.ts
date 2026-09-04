@@ -35,7 +35,7 @@ export const homePageFr: HomePageCopy = {
         author: 'Martial',
         role: 'Agent immobilier',
         textHtml:
-          "Une simplicité exceptionnelle !<br> Jamais je n'ai eu autant de plaisir à faire mes frais kilométriques ! Avant, c'était une vraie galère... avec IZIKA c'est devenu un jeu d'enfant !",
+          "Une simplicité exceptionnelle !<br> Jamais je n'ai eu autant de plaisir à faire mes frais kilométriques ! Avant, c'était une vraie galère... avec izika c'est devenu un jeu d'enfant !",
       },
       {
         author: 'Romain',
@@ -79,7 +79,7 @@ export const homePageFr: HomePageCopy = {
       title: "Éditez votre relevé d'IK",
       tagline: "C'est déjà fini 😮 ? Oui oui.",
       textHtml:
-        'Une fois vos RDV importés et vos déplacements affinés, éditez votre relevé de frais kilométriques prêt à être transmis à votre comptable ou à inclure dans votre bilan. Izika liste chaque déplacement professionnel avec toutes les informations obligatoires normalisées dans le respect des règles comptables et fiscales.',
+        'Une fois vos RDV importés et vos déplacements affinés, éditez votre relevé de frais kilométriques prêt à être transmis à votre comptable ou à inclure dans votre bilan. izika liste chaque déplacement professionnel avec toutes les informations obligatoires normalisées dans le respect des règles comptables et fiscales.',
     },
     settingsCard: {
       image: '/assets/landing-pages/how-it-works-parameters.png',

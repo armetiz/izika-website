@@ -1,7 +1,7 @@
 ---
 title: Paramétrer son compte izika
 description: >-
-  Izika est une solution de gestion totalement automatique de gestion des IK.
+  izika est une solution de gestion totalement automatique de gestion des IK.
   Nous allons voir comment configurer izika pour récupérer vos RDV depuis votre
   agenda en ligne.
 date: '2021-05-05'
@@ -13,7 +13,7 @@ date: '2021-05-05'
 
 Cet article vous explique **comment paramétrer son compte izika** en trois étapes simples.
 
-Izika est une solution de gestion totalement automatique de gestion des IK destinée aux indépendants qui utilisent un **[agenda online](/fr/agenda-en-ligne)** :
+izika est une solution de gestion totalement automatique de gestion des IK destinée aux indépendants qui utilisent un **[agenda online](/fr/agenda-en-ligne)** :
 
 - Google Agenda (solution recommandée)
 - iCAL (découvrir le paramétrage iCal pour izika)

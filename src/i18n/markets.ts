@@ -65,7 +65,7 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'fr-FR',
     ogLocale: 'fr_FR',
     schemaInLanguage: 'fr-FR',
-    siteName: 'IZIKA : Calcul indemnité kilométrique',
+    siteName: 'izika : Calcul indemnité kilométrique',
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
       'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.',
@@ -98,7 +98,7 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'en-GB',
     ogLocale: 'en_GB',
     schemaInLanguage: 'en-GB',
-    siteName: 'IZIKA: Mileage allowance automation',
+    siteName: 'izika: Mileage allowance automation',
     websiteDescription: 'Automatic mileage allowance management',
     defaultDescription:
       'Get your mileage allowances automatically from your online calendar: Google, Outlook, Dolibarr, Zimbra, ICS. Simple, declarative, fast.',

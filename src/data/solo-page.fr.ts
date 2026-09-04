@@ -71,7 +71,7 @@ export const soloPageFr: ProductLandingCopy = {
   },
   speedUp: {
     eyebrow: 'Pour aller encore plus vite',
-    title: "Izika s'adapte à vos usages",
+    title: "izika s'adapte à vos usages",
     items: [
       'Créez vos adresses favorites (domicile, bureau...) pour accélérer la saisie',
       'Choisissez votre mode de déplacement par défaut (en étoile ou en tournée)',
@@ -110,7 +110,7 @@ export const soloPageFr: ProductLandingCopy = {
     {
       author: 'Eleonore',
       role: '',
-      text: "Cela fait un peu plus d'un an que j'utilise Izika et j'ai mené des recherches avant de souscrire à cette appli : elle était la seule qui me permettait de calculer les distances entre plusieurs points de rendez-vous notés sur mon agenda électronique.",
+      text: "Cela fait un peu plus d'un an que j'utilise izika et j'ai mené des recherches avant de souscrire à cette appli : elle était la seule qui me permettait de calculer les distances entre plusieurs points de rendez-vous notés sur mon agenda électronique.",
     },
     {
       author: 'Arnaud Philippe',
@@ -120,7 +120,7 @@ export const soloPageFr: ProductLandingCopy = {
     {
       author: 'Christian Dumay',
       role: '',
-      text: "J'utilise IZIKA depuis 3 ans et le conseille autour de moi. Le temps que je gagne chaque mois est utilisé pour d'autres activités ! Tout est simple et ergonomique. La rigueur des rendez-vous au quotidien, une fois mécanisée, ne compte plus. Merci",
+      text: "J'utilise izika depuis 3 ans et le conseille autour de moi. Le temps que je gagne chaque mois est utilisé pour d'autres activités ! Tout est simple et ergonomique. La rigueur des rendez-vous au quotidien, une fois mécanisée, ne compte plus. Merci",
     },
     {
       author: 'Frédéric Bessede',
@@ -130,7 +130,7 @@ export const soloPageFr: ProductLandingCopy = {
   ],
   closing: {
     title: "Voulez-vous tester le meilleur outil de calcul d'IK ?",
-    text: "Izika est gratuit jusqu'à 10 trajets par mois ! Essayez toutes les fonctionnalités sans engagement.",
+    text: "izika est gratuit jusqu'à 10 trajets par mois ! Essayez toutes les fonctionnalités sans engagement.",
     ctaLabel: 'Tester gratuitement izika',
   },
 };

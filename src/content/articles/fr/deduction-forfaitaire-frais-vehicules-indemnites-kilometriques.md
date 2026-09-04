@@ -69,4 +69,4 @@ L'Administration Fiscale n'admet pas au cours d'une même année, la **déductio
 
 Il existe de nombreux agenda en ligne vous permettant d'organiser vos rendez-vous facilement : Google Agenda, [Microsoft Outlook](/fr/integration-microsoft-outlook), iCloud et bien d'autres. Vous pouvez les connecter en un instant avec izika, notre application de [calcul automatique des frais de déplacement](/fr/calcul-indemnites-kilometriques). Vos rendez-vous seront directement téléchargés sur notre cloud et vous pourrez en un instant reconstruire vos déplacements afin de produire vos justificatifs et notes de frais.
 
-Izika est la solution idéale pour récupérer vos frais sans pour autant dépenser inutilement votre temps dans des tâches administratives à faible rendement. Gagnez du temps et concentrez-vous sur l'essentiel : votre métier !
+izika est la solution idéale pour récupérer vos frais sans pour autant dépenser inutilement votre temps dans des tâches administratives à faible rendement. Gagnez du temps et concentrez-vous sur l'essentiel : votre métier !

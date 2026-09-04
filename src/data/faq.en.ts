@@ -22,11 +22,11 @@ export const faqEntries: ReadonlyArray<{ question: string; answer: string }> = [
         </p>`,
   },
   {
-    question: 'How do I connect my calendar to IZIKA?',
+    question: 'How do I connect my calendar to izika?',
     answer: `
         <p>
             You can connect most online calendars to izika: <strong>Google Calendar</strong> is the recommended calendar for its ease of
-            use and reliability. IZIKA computes your mileage expenses from Google
+            use and reliability. izika computes your mileage expenses from Google
             Calendar, Outlook, ICS, Dolibarr, Zimbra, and more.
         </p>
         <p>
@@ -53,7 +53,7 @@ export const faqEntries: ReadonlyArray<{ question: string; answer: string }> = [
   },
   {
     question: 'What does the izika subscription include?',
-    answer: `<p>Your paid IZIKA subscription guarantees that your data is never
+    answer: `<p>Your paid izika subscription guarantees that your data is never
             exploited, because your subscription is our only revenue. By subscribing,
             you get access to the whole current year up to the renewal date, as well as
             the whole previous year. E.g. subscribing on 12 March 2019: access from

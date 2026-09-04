@@ -2,7 +2,7 @@
 title: Comprendre les frais kilométriques
 description: >-
   Les frais kilométriques représentent l'ensemble des dépenses liées à l'achat
-  d'un véhicule et à sa mise à disposition dans le cadre de l'entreprise. Izika
+  d'un véhicule et à sa mise à disposition dans le cadre de l'entreprise. izika
   vous permet de les déclarer automatiquement.
 date: '2021-01-05'
 ---

@@ -21,21 +21,21 @@ featureHighlights:
   title: The simplest way for agents to manage their mileage allowances
   image:
     src: /assets/solutions/visuel-agenda-professionnel.png
-    alt: Izika for real estate agents
-    title: Izika for real estate agents
+    alt: izika for real estate agents
+    title: izika for real estate agents
   ctaText: Try izika
   items:
     - title: No more paper notes and forgotten trips
       text: >-
         Between viewings, valuations, signings and prospecting, it is easy to forget a trip.
-        Izika analyses your appointments and automatically computes the distances and the amount of your allowances.
+        izika analyses your appointments and automatically computes the distances and the amount of your allowances.
     - title: No more year-end patching
       text: >-
         Agents often spend hours reconstructing their trips.
         With izika, everything is already ready when you need it.
     - title: No more rough estimates
       text: >-
-        No more back-of-the-envelope calculations. Izika applies the right mileage scale and computes
+        No more back-of-the-envelope calculations. izika applies the right mileage scale and computes
         your allowances for you.
     - title: Guaranteed compliance
       text: >-
@@ -50,7 +50,7 @@ benefits:
       imageAlt: izika - real estate agents' trips reconstructed from their appointments
       text: |
         <p>Between a valuation in the morning, three viewings in the afternoon and a signing at the end of the day, your trips pile up fast.</p>
-        <p>Izika automatically picks up your appointments as they come and generates your trips without any manual entry:</p>
+        <p>izika automatically picks up your appointments as they come and generates your trips without any manual entry:</p>
         <ul>
           <li>Every appointment or round becomes a trip ready to report</li>
           <li>No more forgotten journeys</li>
@@ -73,7 +73,7 @@ benefits:
       imageAlt: izika - a solution that doesn't weigh down real estate agents' days
       text: |
         <p>You don't need to use izika continuously: your trips are recorded from your appointments, and you generate your report whenever you need it.</p>
-        <p>Busy periods (spring, back-to-school, viewing peaks) make administrative tasks even heavier. Izika relieves you exactly then: everything is already recorded.</p>
+        <p>Busy periods (spring, back-to-school, viewing peaks) make administrative tasks even heavier. izika relieves you exactly then: everything is already recorded.</p>
         <p><strong>Designed for your life in the field:</strong></p>
         <ul>
           <li>No complex application to manage</li>
@@ -83,7 +83,7 @@ benefits:
         </ul>
   testimonial:
     quote: >-
-      Izika saves me several hours a month. I never miss a trip anymore, everything is automatic.
+      izika saves me several hours a month. I never miss a trip anymore, everything is automatic.
     avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agente-immobiliere.jpg
     avatarAlt: Julie M.
     name: Julie M.

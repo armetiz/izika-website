@@ -52,13 +52,13 @@ Ce tableau est le résultat de l'export izika, il permet de répondre à l'ensem
 
 ![export izika](/assets/landing-pages/how-it-works-mileage-allowances-export.png?3eaf80c)
 
-## Comment Izika vous aide à rester impeccable
+## Comment izika vous aide à rester impeccable
 
 - **Synchronisation automatique** avec votre agenda en ligne, mise à jour en temps réel.
 - **Calcul instantané des IK** selon le barème fiscal en vigueur.
 - **Export PDF/CSV** pour un rapport complet.
 
-> _“J'utilise IZIKA depuis 3 ans et le conseille autour de moi.
+> _“J'utilise izika depuis 3 ans et le conseille autour de moi.
 Le temps que je gagne chaque mois est utilisé pour d'autres activités !
 Tout est simple et ergonomique. La rigueur des rendez-vous au quotidien, une fois mécanisée,
 ne compte plus. Merci"_

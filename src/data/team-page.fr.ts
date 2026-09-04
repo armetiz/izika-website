@@ -122,7 +122,7 @@ export const teamPageFr: ProductLandingCopy = {
     {
       author: 'France',
       role: 'Comptable (SARL de climatisation)',
-      text: 'IZIKA gère les distances et les IK, mais aussi les pièces jointes comme les tickets de parking. Cela nous permet de tout centraliser du commercial à son manager puis à la comptabilité.',
+      text: 'izika gère les distances et les IK, mais aussi les pièces jointes comme les tickets de parking. Cela nous permet de tout centraliser du commercial à son manager puis à la comptabilité.',
     },
     {
       author: 'Mohed',

@@ -122,7 +122,7 @@ export const teamPageEn: ProductLandingCopy = {
     {
       author: 'France',
       role: 'Accountant (air-conditioning company)',
-      text: 'IZIKA handles distances and mileage allowances, but also attachments such as parking receipts. It lets us centralize everything, from the sales rep to their manager and on to accounting.',
+      text: 'izika handles distances and mileage allowances, but also attachments such as parking receipts. It lets us centralize everything, from the sales rep to their manager and on to accounting.',
     },
     {
       author: 'Mohed',

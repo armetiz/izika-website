@@ -30,7 +30,7 @@ export const teamLandingEn: TeamLandingCopy = {
     },
   ],
   intro: {
-    titleHtml: `Izika <span class="text-primary">Team</span> is:`,
+    titleHtml: `izika <span class="text-primary">Team</span> is:`,
     collaboratorsHtml: `A <span class="text-primary">mileage allowance calculation tool</span><br>for your employees on the road`,
     managersHtml: `An <span class="text-primary">approval interface for mileage claims</span><br>for your managers`,
   },
@@ -103,7 +103,7 @@ export const teamLandingEn: TeamLandingCopy = {
     {
       author: 'France',
       role: 'Accountant (air-conditioning company)',
-      text: 'IZIKA handles distances and mileage allowances, but also attachments such as parking receipts. It lets us centralize everything, from the sales rep to their manager and on to accounting.',
+      text: 'izika handles distances and mileage allowances, but also attachments such as parking receipts. It lets us centralize everything, from the sales rep to their manager and on to accounting.',
     },
     {
       author: 'Mohed',

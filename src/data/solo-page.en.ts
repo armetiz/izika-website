@@ -71,7 +71,7 @@ export const soloPageEn: ProductLandingCopy = {
   },
   speedUp: {
     eyebrow: 'To go even faster',
-    title: 'Izika adapts to your habits',
+    title: 'izika adapts to your habits',
     items: [
       'Save your favourite addresses (home, office...) to speed up data entry',
       'Choose your default travel mode (star pattern or round trip)',
@@ -110,7 +110,7 @@ export const soloPageEn: ProductLandingCopy = {
     {
       author: 'Eleonore',
       role: '',
-      text: 'I have been using Izika for a little over a year and I did my research before subscribing to this app: it was the only one that let me compute the distances between several appointment locations noted in my electronic calendar.',
+      text: 'I have been using izika for a little over a year and I did my research before subscribing to this app: it was the only one that let me compute the distances between several appointment locations noted in my electronic calendar.',
     },
     {
       author: 'Arnaud Philippe',
@@ -120,7 +120,7 @@ export const soloPageEn: ProductLandingCopy = {
     {
       author: 'Christian Dumay',
       role: '',
-      text: 'I have been using IZIKA for 3 years and recommend it around me. The time I save every month goes to other activities! Everything is simple and ergonomic. The daily discipline of appointments, once automated, no longer matters. Thank you',
+      text: 'I have been using izika for 3 years and recommend it around me. The time I save every month goes to other activities! Everything is simple and ergonomic. The daily discipline of appointments, once automated, no longer matters. Thank you',
     },
     {
       author: 'Frédéric Bessede',
@@ -130,7 +130,7 @@ export const soloPageEn: ProductLandingCopy = {
   ],
   closing: {
     title: 'Want to try the best mileage allowance calculation tool?',
-    text: 'Izika is free up to 10 trips per month! Try every feature with no commitment.',
+    text: 'izika is free up to 10 trips per month! Try every feature with no commitment.',
     ctaLabel: 'Try izika for free',
   },
 };

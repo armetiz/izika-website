@@ -59,10 +59,10 @@ export const pricingPageEn: PricingPageCopy = {
     },
     {
       question: 'How does billing work?',
-      answer: `<p>Entrepreneurs choosing IZIKA Solo get one yearly invoice per user;
+      answer: `<p>Entrepreneurs choosing izika Solo get one yearly invoice per user;
         the subscription renews automatically and you can cancel the renewal at any
         time.
-        Fleet managers who opt for IZIKA Team get a monthly invoice for each user
+        Fleet managers who opt for izika Team get a monthly invoice for each user
         and a yearly invoice for the Manager account.
         The subscription can also be cancelled at any time.</p>`,
     },

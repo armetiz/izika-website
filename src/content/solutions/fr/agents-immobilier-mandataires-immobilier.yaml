@@ -21,21 +21,21 @@ featureHighlights:
   title: La façon la plus simple pour les agents de gérer leurs indemnités kilométriques
   image:
     src: /assets/solutions/visuel-agenda-professionnel.png
-    alt: Izika pour les agents immobiliers
-    title: Izika pour les agents immobiliers
+    alt: izika pour les agents immobiliers
+    title: izika pour les agents immobiliers
   ctaText: Tester izika
   items:
     - title: Fini les notes papier et les trajets oubliés
       text: >-
         Entre visites, estimations, signatures et prospection, il est facile d’oublier un déplacement.
-        Izika analyse vos rendez-vous et calcule automatiquement les distances et le montant de vos IK.
+        izika analyse vos rendez-vous et calcule automatiquement les distances et le montant de vos IK.
     - title: Plus de bricolage en fin d’année
       text: >-
         Les agents passent souvent des heures à reconstituer leurs déplacements.
         Avec izika, tout est déjà prêt quand vous en avez besoin.
     - title: Terminé les approximations
       text: >-
-        Plus besoin de calculer “à la louche”. Izika applique le bon barème fiscal et calcule pour vous
+        Plus besoin de calculer “à la louche”. izika applique le bon barème fiscal et calcule pour vous
         vos indemnirés kilométriques.
     - title: Conformité garantie
       text: >-
@@ -50,7 +50,7 @@ benefits:
       imageAlt: izika - déplacements des agents immobilier reconstitués à partir des rendez-vous
       text: |
         <p>Entre une estimation le matin, trois visites l’après-midi et une signature en fin de journée, vos trajets s’enchaînent vite.</p>
-        <p>Izika récupère automatiquement vos rendez-vous au fur et à mesure et génère vos déplacements sans aucune saisie manuelle :</p>
+        <p>izika récupère automatiquement vos rendez-vous au fur et à mesure et génère vos déplacements sans aucune saisie manuelle :</p>
         <ul>
           <li>Chaque rendez-vous ou tournée devient un trajet prêt à déclarer</li>
           <li>Plus aucun déplacement oublié</li>
@@ -73,7 +73,7 @@ benefits:
       imageAlt: izika - une solution qui n’alourdit pas le quotidien des agents immobilier
       text: |
         <p>Vous n’avez pas besoin d’utiliser izika en continu : vos déplacements s’enregistrent depuis vos rendez-vous, et vous générez votre rapport quand vous en avez besoin.</p>
-        <p>Les périodes de forte activité (printemps, rentrée, pics de visites) rendent les tâches administratives encore plus lourdes. Izika vous soulage exactement à ce moment-là : tout est déjà enregistré.</p>
+        <p>Les périodes de forte activité (printemps, rentrée, pics de visites) rendent les tâches administratives encore plus lourdes. izika vous soulage exactement à ce moment-là : tout est déjà enregistré.</p>
         <p><strong>Pensé pour votre réalité de terrain :</strong></p>
         <ul>
           <li>Pas d’application complexe à gérer</li>
@@ -83,7 +83,7 @@ benefits:
         </ul>
   testimonial:
     quote: >-
-      Izika m’a fait gagner plusieurs heures par mois. Je n’oublie plus aucun trajet, tout est automatique.
+      izika m’a fait gagner plusieurs heures par mois. Je n’oublie plus aucun trajet, tout est automatique.
     avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agente-immobiliere.jpg
     avatarAlt: Julie M.
     name: Julie M.

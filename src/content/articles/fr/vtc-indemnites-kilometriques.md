@@ -89,7 +89,7 @@ Les deux options sont exclusives pour un même véhicule sur une même année fi
 ## Questions fréquentes
 
 **Je suis auto-entrepreneur VTC. Puis-je utiliser izika ?**
-Izika peut vous aider à suivre vos kilométrages et à tenir un registre de vos déplacements, mais en tant qu'auto-entrepreneur vous ne pouvez pas déduire d'indemnités kilométriques au sens fiscal. En revanche, un suivi précis de vos déplacements peut s'avérer utile si vous envisagez de changer de statut juridique.
+izika peut vous aider à suivre vos kilométrages et à tenir un registre de vos déplacements, mais en tant qu'auto-entrepreneur vous ne pouvez pas déduire d'indemnités kilométriques au sens fiscal. En revanche, un suivi précis de vos déplacements peut s'avérer utile si vous envisagez de changer de statut juridique.
 
 **Les courses à vide (repositionnement) comptent-elles ?**
 C'est un point que votre expert-comptable devra trancher selon votre organisation. Dans certains cas, les trajets à vide liés directement à l'exercice de l'activité peuvent être inclus — à condition que vous puissiez en justifier le lien professionnel.

@@ -48,7 +48,7 @@ Sans outillage adapté, chacune de ces étapes est chronophage et source d'erreu
 
 Des solutions existent pour collecter les données de déplacement de façon continue, distinguer automatiquement les usages, appliquer les règles fiscales en vigueur et produire des données directement exploitables par les équipes paie et comptabilité.
 
-C'est notamment ce que propose **[IZIKA TEAM](/fr/team)**, qui couvre également le traitement des indemnités kilométriques pour les salariés utilisant leur véhicule personnel. La solution intègre des flux d'approbation structurés (collaborateur → manager → paie), ce qui garantit la fiabilité et la traçabilité des informations à chaque étape.
+C'est notamment ce que propose **[izika TEAM](/fr/team)**, qui couvre également le traitement des indemnités kilométriques pour les salariés utilisant leur véhicule personnel. La solution intègre des flux d'approbation structurés (collaborateur → manager → paie), ce qui garantit la fiabilité et la traçabilité des informations à chaque étape.
 
 ---
 

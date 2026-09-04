@@ -22,11 +22,11 @@ export const faqEntries: ReadonlyArray<{ question: string; answer: string }> = [
         </p>`,
   },
   {
-    question: 'Comment connecter mon agenda à IZIKA ?',
+    question: 'Comment connecter mon agenda à izika ?',
     answer: `
         <p>
             Vous pouvez connecter la plupart des agendas en ligne à izika : <strong>Google Calendar</strong> est l'agenda recommandé pour sa simplicité
-            d'utilisation et sa fiabilité. IZIKA calcule vos frais kilométriques depuis
+            d'utilisation et sa fiabilité. izika calcule vos frais kilométriques depuis
             l'agenda Google, Outlook, ICS, Dolibarr, Zimbra, etc etc.
         </p>
         <p>
@@ -54,7 +54,7 @@ export const faqEntries: ReadonlyArray<{ question: string; answer: string }> = [
   },
   {
     question: "Que contient l'abonnement izika ?",
-    answer: `<p>Votre abonnement payant à IZIKA vous garantit que vos données ne sont pas
+    answer: `<p>Votre abonnement payant à izika vous garantit que vos données ne sont pas
             exploitées car notre seul revenu est votre abonnement. En souscrivant, vous
             accédez à toute l'année en cours jusqu'à la date du renouvellement, ainsi
             qu'à toute l'année précédente. Ex : abonnement le 12 mars 2019 : accès du

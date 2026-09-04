@@ -59,10 +59,10 @@ export const pricingPageFr: PricingPageCopy = {
     },
     {
       question: 'Comment se passe la facturation?',
-      answer: `<p>Les entrepreneurs choisissant IZIKA Solo ont une facture annuelle par Utilisateur,
+      answer: `<p>Les entrepreneurs choisissant izika Solo ont une facture annuelle par Utilisateur,
         la souscription est renouvelée par tacite reconduction et vous pouvez annuler
         le renouvellement à tout moment.
-        Les gestionnaires de flottes qui optent pour IZIKA Team ont une facture mensuelle
+        Les gestionnaires de flottes qui optent pour izika Team ont une facture mensuelle
         pour chaque Utilisateur et une facture annuelle pour le compte Manager.
         L'abonnement peut aussi être annulé à tout moment.</p>`,
     },

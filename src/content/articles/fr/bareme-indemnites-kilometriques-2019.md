@@ -71,6 +71,6 @@ Il est bien entendu possible de recopier tous ses rendez-vous dans un tableau Ex
 
 Ainsi, il faudra calculer les distances de chaque ligne.. Cela peut représenter pour un professionnel un total de 880 lignes (4 rendez-vous par jour et pour 220 jours annuels).
 
-Ou alors, si vous utilisez un agenda en ligne (*Google, iCal, Outlook, Dolibarr, ICS...*), vous le synchronisez avec l'application IZIKA et vous obtenez vos indemnités kilométriques.
+Ou alors, si vous utilisez un agenda en ligne (*Google, iCal, Outlook, Dolibarr, ICS...*), vous le synchronisez avec l'application izika et vous obtenez vos indemnités kilométriques.
 
 Ces barèmes ont été remplacés par [les barèmes IKs de 2020](/fr/bareme-indemnites-kilometriques-2020), puis par le nouveau référenciel actuel.

@@ -112,6 +112,6 @@ La **déduction forfaitaire** des **frais de déplacement** est exigeante en mat
 
 C'est justement pour cela que nous avons imaginé izika.
 
-Izika est une application en ligne vous permettant de gérer cette gestion comptable automatiquement en se connectant à votre agenda en ligne.
+izika est une application en ligne vous permettant de gérer cette gestion comptable automatiquement en se connectant à votre agenda en ligne.
 
 **Connectez votre agenda professionnel**, izika est une solution qui calcule en temps réel les distances et les IK. Fournir un tableau mensuel ou annuel selon les besoins. Préserver les atouts du déclaratif et la sécurité de l'automatisation. Intégrer toutes les subtilités de la vraie vie des entrepreneurs : véhicules et agendas multiples, périodes fiscales décalées, barème fiscal sur mesure,...

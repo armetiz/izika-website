@@ -36,7 +36,7 @@ export const homePageEn: HomePageCopy = {
         author: 'Martial',
         role: 'Real estate agent',
         textHtml:
-          "Exceptionally simple!<br> I have never enjoyed doing my mileage expenses this much! It used to be a real chore… with IZIKA it has become child's play!",
+          "Exceptionally simple!<br> I have never enjoyed doing my mileage expenses this much! It used to be a real chore… with izika it has become child's play!",
       },
       {
         author: 'Romain',
