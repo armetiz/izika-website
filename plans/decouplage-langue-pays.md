@@ -37,6 +37,18 @@
 - [ ] `TrackedLink` garde `site.joinUrl` comme href par défaut (cross-marché, même URL aujourd'hui) — passer par une prop `market` si les URLs d'app divergent un jour (TODO dans `src/config/site.ts`).
 - [ ] Version anglaise du consentement : voir Axeptio ci-dessus (le champ est prêt).
 
+## Langues portées par l'équipe
+
+L'équipe est francophone et assure le support en **français et en anglais**,
+dans aucune autre langue. Le marché anglais est donc, de ce point de vue, le
+seul marché supplémentaire qui ne coûte rien : le support « 24/7 » promis sur
+`/en` est tenable tel quel, et la copy anglaise est relisible en interne.
+
+Ce n'est plus vrai dès le marché suivant s'il n'est ni anglophone ni
+francophone — voir `plans/pays/README.md`, section « Ce que l'équipe peut
+porter, linguistiquement », et les conséquences tirées dans
+`plans/pays/de-allemagne.md`.
+
 ## Rappels d'architecture (pour les équipes qui ajoutent du contenu)
 
 - Une page éditoriale existe dans un marché ssi sa route est déclarée dans `src/i18n/routes.ts` ; une solution ssi son slug est dans `solutionSlugs` **et** son YAML dans `src/content/solutions/<marché>/` (le build échoue sinon, dans les deux sens). Menu, footer, hreflang et sitemap suivent automatiquement.

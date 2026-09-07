@@ -28,6 +28,18 @@ Trois conditions doivent donc être réunies dans le pays visé :
 3. **Ce barème s'exprime sous la forme `montant = d × coefficient + fixe`**,
    la forme que le moteur sait calculer.
 
+Et une quatrième condition, qui ne dépend pas du pays mais de nous :
+
+4. **izika doit pouvoir parler la langue.** L'équipe est francophone et assure
+   le support en français et en anglais, dans aucune autre langue ; elle ne
+   maîtrise pas non plus les subtilités de style ou de culture des autres
+   langues. Un marché germanophone, néerlandophone ou italophone n'est pas
+   disqualifié, mais il embarque deux coûts que les trois premières conditions
+   ne montrent pas : une décision explicite sur la **langue de support**, et un
+   circuit de relecture où toute copy arrive **avec sa retraduction en
+   français**. Détail dans `README.md`, section « Ce que l'équipe peut porter,
+   linguistiquement ».
+
 Ce troisième point mérite d'être précisé, parce qu'il est moins restrictif
 qu'il n'en a l'air. Le moteur français (`Tranche { maxKm, coef, fixe }` dans
 `src/data/bareme-ik.ts`) calcule un montant **affine par morceaux en
@@ -325,6 +337,16 @@ avancent indépendamment.
 | **4** | **Allemagne** | A | Une constante | Nouveau `MarketId` **et** nouvelle langue `de` (dictionnaire complet) | Le plus grand marché du tableau, le barème le plus simple. Le coût est éditorial, pas technique. |
 | **5** | **Suisse** (`/ch-fr`) | A | Une constante + devise **CHF** | Nouveau `MarketId`, dictionnaire `fr` réutilisé | Déjà anticipée dans le code. Meilleur revenu par utilisateur. `/ch-de` suit l'Allemagne. |
 
+Lecture de la colonne langue, une fois la contrainte d'équipe appliquée : les
+rangs 1, 2, 3 et 5 sont servis dans une langue que l'équipe parle et supporte
+déjà — anglais pour le Royaume-Uni et l'Irlande, français pour `/be-fr` et
+`/ch-fr`. **Le rang 4, l'Allemagne, est le seul du top 5 à ne pas l'être**, et
+c'est le seul dont le coût réel dépasse ce que la colonne « effort site »
+laisse voir : support en allemand impossible en interne, copy invérifiable sans
+glose française. Le pays reste ouvrable — c'est la décision prise, et
+`de-allemagne.md` en tire les conséquences — mais son coût est de nature
+différente de celui des quatre autres.
+
 Le vrai arbitrage tient en une phrase : **élargir en anglais** (Royaume-Uni →
 Irlande → Canada / Australie / Nouvelle-Zélande) ou **élargir en français**
 (Belgique → Suisse romande → Luxembourg). Les deux pistes réutilisent un
@@ -363,6 +385,14 @@ ouvrir un troisième marché vitrine ne fait qu'aggraver l'écart.
 - [ ] **Année fiscale décalée** — Royaume-Uni (6 avril), Australie et
       Nouvelle-Zélande (1er juillet), Irlande (année civile mais compteur de
       bandes remis à zéro). Le rapport annuel doit suivre la bonne fenêtre.
+- [ ] **Langue de support de chaque marché ouvert** — l'équipe couvre le
+      français et l'anglais. Tout marché servi dans une autre langue impose de
+      trancher entre un support en anglais assumé et annoncé (FAQ, page
+      conformité, pied de page) et une ressource externe. À décider avant
+      d'écrire la copy, pas après.
+- [ ] **Circuit de relecture des langues tierces** — qui écrit, qui fournit la
+      glose française, qui valide. Sans ce circuit, aucune copy allemande,
+      néerlandaise ou italienne n'est validable par l'équipe.
 - [ ] **Entité juridique et TVA** hors de France — aujourd'hui izika SAS pour
       tous les marchés, y compris `/en`.
 - [ ] **Consentement Axeptio** — une version par marché ; `/en` utilise encore

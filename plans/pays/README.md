@@ -10,9 +10,10 @@ déjà lancé côté site (`/en`, Royaume-Uni).
 | Fichier | Rôle |
 |---|---|
 | `00-priorisation-marches.md` | Analyse Europe + monde : compatibilité de chaque pays avec le moteur izika, structure de son barème, langues. C'est le document de décision. |
+| `de-allemagne.md` | Plan de déploiement marketing du marché `/de` — première ouverture décidée. |
 
-Les fiches pays détaillées viendront ensuite, une par pays engagé, nommées
-`<iso2>-<pays>.md` (`ie-irlande.md`, `be-belgique.md`…). Une fiche pays contient
+Les fiches pays suivantes se nomment `<iso2>-<pays>.md` (`ie-irlande.md`,
+`be-belgique.md`…), sur le modèle de `de-allemagne.md`. Une fiche pays contient
 le barème complet sourcé, le reste-à-faire par équipe (modèle : le découpage
 Juridique / Produit / Marketing / Design / SEO / Dev de
 `plans/decouplage-langue-pays.md`) et l'état d'avancement.
@@ -32,6 +33,38 @@ Le Royaume-Uni est donc en `site` sans `app` : c'est un pays **à intégrer**, p
 un pays intégré. Le site promet des rapports « current rates included » que
 l'app ne sait pas encore produire.
 
+## Ce que l'équipe peut porter, linguistiquement
+
+Contrainte structurelle, à appliquer avant toute autre considération.
+
+L'équipe izika est francophone. Elle assure le support client en **français et
+en anglais**, et **dans aucune autre langue**. Elle n'a par ailleurs aucune
+maîtrise des subtilités des autres langues : sur une question de style, de
+registre ou de culture propre à l'allemand, au néerlandais ou à l'italien, elle
+ne peut pas trancher seule.
+
+Deux conséquences pratiques, qui valent pour tous les documents de ce
+répertoire :
+
+1. **La langue de support est un critère de priorisation**, au même titre que
+   la compatibilité du barème. Un marché anglophone (Irlande, Canada,
+   Australie, Nouvelle-Zélande) ou francophone (Belgique `fr`, Suisse romande,
+   Luxembourg) ne coûte rien de ce côté. Tout autre marché impose un choix
+   explicite : assumer et **annoncer** un support en anglais, ou financer une
+   ressource externe. Ce choix se prend avant d'écrire la copy, parce qu'il
+   apparaît dans la FAQ, dans la page conformité et dans le pied de page.
+2. **Aucune copy en langue tierce ne se valide sans glose française.** Tout
+   texte allemand, néerlandais ou italien livré à l'équipe doit être accompagné
+   de sa retraduction en français, faute de quoi personne ici ne peut en
+   valider le fond. Cela vaut a fortiori pour les textes juridiquement
+   engageants — Impressum, AGB, Datenschutzerklärung : demander au prestataire
+   un résumé français **en plus** du texte, l'équipe ne pouvant pas les
+   auto-vérifier.
+
+Ce n'est pas un obstacle à l'ouverture d'un marché non anglophone ni
+francophone, c'est un poste de coût et un délai à inscrire au plan dès le
+départ.
+
 ## Méthode de priorisation
 
 Deux axes, appliqués dans cet ordre :
@@ -39,7 +72,11 @@ Deux axes, appliqués dans cet ordre :
 1. **Compatibilité du barème** avec le moteur izika, sur une échelle A → D
    définie dans `00-priorisation-marches.md`. Le moteur calcule un montant
    affine par morceaux en distance : `montant = d × coef + fixe` par tranche.
-2. **Potentiel et coût d'ouverture** en départage : taille du marché, langue
+2. **Langue portable par l'équipe** — voir la section précédente. Un marché
+   dont la langue n'est ni le français ni l'anglais n'est pas disqualifié, mais
+   il embarque une décision sur la langue de support et un circuit de
+   relecture qui doivent figurer au plan.
+3. **Potentiel et coût d'ouverture** en départage : taille du marché, langue
    déjà couverte par le site, réutilisation de l'entité juridique et de la
    devise, concurrence locale.
 
