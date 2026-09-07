@@ -1,0 +1,227 @@
+---
+import { t, getMarket, countrySwitcher, languageEndonym, type MarketId, type RouteKey } from '../i18n';
+
+/**
+ * Country selector, Stripe-style: a visitor picks a *country* first — the
+ * thing that decides the barème, the currency and the legal terms — then the
+ * language it is served in. A country available in a single language is one
+ * click, not two: the whole row is the link, with the language shown next to
+ * it so the choice is never hidden.
+ *
+ * Renders nothing while izika has a single destination; regions only appear
+ * once more than one has countries. Both thresholds move on their own as
+ * markets are added to src/i18n/markets.ts.
+ */
+interface Props {
+  market: MarketId;
+  /** Current page's route key — links point to the same page in the other
+   * market when it exists there (fallback: its home). */
+  routeKey?: RouteKey;
+  /** Extra classes on the <nav> wrapper. */
+  class?: string;
+}
+
+const { market, routeKey, class: className = '' } = Astro.props;
+const dict = t(market);
+const copy = dict.countrySwitcher;
+const marketData = getMarket(market);
+
+const { regions } = countrySwitcher(market, routeKey);
+const countries = regions.flatMap((r) => r.countries);
+const destinations = countries.reduce((n, c) => n + c.languages.length, 0);
+
+// Headings for a single region would be a wrapper around a single list.
+const showRegions = regions.length > 1;
+
+// Read off the market rather than searched in the model: the current pair
+// always exists, and no non-null assertion is needed to say so.
+const currentCountry = dict.countries[marketData.country];
+const currentLanguage = languageEndonym[marketData.language];
+
+const row = 'flex items-center justify-between gap-4 rounded-md px-2 py-2.5 transition-colors';
+const pill = 'block rounded-full px-2.5 py-1 text-sm leading-5 transition-colors';
+---
+
+{
+  destinations >= 2 && (
+    <nav aria-label={dict.a11y.countrySwitcher} class={className}>
+      <details class="group relative" data-country-switcher>
+        <summary
+          class="flex cursor-pointer list-none items-center gap-2 rounded-full border border-beige-line bg-white/70 px-3 py-1.5 text-sm leading-5 transition-colors hover:border-beige-dark hover:bg-white"
+          title={copy.trigger}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            aria-hidden="true"
+            class="block shrink-0 text-muted"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18" />
+          </svg>
+          <span class="font-semibold">{currentCountry}</span>
+          <span aria-hidden="true" class="text-beige-dark">
+            •
+          </span>
+          <span lang={marketData.language} class="text-muted">
+            {currentLanguage}
+          </span>
+          <svg
+            class="h-3 w-3 shrink-0 text-muted transition-transform group-open:rotate-180"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </summary>
+
+        {/* Opens upward: the switcher sits on the last line of the footer. */}
+        <div class="absolute bottom-full left-0 z-40 mb-2 w-[min(23rem,calc(100vw-2rem))] rounded-lg border border-beige-line bg-white p-4 text-left shadow-card lg:left-auto lg:right-0">
+          <div class="flex items-start justify-between gap-3">
+            <p class="font-semibold">{copy.title}</p>
+            <button
+              type="button"
+              data-close
+              aria-label={copy.close}
+              class="-mr-1 -mt-1 shrink-0 rounded-md p-1 text-muted transition-colors hover:bg-beige/60 hover:text-ink"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="block">
+                <path
+                  d="M4 4l8 8M12 4l-8 8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <p class="mt-1 text-sm text-muted">{copy.hint}</p>
+
+          {regions.map((region) => (
+            <div class="mt-3">
+              {showRegions && (
+                <p class="px-2 text-xs font-semibold uppercase tracking-wide text-muted">
+                  {region.name}
+                </p>
+              )}
+              <ul class="mt-1">
+                {region.countries.map((country) => (
+                  <li>
+                    {country.languages.length === 1 ? (
+                      country.languages[0].current ? (
+                        /* Not a link: the current destination is state, not a
+                           place to go. hreflang alternates live in <head>. */
+                        <span aria-current="true" class={`${row} bg-soft-primary`}>
+                          <span class="font-semibold">{country.name}</span>
+                          <span
+                            lang={country.languages[0].lang}
+                            class="flex items-center gap-1.5 text-sm text-muted"
+                          >
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              aria-hidden="true"
+                              class="block shrink-0 text-primary"
+                            >
+                              <path
+                                d="M3 8.5l3.5 3.5L13 5"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                            {country.languages[0].name}
+                            <span class="sr-only">{copy.currentSelection}</span>
+                          </span>
+                        </span>
+                      ) : (
+                        <a
+                          href={country.languages[0].href}
+                          hreflang={country.languages[0].hreflang}
+                          lang={country.languages[0].lang}
+                          rel="alternate"
+                          class={`${row} hover:bg-beige/60`}
+                        >
+                          <span class="font-semibold">{country.name}</span>
+                          <span class="text-sm text-muted">{country.languages[0].name}</span>
+                        </a>
+                      )
+                    ) : (
+                      /* Several languages: the country is a label, each
+                         language is the destination. */
+                      <div class="px-2 py-2">
+                        <span class="block font-semibold">{country.name}</span>
+                        <ul
+                          aria-label={`${copy.languagesLabel} — ${country.name}`}
+                          class="mt-1.5 flex flex-wrap gap-1"
+                        >
+                          {country.languages.map((language) => (
+                            <li>
+                              {language.current ? (
+                                <span
+                                  aria-current="true"
+                                  lang={language.lang}
+                                  class={`${pill} bg-primary font-semibold text-white`}
+                                >
+                                  {language.name}
+                                  <span class="sr-only"> — {copy.currentSelection}</span>
+                                </span>
+                              ) : (
+                                <a
+                                  href={language.href}
+                                  hreflang={language.hreflang}
+                                  lang={language.lang}
+                                  rel="alternate"
+                                  class={`${pill} border border-beige-line text-muted hover:bg-beige/60 hover:text-ink`}
+                                >
+                                  {language.name}
+                                </a>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </details>
+    </nav>
+  )
+}
+
+<script>
+  // <details> gives open/close and keyboard support for free; only dismissal
+  // has to be wired — click outside, Escape, and the panel's close button.
+  for (const details of document.querySelectorAll<HTMLDetailsElement>('[data-country-switcher]')) {
+    const summary = details.querySelector('summary');
+
+    const close = (refocus: boolean) => {
+      if (!details.open) return;
+      details.open = false;
+      if (refocus) summary?.focus();
+    };
+
+    details.querySelector('[data-close]')?.addEventListener('click', () => close(true));
+
+    document.addEventListener('click', (event) => {
+      if (!details.contains(event.target as Node)) close(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close(true);
+    });
+  }
+</script>
