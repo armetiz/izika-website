@@ -50,8 +50,13 @@ export interface Market {
   appUrl: string;
   /** Axeptio cookiesVersion. */
   cookiesVersion: string;
-  /** null for markets without a Trustpilot presence. */
-  trustpilot: { widgetLocale: string; url: string } | null;
+  /**
+   * null for markets without a Trustpilot presence. `widgetLocale: null`
+   * means "rating badges yes, official TrustBox no" — the review texts are
+   * French, so the embedded widget would drop French copy into an English
+   * page while the 4.9/265 badge stays true in any language.
+   */
+  trustpilot: { widgetLocale: string | null; url: string } | null;
   /** Legal entity + the ©/RCS/address footer line(s), byte-exact. */
   legal: { entity: string; footerLines: readonly string[] };
   /** Feeds webApplicationSchema offers (and later the pricing page). */
@@ -109,8 +114,14 @@ export const MARKETS: Record<MarketId, Market> = {
     // TODO: create an English consent version in Axeptio and switch this —
     // until then /en visitors get the French consent UI.
     cookiesVersion: 'izika-fr-EU',
-    // Reviews live on fr.trustpilot.com (French) — no Trustpilot blocks on /en.
-    trustpilot: null,
+    // Same business unit as fr, addressed by its locale-neutral URL. The badge
+    // must show here: webApplicationSchema emits aggregateRating on /en either
+    // way, and a rating in JSON-LD with nothing visible is the mismatch
+    // src/data/reviews.ts warns about. Widget off — the reviews are French.
+    trustpilot: {
+      widgetLocale: null,
+      url: 'https://www.trustpilot.com/review/izika.com',
+    },
     // The legal entity stays the French company; address untranslated.
     legal: {
       entity: 'izika SAS',

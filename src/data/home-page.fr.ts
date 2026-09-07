@@ -23,7 +23,7 @@ export const homePageFr: HomePageCopy = {
   },
   featuresCta: 'Découvrir toutes les fonctionnalités',
   testimonials: {
-    title: 'Plus de 3500 indépendants et entreprises ont choisi izika.',
+    title: 'Depuis 2014, plus de 3500 indépendants et entreprises ont choisi izika.',
     entries: [
       {
         author: 'Pierre-Louis',

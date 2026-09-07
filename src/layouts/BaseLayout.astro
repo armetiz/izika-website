@@ -60,9 +60,11 @@ const pageViewPayload = JSON.stringify({ name: 'pageViewed', properties: {} });
     <link rel="icon" href="/favicon-32.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- TrustBox script — only for markets with a Trustpilot presence -->
+    <!-- TrustBox script — only for markets that render the widget itself;
+         a market with badges but no widget (widgetLocale: null) must not pay
+         for the bootstrap. -->
     {
-      marketData.trustpilot && (
+      marketData.trustpilot?.widgetLocale && (
         <script
           is:inline
           type="text/javascript"

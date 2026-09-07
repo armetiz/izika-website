@@ -61,8 +61,9 @@ export default {
     mission: 'Consacrez-vous à ce qui compte vraiment !',
     quote:
       '"Notre ambition est de gérer intégralement les frais kilométriques et de libérer du temps pour les collaborateurs et les dirigeants avec un logiciel intelligent et solide."',
-    founderName: 'Pierre A., cofondateur',
-    founderAvatarAlt: "Pierre A., cofondateur d'izika",
+    /** Ancienneté affichée dans le bandeau légal — même source que la FAQ
+     *  et la page tarifs (izika SAS existe depuis 2014). */
+    since: 'Éditeur français indépendant depuis 2014',
     calculator: "Calculateur d'indemnités kilométriques",
     team: 'Entreprises, associations & collectivités',
     security: 'Sécurité',

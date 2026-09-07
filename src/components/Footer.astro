@@ -68,20 +68,11 @@ const gridClass = marketData.trustpilot
           <img src="/assets/img/logo/izika-logo.png" alt={dict.a11y.logoAlt} width="159" height="56" class="h-12 w-auto" />
         </a>
 
-        <div class="mb-4">
+        <div>
           <p class="text-lg font-semibold">{dict.footer.mission}</p>
           <p>
             <em>{dict.footer.quote}</em>
           </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <img
-            class="h-8 w-8 rounded-full"
-            src="/assets/landing-pages/team/pierre-aulagne.jpg"
-            alt={dict.footer.founderAvatarAlt}
-            loading="lazy"
-          />
-          <p class="text-lg font-semibold">{dict.footer.founderName}</p>
         </div>
       </div>
 
@@ -147,7 +138,10 @@ const gridClass = marketData.trustpilot
         <CountrySwitcher market={market} routeKey={routeKey} class="lg:order-2" />
       </div>
 
-      <p class="mt-4 text-xs text-muted">
+      {/* Ancienneté puis identité légale: le fait d'entreprise se lit avec le
+          RCS, pas comme une signature en haut de colonne. */}
+      <p class="mt-4 text-xs text-muted">{dict.footer.since}</p>
+      <p class="mt-1 text-xs text-muted">
         ©Copyright {year} {marketData.legal.entity} - {marketData.legal.footerLines.join(' - ')}
       </p>
     </div>

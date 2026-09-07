@@ -102,18 +102,22 @@ const standardWorksCards: ReadonlyArray<{ card: HomeWorksCard; bg: string }> = [
     {
       trustpilot && (
         <div class="mt-10 text-center">
-          <div
-            class="trustpilot-widget"
-            data-locale={trustpilot.widgetLocale}
-            data-template-id="56278e9abfbbba0bdcd568bc"
-            data-businessunit-id="5950be670000ff0005a55a73"
-            data-style-height="52px"
-            data-style-width="100%"
-          >
-            <a href={trustpilot.url} target="_blank" rel="noopener">
-              Trustpilot
-            </a>
-          </div>
+          {/* The embedded carousel renders the review texts, which are French —
+              markets reading them in another language get the link only. */}
+          {trustpilot.widgetLocale && (
+            <div
+              class="trustpilot-widget"
+              data-locale={trustpilot.widgetLocale}
+              data-template-id="56278e9abfbbba0bdcd568bc"
+              data-businessunit-id="5950be670000ff0005a55a73"
+              data-style-height="52px"
+              data-style-width="100%"
+            >
+              <a href={trustpilot.url} target="_blank" rel="noopener">
+                Trustpilot
+              </a>
+            </div>
+          )}
           <div class="mt-4">
             <a class={btnPrimarySm} href={trustpilot.url} target="_blank" rel="noopener">
               {copy.testimonials.readReviewsLabel} <span aria-hidden="true">›</span>

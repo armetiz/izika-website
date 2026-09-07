@@ -48,8 +48,7 @@ const en: Dict = {
     mission: 'Focus on what really matters!',
     quote:
       '"Our ambition is to fully take care of mileage expenses and free up time for employees and managers with smart, solid software."',
-    founderName: 'Pierre A., co-founder',
-    founderAvatarAlt: 'Pierre A., co-founder of izika',
+    since: 'Independent French software company since 2014',
     calculator: 'Mileage allowance calculator',
     team: 'Companies, non-profits & local authorities',
     security: 'Security',

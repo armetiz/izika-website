@@ -24,7 +24,7 @@ export const homePageEn: HomePageCopy = {
   },
   featuresCta: 'Discover all the features',
   testimonials: {
-    title: 'More than 3,500 freelancers and companies have chosen izika.',
+    title: 'Since 2014, more than 3,500 freelancers and companies have chosen izika.',
     entries: [
       {
         author: 'Pierre-Louis',
