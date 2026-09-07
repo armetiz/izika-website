@@ -20,8 +20,12 @@ npx astro check           # vérification TypeScript
 - `src/i18n/routes.ts` — **source de vérité unique** des routes éditoriales :
   liens internes (`localizedPath`), hreflang et sitemap itèrent cette table.
   Une page ne peut pas exister sans être dans le sitemap.
-- `src/i18n/fr.ts` — dictionnaire du chrome (nav, footer). `type Dict` dérive
-  de ce fichier : une locale incomplète ne compile pas.
+- `src/i18n/fr.ts` — dictionnaire du chrome (nav, footer, noms de pays et de
+  régions). `type Dict` dérive de ce fichier : une locale incomplète ne
+  compile pas.
+- `src/i18n/countries.ts` — pays servis et régions du sélecteur. Un visiteur
+  choisit un **pays** puis la langue qui y est servie
+  (`CountrySwitcher.astro`) ; le couple résout exactement un marché.
 - `src/content/articles/<locale>/` — collections d'articles par locale,
   éditées via Keystatic (voir `docs/keystatic-admin.md`). Les articles IK sont
   spécifiques à chaque pays, pas des traductions.
@@ -39,8 +43,9 @@ npx astro check           # vérification TypeScript
 
 ## Ajouter une locale (ex. `de`)
 
-1. `src/i18n/markets.ts` (et `languages.ts` si nouvelle langue) : ajouter le
-   marché → le typage force la suite.
+1. `src/i18n/markets.ts` (et `languages.ts` + son endonyme si nouvelle langue,
+   `countries.ts` + les noms dans chaque dictionnaire si nouveau pays) :
+   ajouter le marché → le typage force la suite.
 2. `src/i18n/de.ts` : dictionnaire complet (les clés manquantes = erreurs).
 3. `src/i18n/routes.ts` : ajouter le slug `de` de chaque route lancée
    (`features: { fr: 'fonctionnalites', de: 'funktionen' }`). Une route sans
@@ -48,7 +53,9 @@ npx astro check           # vérification TypeScript
 4. Créer `src/pages/de/…` en réutilisant les composants avec le dico `de`.
 5. Articles : nouveau dossier `src/content/articles/de/` + collection
    Keystatic dédiée (contenu original, pas des traductions).
-6. hreflang, sitemap et sélecteur de langue s'étendent automatiquement.
+6. hreflang, sitemap et sélecteur de pays s'étendent automatiquement (le
+   sélecteur affiche les régions dès qu'il y en a plusieurs, et regroupe les
+   langues d'un même pays sur une seule ligne).
 
 ## Analytics
 

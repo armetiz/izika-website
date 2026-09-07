@@ -1,11 +1,11 @@
 ---
 import { t, getMarket, localizedPath, type MarketId, type RouteKey } from '../i18n';
-import MarketSwitcher from './MarketSwitcher.astro';
+import CountrySwitcher from './CountrySwitcher.astro';
 import TrustpilotBadge from './TrustpilotBadge.astro';
 
 interface Props {
   market: MarketId;
-  /** Forwarded to MarketSwitcher for page-to-page equivalence. */
+  /** Forwarded to CountrySwitcher for page-to-page equivalence. */
   routeKey?: RouteKey;
   /**
    * Footer-zone background: 'beige' (default site-wide), 'gradient' (the
@@ -144,7 +144,7 @@ const gridClass = marketData.trustpilot
           </ul>
         </nav>
 
-        <MarketSwitcher market={market} routeKey={routeKey} class="lg:order-2" />
+        <CountrySwitcher market={market} routeKey={routeKey} class="lg:order-2" />
       </div>
 
       <p class="mt-4 text-xs text-muted">

@@ -1,4 +1,5 @@
 import type { Language } from './languages';
+import type { CountryId } from './countries';
 import { site } from '../config/site';
 
 /**
@@ -7,6 +8,9 @@ import { site } from '../config/site';
  * Language its pages are written in. The URL segment scheme is
  * `/{country}-{language}/` with a short alias when a country has a single
  * language: `/fr/` (France, fr), `/en/` (UK for now), future `/ch-fr/`.
+ *
+ * Visitors never pick a Market: they pick a Country, then a language served
+ * there (CountrySwitcher.astro) — the pair resolves to exactly one Market.
  *
  * Adding an id to `marketIds` breaks the build until MARKETS provides its
  * Market — and until every route it should serve exists in routes.ts (route
@@ -20,8 +24,9 @@ export type MarketId = (typeof marketIds)[number];
 export interface Market {
   /** URL segment ('fr', 'ch-fr', 'en'). */
   id: MarketId;
-  /** ISO 3166-1 alpha-2, or 'international'. */
-  country: string;
+  /** Country this deployment serves — its name is localized by the
+   * dictionaries and its region drives the country selector. */
+  country: CountryId;
   language: Language;
   /** ISO 4217. */
   currency: string;
@@ -39,9 +44,6 @@ export interface Market {
   websiteDescription: string;
   /** Fallback meta description for pages without a dedicated one. */
   defaultDescription: string;
-  /** Endonym shown by the MarketSwitcher, capitalised (« Français », not the
-   * French lowercase spelling « français ») — treated as a proper noun. */
-  label: string;
   /** Main conversion CTA — signup on the app. */
   joinUrl: string;
   /** App login. */
@@ -70,7 +72,6 @@ export const MARKETS: Record<MarketId, Market> = {
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
       'Obtenez vos indemnités kilométriques automatiques depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Simple, déclaratif, rapide.',
-    label: 'Français',
     joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     cookiesVersion: 'izika-fr-EU',
@@ -103,7 +104,6 @@ export const MARKETS: Record<MarketId, Market> = {
     websiteDescription: 'Automatic mileage allowance management',
     defaultDescription:
       'Get your mileage allowances automatically from your online calendar: Google, Outlook, Dolibarr, Zimbra, ICS. Simple, declarative, fast.',
-    label: 'English',
     joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     // TODO: create an English consent version in Axeptio and switch this —

@@ -25,10 +25,37 @@ export default {
   },
   a11y: {
     logoAlt: 'Logo izika',
-    marketSwitcher: 'Sélecteur de langue',
+    countrySwitcher: 'Pays et langue',
     legalNav: 'Informations légales',
     /** Placeholders {rating}/{max} filled from src/data/reviews.ts. */
     ratingAria: 'Note {rating} sur {max}',
+  },
+  /**
+   * Noms de pays (clés = CountryId) et de régions (clés = RegionId), dans la
+   * langue du dictionnaire : un visiteur français lit « Royaume-Uni ». Les
+   * noms de langues, eux, restent des endonymes (src/i18n/languages.ts).
+   */
+  countries: {
+    FR: 'France',
+    GB: 'Royaume-Uni',
+  },
+  regions: {
+    europe: 'Europe',
+    americas: 'Amériques',
+    asiaPacific: 'Asie-Pacifique',
+  },
+  countrySwitcher: {
+    /** Titre du panneau. */
+    title: 'Choisissez votre pays',
+    /** Pourquoi le choix compte : ce n'est pas qu'une traduction. */
+    hint: 'Le pays détermine le barème kilométrique, la devise et les mentions légales appliqués.',
+    /** aria-label du bouton, complété du pays et de la langue courants. */
+    trigger: 'Changer de pays ou de langue',
+    close: 'Fermer',
+    /** Rendu visuellement masqué sur la ligne sélectionnée. */
+    currentSelection: 'Sélection actuelle',
+    /** Pays disponible dans plusieurs langues : libellé du groupe de liens. */
+    languagesLabel: 'Langues disponibles',
   },
   footer: {
     mission: 'Consacrez-vous à ce qui compte vraiment !',

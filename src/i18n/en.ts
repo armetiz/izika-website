@@ -23,9 +23,26 @@ const en: Dict = {
   },
   a11y: {
     logoAlt: 'izika logo',
-    marketSwitcher: 'Language selector',
+    countrySwitcher: 'Country and language',
     legalNav: 'Legal information',
     ratingAria: 'Rated {rating} out of {max}',
+  },
+  countries: {
+    FR: 'France',
+    GB: 'United Kingdom',
+  },
+  regions: {
+    europe: 'Europe',
+    americas: 'Americas',
+    asiaPacific: 'Asia-Pacific',
+  },
+  countrySwitcher: {
+    title: 'Choose your country',
+    hint: 'Your country sets the mileage rates, the currency and the legal terms that apply.',
+    trigger: 'Change country or language',
+    close: 'Close',
+    currentSelection: 'Current selection',
+    languagesLabel: 'Available languages',
   },
   footer: {
     mission: 'Focus on what really matters!',
