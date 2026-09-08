@@ -11,24 +11,24 @@ export const teamLandingFr: TeamLandingCopy = {
     catch:
       'Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités kilométriques.',
     cta: 'Tester gratuitement izika',
-    image: '/assets/app/screen-calendar-import-wide.fr.jpg',
+    image: '/assets/markets/fr/app/screen-calendar-import-wide.jpg',
     imageAlt: 'izika sur ordinateur de bureau',
     imageWidth: 1618,
     imageHeight: 1010,
   },
   heroBenefits: [
-    { icon: '/assets/icons/calendar-to-trip.fr.png', text: 'Gestion intelligente des RDV' },
-    { icon: '/assets/icons/approval.fr.png', text: "Flux d'approbation efficaces" },
+    { icon: '/assets/markets/fr/icons/calendar-to-trip.png', text: 'Gestion intelligente des RDV' },
+    { icon: '/assets/markets/fr/icons/approval.png', text: "Flux d'approbation efficaces" },
     {
       icon: '/assets/icons/teams-folders.png',
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/icons/compliance.fr.png',
+      icon: '/assets/markets/fr/icons/compliance.png',
       text: 'Rapports conformes aux règles fiscales',
     },
     {
-      icon: '/assets/icons/security.fr.png',
+      icon: '/assets/markets/fr/icons/security.png',
       text: 'Sécurisé, fiable, hébergé en France',
     },
   ],
@@ -49,15 +49,15 @@ export const teamLandingFr: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-next-stop.fr.png',
+        src: '/assets/markets/fr/app/screen-next-stop.png',
         alt: 'Configuration des déplacements en étoile ou en tournée',
       },
       {
-        src: '/assets/app/screen-folders.fr.png',
+        src: '/assets/markets/fr/app/screen-folders.png',
         alt: 'catégorisation des rendez-vous en dossiers',
       },
       {
-        src: '/assets/app/screen-receipts.fr.png',
+        src: '/assets/markets/fr/app/screen-receipts.png',
         alt: 'association des justificatifs aux rendez-vous',
       },
     ],
@@ -74,11 +74,11 @@ export const teamLandingFr: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-claims-list.fr.png',
+        src: '/assets/markets/fr/app/screen-claims-list.png',
         alt: "Liste des demandes d'indemnisation",
       },
-      { src: '/assets/app/screen-claim-approve.fr.png', alt: 'approuver une demande' },
-      { src: '/assets/app/screen-route.fr.png', alt: "Voir l'itinéraire en détail" },
+      { src: '/assets/markets/fr/app/screen-claim-approve.png', alt: 'approuver une demande' },
+      { src: '/assets/markets/fr/app/screen-route.png', alt: "Voir l'itinéraire en détail" },
     ],
   },
   security: {

@@ -12,7 +12,7 @@ déjà lancé côté site (`/uk`, Royaume-Uni).
 | `00-priorisation-marches.md` | Analyse Europe + monde : compatibilité de chaque pays avec le moteur izika, structure de son barème, langues. C'est le document de décision. |
 | `02-bonnes-pratiques-i18n-saas.md` | Cadrage : ce qui marche et ne marche pas dans l'internationalisation d'un SaaS, confronté à l'état d'izika. À lire avant la procédure. |
 | `01-procedure-ouverture-marche.md` | **La procédure répétable** : les trois couches de garantie du dépôt, l'inventaire de ce que rien ne vérifie, et les six phases d'une ouverture. À dérouler à chaque marché. |
-| `03-inventaire-assets.md` | **L'inventaire des 108 assets images**, classés par famille et par dépendance (langue, devise, unité, fiscal, pays), avec le verdict d'automatisation de chacun. Base de l'audit de rationalisation et de nommage ; référence de la rubrique « Design / Assets » des fiches pays. |
+| `03-inventaire-assets.md` | **La convention d'assets et le lot par marché** : arbre neutre + un arbre par marché sous `public/assets/markets/`, garde-fous de build, et les 56 visuels qu'une ouverture demande. Référence de la rubrique « Design / Assets » des fiches pays. |
 | `de-allemagne.md` | Plan de déploiement marketing du marché `/de` — première ouverture décidée. |
 | `ch-suisse.md` | Plan du marché `/ch-fr` — **construit et buildé au 2026-09-07** ; reste à faire hors dépôt (TVA, validation juridique, TWINT). Cas de test « langue maîtrisée », premier marché non-euro. |
 | `be-belgique.md` | Plan du marché `/be-fr` — cas de test « langue maîtrisée », barème à indexation instable. |

@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Fonctionnalités
   image:
-    src: /assets/verticals/real-estate-agents/agenda.fr.png
+    src: /assets/markets/fr/verticals/real-estate-agents/agenda.png
     alt: Export indemnites kilométriques pour les agents et mandataires immobilier
     title: Export indemnites kilométriques pour les agents et mandataires immobilier
 
 featureHighlights:
   title: La façon la plus simple pour les agents de gérer leurs indemnités kilométriques
   image:
-    src: /assets/verticals/real-estate-agents/next-stop.fr.png
+    src: /assets/markets/fr/verticals/real-estate-agents/next-stop.png
     alt: izika pour les agents immobiliers
     title: izika pour les agents immobiliers
   ctaText: Tester izika
@@ -46,7 +46,7 @@ benefits:
   title: "Avantages d'un outil de gestion de déplacements pour les agents immobiliers"
   items:
     - title: Vos déplacements reconstitués à partir de vos rendez-vous
-      image: /assets/verticals/real-estate-agents/calendar-to-mileage.fr.png
+      image: /assets/markets/fr/verticals/real-estate-agents/calendar-to-mileage.png
       imageAlt: izika - déplacements des agents immobilier reconstitués à partir des rendez-vous
       text: |
         <p>Entre une estimation le matin, trois visites l’après-midi et une signature en fin de journée, vos trajets s’enchaînent vite.</p>
@@ -58,7 +58,7 @@ benefits:
           <li>Calcul automatique en fonction de votre véhicule</li>
         </ul>
     - title: Un rapport fiscal clair pour vos obligations professionnelles
-      image: /assets/verticals/real-estate-agents/report.fr.png
+      image: /assets/markets/fr/verticals/real-estate-agents/report.png
       imageAlt: "izika - un rapport fiscal clair pour l'administration fiscale"
       text: |
         <p>Que ce soit pour votre déclaration annuelle ou pour répondre à votre comptable, tout est déjà structuré : kilomètres, trajets, montants, puissances fiscales.</p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justifier vos déplacements lors d’un contrôle fiscal</li>
         </ul>
     - title: Une solution qui n’alourdit pas votre journée
-      image: /assets/photos/laptop-app.fr.jpg
+      image: /assets/markets/fr/photos/laptop-app.jpg
       imageAlt: izika - une solution qui n’alourdit pas le quotidien des agents immobilier
       text: |
         <p>Vous n’avez pas besoin d’utiliser izika en continu : vos déplacements s’enregistrent depuis vos rendez-vous, et vous générez votre rapport quand vous en avez besoin.</p>
@@ -107,7 +107,7 @@ customerCase:
   avatarAlt: Cédric Fontaine
   gainsTitle: "Voici ce que Cédric a gagné en utilisant izika :"
   gains:
-    - image: /assets/icons/calendar-to-trip.fr.png
+    - image: /assets/markets/fr/icons/calendar-to-trip.png
       imageAlt: Trajets automatiques depuis son agenda
       text: >-
         Tous ses rendez-vous pour des visites, estimations, signatures,
@@ -117,7 +117,7 @@ customerCase:
       text: >-
         Cédric a configuré izika pour <strong>calculer automatiquement les trajets de la journée en tournées</strong>.
         A l'ouverture d'izika il n'a que quelques vérifications à faire avant d'exporter son rapport.
-    - image: /assets/icons/compliance.fr.png
+    - image: /assets/markets/fr/icons/compliance.png
       imageAlt: "Déclaration d'IK et contrôle fiscale"
       text: >-
         <strong>Une tranquillité totale en cas de contrôle</strong>.

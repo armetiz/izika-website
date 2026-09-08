@@ -3,16 +3,20 @@ import { marketIds, type MarketId } from '../i18n/markets';
 /**
  * Naming convention of public/assets — see plans/pays/03-inventaire-assets.md.
  *
- * The folder names the family (app/, icons/, verticals/…), the file names the
- * subject, and a MARKET-dependent visual carries the market id before its
- * extension:
+ * NEUTRAL visuals live under the family that names them; MARKET-dependent ones
+ * live in a per-market tree that mirrors those same families:
  *
- *     /assets/icons/compliance.fr.png     market-dependent — one file per market
- *     /assets/icons/custom-rate.png       neutral — reusable everywhere
+ *     /assets/icons/custom-rate.png              neutral — reusable everywhere
+ *     /assets/markets/fr/icons/compliance.png    market-dependent — one tree per market
+ *     /assets/markets/uk/icons/compliance.png
  *
  * The discriminant is the market, not the language: a visual carries a
  * currency, a distance unit and a tax scheme, so `be-fr` and `fr` need
  * different files even though both read French.
+ *
+ * A market tree is a self-contained package: it is what a designer receives
+ * when a market opens, and `diff -rq markets/fr markets/de` states what is
+ * missing without running anything.
  *
  * There is NO fallback. Each market owns a physical file, even when its bytes
  * are still the French ones — an inherited visual would be a silent, invisible
@@ -22,17 +26,14 @@ import { marketIds, type MarketId } from '../i18n/markets';
  * debt, and a missing file fails the build outright.
  */
 export function marketAsset(neutralPath: string, market: MarketId): string {
-  const dot = neutralPath.lastIndexOf('.');
-  if (dot <= neutralPath.lastIndexOf('/')) {
-    throw new Error(`marketAsset: "${neutralPath}" has no file extension.`);
+  if (!neutralPath.startsWith('/assets/')) {
+    throw new Error(`marketAsset: "${neutralPath}" is not an /assets path.`);
   }
-  return `${neutralPath.slice(0, dot)}.${market}${neutralPath.slice(dot)}`;
+  return `/assets/markets/${market}/${neutralPath.slice('/assets/'.length)}`;
 }
 
-/** `.fr.` / `.uk.` / `.ch-fr.` right before the extension of an /assets path. */
-const MARKET_ASSET = new RegExp(
-  `^(/assets/[A-Za-z0-9_./-]+)\\.(${marketIds.join('|')})(\\.[a-z]+)$`,
-);
+/** `/assets/markets/<market>/…` — the market segment is captured. */
+const MARKET_ASSET = new RegExp(`^/assets/markets/(?:${marketIds.join('|')})/(.+)$`);
 
 /**
  * Retargets every MARKET asset path of a copy object onto `market`, deeply.
@@ -44,9 +45,9 @@ const MARKET_ASSET = new RegExp(
  *
  *     export const soloPageChFr = marketAssets('ch-fr', { ...soloPageFr, … });
  *
- * Only paths that ALREADY carry a market id are rewritten, so neutral assets
- * stay untouched, and the operation is idempotent — an override written by
- * hand with the right market survives unchanged. Nothing is invented: the
+ * Only paths that ALREADY live in a market tree are rewritten, so neutral
+ * assets stay untouched, and the operation is idempotent — an override written
+ * by hand with the right market survives unchanged. Nothing is invented: the
  * retargeted file must exist in public/, and the build fails on it otherwise
  * (src/integrations/asset-guard.mjs).
  */
@@ -54,7 +55,7 @@ export function marketAssets<T>(market: MarketId, copy: T): T {
   const walk = (value: unknown): unknown => {
     if (typeof value === 'string') {
       const m = MARKET_ASSET.exec(value);
-      return m ? `${m[1]}.${market}${m[3]}` : value;
+      return m ? `/assets/markets/${market}/${m[1]}` : value;
     }
     if (Array.isArray(value)) return value.map(walk);
     if (value && typeof value === 'object') {

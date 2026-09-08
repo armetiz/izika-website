@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/verticals/independent-professionals/agenda.uk.png
+    src: /assets/markets/uk/verticals/independent-professionals/agenda.png
     alt: Mileage allowance export for independent professionals
     title: Mileage allowance export for independent professionals
 
 featureHighlights:
   title: The fastest way for independent professionals to manage their trips
   image:
-    src: /assets/verticals/independent-professionals/next-stop.uk.png
+    src: /assets/markets/uk/verticals/independent-professionals/next-stop.png
     alt: izika for independent professionals
     title: izika for independent professionals
   ctaText: Try izika
@@ -43,7 +43,7 @@ benefits:
   title: "Benefits of a mileage allowance management tool for independent professionals"
   items:
     - title: Your trips generated automatically from your appointments
-      image: /assets/verticals/independent-professionals/calendar-to-mileage.uk.png
+      image: /assets/markets/uk/verticals/independent-professionals/calendar-to-mileage.png
       imageAlt: "izika - Independent professionals' mileage allowances computed from the calendar"
       text: |
         <p>Your schedule revolves around consultations, home visits and practice meetings. All journeys you have no time to write down one by one.</p>
@@ -53,7 +53,7 @@ benefits:
           <li>Distances and amounts are already there, with no entry on your part</li>
         </ul>
     - title: A compliant tax report for your income tax return
-      image: /assets/verticals/independent-professionals/report.uk.png
+      image: /assets/markets/uk/verticals/independent-professionals/report.png
       imageAlt: izika - A compliant tax report for independent professionals' income tax returns
       text: |
         <p>
@@ -66,7 +66,7 @@ benefits:
           <li>Justify every trip in the event of a tax audit</li>
         </ul>
     - title: "You don't have to manage izika day to day"
-      image: /assets/photos/laptop-app.uk.jpg
+      image: /assets/markets/uk/photos/laptop-app.jpg
       imageAlt: "izika - You don't have to manage izika day to day"
       text: |
         <p>izika doesn't ask you to log in every day or enter a single trip. It works in the background, from your calendar.</p>
@@ -95,7 +95,7 @@ customerCase:
   avatarAlt: Sophie L.
   gainsTitle: "Here is what Sophie gained by using izika:"
   gains:
-    - image: /assets/icons/calendar-to-trip.uk.png
+    - image: /assets/markets/uk/icons/calendar-to-trip.png
       imageAlt: "Trips generated automatically from the calendar"
       text: >-
         All her home visits and her journeys between the practice and her patients
@@ -105,7 +105,7 @@ customerCase:
       text: >-
         Sophie set up her <strong>usual rounds</strong> in izika.
         At the end of the week she quickly reviews her trips in a few seconds and fixes anything needed before exporting.
-    - image: /assets/icons/compliance.uk.png
+    - image: /assets/markets/uk/icons/compliance.png
       imageAlt: Guaranteed tax compliance
       text: >-
         <strong>No stress in the event of a tax audit.</strong>

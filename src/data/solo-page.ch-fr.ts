@@ -30,11 +30,11 @@ export const soloPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
   },
   highlights: [
     {
-      icon: '/assets/icons/calendar-to-trip.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/calendar-to-trip.png',
       text: 'Import des rendez-vous depuis votre agenda',
     },
     {
-      icon: '/assets/icons/auto-distance.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/auto-distance.png',
       text: 'Calcul automatique des distances',
     },
     {
@@ -42,7 +42,7 @@ export const soloPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
       text: `Taux libre :<br /> ${chfPerKm(TAUX_ACTUEL)}, ${chfPerKm(TAUX_ANTERIEUR)} ou le vôtre`,
     },
     {
-      icon: '/assets/icons/security.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/security.png',
       text: 'Sécurité, confidentialité<br /> hébergement européen, hors cloud américain',
     },
   ],

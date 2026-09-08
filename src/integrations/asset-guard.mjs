@@ -16,16 +16,20 @@ import path from 'node:path';
  *    behind it. Fails the build.
  * 2. ORPHANS — a file in public/assets that no page references. A warning:
  *    it costs deploy weight and hides dead visuals, but it breaks nothing.
- * 3. LOCALISATION DEBT — market variants (`name.<market>.ext`) whose bytes
+ * 3. LOCALISATION DEBT — files of `/assets/markets/<market>/…` whose bytes
  *    are still identical to another market's. Those are the visuals a market
  *    was opened without, and the list a designer works from. A warning, on
  *    purpose: shipping the French visual is a known, dated compromise, not a
  *    build error.
+ *
+ * Pass 3 keys on the path INSIDE the market tree, so what counts as a market
+ * asset is structural — no guessing whether a two-letter chunk of a filename
+ * happens to be a market id.
  */
 const IMAGE = /\.(png|jpe?g|svg|ico|webp|avif|gif)$/i;
 // Both root-relative (href/src/url()) and absolute (canonical, JSON-LD) forms.
 const REFERENCE = /(?:https?:\/\/[^"'()\s]*)?(\/assets\/[A-Za-z0-9_@./-]+\.(?:png|jpe?g|svg|ico|webp|avif|gif))/g;
-const MARKET_VARIANT = /^(.*)\.([a-z]{2}(?:-[a-z]{2})?)(\.[a-z0-9]+)$/;
+const MARKET_VARIANT = /^\/assets\/markets\/([^/]+)\/(.+)$/;
 
 async function walk(dir, out = []) {
   let entries;
@@ -93,14 +97,13 @@ export default function assetGuard() {
         }
 
         // ---- 3. localisation debt ----------------------------------------
-        const variants = new Map(); // "<dir>/<name><ext>" -> [{ market, hash }]
+        const variants = new Map(); // "<family>/<name><ext>" -> [{ market, hash }]
         for (const p of onDisk) {
           const m = MARKET_VARIANT.exec(p);
           if (!m) continue;
           const bytes = await readFile(path.join(distDir, p));
           const hash = createHash('sha1').update(bytes).digest('hex');
-          const key = m[1] + m[3];
-          variants.set(key, (variants.get(key) ?? []).concat({ market: m[2], hash }));
+          variants.set(m[2], (variants.get(m[2]) ?? []).concat({ market: m[1], hash }));
         }
 
         const debt = [];

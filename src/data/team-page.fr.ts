@@ -12,19 +12,19 @@ export const teamPageFr: ProductLandingCopy = {
       'Des documents comptables fiables et normalisés',
     ],
     collage: {
-      desktopSrc: '/assets/app/screen-claim-approve-wide.fr.jpg',
+      desktopSrc: '/assets/markets/fr/app/screen-claim-approve-wide.jpg',
       desktopAlt: 'izika sur ordinateur de bureau',
       desktopWidth: 1618,
       desktopHeight: 1010,
-      tabletSrc: '/assets/app/screen-next-stop-tablet.fr.jpg',
+      tabletSrc: '/assets/markets/fr/app/screen-next-stop-tablet.jpg',
       tabletAlt: 'configurer les rendez-vous en étoile',
       tabletWidth: 1618,
       tabletHeight: 1210,
-      ipadSrc: '/assets/app/report-mileage.fr.jpg',
+      ipadSrc: '/assets/markets/fr/app/report-mileage.jpg',
       ipadAlt: 'izika sur ipad',
       ipadWidth: 533,
       ipadHeight: 711,
-      mobileSrc: '/assets/app/screen-mobile-trips.fr.jpg',
+      mobileSrc: '/assets/markets/fr/app/screen-mobile-trips.jpg',
       mobileAlt: 'izika sur mobile',
       mobileWidth: 407,
       mobileHeight: 867,
@@ -32,11 +32,11 @@ export const teamPageFr: ProductLandingCopy = {
   },
   highlights: [
     {
-      icon: '/assets/icons/calendar-to-trip.fr.png',
+      icon: '/assets/markets/fr/icons/calendar-to-trip.png',
       text: 'Génération en ligne de relevés de déplacements',
     },
     {
-      icon: '/assets/icons/approval.fr.png',
+      icon: '/assets/markets/fr/icons/approval.png',
       text: "Flux d'approbation des demandes d'IK",
     },
     {
@@ -44,11 +44,11 @@ export const teamPageFr: ProductLandingCopy = {
       text: 'Ventilation des IK par équipe et par dossier',
     },
     {
-      icon: '/assets/icons/compliance.fr.png',
+      icon: '/assets/markets/fr/icons/compliance.png',
       text: 'Relevés conformes aux normes fiscales',
     },
     {
-      icon: '/assets/icons/security.fr.png',
+      icon: '/assets/markets/fr/icons/security.png',
       text: 'Sécurité, confidentialité<br /> créé et hébergé en France',
     },
   ],
@@ -64,19 +64,19 @@ export const teamPageFr: ProductLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-next-stop.fr.png',
+        src: '/assets/markets/fr/app/screen-next-stop.png',
         alt: 'Configuration des déplacements en étoile ou en tournée',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-folders.fr.png',
+        src: '/assets/markets/fr/app/screen-folders.png',
         alt: 'catégorisation des rendez-vous en dossiers',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-receipts.fr.png',
+        src: '/assets/markets/fr/app/screen-receipts.png',
         alt: 'association des justificatifs aux rendez-vous',
         width: 920,
         height: 719,
@@ -94,19 +94,19 @@ export const teamPageFr: ProductLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-claims-list.fr.png',
+        src: '/assets/markets/fr/app/screen-claims-list.png',
         alt: "Liste des demandes d'indemnisation",
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-claim-approve.fr.png',
+        src: '/assets/markets/fr/app/screen-claim-approve.png',
         alt: 'approuver une demande',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-route.fr.png',
+        src: '/assets/markets/fr/app/screen-route.png',
         alt: "Voir l'itinéraire en détail",
         width: 920,
         height: 719,

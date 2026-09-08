@@ -11,24 +11,24 @@ export const teamLandingUk: TeamLandingCopy = {
     catch:
       'Save your organization a maximum of time on the management of its mileage allowances.',
     cta: 'Try izika for free',
-    image: '/assets/app/screen-calendar-import-wide.uk.jpg',
+    image: '/assets/markets/uk/app/screen-calendar-import-wide.jpg',
     imageAlt: 'izika on a desktop computer',
     imageWidth: 1618,
     imageHeight: 1010,
   },
   heroBenefits: [
-    { icon: '/assets/icons/calendar-to-trip.uk.png', text: 'Smart appointment management' },
-    { icon: '/assets/icons/approval.uk.png', text: 'Efficient approval workflows' },
+    { icon: '/assets/markets/uk/icons/calendar-to-trip.png', text: 'Smart appointment management' },
+    { icon: '/assets/markets/uk/icons/approval.png', text: 'Efficient approval workflows' },
     {
       icon: '/assets/icons/teams-folders.png',
       text: 'Breakdown by team and by project',
     },
     {
-      icon: '/assets/icons/compliance.uk.png',
+      icon: '/assets/markets/uk/icons/compliance.png',
       text: 'Reports compliant with tax rules',
     },
     {
-      icon: '/assets/icons/security.uk.png',
+      icon: '/assets/markets/uk/icons/security.png',
       text: 'Secure, reliable, hosted in France',
     },
   ],
@@ -49,15 +49,15 @@ export const teamLandingUk: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-next-stop.uk.png',
+        src: '/assets/markets/uk/app/screen-next-stop.png',
         alt: 'Configuring star-pattern or round trips',
       },
       {
-        src: '/assets/app/screen-folders.uk.png',
+        src: '/assets/markets/uk/app/screen-folders.png',
         alt: 'categorizing appointments into projects',
       },
       {
-        src: '/assets/app/screen-receipts.uk.png',
+        src: '/assets/markets/uk/app/screen-receipts.png',
         alt: 'attaching supporting documents to appointments',
       },
     ],
@@ -74,11 +74,11 @@ export const teamLandingUk: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-claims-list.uk.png',
+        src: '/assets/markets/uk/app/screen-claims-list.png',
         alt: 'List of mileage claims',
       },
-      { src: '/assets/app/screen-claim-approve.uk.png', alt: 'approving a claim' },
-      { src: '/assets/app/screen-route.uk.png', alt: 'Viewing the route in detail' },
+      { src: '/assets/markets/uk/app/screen-claim-approve.png', alt: 'approving a claim' },
+      { src: '/assets/markets/uk/app/screen-route.png', alt: 'Viewing the route in detail' },
     ],
   },
   security: {

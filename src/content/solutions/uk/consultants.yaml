@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/verticals/consultants/agenda.uk.png
+    src: /assets/markets/uk/verticals/consultants/agenda.png
     alt: Mileage allowance export for independent consultants
     title: Mileage allowance export for independent consultants
 
 featureHighlights:
   title: The fastest way for consultants to manage their client travel
   image:
-    src: /assets/verticals/consultants/next-stop.uk.png
+    src: /assets/markets/uk/verticals/consultants/next-stop.png
     alt: izika for independent consultants
     title: izika for independent consultants
   ctaText: Try izika
@@ -46,7 +46,7 @@ benefits:
   title: "Benefits of a mileage allowance management tool for consultants"
   items:
     - title: Your client trips computed automatically from your calendar
-      image: /assets/verticals/consultants/calendar-to-mileage.uk.png
+      image: /assets/markets/uk/verticals/consultants/calendar-to-mileage.png
       imageAlt: "izika - consultants' mileage allowances computed from the calendar"
       text: |
         <p>As a consultant, your days are a string of meetings at your clients', trips on assignment, prospecting visits… all journeys you have no time to write down one by one.</p>
@@ -56,7 +56,7 @@ benefits:
           <li>Distances and allowance amounts are already there, with zero data entry</li>
         </ul>
     - title: A compliant tax report, ready to send to your accountant
-      image: /assets/verticals/consultants/report.uk.png
+      image: /assets/markets/uk/verticals/consultants/report.png
       imageAlt: izika - Compliant tax report for independent consultants
       text: |
         <p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justify every trip in the event of a tax audit</li>
         </ul>
     - title: izika runs in the background, with no mental load
-      image: /assets/photos/laptop-app.uk.jpg
+      image: /assets/markets/uk/photos/laptop-app.jpg
       imageAlt: izika - Consultant mileage management with no daily burden
       text: |
         <p>izika doesn't ask you to log in every day or enter a single trip. It works in the background, from your calendar.</p>
@@ -103,7 +103,7 @@ customerCase:
   avatarAlt: Joseph Darves - JD Atelier des Bois
   gainsTitle: "Here is what Joseph gained by using izika:"
   gains:
-    - image: /assets/icons/calendar-to-trip.uk.png
+    - image: /assets/markets/uk/icons/calendar-to-trip.png
       imageAlt: Trips between his two addresses computed automatically
       text: >-
         His round trips between Quincy-sous-Sénart and Paris, his visits to partners and music schools
@@ -113,7 +113,7 @@ customerCase:
       text: >-
         Every on-site appraisal, every consulting appointment at a client's automatically becomes a journey in izika.
         Joseph reviews his <strong>trips in a few seconds</strong> and fixes anything needed before exporting.
-    - image: /assets/icons/compliance.uk.png
+    - image: /assets/markets/uk/icons/compliance.png
       imageAlt: Annual report sent to the accountant in minutes
       text: >-
         At the end of the financial year, <strong>the report is ready in five minutes.</strong>

@@ -2,19 +2,19 @@ import type { ProductFeatureCard } from './feature-cards';
 
 export const featureCardsUk: ReadonlyArray<ProductFeatureCard> = [
   {
-    icon: '/assets/icons/calendar-to-trip.uk.png',
+    icon: '/assets/markets/uk/icons/calendar-to-trip.png',
     alt: 'Appointments imported from the calendar',
     title: 'Automatic entry',
     text: 'izika automatically imports your appointments from your electronic calendar.',
   },
   {
-    icon: '/assets/icons/auto-distance.uk.png',
+    icon: '/assets/markets/uk/icons/auto-distance.png',
     alt: 'Automatic distance calculation',
     title: 'Automatic calculations',
     text: 'izika automatically computes the distances and the amount of your mileage allowances without leaving the application.',
   },
   {
-    icon: '/assets/icons/compliance.uk.png',
+    icon: '/assets/markets/uk/icons/compliance.png',
     alt: 'Compliant with tax rules',
     title: 'Tax compliance',
     text: 'izika is approved and validated by chartered accountants and the tax administration.',

@@ -31,17 +31,17 @@ export const teamLandingChFr: TeamLandingCopy = marketAssets('ch-fr', {
   },
   heroBenefits: [
     {
-      icon: '/assets/icons/compliance.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/compliance.png',
       text: 'Preuve du respect de l’art. 327a CO',
     },
-    { icon: '/assets/icons/calendar-to-trip.ch-fr.png', text: 'Gestion intelligente des RDV' },
-    { icon: '/assets/icons/approval.ch-fr.png', text: "Flux d'approbation efficaces" },
+    { icon: '/assets/markets/ch-fr/icons/calendar-to-trip.png', text: 'Gestion intelligente des RDV' },
+    { icon: '/assets/markets/ch-fr/icons/approval.png', text: "Flux d'approbation efficaces" },
     {
       icon: '/assets/icons/teams-folders.png',
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/icons/security.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/security.png',
       text: 'Sécurisé, fiable, hébergement européen',
     },
   ],

@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Fonctionnalités
   image:
-    src: /assets/verticals/consultants/agenda.fr.png
+    src: /assets/markets/fr/verticals/consultants/agenda.png
     alt: Export indemnités kilométriques pour les consultants indépendants
     title: Export indemnités kilométriques pour les consultants indépendants
 
 featureHighlights:
   title: La méthode la plus rapide pour les consultants pour gérer leurs déplacements clients
   image:
-    src: /assets/verticals/consultants/next-stop.fr.png
+    src: /assets/markets/fr/verticals/consultants/next-stop.png
     alt: izika pour les consultants indépendants
     title: izika pour les consultants indépendants
   ctaText: Tester izika
@@ -46,7 +46,7 @@ benefits:
   title: "Avantages d'un outil de gestion des IK pour les consultants"
   items:
     - title: Vos déplacements clients calculés automatiquement depuis votre agenda
-      image: /assets/verticals/consultants/calendar-to-mileage.fr.png
+      image: /assets/markets/fr/verticals/consultants/calendar-to-mileage.png
       imageAlt: "izika - Indemnités kilométriques pour consultants calculées à partir de l'agenda"
       text: |
         <p>En tant que consultant, vos journées s'enchaînent entre des réunions chez vos clients, des déplacements en mission, des visites de prospection… Autant de trajets que vous n'avez pas le temps de noter un par un.</p>
@@ -56,7 +56,7 @@ benefits:
           <li>Les distances et les montants d'indemnités sont déjà là, sans aucune saisie</li>
         </ul>
     - title: Un rapport fiscal conforme, prêt à envoyer à votre comptable
-      image: /assets/verticals/consultants/report.fr.png
+      image: /assets/markets/fr/verticals/consultants/report.png
       imageAlt: izika - Rapport fiscal conforme pour les consultants indépendants
       text: |
         <p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justifiez chaque déplacement en cas de contrôle fiscal</li>
         </ul>
     - title: izika tourne en arrière-plan, sans charge mentale
-      image: /assets/photos/laptop-app.fr.jpg
+      image: /assets/markets/fr/photos/laptop-app.jpg
       imageAlt: izika - Gestion des IK consultants sans charge quotidienne
       text: |
         <p>izika ne vous demande pas de vous connecter chaque jour ni de saisir le moindre trajet. Il travaille en arrière-plan, à partir de votre agenda.</p>
@@ -103,7 +103,7 @@ customerCase:
   avatarAlt: Joseph Darves - JD Atelier des Bois
   gainsTitle: "Voici ce que Joseph a gagné en utilisant izika :"
   gains:
-    - image: /assets/icons/calendar-to-trip.fr.png
+    - image: /assets/markets/fr/icons/calendar-to-trip.png
       imageAlt: Trajets entre les deux adresses calculés automatiquement
       text: >-
         Ses allers-retours entre Quincy-sous-Sénart et Paris, ses visites chez des partenaires et des écoles de musique
@@ -113,7 +113,7 @@ customerCase:
       text: >-
         Chaque expertise sur place, chaque rendez-vous conseil chez un client devient automatiquement un trajet dans izika.
         Joseph vérifie ses <strong>déplacements en quelques secondes</strong> et corrige si besoin avant d'exporter.
-    - image: /assets/icons/compliance.fr.png
+    - image: /assets/markets/fr/icons/compliance.png
       imageAlt: Rapport annuel transmis au comptable en quelques minutes
       text: >-
         En fin d'exercice, <strong>le rapport est prêt en cinq minutes.</strong>

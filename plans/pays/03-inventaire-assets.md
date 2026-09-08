@@ -65,36 +65,51 @@ fausse** — et le build la répète à chaque exécution, une ligne par visuel.
 
 ### 2.1 Arborescence
 
-Un seul arbre, `public/assets/`. **Le dossier nomme la famille, le fichier
-nomme le sujet** — pas de préfixe qui répète le dossier.
+Un seul arbre, `public/assets/`, coupé en deux : **les visuels neutres, rangés
+par famille ; les visuels marché-dépendants, rangés par marché puis par les
+mêmes familles.**
 
 ```
 assets/
-  app/           screen-*, report-*, step-*, card-*   — captures de l'app
   articles/      <slug-article>/<fichier>             — un dossier par article
-  brand/         logo-izika, emblem-origin
-  icons/         pictogrammes produit (500×500) + calendar.svg
+  brand/         logo-izika
+  icons/         pictogrammes neutres + calendar.svg
   illustrations/ sketch-* (croquis au trait, neutres)
   integrations/  logos partenaires (google, outlook, icloud, ics, dolibarr…)
   menu/solo|team/ pictogrammes du méga-menu
   people/        portrait-* génériques
-  photos/        photographies (laptop-app)
-  social/        og-default, og-article-default
-  verticals/<id>/ agenda, report, calendar-to-mileage, next-stop, portrait-*
+  verticals/<id>/ portraits de cas client (neutres)
+
+  markets/<marché>/       ← un arbre complet par marché, familles identiques
+    app/           screen-*, report-*, step-*, card-*   — captures de l'app
+    brand/         emblem-origin
+    icons/         pictogrammes portant texte, devise ou distance
+    photos/        photographies (laptop-app)
+    social/        og-default, og-article-default
+    verticals/<id>/ agenda, next-stop, calendar-to-mileage, report
 ```
+
+**Le dossier nomme la famille, le fichier nomme le sujet** — pas de préfixe qui
+répète le dossier, et **aucun suffixe de marché dans les noms de fichiers** :
+le marché est porté par le chemin.
 
 Le préfixe subsiste **là où une famille contient plusieurs genres** : dans
 `app/`, `screen-` (capture d'écran), `report-` (document produit), `step-`
 (illustration d'étape « comment ça marche ») et `card-` (recadrage de carte de
 fonctionnalité) disent des choses différentes.
 
-### 2.2 Suffixe de marché
+Certaines familles n'existent que d'un côté : `app/`, `photos/` et `social/`
+sont **intégralement marché-dépendantes** (aucun dossier neutre), `menu/`,
+`integrations/`, `people/` et `articles/` sont intégralement neutres, `icons/`,
+`brand/` et `verticals/` existent des deux côtés.
+
+### 2.2 Un arbre par marché
 
 ```
-assets/icons/compliance.fr.png       marché-dépendant : un fichier par marché
-assets/icons/compliance.uk.png
-assets/icons/compliance.ch-fr.png
-assets/icons/custom-rate.png         neutre : réutilisable partout
+assets/icons/custom-rate.png                 neutre : réutilisable partout
+assets/markets/fr/icons/compliance.png       marché-dépendant : un arbre par marché
+assets/markets/uk/icons/compliance.png
+assets/markets/ch-fr/icons/compliance.png
 ```
 
 **Le discriminant est le marché, pas la langue.** Cohérent avec le modèle
@@ -102,15 +117,25 @@ assets/icons/custom-rate.png         neutre : réutilisable partout
 `fr` mais appliquera un forfait unique, pas le barème par puissance fiscale ;
 le Royaume-Uni parle `en` mais compte en miles.
 
-**L'absence de suffixe est un signal**, et il se lit d'un `ls` : ce fichier-là
-est réutilisable tel quel dans tout marché à venir.
+**Être hors de `markets/` est un signal** : ce fichier-là est réutilisable tel
+quel dans tout marché à venir.
+
+Trois propriétés viennent de la structure, et pas d'une convention à respecter :
+
+- **Un arbre de marché est un colis.** `zip -r uk.zip
+  public/assets/markets/uk` est le brief complet de la designer, sans les
+  neutres mélangés ; le retour se réintègre en écrasant le dossier.
+- **La complétude se lit sans rien exécuter.** `diff -rq markets/fr markets/de`
+  liste ce qui manque au marché allemand.
+- **Ouvrir un marché est une commande.** `cp -r markets/fr markets/de`, au lieu
+  de renommer 56 fichiers un par un.
 
 ### 2.3 Pas de mutualisation, pas de fallback
 
 Un visuel marché-dépendant a **un fichier physique par marché**, même quand ses
 octets sont encore ceux d'un autre marché. Il n'existe **aucun repli
-implicite** : un chemin `.de.png` absent ne retombe pas sur `.fr.png`, il fait
-**échouer le build**.
+implicite** : `markets/de/icons/compliance.png` absent ne retombe pas sur
+celui de `markets/fr/`, il fait **échouer le build**.
 
 C'est la règle centrale. Une variante manquante doit être une décision inscrite
 quelque part, jamais un silence — et un fichier absent est plus honnête qu'un
@@ -128,7 +153,8 @@ assets/articles/parametrer-son-compte/connexion.jpg
 assets/articles/<slug>/cover.jpg          ← le frontmatter `image:`
 ```
 
-Aucun suffixe, aucun partage. Quand deux articles montrent la même image, le
+Hors de `markets/`, donc jamais dupliqués par marché. Quand deux articles
+montrent la même image, le
 fichier est **dupliqué dans les deux dossiers** (cas de `voiture-electrique.jpg`).
 
 Les URL historiques de l'ère WordPress (2017-2019) restent servies par
@@ -166,9 +192,10 @@ Les pictogrammes du méga-menu suivent le même identifiant
 | Chemins d'assets marché-dépendants en dur dans un composant | **0** |
 | Marchés servis | `fr`, `uk`, `ch-fr` |
 
-Répartition par famille : `app/` 78 fichiers (5,2 Mo), `verticals/` 44 (4,0 Mo),
-`icons/` 22 (276 Ko), `articles/` 19 (1,2 Mo), `menu/` 10, `social/` 6,
-`integrations/` 6, `brand/` 3, `photos/` 3, `people/` 2, `illustrations/` 1.
+Répartition : `markets/fr` 56 fichiers (3,8 Mo), `markets/uk` 56 (3,8 Mo),
+`markets/ch-fr` 34 (2,0 Mo), et côté neutre `articles/` 19 (1,2 Mo), `menu/` 10,
+`integrations/` 6, `icons/` 5, `verticals/` 4, `people/` 2, `brand/` 1,
+`illustrations/` 1.
 
 Sortie du build :
 
@@ -205,6 +232,10 @@ gabarit** (§ 5) : 5 verticales × 4 gabarits — `agenda`, `next-stop`,
 `calendar-to-mileage`, `report`. C'est le seul sous-lot qui se calcule au lieu
 de se lire page par page.
 
+**Ce tableau est le contenu de `public/assets/markets/<marché>/`.** Le lot ne
+s'extrait pas d'une liste : c'est le dossier lui-même, et il se transmet tel
+quel.
+
 ### 4.1 Les 8 visuels à traiter en premier
 
 Sélection par densité de texte × fréquence d'usage × dépendance fiscale.
@@ -234,8 +265,8 @@ effort/portée du dossier.*
   cocorico (`src/pages/ch-fr/team-entreprises.astro`).
 - `people/portrait-*` et `verticals/*/portrait-customer` sont des personnes
   réelles ou des modèles photographiques. Leur pertinence par marché est un
-  arbitrage marketing. Ils sont **neutres** aujourd'hui — un seul fichier,
-  aucun suffixe : les localiser demande d'abord cette décision.
+  arbitrage marketing. Ils sont **neutres** aujourd'hui — un seul fichier, hors
+  de `markets/` : les localiser demande d'abord cette décision.
 
 ### 4.3 Comment faire passer le lot de 56 à ≈ 43
 
@@ -298,11 +329,11 @@ quatre visuels dédiés, dans son dossier, sous les mêmes noms. Le lot
 Quatre verticales servaient le croquis au trait `illustrations/sketch-calendar`
 là où assurance servait une capture d'app dédiée — deux registres visuels
 différents au même endroit de la page. Les cinq servent désormais
-`verticals/<id>/next-stop.<marché>.png`.
+`markets/<marché>/verticals/<id>/next-stop.png`.
 
 Conséquences :
 
-- `illustrations/sketch-calendar.fr.png` et `.uk.png` n'étaient référencés que
+- Les deux `illustrations/sketch-calendar` (fr et uk) n'étaient référencés que
   là : ils sont **retirés du dépôt** (récupérables dans l'historique git,
   commit `770b1ba`). La famille `illustrations/` ne contient plus que
   `sketch-accountant.png`, neutre.
@@ -360,10 +391,14 @@ page. C'est l'objet des deux tâches de parité en § 9.
    l'exécution, invisible en CI.
 2. **Orphelin → avertissement.** Un fichier de `public/assets` qu'aucune page
    ne référence : du poids déployé pour rien.
-3. **Dette de localisation → avertissement.** Les variantes de marché dont les
-   octets sont encore identiques d'un marché à l'autre. Un avertissement et pas
-   une erreur, volontairement : servir le visuel français est un compromis
-   connu et daté, pas un bug de build.
+3. **Dette de localisation → avertissement.** Les fichiers de
+   `/assets/markets/<marché>/` dont les octets sont encore identiques d'un
+   marché à l'autre. Un avertissement et pas une erreur, volontairement :
+   servir le visuel français est un compromis connu et daté, pas un bug de
+   build. La passe compare le chemin **à l'intérieur** de l'arbre de marché :
+   ce qui est un asset de marché est structurel, il n'y a plus à deviner si un
+   fragment de deux lettres dans un nom de fichier est un identifiant de
+   marché.
 
 Le message de la passe 3 renvoie explicitement au § « Le lot à produire par
 marché » de ce document — **si ce titre change, changer aussi le message.**
@@ -390,16 +425,17 @@ marché.
 
 `src/lib/assets.ts` :
 
-- `marketAsset(chemin, market)` — insère le marché avant l'extension. Pour les
-  composants qui reçoivent le marché mais pas la copie (`SolutionsMenu.astro`).
+- `marketAsset(chemin, market)` — envoie `/assets/<famille>/<sujet>` sur
+  `/assets/markets/<marché>/<famille>/<sujet>`. Pour les composants qui
+  reçoivent le marché mais pas la copie (`SolutionsMenu.astro`).
 - `marketAssets(market, copie)` — retarge en profondeur **tous** les chemins
   d'une copie dérivée. `/ch-fr` réutilise la rédaction française de `/fr` par
   spread (`{ ...soloPageFr, … }`) et hériterait donc aussi de ses visuels, en
   silence : exactement la mutualisation que la convention interdit. Les cinq
   fichiers `*.ch-fr.ts` dérivés par spread sont enveloppés dans cet appel,
-  visible en tête de fichier. Seuls les chemins portant **déjà** un marché sont
-  réécrits — les assets neutres ne bougent pas, et un override écrit à la main
-  survit tel quel.
+  visible en tête de fichier. Seuls les chemins vivant **déjà** dans un arbre de
+  marché sont réécrits — les assets neutres ne bougent pas, et un override écrit
+  à la main survit tel quel.
 
 ---
 
@@ -428,15 +464,18 @@ marché.
 
 À reporter dans la rubrique « Design / Assets » des fiches pays.
 
-1. **Copier** le jeu du marché de référence en changeant le suffixe
-   (`*.fr.png` → `*.de.png`). Le site est alors complet et fonctionnel, avec
-   des visuels français : c'est un état de départ assumé, pas un oubli.
+1. **Copier l'arbre du marché de référence** :
+   `cp -r public/assets/markets/fr public/assets/markets/de`. Le site est alors
+   complet et fonctionnel, avec des visuels français : c'est un état de départ
+   assumé, pas un oubli.
 2. **Ajouter** `ogImage` et `articleOgImage` au `Market` — sans quoi ça ne
    compile pas.
 3. **Lancer `npm run build`** : la liste des visuels non localisés est la
    commande de travail de la designer.
-4. **Remplacer** les fichiers un par un. Aucun code à toucher : le chemin est
-   déjà le bon, seuls les octets changent.
+4. **Transmettre le dossier** (`zip -r de.zip public/assets/markets/de`) et
+   remplacer les fichiers au retour. Aucun code à toucher : les chemins sont
+   déjà les bons, seuls les octets changent. `diff -rq markets/fr markets/de`
+   dit à tout moment ce qui reste identique au français.
 5. **Relancer le build** jusqu'à ce que la ligne « to localise » retombe à 0
    pour le marché.
 
@@ -503,16 +542,18 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
 # Parc total
 find public/assets -type f | wc -l && du -sh public/assets
 
-# Visuels marché-dépendants (sujets distincts) et fichiers correspondants
-find public/assets -type f | grep -E '\.(fr|uk|ch-fr)\.[a-z]+$' \
-  | sed -E 's/\.(fr|uk|ch-fr)(\.[a-z]+)$/\2/' | sort -u | wc -l
+# Lot d'un marché — c'est un dossier, pas une requête
+find public/assets/markets/uk -type f | wc -l && du -sh public/assets/markets/uk
 
-# Lot d'un marché
-find public/assets -type f -name '*.uk.*' | wc -l
+# Ce qui manque à un marché par rapport à la référence
+diff -rq public/assets/markets/fr public/assets/markets/uk
 
-# Points d'usage d'un visuel
-grep -rEoh '/assets/[A-Za-z0-9_./-]+\.(fr|uk|ch-fr)\.[a-z]+' src/ \
-  | sed -E 's/\.(fr|uk|ch-fr)(\.[a-z]+)$/\2/' | sort | uniq -c | sort -rn
+# Visuels neutres (tout ce qui est hors markets/)
+find public/assets -type f -not -path 'public/assets/markets/*' | wc -l
+
+# Points d'usage d'un visuel, marchés confondus
+grep -rEoh '/assets/markets/[a-z-]+/[A-Za-z0-9_./-]+\.[a-z]+' src/ \
+  | sed -E 's|/assets/markets/[a-z-]+/|/assets/|' | sort | uniq -c | sort -rn
 
 # Emplacements d'image des pages verticales
 for f in src/content/solutions/fr/*.yaml; do echo "== $f"; grep -n 'assets/' "$f"; done
@@ -521,7 +562,7 @@ for f in src/content/solutions/fr/*.yaml; do echo "== $f"; grep -n 'assets/' "$f
 npm run build
 
 # Aucun chemin d'un autre marché dans un marché donné
-grep -rEo '/assets/[A-Za-z0-9_./-]+\.(fr|uk|ch-fr)\.[a-z]+' dist/uk | grep -v '\.uk\.'
+grep -rho '/assets/markets/[a-z-]*/' dist/uk | sort -u | grep -v '/markets/uk/'
 ```
 
 Documents liés : `01-procedure-ouverture-marche.md` (couches de garantie),

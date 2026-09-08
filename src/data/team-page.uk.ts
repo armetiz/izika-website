@@ -12,19 +12,19 @@ export const teamPageUk: ProductLandingCopy = {
       'Reliable, standardized accounting documents',
     ],
     collage: {
-      desktopSrc: '/assets/app/screen-claim-approve-wide.uk.jpg',
+      desktopSrc: '/assets/markets/uk/app/screen-claim-approve-wide.jpg',
       desktopAlt: 'izika on a desktop computer',
       desktopWidth: 1618,
       desktopHeight: 1010,
-      tabletSrc: '/assets/app/screen-next-stop-tablet.uk.jpg',
+      tabletSrc: '/assets/markets/uk/app/screen-next-stop-tablet.jpg',
       tabletAlt: 'configuring star-pattern appointments',
       tabletWidth: 1618,
       tabletHeight: 1210,
-      ipadSrc: '/assets/app/report-mileage.uk.jpg',
+      ipadSrc: '/assets/markets/uk/app/report-mileage.jpg',
       ipadAlt: 'izika on an iPad',
       ipadWidth: 533,
       ipadHeight: 711,
-      mobileSrc: '/assets/app/screen-mobile-trips.uk.jpg',
+      mobileSrc: '/assets/markets/uk/app/screen-mobile-trips.jpg',
       mobileAlt: 'izika on a mobile phone',
       mobileWidth: 407,
       mobileHeight: 867,
@@ -32,11 +32,11 @@ export const teamPageUk: ProductLandingCopy = {
   },
   highlights: [
     {
-      icon: '/assets/icons/calendar-to-trip.uk.png',
+      icon: '/assets/markets/uk/icons/calendar-to-trip.png',
       text: 'Online generation of trip reports',
     },
     {
-      icon: '/assets/icons/approval.uk.png',
+      icon: '/assets/markets/uk/icons/approval.png',
       text: 'Approval workflows for mileage claims',
     },
     {
@@ -44,11 +44,11 @@ export const teamPageUk: ProductLandingCopy = {
       text: 'Mileage breakdown by team and by project',
     },
     {
-      icon: '/assets/icons/compliance.uk.png',
+      icon: '/assets/markets/uk/icons/compliance.png',
       text: 'Reports compliant with tax rules',
     },
     {
-      icon: '/assets/icons/security.uk.png',
+      icon: '/assets/markets/uk/icons/security.png',
       text: 'Security, privacy —<br /> built and hosted in France',
     },
   ],
@@ -64,19 +64,19 @@ export const teamPageUk: ProductLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-next-stop.uk.png',
+        src: '/assets/markets/uk/app/screen-next-stop.png',
         alt: 'Configuring star-pattern or round trips',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-folders.uk.png',
+        src: '/assets/markets/uk/app/screen-folders.png',
         alt: 'categorizing appointments into projects',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-receipts.uk.png',
+        src: '/assets/markets/uk/app/screen-receipts.png',
         alt: 'attaching supporting documents to appointments',
         width: 920,
         height: 719,
@@ -94,19 +94,19 @@ export const teamPageUk: ProductLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/app/screen-claims-list.uk.png',
+        src: '/assets/markets/uk/app/screen-claims-list.png',
         alt: 'List of mileage claims',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-claim-approve.uk.png',
+        src: '/assets/markets/uk/app/screen-claim-approve.png',
         alt: 'approving a claim',
         width: 920,
         height: 719,
       },
       {
-        src: '/assets/app/screen-route.uk.png',
+        src: '/assets/markets/uk/app/screen-route.png',
         alt: 'Viewing the route in detail',
         width: 920,
         height: 719,

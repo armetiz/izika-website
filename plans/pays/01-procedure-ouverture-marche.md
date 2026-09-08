@@ -18,7 +18,7 @@ elle demande.
 |---|---|---|
 | **1 — Typage** | `Record<MarketId, …>`, `Record<Language, …>`, `Record<CountryId, …>`, `Dict` dérivé de `fr.ts` | `astro check` échoue. **Impossible d'oublier.** |
 | **2 — Garde-fous de build** | 5 `throw` dans `src/i18n/index.ts` et les routes `[market]/` | Le build échoue. **Impossible de publier une incohérence de données.** |
-| **3 — Rien** | Champs `string` du `Market`, variables d'env, assets, dashboards tiers, textes juridiques, parité de l'app | **Rien ne se passe. Le site part en production avec le défaut.** |
+| **3 — Rien** | Champs `string` du `Market`, variables d'env, dashboards tiers, textes juridiques, parité de l'app | **Rien ne se passe. Le site part en production avec le défaut.** |
 
 ### Couche 1 — ce que le compilateur exige déjà
 
@@ -58,8 +58,8 @@ rien ne vérifie :
 |---|---|
 | `cookiesVersion: 'izika-fr-EU'` — bandeau cookies en français sur `/uk` | `cookiesVersion` est un `string`. N'importe quelle valeur compile. |
 | Tarifs affichés en EUR sur un marché GBP | `pricing: { yearly: string }` et `currency: string` sont indépendants. |
-| Bannière OpenGraph française sur toutes les pages `/uk` | `defaultOgImage` est dans `src/config/site.ts`, **global**, pas sur le `Market`. |
-| Captures d'écran produit en français | Les assets ne sont pas dans le système de types. Voir `03-inventaire-assets.md`. |
+| Bannière OpenGraph française sur toutes les pages `/uk` | *Corrigé* : `ogImage` et `articleOgImage` sont désormais obligatoires sur le `Market` — couche 1. Voir `03-inventaire-assets.md` § 6.2. |
+| Captures d'écran produit en français | *Remonté en couche 1/2* : un chemin d'image faux fait échouer le build, et les visuels non localisés sont listés à chaque build. Le contenu du pixel, lui, reste hors du système de types — voir `03-inventaire-assets.md`. |
 | Pages légales publiées en « traduction de courtoisie » non relue | Un texte juridique est du contenu, pas un type. |
 | Le site promet des taux HMRC que l'app ne calcule pas | **Aucun lien** entre l'état du site et l'état de l'app. |
 | Aucune preuve sociale au lancement | `trustpilot: null` est une valeur légitime. |
@@ -92,8 +92,8 @@ chaque ouverture.
 | `trustpilot` | `Market` | `null` compile ; décider si badge, widget, ou rien |
 | `legal.entity` / `footerLines` | `Market` | Mentions imposées par le droit **du pays visé**, pas du nôtre |
 | `joinUrl` / `appUrl` | `Market` | Pointent tous vers la même app aujourd'hui |
-| Bannière OpenGraph | `src/config/site.ts` — **global** | Un seul visuel pour tous les marchés — inventaire et voies dans `03-inventaire-assets.md` |
-| Captures produit, badges, visuels | `public/assets/` | Dépendent de l'app dans la langue du marché — inventaire et voies dans `03-inventaire-assets.md` |
+| Bannière OpenGraph | `Market` — `ogImage` et `articleOgImage` | Obligatoires : un marché sans ses deux bannières ne compile pas (`03-inventaire-assets.md` § 6.2) |
+| Captures produit, badges, visuels | `public/assets/markets/<marché>/` | Le lot est un dossier : `cp -r markets/fr markets/de`, puis 56 visuels à produire (`03-inventaire-assets.md` § 4 et § 8) |
 | Variables `PUBLIC_*` | Cloudflare Pages | Build-time : une variable absente rend un script muet sans erreur |
 | Textes juridiques | `src/pages/<market>/` | Relecture par un juriste **du pays** |
 | Parité de l'app | hors dépôt | Le site peut promettre ce que l'app ne fait pas |

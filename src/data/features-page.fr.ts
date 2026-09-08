@@ -9,13 +9,13 @@ export const featuresPageFr: FeaturesPageCopy = {
   },
   iconBlocks: [
     {
-      icon: '/assets/icons/auto-distance.fr.png',
+      icon: '/assets/markets/fr/icons/auto-distance.png',
       alt: 'izika import des rdv depuis le calendrier',
       title: 'Génération automatique des déplacements',
       text: 'izika génère votre liste de déplacements à partir des rendez-vous de votre agenda.',
     },
     {
-      icon: '/assets/icons/calendar-to-trip.fr.png',
+      icon: '/assets/markets/fr/icons/calendar-to-trip.png',
       alt: 'SVG',
       title: 'Connexion avec votre agenda en ligne',
       text: 'Connectez votre agenda en ligne préféré : Google Agenda, Outlook, Office360, iCloud, lien .ics…',
@@ -27,7 +27,7 @@ export const featuresPageFr: FeaturesPageCopy = {
       text: 'Vous pouvez choisir d’utiliser les barêmes officiels ou bien de créer votre propre barême personnalisé.',
     },
     {
-      icon: '/assets/icons/compliance.fr.png',
+      icon: '/assets/markets/fr/icons/compliance.png',
       alt: 'SVG',
       title: 'Export conforme aux normes fiscales en vigueur',
       text: 'Vous récupérez un export mensuel et/ou annuel complet, lisible, fiable et conforme aux normes fiscales.',
@@ -35,7 +35,7 @@ export const featuresPageFr: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/app/card-settings-vehicles.fr.jpg',
+      image: '/assets/markets/fr/app/card-settings-vehicles.jpg',
       imageAlt: 'Gestion multi-véhicules',
       title: 'Gestion multi-véhicules',
       paragraphsHtml: [
@@ -44,7 +44,7 @@ export const featuresPageFr: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/app/card-settings-addresses.fr.jpg',
+      image: '/assets/markets/fr/app/card-settings-addresses.jpg',
       imageAlt: 'Adresses favorites',
       title: 'Adresses favorites',
       paragraphsHtml: [
@@ -52,7 +52,7 @@ export const featuresPageFr: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/app/card-settings-travel-mode.fr.jpg',
+      image: '/assets/markets/fr/app/card-settings-travel-mode.jpg',
       imageAlt: 'Modes de déplacement',
       title: 'Modes de déplacement',
       paragraphsHtml: [

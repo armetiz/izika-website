@@ -26,13 +26,13 @@ export const featuresPageChFr: FeaturesPageCopy = marketAssets('ch-fr', {
   },
   iconBlocks: [
     {
-      icon: '/assets/icons/auto-distance.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/auto-distance.png',
       alt: 'izika import des rdv depuis le calendrier',
       title: 'Génération automatique des déplacements',
       text: 'izika génère votre liste de déplacements à partir des rendez-vous de votre agenda.',
     },
     {
-      icon: '/assets/icons/calendar-to-trip.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/calendar-to-trip.png',
       alt: 'SVG',
       title: 'Connexion avec votre agenda en ligne',
       text: 'Connectez votre agenda en ligne préféré : Google Agenda, Outlook, Office360, iCloud, lien .ics…',
@@ -44,7 +44,7 @@ export const featuresPageChFr: FeaturesPageCopy = marketAssets('ch-fr', {
       text: `${chfPerKm(TAUX_ACTUEL)}, ${chfPerKm(TAUX_ANTERIEUR)} ou un taux libre : izika applique celui que votre canton a approuvé, pas un barème imposé.`,
     },
     {
-      icon: '/assets/icons/compliance.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/compliance.png',
       alt: 'SVG',
       title: 'Relevés justifiables en cas de contrôle',
       text: "Un export mensuel et/ou annuel complet, où chaque déplacement porte sa date, son motif professionnel, son trajet et sa distance.",
@@ -52,7 +52,7 @@ export const featuresPageChFr: FeaturesPageCopy = marketAssets('ch-fr', {
   ],
   cards: [
     {
-      image: '/assets/app/card-settings-vehicles.ch-fr.jpg',
+      image: '/assets/markets/ch-fr/app/card-settings-vehicles.jpg',
       imageAlt: 'Gestion multi-véhicules',
       title: 'Gestion multi-véhicules',
       paragraphsHtml: [

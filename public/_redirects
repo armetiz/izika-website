@@ -33,7 +33,7 @@
 # ---- Legacy image URLs (WordPress era + /content/pages) ----
 # The files moved to /assets/articles/<article>/ on 2026-09-08; these keep
 # the URLs indexed in Google Images and hotlinked from old pages alive.
-/content/pages/bareme-indemnite-kilometrique.jpg                                         /assets/social/og-article-default.fr.jpg                           301
+/content/pages/bareme-indemnite-kilometrique.jpg                                         /assets/markets/fr/social/og-article-default.jpg                           301
 /content/pages/bareme-indemnites-kilometriques-2020/bareme-indemnites-kilometriques.jpg  /assets/articles/bareme-indemnites-kilometriques-2020/cover.jpg  301
 /content/pages/note-de-frais-modele-2020-comptabilite/modele-note-de-frais.jpg           /assets/articles/note-de-frais-modele-comptabilite/cover.jpg    301
 /wp-content/uploads/2017/02/IK-voitures-2017.jpg                                         /assets/articles/bareme-indemnites-kilometriques-2017/bareme-2017.jpg  301

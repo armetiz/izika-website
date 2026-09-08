@@ -36,15 +36,15 @@ export const teamPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
   },
   highlights: [
     {
-      icon: '/assets/icons/compliance.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/compliance.png',
       text: 'Preuve du respect de<br /> l’art. 327a CO',
     },
     {
-      icon: '/assets/icons/calendar-to-trip.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/calendar-to-trip.png',
       text: 'Génération en ligne des relevés de déplacements',
     },
     {
-      icon: '/assets/icons/approval.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/approval.png',
       text: "Flux d'approbation des demandes de remboursement",
     },
     {
@@ -52,7 +52,7 @@ export const teamPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/icons/security.ch-fr.png',
+      icon: '/assets/markets/ch-fr/icons/security.png',
       text: 'Sécurité, confidentialité<br /> hébergement européen',
     },
   ],

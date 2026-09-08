@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Fonctionnalités
   image:
-    src: /assets/verticals/independent-professionals/agenda.fr.png
+    src: /assets/markets/fr/verticals/independent-professionals/agenda.png
     alt: Export indemnités kilométriques pour les professions libérales
     title: Export indemnités kilométriques pour les professions libérales
 
 featureHighlights:
   title: La méthode la plus rapide pour les professions libérales pour gérer leurs déplacements
   image:
-    src: /assets/verticals/independent-professionals/next-stop.fr.png
+    src: /assets/markets/fr/verticals/independent-professionals/next-stop.png
     alt: izika pour les professions libérales
     title: izika pour les professions libérales
   ctaText: Tester izika
@@ -43,7 +43,7 @@ benefits:
   title: "Avantages d'un outil de gestion des IK pour les professions libérales"
   items:
     - title: Vos déplacements générés automatiquement à partir de vos rendez-vous
-      image: /assets/verticals/independent-professionals/calendar-to-mileage.fr.png
+      image: /assets/markets/fr/verticals/independent-professionals/calendar-to-mileage.png
       imageAlt: "izika - Indemnités kilométriques pour les professions libérales calculées à partir de l'agenda"
       text: |
         <p>Votre planning est rythmé par des consultations, des visites à domicile, des réunions de cabinet. Autant de déplacements que vous n'avez pas le temps de noter un par un.</p>
@@ -53,7 +53,7 @@ benefits:
           <li>Les distances et les montants sont déjà là, sans aucune saisie de votre part</li>
         </ul>
     - title: Un rapport fiscal conforme pour votre déclaration BNC
-      image: /assets/verticals/independent-professionals/report.fr.png
+      image: /assets/markets/fr/verticals/independent-professionals/report.png
       imageAlt: izika - Un rapport fiscal conforme pour la déclaration BNC des professions libérales
       text: |
         <p>
@@ -66,7 +66,7 @@ benefits:
           <li>Justifiez chaque déplacement en cas de contrôle fiscal</li>
         </ul>
     - title: "Vous n'avez pas à gérer izika au quotidien"
-      image: /assets/photos/laptop-app.fr.jpg
+      image: /assets/markets/fr/photos/laptop-app.jpg
       imageAlt: "izika - Vous n'avez pas à gérer izika au quotidien"
       text: |
         <p>izika ne vous demande pas de vous connecter chaque jour ni de saisir le moindre trajet. Il travaille en arrière plan, à partir de votre agenda.</p>
@@ -95,7 +95,7 @@ customerCase:
   avatarAlt: Sophie L.
   gainsTitle: "Voici ce que Sophie a gagné en utilisant izika :"
   gains:
-    - image: /assets/icons/calendar-to-trip.fr.png
+    - image: /assets/markets/fr/icons/calendar-to-trip.png
       imageAlt: "Trajets générés automatiquement depuis l'agenda"
       text: >-
         Toutes ses visites à domicile et ses déplacements entre cabinet et patients
@@ -105,7 +105,7 @@ customerCase:
       text: >-
         Sophie a configuré ses <strong>tournées habituelles</strong> dans izika.
         En fin de semaine, elle vérifie rapidement ses trajets en quelques secondes et corrige si besoin avant d'exporter.
-    - image: /assets/icons/compliance.fr.png
+    - image: /assets/markets/fr/icons/compliance.png
       imageAlt: Conformité fiscale garantie
       text: >-
         <strong>Aucun stress en cas de contrôle fiscal.</strong>

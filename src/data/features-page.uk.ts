@@ -8,13 +8,13 @@ export const featuresPageUk: FeaturesPageCopy = {
   },
   iconBlocks: [
     {
-      icon: '/assets/icons/auto-distance.uk.png',
+      icon: '/assets/markets/uk/icons/auto-distance.png',
       alt: 'izika imports appointments from the calendar',
       title: 'Automatic trip generation',
       text: 'izika builds your trip list from the appointments in your calendar.',
     },
     {
-      icon: '/assets/icons/calendar-to-trip.uk.png',
+      icon: '/assets/markets/uk/icons/calendar-to-trip.png',
       alt: 'SVG',
       title: 'Connects to your online calendar',
       text: 'Connect your favourite online calendar: Google Calendar, Outlook, Office 365, iCloud, .ics link…',
@@ -26,7 +26,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       text: 'Choose between the official scales or create your own custom mileage scale.',
     },
     {
-      icon: '/assets/icons/compliance.uk.png',
+      icon: '/assets/markets/uk/icons/compliance.png',
       alt: 'SVG',
       title: 'Exports compliant with current tax rules',
       text: 'You get a complete monthly and/or yearly export — readable, reliable and tax-compliant.',
@@ -34,7 +34,7 @@ export const featuresPageUk: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/app/card-settings-vehicles.uk.jpg',
+      image: '/assets/markets/uk/app/card-settings-vehicles.jpg',
       imageAlt: 'Multi-vehicle management',
       title: 'Multi-vehicle management',
       paragraphsHtml: [
@@ -43,7 +43,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/app/card-settings-addresses.uk.jpg',
+      image: '/assets/markets/uk/app/card-settings-addresses.jpg',
       imageAlt: 'Favourite addresses',
       title: 'Favourite addresses',
       paragraphsHtml: [
@@ -51,7 +51,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/app/card-settings-travel-mode.uk.jpg',
+      image: '/assets/markets/uk/app/card-settings-travel-mode.jpg',
       imageAlt: 'Travel modes',
       title: 'Travel modes',
       paragraphsHtml: [

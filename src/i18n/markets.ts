@@ -96,8 +96,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'fr-FR',
     ogLocale: 'fr_FR',
     schemaInLanguage: 'fr-FR',
-    ogImage: '/assets/social/og-default.fr.jpg',
-    articleOgImage: '/assets/social/og-article-default.fr.jpg',
+    ogImage: '/assets/markets/fr/social/og-default.jpg',
+    articleOgImage: '/assets/markets/fr/social/og-article-default.jpg',
     siteName: 'izika : Calcul indemnité kilométrique',
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
@@ -132,8 +132,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'en-GB',
     ogLocale: 'en_GB',
     schemaInLanguage: 'en-GB',
-    ogImage: '/assets/social/og-default.uk.jpg',
-    articleOgImage: '/assets/social/og-article-default.uk.jpg',
+    ogImage: '/assets/markets/uk/social/og-default.jpg',
+    articleOgImage: '/assets/markets/uk/social/og-article-default.jpg',
     siteName: 'izika: Mileage allowance automation',
     websiteDescription: 'Automatic mileage allowance management',
     defaultDescription:
@@ -181,8 +181,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'fr-CH',
     ogLocale: 'fr_CH',
     schemaInLanguage: 'fr-CH',
-    ogImage: '/assets/social/og-default.ch-fr.jpg',
-    articleOgImage: '/assets/social/og-article-default.ch-fr.jpg',
+    ogImage: '/assets/markets/ch-fr/social/og-default.jpg',
+    articleOgImage: '/assets/markets/ch-fr/social/og-article-default.jpg',
     siteName: 'izika : indemnités kilométriques en Suisse',
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
