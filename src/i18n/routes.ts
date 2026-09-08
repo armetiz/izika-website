@@ -13,26 +13,43 @@ import type { MarketId } from './markets';
  * content, not translations.
  */
 export const routes = {
-  home: { fr: '', en: '' },
-  solo: { fr: 'solo', en: 'solo' },
-  team: { fr: 'team', en: 'team' },
-  teamCollectivites: { fr: 'team-collectivites', en: 'team-local-authorities' },
-  teamEntreprises: { fr: 'team-entreprises', en: 'team-companies' },
-  features: { fr: 'fonctionnalites', en: 'features' },
-  pricing: { fr: 'pricing', en: 'pricing' },
-  faq: { fr: 'faq', en: 'faq' },
-  security: { fr: 'security', en: 'security' },
-  legal: { fr: 'mentions-legales', en: 'legal-notice' },
-  privacy: { fr: 'charte-de-confidentialite', en: 'privacy-policy' },
-  terms: { fr: 'cgv', en: 'terms' },
-  calculator: { fr: 'calculateur-indemnites-kilometriques', en: 'mileage-allowance-calculator' },
-  articles: { fr: 'articles' },
+  home: { fr: '', uk: '', 'ch-fr': '' },
+  solo: { fr: 'solo', uk: 'solo', 'ch-fr': 'solo' },
+  team: { fr: 'team', uk: 'team', 'ch-fr': 'team' },
+  teamCollectivites: { fr: 'team-collectivites', uk: 'team-local-authorities' },
+  teamEntreprises: { fr: 'team-entreprises', uk: 'team-companies', 'ch-fr': 'team-entreprises' },
+  features: { fr: 'fonctionnalites', uk: 'features', 'ch-fr': 'fonctionnalites' },
+  pricing: { fr: 'pricing', uk: 'pricing', 'ch-fr': 'pricing' },
+  faq: { fr: 'faq', uk: 'faq', 'ch-fr': 'faq' },
+  security: { fr: 'security', uk: 'security', 'ch-fr': 'security' },
+  legal: { fr: 'mentions-legales', uk: 'legal-notice', 'ch-fr': 'mentions-legales' },
+  privacy: { fr: 'charte-de-confidentialite', uk: 'privacy-policy', 'ch-fr': 'charte-de-confidentialite' },
+  terms: { fr: 'cgv', uk: 'terms', 'ch-fr': 'cgv' },
+  calculator: {
+    fr: 'calculateur-indemnites-kilometriques',
+    uk: 'mileage-allowance-calculator',
+    // Same slug as /fr on purpose: « indemnité kilométrique » is the term the
+    // Swiss Ordonnance sur les frais professionnels and the CSI model
+    // règlement use too, and hreflang fr-FR/fr-CH exists precisely to
+    // disambiguate identical slugs. What separates the two pages for a search
+    // engine is the content (CHF 0.75, règlement de frais, art. 327a CO),
+    // not the URL.
+    'ch-fr': 'calculateur-indemnites-kilometriques',
+  },
+  articles: { fr: 'articles', 'ch-fr': 'articles' },
 } as const satisfies Record<string, Partial<Record<MarketId, string>>>;
+
+/*
+ * /ch-fr deliberately has NO `teamCollectivites` entry: « collectivités » is a
+ * French administrative category. The Swiss public-sector equivalent (communes,
+ * cantons) needs its own copy, not a translation — route partiality masks the
+ * page, its chrome links and its sitemap entries until then.
+ */
 
 export type RouteKey = keyof typeof routes;
 
 /** Solution pages share the `/solutions/<slug>` prefix per market. */
-export const solutionsBase = { fr: 'solutions', en: 'solutions' } as const satisfies Partial<
+export const solutionsBase = { fr: 'solutions', uk: 'solutions' } as const satisfies Partial<
   Record<MarketId, string>
 >;
 
@@ -47,12 +64,12 @@ export const solutionsBase = { fr: 'solutions', en: 'solutions' } as const satis
 export const solutionSlugs = {
   agentsImmobilier: {
     fr: 'agents-immobilier-mandataires-immobilier',
-    en: 'real-estate-agents',
+    uk: 'real-estate-agents',
   },
-  agentAssurances: { fr: 'agent-general-assurances', en: 'insurance-agents' },
-  professionsLiberales: { fr: 'professions-liberales', en: 'independent-professionals' },
-  artisansBtp: { fr: 'artisans-btp', en: 'craftsmen-construction' },
-  consultants: { fr: 'consultants', en: 'consultants' },
+  agentAssurances: { fr: 'agent-general-assurances', uk: 'insurance-agents' },
+  professionsLiberales: { fr: 'professions-liberales', uk: 'independent-professionals' },
+  artisansBtp: { fr: 'artisans-btp', uk: 'craftsmen-construction' },
+  consultants: { fr: 'consultants', uk: 'consultants' },
 } as const satisfies Record<string, Partial<Record<MarketId, string>>>;
 
 export type SolutionKey = keyof typeof solutionSlugs;

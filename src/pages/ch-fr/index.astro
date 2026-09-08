@@ -1,0 +1,21 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import HomePage from '../../components/HomePage.astro';
+import { homePageChFr } from '../../data/home-page.ch-fr';
+import { featureCardsChFr } from '../../data/feature-cards.ch-fr';
+import { webApplicationSchema } from '../../seo/schema';
+import { getMarket } from '../../i18n';
+
+// Pas de dialogue « Démo vidéo » ici, contrairement à /fr : la vidéo montre
+// des écrans avec des montants en euros et un barème par puissance fiscale.
+---
+
+<StandardLayout
+  market="ch-fr"
+  title="Gestion automatique des frais kilométriques en Suisse"
+  description="izika calcule vos indemnités kilométriques depuis votre agenda en ligne, au taux de votre règlement de frais — CHF 0.75, CHF 0.70 ou le vôtre."
+  routeKey="home"
+  schemaNodes={[webApplicationSchema(getMarket('ch-fr'))]}
+>
+  <HomePage market="ch-fr" copy={homePageChFr} featureCards={featureCardsChFr} />
+</StandardLayout>

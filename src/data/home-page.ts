@@ -1,6 +1,6 @@
 /**
  * Copy contract of the home page (HomePage.astro shell). One module per
- * market: home-page.fr.ts / home-page.en.ts. Prices come from
+ * market: home-page.fr.ts / home-page.uk.ts. Prices come from
  * MARKETS.<market>.pricing (single source, also feeds the JSON-LD); the four
  * product feature cards are shared with pricing (feature-cards.<market>.ts).
  */

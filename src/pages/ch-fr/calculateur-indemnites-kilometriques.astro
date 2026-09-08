@@ -1,0 +1,341 @@
+---
+import { badgePill, badgePillInline, checkBullet, eyebrow, tableClass, thClass, tdClass } from '../../lib/ui';
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import Card from '../../components/Card.astro';
+import CtaCalendarCard from '../../components/CtaCalendarCard.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import GradientHero from '../../components/GradientHero.astro';
+import MileageCalculatorCH from '../../components/MileageCalculatorCH.tsx';
+import { faqPageSchema } from '../../seo/schema';
+import { faqCalculateurEntriesCh } from '../../data/faq-calculateur.ch-fr';
+import { TAUX_ACTUEL, TAUX_ANTERIEUR, computeCH } from '../../data/mileage-ch';
+import { chfPerKm, makeFormatters } from '../../lib/format';
+import { articlePath, getMarket } from '../../i18n';
+
+// Page pré-rendue au build : contenu didactique (étapes, taux, exemple, FAQ)
+// généré depuis src/data/mileage-ch.ts, seul le calculateur est une island
+// React hydratée côté client. Pendant suisse de
+// /fr/calculateur-indemnites-kilometriques, construit sur le forfait plat
+// suisse (CHF/km, une seule tranche) et non sur le barème CGI.
+//
+// Le sujet éditorial de cette page n'est PAS le calcul — il tient en une
+// multiplication. C'est le cadrage : d'où vient le taux, qui l'approuve,
+// pourquoi deux taux coexistent, et pourquoi izika ne peut pas promettre ici
+// une « conformité au barème officiel ».
+
+const trackingContext = 'page_calculator';
+
+const description =
+  "Calculez vos indemnités kilométriques en Suisse : CHF 0.75/km depuis 2026, CHF 0.70 pour les règlements antérieurs, ou le taux de votre propre règlement de frais. Calculateur gratuit et explications.";
+
+
+const market = getMarket('ch-fr');
+const fmt = makeFormatters({
+  numberLocale: market.numberLocale,
+  currency: market.currency,
+  groupSeparator: market.numberGroupSeparator,
+});
+const { formatCurrency, formatNumber } = fmt;
+
+// Exemple didactique pré-calculé au build avec les mêmes fonctions que
+// l'island : 250 km/semaine au taux recommandé, comparé au taux antérieur.
+const exemple = computeCH({
+  taux: TAUX_ACTUEL,
+  km: 250,
+  periode: 'semaine',
+  tauxComparaison: TAUX_ANTERIEUR,
+})!;
+const ecartExemple = exemple.montant - exemple.montantComparaison!;
+
+const etapes = [
+  {
+    bg: 'bg-soft-primary',
+    title: 'Le taux vient de votre entreprise',
+    subtitle: 'Pas d’un barème national.',
+    text: "C'est le règlement de frais de l'employeur, approuvé par l'administration fiscale de son canton, qui fixe le taux appliqué. CHF 0.75 est le maximum admis fiscalement, pas un montant dû.",
+  },
+  {
+    bg: 'bg-soft-neutral',
+    title: 'La distance est annualisée',
+    subtitle: 'Semaine × 52, mois × 12.',
+    text: "Le forfait se raisonne par kilomètre, mais les relevés et les règlements se lisent à l'année : 250 km par semaine deviennent 13 000 km sur l'année.",
+  },
+  {
+    bg: 'bg-soft-neutral',
+    title: 'Une seule multiplication',
+    subtitle: 'distance × taux.',
+    text: 'Pas de tranche de distance, pas de puissance fiscale, pas de majoration électrique. Le forfait couvre carburant, assurance, amortissement, entretien et pneus.',
+  },
+  {
+    bg: 'bg-beige-dark',
+    title: 'Le remboursement est un droit',
+    subtitle: 'Art. 327a CO.',
+    text: "En Suisse, rembourser les frais imposés par le travail n'est pas une faveur fiscale : c'est une obligation de droit du travail, et tout accord contraire est nul.",
+  },
+] as const;
+
+const taux = [
+  {
+    label: chfPerKm(TAUX_ACTUEL),
+    depuis: 'Depuis le 1ᵉʳ janvier 2026',
+    statut:
+      "Maximum admis fiscalement. Applicable sans nouvelle approbation du règlement de frais",
+  },
+  {
+    label: chfPerKm(TAUX_ANTERIEUR),
+    depuis: "Jusqu'au 31 décembre 2025",
+    statut: 'Ancien maximum, encore inscrit dans de nombreux règlements de frais',
+  },
+] as const;
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="calculator"
+  title="Calculateur d'indemnités kilométriques (Suisse)"
+  description={description}
+  schemaNodes={[faqPageSchema(faqCalculateurEntriesCh)]}
+>
+  <!-- Hero -->
+  <GradientHero class="text-center">
+    <div class="mx-auto max-w-3xl">
+      <p class={eyebrow}>Calculateur gratuit — taux suisses</p>
+      <h1 class="text-[2.5rem] font-bold">Calculateur d'indemnités kilométriques</h1>
+      <p class="mt-4 text-lg">
+        {chfPerKm(TAUX_ACTUEL)}, {chfPerKm(TAUX_ANTERIEUR)} ou le taux de votre propre règlement de
+        frais&nbsp;: indiquez votre distance, le montant s'affiche avec le détail du calcul.
+      </p>
+    </div>
+  </GradientHero>
+
+  <!-- Calculateur (island React), pulled up over the wave -->
+  <section class="relative z-10 mx-auto -mt-12 max-w-5xl px-4 pb-4">
+    <MileageCalculatorCH
+      client:load
+      numberLocale={market.numberLocale}
+      currency={market.currency}
+      groupSeparator={market.numberGroupSeparator}
+      joinUrl={market.joinUrl}
+    />
+  </section>
+
+  <!-- Le cadrage, avant le calcul : c'est le vrai sujet de la page -->
+  <section class="mx-auto max-w-5xl px-4 pt-12">
+    <div class="rounded-card bg-beige-light px-6 py-8 lg:px-10">
+      <p class={eyebrow}>À lire avant de retenir un chiffre</p>
+      <h2 class="text-3xl font-bold">
+        En Suisse, le barème kilométrique n'est pas national
+      </h2>
+      <p class="mt-4">
+        <strong>Il n'existe pas de barème kilométrique national opposable à tous.</strong> Le taux
+        qui s'applique à vous figure dans le <strong>règlement de
+        frais</strong> de votre employeur, approuvé par l'administration fiscale
+        de <strong>son canton</strong> — il y en a 26 — sur la base du règlement type de la
+        Conférence suisse des impôts.
+      </p>
+      <p class="mt-3">
+        {chfPerKm(TAUX_ACTUEL)} n'est pas un montant dû : c'est le <strong>maximum admis
+        fiscalement</strong> depuis le 1ᵉʳ janvier 2026 par l'Ordonnance sur les frais
+        professionnels. Une entreprise peut rembourser moins — sous réserve de l'art.&nbsp;327a CO,
+        qui exige qu'un forfait couvre réellement les frais nécessaires.
+      </p>
+      <p class="mt-3">
+        Ce calculateur ne peut donc pas vous promettre une « conformité au barème officiel »&nbsp;:
+        il n'y a pas de barème à respecter. Il applique le taux que <strong>vous</strong> saisissez.
+        Les deux montants proposés par défaut sont là pour dépanner, et nous expliquons juste en
+        dessous d'où ils viennent.
+      </p>
+      <p class="mt-3">
+        C'est aussi pourquoi le <strong>taux personnalisé</strong> n'est pas une option de repli
+        dans izika&nbsp;: en Suisse, c'est le mode d'emploi normal.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comment ça marche -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="mx-auto mb-10 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">Comment est calculé le montant&nbsp;?</h2>
+      <p class="mt-3 text-muted">
+        Le calcul suisse est le plus simple des trois pays servis par izika : un{' '}
+        <strong>forfait unique</strong> par kilomètre, sans tranche ni puissance fiscale. Toute la
+        difficulté est ailleurs — dans le choix du taux.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {etapes.map((etape, i) => (
+        <div class:list={['rounded-card p-6', etape.bg]}>
+          <p class="text-xs font-bold tracking-wide text-muted uppercase">Étape {i + 1}</p>
+          <h3 class="mt-1 text-lg font-bold">{etape.title}</h3>
+          <p class="mt-1 mb-3 text-sm italic">{etape.subtitle}</p>
+          <p class="text-sm">{etape.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Les deux taux -->
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <h2 class="text-3xl font-bold">
+        Les deux taux en circulation
+        <span class={badgePillInline}>2026</span>
+      </h2>
+      <p class="mt-3 text-muted">
+        Le maximum admis est passé de {chfPerKm(TAUX_ANTERIEUR)} à{' '}
+        <strong>{chfPerKm(TAUX_ACTUEL)}</strong> au 1ᵉʳ janvier 2026, et il est désormais indexé sur
+        le prix au kilomètre publié chaque année par le TCS. Une entreprise dont le règlement de
+        frais est déjà approuvé peut passer au nouveau taux <strong>sans le faire réapprouver</strong>{' '}
+        — c'est pourquoi les deux montants circulent aujourd'hui côte à côte.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto rounded-card bg-white shadow-card">
+      <table class={tableClass}>
+        <thead>
+          <tr>
+            <th class={thClass} scope="col">Taux par kilomètre</th>
+            <th class={thClass} scope="col">Période de recommandation</th>
+            <th class={thClass} scope="col">Statut aujourd'hui</th>
+          </tr>
+        </thead>
+        <tbody>
+          {taux.map((t) => (
+            <tr>
+              <th class={thClass} scope="row">{t.label}</th>
+              <td class={tdClass}>{t.depuis}</td>
+              <td class={tdClass}>{t.statut}</td>
+            </tr>
+          ))}
+          <tr>
+            <th class={thClass} scope="row">Autre taux</th>
+            <td class={tdClass}>Selon votre règlement de frais</td>
+            <td class={tdClass}>
+              C'est le taux opposable dès lors que le règlement a été approuvé par votre canton
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-6 rounded-card bg-soft-primary px-6 py-5 text-center">
+      <strong>Le forfait couvre tout&nbsp;:</strong> carburant ou électricité, assurance,
+      amortissement, entretien, pneus. Aucune majoration pour véhicule électrique&nbsp;:
+      le forfait est indifférent à la motorisation.
+    </p>
+  </section>
+
+  <!-- Exemple détaillé -->
+  <section class="overflow-hidden bg-beige-light py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class={eyebrow}>Un exemple concret</p>
+          <h2 class="mb-6 text-3xl font-bold">
+            250&nbsp;km par semaine, au taux de {chfPerKm(TAUX_ACTUEL)}
+          </h2>
+
+          <ol class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class={checkBullet} aria-hidden="true">1</span>
+              <p>
+                Distance annualisée&nbsp;: 250&nbsp;km × 52 =
+                <strong> {formatNumber(exemple.kmAnnuels)}&nbsp;km</strong> par an.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class={checkBullet} aria-hidden="true">2</span>
+              <p>
+                Calcul&nbsp;: {formatNumber(exemple.kmAnnuels)} × {chfPerKm(TAUX_ACTUEL)} =
+                <strong> {formatCurrency(exemple.montant)}</strong>.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class={checkBullet} aria-hidden="true">3</span>
+              <p>
+                Au taux antérieur de {chfPerKm(TAUX_ANTERIEUR)}, la même distance donnerait
+                {' '}{formatCurrency(exemple.montantComparaison!)} — soit
+                <strong> {formatCurrency(ecartExemple)}</strong> d'écart annuel.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class={checkBullet} aria-hidden="true">4</span>
+              <p>
+                Le montant retenu reste celui du <strong>règlement de frais</strong> approuvé pour
+                votre entreprise — et l'art.&nbsp;327a CO impose qu'il couvre réellement vos frais.
+              </p>
+            </li>
+          </ol>
+
+          <p class="mt-6">
+            Remboursement non imposable et hors cotisations sociales dès lors que le règlement de
+            frais est approuvé — à condition de justifier chaque déplacement (date, motif, trajet,
+            distance). À ne pas confondre avec la déduction des frais de déplacement{' '}
+            <em>domicile-travail</em> de votre déclaration d'impôt, qui est plafonnée.
+          </p>
+        </div>
+
+        <!-- Relevé façon carte de résultat -->
+        <Card bodyClass="p-6 lg:p-8">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="text-lg font-bold text-ink">Indemnité annuelle</h3>
+            <span class={badgePill}>{chfPerKm(TAUX_ACTUEL)} / km</span>
+          </div>
+          <p class="mt-4 rounded-card bg-soft-primary px-6 py-5 text-center">
+            <span class="block text-4xl font-bold text-ink">{formatCurrency(exemple.montant)}</span>
+            <span class="mt-1 block text-sm text-muted">
+              soit {formatCurrency(exemple.montant / 12)} / mois
+            </span>
+          </p>
+          <dl class="mt-5 space-y-2 text-sm">
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>{formatNumber(exemple.kmAnnuels)}&nbsp;km × {chfPerKm(TAUX_ACTUEL)}</dt>
+              <dd class="font-bold text-ink">{formatCurrency(exemple.montant)}</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>Au taux antérieur ({chfPerKm(TAUX_ANTERIEUR)})</dt>
+              <dd class="font-bold text-ink">{formatCurrency(exemple.montantComparaison!)}</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-t border-beige-line pt-2">
+              <dt class="font-bold text-ink">Écart annuel</dt>
+              <dd class="font-bold text-ink">{formatCurrency(ecartExemple)}</dd>
+            </div>
+          </dl>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <div class="mx-auto mb-8 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold">Questions fréquentes sur les IK en Suisse</h2>
+    </div>
+    <FaqAccordion entries={faqCalculateurEntriesCh} />
+    <p class="mt-6 text-center text-sm text-muted">
+      Pour aller plus loin&nbsp;:{' '}
+      <a class="underline" href={articlePath('indemnite-kilometrique-suisse-2026', 'ch-fr')}
+        >l'indemnité kilométrique en Suisse en 2026</a
+      >{' · '}
+      <a class="underline" href={articlePath('reglement-de-frais-suisse', 'ch-fr')}
+        >le règlement de frais</a
+      >{' · '}
+      <a class="underline" href={articlePath('art-327a-co-remboursement-frais', 'ch-fr')}
+        >l'art. 327a CO</a
+      >
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-5xl px-4 pb-16">
+    <CtaCalendarCard
+      title="Marre de calculer vos kilomètres à la main ?"
+      ctaLabel="Créez votre compte"
+      trackingContext={trackingContext}
+    >
+      izika détecte vos déplacements depuis votre agenda en ligne et génère votre relevé de frais
+      kilométriques — au taux de votre règlement de frais, justificatifs inclus.
+    </CtaCalendarCard>
+  </section>
+</StandardLayout>

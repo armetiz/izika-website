@@ -88,15 +88,22 @@ Si `PUBLIC_AXEPTIO_CLIENT_ID` est absente au build :
 C'est le seul point de la MEP qui a une conséquence réglementaire directe. À
 vérifier en premier après bascule.
 
-### Vigilance 2 — `cookiesVersion` du marché `en` est encore la version FR
+### Vigilance 2 — `cookiesVersion` du marché `uk` est encore la version FR
 
-`src/i18n/markets.ts` : le marché `en` porte `cookiesVersion: 'izika-fr-EU'`
+`src/i18n/markets.ts` : le marché `uk` porte `cookiesVersion: 'izika-fr-EU'`
 (TODO explicite en commentaire). Les visiteurs UK voient donc **l'UI de
 consentement en français**.
 
-Action avant d'ouvrir `/en` au public : créer la version EN dans la console
+Action avant d'ouvrir `/uk` au public : créer la version EN dans la console
 Axeptio, puis remplacer la valeur (une ligne). Ce n'est pas bloquant pour la
-bascule si `/en` reste non annoncé, mais ça l'est pour le lancement UK.
+bascule si `/uk` reste non annoncé, mais ça l'est pour le lancement UK.
+
+**Le marché `ch-fr` porte la même valeur, mais volontairement** : l'UI de
+consentement y est en français, ce qui est correct en Suisse romande, et un
+opt-in satisfait *a fortiori* le régime d'opt-out de l'art. 45c let. b LTC.
+Créer `izika-ch-fr` reste souhaitable pour le libellé des finalités (mention
+nLPD/PFPDT), ce n'est pas un défaut de langue comme sur `/uk`. Voir le
+commentaire dans `src/i18n/markets.ts` et `plans/pays/ch-suisse.md`.
 
 ### Vigilance 3 — `hasUserConsent: true` est en dur
 
@@ -177,7 +184,7 @@ d'URL (`/{slug}` → `/fr/{slug}`) et la racine part sur `/fr`.
 - `/` → `/fr` en 301 est côté Cloudflare. `src/pages/index.astro` ne sert qu'au
   dev (meta-refresh, `noindex`) — en prod il n'est jamais atteint.
 - **Décision restante** : `xDefaultMarket` (`src/i18n/markets.ts`) vaut `fr`.
-  Basculer `/` et le hreflang x-default vers `/en` est un changement d'une ligne,
+  Basculer `/` et le hreflang x-default vers `/uk` est un changement d'une ligne,
   à trancher avant la MEP plutôt qu'après (changer la cible d'un 301 déjà indexé
   coûte cher).
 - `public/wp-content/uploads/` (1,2 Mo) est conservé volontairement : ce sont les
@@ -218,11 +225,11 @@ d'URL (`/{slug}` → `/fr/{slug}`) et la racine part sur `/fr`.
 
 ## 5. Contenu et pages légales
 
-- Les 3 pages légales `/en` (`legal-notice`, `privacy-policy`, `terms`) sont des
+- Les 3 pages légales `/uk` (`legal-notice`, `privacy-policy`, `terms`) sont des
   **traductions de courtoisie** : chaque page affiche « the French version
   prevails » et le droit applicable reste français. **Relecture juriste requise
-  avant d'ouvrir `/en` au public.**
-- Bannière OpenGraph : `/en` partage encore le visuel FR
+  avant d'ouvrir `/uk` au public.**
+- Bannière OpenGraph : `/uk` partage encore le visuel FR
   (`site.defaultOgImage`), et les captures produit du site anglais sont en
   français. Cosmétique, non bloquant pour la MEP FR.
 
@@ -252,8 +259,8 @@ commit/push, pas un simple clic dans une interface en ligne.
 - [ ] `PUBLIC_GTM_ID` définie en Production **et** build relancé
 - [ ] Aucune variable de tracking sur l'environnement Preview
 - [ ] Domaine de production = `izika.com` (cohérent avec `site.url`)
-- [ ] Décision `xDefaultMarket` (`/` → `/fr` ou `/en`) tranchée
-- [ ] Relecture juriste des pages légales `/en` (si `/en` est ouvert au public)
+- [ ] Décision `xDefaultMarket` (`/` → `/fr` ou `/uk`) tranchée
+- [ ] Relecture juriste des pages légales `/uk` (si `/uk` est ouvert au public)
 
 **À vérifier dans l'heure qui suit la bascule**
 

@@ -1,0 +1,14 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import FeaturesPage from '../../components/FeaturesPage.astro';
+import { featuresPageUk } from '../../data/features-page.uk';
+---
+
+<StandardLayout
+  market="uk"
+  routeKey="features"
+  title="Features"
+  description="Reliable features that keep saving you more time on your mileage allowances"
+>
+  <FeaturesPage market="uk" copy={featuresPageUk} />
+</StandardLayout>

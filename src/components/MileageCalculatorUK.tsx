@@ -30,7 +30,7 @@ import {
  * UK mileage allowance calculator (HMRC AMAP rates). All the maths lives in
  * src/data/mileage-uk.ts, shared with the pre-rendered tables of the page.
  * COUNTRY-specific component (English copy inline, UK scheme): it only exists
- * under routes.calculator of the en market; formatting comes from the page
+ * under routes.calculator of the uk market; formatting comes from the page
  * via the serialisable numberLocale/currency props (GBP — the island does not
  * bundle any site/market config).
  * Styling mirrors SimulateurIK: rounded-full pills, white shadow-card panels,

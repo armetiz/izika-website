@@ -1,0 +1,15 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import ProductLanding from '../../components/ProductLanding.astro';
+import { soloPageChFr } from '../../data/solo-page.ch-fr';
+---
+
+<StandardLayout
+  market="ch-fr"
+  title="Gestion automatique des frais kilométriques pour les indépendants"
+  description="izika calcule vos frais kilométriques depuis votre agenda, au taux de votre règlement de frais. Relevé prêt pour votre fiduciaire."
+  routeKey="solo"
+  footerBackground="gradient"
+>
+  <ProductLanding trackingContext="page_solo" copy={soloPageChFr} />
+</StandardLayout>

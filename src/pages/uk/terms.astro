@@ -1,0 +1,497 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import { localizedPath } from '../../i18n';
+
+// ⚠️ COURTESY TRANSLATION of src/pages/fr/cgv.astro — to be reviewed by
+// legal counsel before going live. French law remains the applicable law and
+// the French version prevails (stated on the page).
+
+const articleTitles = [
+  'PREAMBLE',
+  'DEFINITIONS',
+  'PURPOSE',
+  'TERM',
+  'PRE-CONTRACTUAL INFORMATION',
+  'DESCRIPTION OF THE APPLICATION SERVICES',
+  'TECHNICAL PREREQUISITES',
+  'NETWORK AND ACCESS TO IZIKA',
+  'SECURING ACCESS TO IZIKA',
+  'EQUIPMENT PROTECTION',
+  'QUALITY OF SERVICES',
+  'SUSPENSION OF SERVICES',
+  'MAINTENANCE AND SUPPORT',
+  'LICENCE TO USE',
+  'PERSONAL DATA',
+  'DATA SECURITY',
+  'FINANCIAL TERMS',
+  'OWNERSHIP',
+  'THIRD-PARTY RIGHTS',
+  'WARRANTY AGAINST INFRINGEMENT',
+  'LIABILITY',
+  'FORCE MAJEURE',
+  'INSURANCE',
+  'TERMINATION',
+  'REVERSIBILITY',
+  'CONFIDENTIALITY',
+  'PERSONAL DATA – RIGHT OF ACCESS',
+  'MISCELLANEOUS',
+  'APPLICABLE LAW – ARBITRATION – JURISDICTION',
+] as const;
+
+const toc = articleTitles.map((title, i) => ({
+  href: `#article-${i + 1}`,
+  label: `${i + 1}. ${title}`,
+}));
+---
+
+<StandardLayout market="uk" routeKey="terms" title="Terms of Sale">
+  <LegalShell market="uk" title="Terms of Sale" navTitle="Articles" toc={toc}>
+    <p>
+      <em>
+        This English version is provided for convenience only. The&nbsp;
+        <a href={localizedPath('terms', 'fr')}>French version</a> is the legally binding one, and
+        the contract is governed by French law (see article 29).
+      </em>
+    </p>
+
+    <section id="article-1">
+      <h2>Article 1. PREAMBLE</h2>
+      <p>IZIKA, registered with the Montpellier Trade and Companies Register under number
+        807 746 524, whose registered office is at 199 rue Hélène Boucher, 34170 Castelnau-le-Lez,
+        France, is an IT services company.</p>
+      <p>It develops and markets the IZIKA offering, software dedicated to the automatic
+        calculation of business road trips and of the resulting <strong>mileage
+          allowances</strong>. The IZIKA software notably allows:</p>
+      <ol>
+        <li>connecting online calendars such as, without limitation: Google Calendar, iCloud
+          Calendar, Outlook Calendar, various calendars in ICS file format, and appointment lists
+          in CSV format, so that a copy of the appointments of the connected calendar(s) can be
+          imported into the IZIKA software.
+        </li>
+        <li>from these imported appointments, obtaining an automatic calculation of the distances
+          travelled from a starting point (for example: the user's office) to an appointment
+          location and back to the starting point. Users can also configure round trips (no
+          return to the starting point between two appointments).
+        </li>
+        <li>based on the distances computed by its mapping providers, IZIKA provides an estimate
+          of the mileage allowance amount.
+        </li>
+        <li>the computed distances and the resulting mileage allowances are provided for
+          information purposes and under the responsibility of the user, who must imperatively
+          verify that the computed distances and the mileage allowance amounts contain no errors.
+        </li>
+      </ol>
+      <p>THE CUSTOMER acknowledges having been fully informed of the list of services and
+        applications provided by IZIKA that may be made available to them under this contract.
+        These terms and conditions define the conditions for subscribing to and using IZIKA.</p>
+      <p>Any person using the services offered by IZIKA is irrebuttably presumed to have read and
+        accepted these terms and conditions.</p>
+    </section>
+
+    <section id="article-2">
+      <h2>Article 2. DEFINITIONS</h2>
+      <p>IZIKA: SOFTWARE published by the IZIKA company and offered to the CUSTOMER on a
+        subscription basis</p>
+      <p>CUSTOMER: natural or legal person contracting with the IZIKA company</p>
+      <p>SPECIAL CONDITIONS: contract defining the specific obligations of the parties and forming
+        an inseparable contractual whole with these terms and conditions.</p>
+      <p>MALFUNCTION(S): functional anomaly/anomalies affecting the use of IZIKA to varying
+        degrees.</p>
+      <p>INTERNET: open, informal network formed by the international interconnection of computer
+        networks using the TCP/IP standard, whose management is not subject to any central
+        authority, each portion of this network belonging either to a public, private or
+        independent organisation. Its operation relies on cooperation between the operators of the
+        various networks, with no obligation of supply or quality of supply between operators. The
+        networks may have unequal transmission capacities and their own usage policies. No one can
+        guarantee the proper functioning of the Internet as a whole.</p>
+      <p>BEST-EFFORTS OBLIGATION: contractual commitment requiring the party bound by it to deploy
+        the most effective means and techniques known at the date of signature of the agreement to
+        achieve the result set by the contract.</p>
+      <p>SOFTWARE: the set of programs, processes, rules and documentation relating to the
+        operation of a data processing system (French order of 22.12.1981 on the enrichment of IT
+        vocabulary – Official Journal of 17.01.1982).</p>
+      <p>WEB BROWSER: software designed to view WEB content.</p>
+      <p>OPERATOR: Internet access provider.</p>
+      <p>OS: operating system: internal software of a computing device allowing its operation and
+        the running of third-party software.</p>
+      <p>SAAS: (software as a service) software application accessible remotely, as a service, via
+        the WEB.</p>
+      <p>SERVER(S): hardware or software computing device providing access to certain services,
+        whether accessible via the Web or not.</p>
+      <p>APPLICATION SERVICE(S): service available online on subscription, allowing the use of
+        software whose hosting, management and maintenance are handled by the service provider.</p>
+      <p>WEBSITE: a set of organised pages intended to be published on the WEB under a single
+        domain name.</p>
+      <p>URL: Uniform resource locator: the location of a digital resource on the Web.</p>
+      <p>APPENDIX: binding contractual document attached to the CONTRACT</p>
+      <p>WEB: or World Wide Web: system based on hypertext links using the http protocol (hyper
+        text transfer protocol) allowing the content of pages on the Internet to be viewed.</p>
+    </section>
+
+    <section id="article-3">
+      <h2>Article 3. PURPOSE</h2>
+      <p>IZIKA makes available to the Customer, who accepts it, a set of services including, among
+        others and without this being exhaustive or binding for IZIKA, a right of access to the
+        features of the IZIKA SOFTWARE and a right to use said application SERVICES in accordance
+        with the terms and conditions set out below.</p>
+      <p>The IZIKA software allows the CUSTOMER's electronic calendars (Google or iCAL calendars,
+        without limitation) to be connected to a mapping and calculation system that extracts the
+        appointments from the electronic calendars linked to Google accounts (or other providers),
+        computes the distances travelled, and estimates the time spent driving, the average fuel
+        consumption and the CO2 (carbon dioxide) emissions.</p>
+      <p>This software is provided without any warranty of accuracy regarding the mileage,
+        duration, fuel consumption or CO2 emission values.</p>
+      <p>It is the customer's responsibility to check the appointment summary table themselves,
+        verifying the validity of each appointment (its accounting justification), the departure
+        and arrival addresses, the computed mileage as well as the time, fuel and CO2 data.</p>
+    </section>
+
+    <section id="article-4">
+      <h2>Article 4. TERM</h2>
+      <p>The contract is entered into for a term of one year from its signature by both parties.
+        Unless expressly terminated by registered letter with acknowledgement of receipt, or by
+        any other means providing a certain date of receipt, sent at least 30 calendar days
+        (unless otherwise provided in the SPECIAL CONDITIONS) before the contract's expiry date,
+        it is tacitly renewed for the same period.</p>
+    </section>
+
+    <section id="article-5">
+      <h2>Article 5. PRE-CONTRACTUAL INFORMATION</h2>
+      <p>The CUSTOMER acknowledges having been able to express all of their needs to IZIKA during
+        the exchanges that preceded the subscription to the chosen offer. IZIKA was able to spend
+        the time needed to be fully informed by the CUSTOMER of their needs and obtained all
+        useful details, so that its offer was issued with full knowledge of the CUSTOMER's
+        technical, organisational and functional constraints.</p>
+    </section>
+
+    <section id="article-6">
+      <h2>Article 6. DESCRIPTION OF THE APPLICATION SERVICES</h2>
+      <p>IZIKA is software for the automatic calculation of business road trips and of the
+        resulting mileage allowances. It is accessible from all types of mobile and desktop
+        devices running Linux, Android, Mac or Windows. IZIKA is offered in hosted mode (SAAS).
+        The CUSTOMER has secure access on the Web via a dedicated URL communicated when
+        subscribing to the contract. The CUSTOMER has the non-exclusive right to use the services
+        offered by IZIKA under the conditions set out in the GENERAL CONDITIONS and the SPECIAL
+        CONDITIONS they have signed. IZIKA handles data hosting, maintenance and software
+        security. The backup of the data used by the CUSTOMER is performed under the conditions
+        defined in the SPECIAL CONDITIONS. The exhaustive list of application Services is defined
+        in the special conditions. The features, type and number of application Services may
+        evolve over time and it will be up to the CUSTOMER, where applicable, to learn these new
+        features or changes, with the help of the dedicated documents made available by IZIKA and
+        through training sessions offered by IZIKA.</p>
+    </section>
+
+    <section id="article-7">
+      <h2>Article 7. TECHNICAL PREREQUISITES</h2>
+      <p>The CUSTOMER acknowledges having been informed by IZIKA of all the technical
+        prerequisites necessary for the proper functioning of IZIKA. The CUSTOMER is also informed
+        that these prerequisites may change, notably for technical reasons. If a change occurs
+        during the contract, the CUSTOMER will be informed beforehand.</p>
+    </section>
+
+    <section id="article-8">
+      <h2>Article 8. NETWORK AND ACCESS TO IZIKA</h2>
+      <p>Access to the IZIKA software requires an Internet connection. The CUSTOMER must pay
+        attention to the choice of the Operator providing them with Internet access and it is up
+        to them, where appropriate, to set up an alternative access solution if they wish to
+        reduce the risk of interruption of access to this network. IZIKA is not responsible for
+        the proper functioning of this network. Subject to the provisions of these terms and
+        conditions and of the special conditions, access to IZIKA is possible 24 hours a day, 7
+        days a week, including Sundays and public holidays, from any computer, smartphone or
+        tablet connected to the Internet with a Web browser, from any location as long as the
+        preceding conditions are met, except in cases of force majeure including software
+        maintenance operations or an interruption of the operation of the software or of its
+        hosting.</p>
+    </section>
+
+    <section id="article-9">
+      <h2>Article 9. SECURING ACCESS TO IZIKA</h2>
+      <p>The connection to IZIKA is provided and secured by the Google "OpenID Connect
+        (OAuth2.0)" API, which uses a unique connection token secured by Google.</p>
+    </section>
+
+    <section id="article-10">
+      <h2>Article 10. EQUIPMENT PROTECTION</h2>
+      <p>THE CUSTOMER is responsible for protecting the equipment they use to access the IZIKA
+        software, ensuring their data is protected against any malicious attack (without
+        limitation: anti-virus software, OS updates following the recommendations of its
+        designer, regular updates of their web browser, but also physical protection of the
+        equipment…). IZIKA is not responsible for damage caused to the CUSTOMER's equipment
+        and/or data via the Internet or by other means.</p>
+    </section>
+
+    <section id="article-11">
+      <h2>Article 11. QUALITY OF SERVICES</h2>
+      <p>IZIKA undertakes to do everything possible to provide the CUSTOMER with access to and use
+        of the services offered by IZIKA in accordance with the provisions of these GENERAL
+        CONDITIONS. IZIKA cannot be held responsible for problems related to the CUSTOMER's
+        Internet connection, to computer viruses spread via this network or by other means, or to
+        any acts of malice carried out via this network or by any other means, tangible or
+        intangible. THE CUSTOMER acknowledges that the Internet is subject to possible
+        interruptions and/or slowdowns and that IZIKA cannot be held responsible for them. In
+        view of the above, IZIKA therefore cannot guarantee the continuity of use of IZIKA, which
+        the CUSTOMER uses through a remote connection via the Internet.</p>
+    </section>
+
+    <section id="article-12">
+      <h2>Article 12. SUSPENSION OF SERVICES</h2>
+      <p>Access to IZIKA or to some of its features may occasionally be suspended to allow the
+        interventions and maintenance necessary for the proper functioning of the software. If an
+        intervention is planned, the CUSTOMER is informed by any means so that they can take any
+        useful measure to prevent their activity from being disrupted. In cases of extreme
+        urgency, imperative necessity, or where the security of the SOFTWARE or of the CUSTOMERS'
+        data is at stake, IZIKA is exempted from this duty of prior information, provided it gives
+        all useful explanations after the intervention has been carried out. IZIKA cannot be held
+        liable for the possible consequences of the unavailability of the service due to a
+        maintenance operation or a service update.</p>
+    </section>
+
+    <section id="article-13">
+      <h2>Article 13. MAINTENANCE AND SUPPORT</h2>
+      <p>IZIKA provides corrective and evolutionary maintenance of IZIKA at no extra cost to the
+        CUSTOMER. IZIKA maintenance may cause a suspension of access to the service as specified
+        in article 12 of the GENERAL CONDITIONS. IZIKA strives to correct as soon as possible any
+        malfunctions affecting IZIKA and to make any improvements it deems useful. The CUSTOMER
+        benefits from IZIKA updates and functional evolutions at no additional cost. Any change
+        made to the software is irrebuttably presumed to be made to improve its operation and/or
+        expand its features. Corrections and evolutions of the software are therefore expressly
+        subject to these GENERAL CONDITIONS and their appendices. IZIKA undertakes to update and
+        make available to the CUSTOMER the documentation relating to the changes made to IZIKA.
+        The CUSTOMER additionally benefits from access to the support service via the online form
+        or the email address dedicated to online help: contact (at) izika.com. THE CUSTOMER
+        undertakes to report any MALFUNCTION of IZIKA to IZIKA without delay.</p>
+    </section>
+
+    <section id="article-14">
+      <h2>Article 14. LICENCE TO USE</h2>
+      <p>The event giving rise to the granting and renewal of the Licence to use the IZIKA
+        software is the monetary payment of the subscription. The holder of the licence to use is
+        therefore presumed to be the holder of the payment instrument used to pay for the rental
+        of the software. IZIKA grants the CUSTOMER a licence to use IZIKA valid only for the
+        duration of the subscription and exclusively intended to allow them to use the software
+        and associated services, to the exclusion of any other purpose. Subject to the exceptions
+        provided in the SPECIAL CONDITIONS, it grants a personal, non-exclusive, non-assignable
+        and non-transferable right to use IZIKA, for the whole duration of the CONTRACT and for
+        the whole world. The right of use means the right to display and operate IZIKA in
+        accordance with its intended purpose, in SAAS mode via an Internet connection. Subject to
+        the following articles, the CUSTOMER may in no case make IZIKA available to a third
+        party, and strictly refrains from any other use, in particular any adaptation,
+        modification, translation, arrangement, distribution or decompilation, without this list
+        being exhaustive. IZIKA is a SOFTWARE tool intended for professionals. The licence to use
+        includes, for the CUSTOMER, the right to access the SOFTWARE and to use it within the
+        limits of the authorisations granted to them.</p>
+    </section>
+
+    <section id="article-15">
+      <h2>Article 15. PERSONAL DATA</h2>
+      <p>Under the laws in force, the CUSTOMER is the controller of the data they process. They
+        warrant to IZIKA that they have fulfilled all the obligations incumbent upon them under
+        French law no. 78-17 of 6 January 1978, known as the "Informatique &amp; Libertés" law.
+        For the purposes of complying with their obligations, they are informed by IZIKA that the
+        location of IZIKA's servers is as follows:</p>
+      <p>SCALEWAY SAS with a capital of €214,410.50</p>
+      <p>433 115 904 RCS Paris</p>
+      <p>VAT no.: FR 35 433115904</p>
+      <p>Registered office: 8 rue de la Ville l'Evêque, 75008 Paris, France.</p>
+      <p>Regarding the transmission of personal data, the CUSTOMER warrants that they have
+        informed the natural persons concerned of the use made of it. The CUSTOMER indemnifies
+        and holds SCALEWAY SAS harmless against any action, complaint or claim from a natural
+        person whose personal data is reproduced and hosted via SCALEWAY SAS.</p>
+      <p>IZIKA reserves the right to change the hosting location of this data and remains free to
+        choose the provider in charge of this mission, provided the storage locations remain on
+        French territory.</p>
+    </section>
+
+    <section id="article-16">
+      <h2>Article 16. DATA SECURITY</h2>
+      <p>IZIKA uses technical and organisational measures designed to prevent any fraudulent
+        access to or use of the data transmitted to it and to prevent its loss, alteration and/or
+        destruction. IZIKA backs up, regularly and redundantly, the data used by the CUSTOMER for
+        the operation, maintenance and administration of IZIKA, in accordance in particular with
+        article 34 of French law no. 78-17 of 6 January 1978 on information technology, files and
+        civil liberties, which provides: "The data controller is required to take all useful
+        precautions, with regard to the nature of the data and the risks presented by the
+        processing, to preserve the security of the data and, in particular, to prevent it from
+        being altered or damaged, or from being accessed by unauthorised third parties (…)". It
+        is nevertheless the CUSTOMER's responsibility to implement an independent, redundant,
+        recurring and reliable backup procedure for the data used via IZIKA.</p>
+    </section>
+
+    <section id="article-17">
+      <h2>Article 17. FINANCIAL TERMS</h2>
+      <p>
+        The pricing conditions for subscribing to IZIKA are detailed on the IZIKA software
+        subscription web page at the time of subscription by the Customer. These conditions may be
+        changed without notice at any time before the Customer subscribes. Subscribing constitutes
+        acceptance of the Terms of Sale and of the price displayed at the time of subscription.
+        The amount of the subscription to the services may change; customers will be notified by
+        email with 30 days' notice, and such changes entitle them to terminate the contract with
+        15 days' notice. Prices are expressed in Euros (€), excluding tax.
+        The billing address is irrebuttably deemed to be the one provided by the Customer when
+        registering with IZIKA on the subscription web page. It is their responsibility to inform
+        IZIKA of any need to update their details by email to contact@izika.com.
+      </p>
+    </section>
+
+    <section id="article-18">
+      <h2>Article 18. OWNERSHIP</h2>
+      <p>The CUSTOMER owns all the data they use via IZIKA under this CONTRACT. IZIKA holds the
+        ownership rights to any element originating from IZIKA and made available to the
+        CUSTOMER. Subscribing to IZIKA gives the CUSTOMER no ownership right over the software
+        made available to them in SAAS mode and does not constitute an assignment of intellectual
+        property rights in their favour within the meaning of the French Intellectual Property
+        Code. The CUSTOMER is prohibited from reproducing any element of IZIKA, or any related
+        documentation, by any means whatsoever, in any form whatsoever and on any medium
+        whatsoever.</p>
+    </section>
+
+    <section id="article-19">
+      <h2>Article 19. THIRD-PARTY RIGHTS</h2>
+      <p>The development of IZIKA required the use of software subject to free licences. The
+        licence terms have been complied with by IZIKA.</p>
+    </section>
+
+    <section id="article-20">
+      <h2>Article 20. WARRANTY AGAINST INFRINGEMENT</h2>
+      <p>Subject to article 20 of these conditions, IZIKA warrants that IZIKA is original software
+        within the meaning of the French Intellectual Property Code and that it holds all the
+        intellectual property rights allowing it to enter into this agreement. On this basis,
+        IZIKA warrants that IZIKA is not capable of infringing the rights of third parties.</p>
+    </section>
+
+    <section id="article-21">
+      <h2>Article 21. LIABILITY</h2>
+      <p>Distance measurement and address interpretation rely on third-party APIs and third-party
+        technology providers external to IZIKA. For these reasons, IZIKA cannot be held
+        responsible for inaccuracies, imprecision or errors in the geocoding of addresses or the
+        calculation of distances. In the performance of all its obligations, IZIKA is bound only
+        by a best-efforts obligation, which means that fault on its part must be demonstrated for
+        its liability to be engaged. Furthermore, in the event of fault proven by the CUSTOMER,
+        IZIKA will only be liable for compensation of the pecuniary consequences of direct and
+        foreseeable damage resulting from the performance of the services offered by IZIKA. IZIKA
+        cannot be held liable for indirect or unforeseeable losses or damage of the CUSTOMER or
+        of third parties, such as, without this list being exhaustive: any lost profit, total or
+        partial loss, inaccuracy or partial or total corruption of files or data, commercial
+        prejudice, loss of turnover or profit, loss of customers, loss of opportunity, cost of
+        obtaining a substitute product, service or technology, related to or arising from the
+        non-performance or faulty performance of the services. In all cases, the amount of
+        IZIKA's liability is strictly limited to the reimbursement of the sums actually paid by
+        the CUSTOMER at the date of the event giving rise to liability. IZIKA cannot be held
+        liable for the accidental destruction of data by the CUSTOMER or by a third party
+        accessing IZIKA using the credentials given to the CUSTOMER.</p>
+    </section>
+
+    <section id="article-22">
+      <h2>Article 22. FORCE MAJEURE</h2>
+      <p>Any breach of any of the obligations of this agreement and its appendices caused by a
+        case of force majeure, as traditionally recognised and accepted by the case law of the
+        French Court of Cassation, will exonerate the parties from their liability (force majeure
+        meaning in particular an event that is unforeseeable, irresistible and external to the
+        party bound by the obligation). If such an event occurs, the party prevented by the event
+        from performing its service informs the other by any means as soon as possible. The
+        suspension of obligations or the delay may in no case be a cause of liability for
+        non-performance of the obligation in question, nor lead to the payment of damages or late
+        penalties.</p>
+    </section>
+
+    <section id="article-23">
+      <h2>Article 23. INSURANCE</h2>
+      <p>IZIKA has taken out the insurance needed to cover the risks related to its activity.
+        IZIKA SAS holds professional liability and operating liability insurance taken out with
+        HISCOX under policy number: HSXPM310013343.</p>
+    </section>
+
+    <section id="article-24">
+      <h2>Article 24. TERMINATION</h2>
+      <p>The CONTRACT may be terminated in the event of a breach by one of the parties of one of
+        its contractual obligations, or at the CUSTOMER's request. The party wishing to terminate
+        sends an email to the other party; for izika the email must be sent from the
+        izika.com/contact page. The party with grievances to assert then sends a formal notice by
+        registered letter with acknowledgement of receipt to the party it considers to be in
+        default.</p>
+      <p>The mailing address is, for IZIKA: 199 rue Hélène Boucher, 34170 Castelnau-le-Lez,
+        France, and for the CUSTOMER, the address stated in the SPECIAL CONDITIONS. Fifteen days
+        after receipt of said letter, the acknowledgement of receipt being authoritative, if no
+        response has been made by the receiving party, the CONTRACT is terminated by operation of
+        law, subject to the seriousness and reality of the breaches observed. As soon as the
+        termination of the CONTRACT is notified, the access codes to IZIKA will be deactivated.
+        Reversibility services are implemented in accordance with article 26 of the GENERAL
+        CONDITIONS.</p>
+    </section>
+
+    <section id="article-25">
+      <h2>Article 25. REVERSIBILITY</h2>
+      <p>At the end of the contractual relationship, the CUSTOMER may retrieve their data or
+        request its permanent destruction. Data is only returned at the express request of the
+        CUSTOMER, made exclusively by registered letter with acknowledgement of receipt sent to
+        IZIKA at the following address: 199 rue Hélène Boucher, 34170 Castelnau-le-Lez, France.
+        The request is sent by the CUSTOMER no later than 15 days after the end of the CONTRACT,
+        represented by the payment corresponding to the last quarter of subscription. The request
+        is fulfilled within 8 days of its receipt, the acknowledgement of receipt being
+        authoritative between the parties. This return takes the form of one or more files in a
+        standard format readable in an equivalent technical environment. The CUSTOMER will
+        actively cooperate with IZIKA to facilitate the retrieval of their own data and will
+        respond on first request to any solicitation from IZIKA to facilitate this transmission
+        and allow the continued use of said data, under the best possible conditions of
+        operational continuity, directly or with the assistance of another provider. If no return
+        request is made in the forms indicated in these conditions, the data is destroyed within
+        30 days of the termination of the contract.</p>
+    </section>
+
+    <section id="article-26">
+      <h2>Article 26. CONFIDENTIALITY</h2>
+      <p>Subject to legal, regulatory or judicial requirements, the parties undertake to respect
+        the confidentiality of all information received from the other Party. The communication
+        of confidential information exchanged between the parties is only authorised to employees
+        or contributors who need to know it, and only for the purposes of complying with and
+        properly performing the CONTRACT and its appendices. This general obligation of
+        confidentiality remains binding on the parties for the whole duration of the CONTRACT
+        and, after its end, for as long as the information concerned remains confidential for the
+        disclosing Party and, in any event, for a period of 2 years after the end of the
+        CONTRACT. The parties undertake to return all copies of documents and media containing
+        confidential information of the other party as soon as the CONTRACT ends. The Parties
+        further undertake to have these provisions complied with by their staff, and by any agent
+        or third party who may be involved in any capacity whatsoever in the context of the
+        CONTRACT.</p>
+    </section>
+
+    <section id="article-27">
+      <h2>Article 27. PERSONAL DATA – RIGHT OF ACCESS</h2>
+      <p>The personal data concerning the Customer for access to IZIKA is intended for the
+        technical, accounting and sales departments of IZIKA, in its capacity as data controller,
+        and of its contractual partners. In accordance with French law no. 78-17 of 6 January
+        1978 on information technology, files and civil liberties, the CUSTOMER has a right of
+        access, rectification and objection regarding the data concerning them, which may be
+        exercised by sending a letter to IZIKA – 199 rue Hélène Boucher, 34170 Castelnau-le-Lez,
+        France.</p>
+    </section>
+
+    <section id="article-28">
+      <h2>Article 28. MISCELLANEOUS</h2>
+      <p>In the event of a dispute, only the computer records containing the trace of the
+        exchanges between the parties, held by IZIKA and stored under conditions guaranteeing
+        their integrity, will be authoritative between the parties. The nullity, lapse, lack of
+        binding force or unenforceability of any of the stipulations of the CONTRACT does not
+        entail the nullity, lapse, lack of binding force or unenforceability of the other
+        stipulations, which will retain all their effects. However, the Parties may, by mutual
+        agreement, agree to replace the invalidated stipulation(s).</p>
+    </section>
+
+    <section id="article-29">
+      <h2>Article 29. APPLICABLE LAW – ARBITRATION – JURISDICTION</h2>
+      <p>The CONTRACT and all related contractual documents are governed by French law, to the
+        exclusion of any other legislation. Disputes or litigation arising from the performance
+        of the CONTRACT or its appendices must, before any judicial proceedings, be the subject
+        of an attempt at amicable settlement. To this end, the parties agree to meet within 30
+        days of the dispute arising, at a location within the jurisdiction of the Montpellier
+        Court of Appeal, Hérault, France. If no agreement is reached between the parties within
+        15 days of this meeting, the parties regain their freedom to take legal action. No legal
+        action seeking to engage IZIKA's civil liability may be brought more than one calendar
+        year after the claim arises, in accordance with the provisions of article 2254 of the
+        French Civil Code. In the event of a dispute arising from the challenge or performance of
+        the CONTRACT or its appendices, the competent courts are those within the jurisdiction of
+        the Montpellier Court of Appeal.</p>
+    </section>
+  </LegalShell>
+</StandardLayout>

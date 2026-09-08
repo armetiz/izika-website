@@ -1,6 +1,6 @@
 /**
  * Copy contract of the features page (FeaturesPage.astro shell). One module
- * per market provides it: features-page.fr.ts / features-page.en.ts.
+ * per market provides it: features-page.fr.ts / features-page.uk.ts.
  */
 export interface FeaturesPageCopy {
   hero: {

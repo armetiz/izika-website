@@ -1,8 +1,8 @@
 /**
  * Copy contract of the solo/team product landings (ProductLanding.astro
- * shell). One module per page and market: solo-page.fr.ts, team-page.en.ts…
+ * shell). One module per page and market: solo-page.fr.ts, team-page.uk.ts…
  * The "compliance" section is shared between solo and team per market
- * (compliance-section.fr.ts / .en.ts).
+ * (compliance-section.fr.ts / .uk.ts).
  */
 export interface LandingScreen {
   src: string;

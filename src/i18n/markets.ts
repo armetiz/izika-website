@@ -7,7 +7,11 @@ import { site } from '../config/site';
  * tax rules, SEO geo signals, third-party integrations), decoupled from the
  * Language its pages are written in. The URL segment scheme is
  * `/{country}-{language}/` with a short alias when a country has a single
- * language: `/fr/` (France, fr), `/en/` (UK for now), future `/ch-fr/`.
+ * language: `/fr/` (France, fr), `/uk/` (United Kingdom, en), `/ch-fr/`
+ * (Suisse romande — Switzerland has four languages, so no short alias is
+ * possible). The alias is always the COUNTRY, never the language: `/uk` and
+ * a future `/us` or `/ie` are three English markets, and only the country
+ * segment tells them apart.
  *
  * Visitors never pick a Market: they pick a Country, then a language served
  * there (CountrySwitcher.astro) — the pair resolves to exactly one Market.
@@ -17,12 +21,12 @@ import { site } from '../config/site';
  * partiality is the per-market feature flag: a missing key hides the page,
  * its chrome links and its sitemap entries).
  */
-export const marketIds = ['fr', 'en'] as const; // + 'ch-fr' later
+export const marketIds = ['fr', 'uk', 'ch-fr'] as const;
 
 export type MarketId = (typeof marketIds)[number];
 
 export interface Market {
-  /** URL segment ('fr', 'ch-fr', 'en'). */
+  /** URL segment ('fr', 'uk', 'ch-fr'). */
   id: MarketId;
   /** Country this deployment serves — its name is localized by the
    * dictionaries and its region drives the country selector. */
@@ -32,6 +36,12 @@ export interface Market {
   currency: string;
   /** BCP 47 tag driving Intl.NumberFormat ('fr-FR'). */
   numberLocale: string;
+  /**
+   * Thousands separator forced over the locale's own, when CLDR and local
+   * usage disagree — see makeFormatters in src/lib/format.ts. Undefined on
+   * every market where the locale is right.
+   */
+  numberGroupSeparator?: string;
   /** hreflang value ('fr-FR', 'en-GB'). */
   hreflang: string;
   /** og:locale ('fr_FR'). */
@@ -92,12 +102,14 @@ export const MARKETS: Record<MarketId, Market> = {
     },
     pricing: { yearly: '99', monthly: '10' },
   },
-  // English market, currently targeted at the United Kingdom (decision
-  // 2026-09-03): UK tax engine (HMRC AMAP calculator + article), en-GB SEO
-  // signals. Pricing stays in EUR for now. The French tax engine, articles
-  // and hub remain fr-only, masked by route partiality.
-  en: {
-    id: 'en',
+  // United Kingdom, served in English (decision 2026-09-03): UK tax engine
+  // (HMRC AMAP calculator + article), en-GB SEO signals. Pricing stays in EUR
+  // for now. The French tax engine, articles and hub remain fr-only, masked
+  // by route partiality. The segment was `/en` until 2026-09-07 and was
+  // renamed to `/uk`: a language segment cannot host Ireland, the US or
+  // Australia, which are next on the English track.
+  uk: {
+    id: 'uk',
     country: 'GB',
     language: 'en',
     currency: 'EUR',
@@ -112,10 +124,10 @@ export const MARKETS: Record<MarketId, Market> = {
     joinUrl: site.joinUrl,
     appUrl: 'https://go.izika.com',
     // TODO: create an English consent version in Axeptio and switch this —
-    // until then /en visitors get the French consent UI.
+    // until then /uk visitors get the French consent UI.
     cookiesVersion: 'izika-fr-EU',
     // Same business unit as fr, addressed by its locale-neutral URL. The badge
-    // must show here: webApplicationSchema emits aggregateRating on /en either
+    // must show here: webApplicationSchema emits aggregateRating on /uk either
     // way, and a rating in JSON-LD with nothing visible is the mismatch
     // src/data/reviews.ts warns about. Widget off — the reviews are French.
     trustpilot: {
@@ -131,6 +143,58 @@ export const MARKETS: Record<MarketId, Market> = {
     },
     pricing: { yearly: '99', monthly: '10' },
   },
+  // Swiss market, French-speaking (Suisse romande) — decision 2026-09-07,
+  // plans/pays/ch-suisse.md. First market to SHARE a language with another
+  // (src/i18n/fr.ts is reused as-is) and first non-euro market: prices,
+  // JSON-LD offers and the calculator all format in CHF via numberLocale
+  // 'fr-CH' (thousands apostrophe). The Swiss scheme is not a national
+  // barème — the rate comes from the employer's règlement de frais approved
+  // by its canton — so /ch-fr never claims conformity to an "official
+  // barème"; see src/data/mileage-ch.ts.
+  'ch-fr': {
+    id: 'ch-fr',
+    country: 'CH',
+    language: 'fr',
+    currency: 'CHF',
+    numberLocale: 'fr-CH',
+    // CLDR renders fr-CH thousands with a narrow no-break space ; l'usage
+    // suisse écrit l'apostrophe (CHF 9’750.00), y compris dans les textes
+    // fédéraux et sur le certificat de salaire.
+    numberGroupSeparator: '’',
+    hreflang: 'fr-CH',
+    ogLocale: 'fr_CH',
+    schemaInLanguage: 'fr-CH',
+    siteName: 'izika : indemnités kilométriques en Suisse',
+    websiteDescription: 'Gestion automatique des indemnités kilométriques',
+    defaultDescription:
+      "Obtenez vos indemnités kilométriques automatiquement depuis votre agenda en ligne : Google, Outlook, Dolibarr, Zimbra, ICS. Au taux de votre règlement de frais, CHF 0.75/km inclus.",
+    joinUrl: site.joinUrl,
+    appUrl: 'https://go.izika.com',
+    // Same French consent UI as /fr, and deliberately so: Suisse romande
+    // reads French, and an opt-in CMP satisfies a fortiori the Swiss opt-out
+    // regime (art. 45c let. b LTC) plus the PFPDT's 06/10/2025 guidance. Only
+    // the vendor wording would differ — create 'izika-ch-fr' in the Axeptio
+    // console when the Swiss privacy copy is finalised, then flip this line.
+    // This is NOT the /uk bug: there the language itself was wrong.
+    cookiesVersion: 'izika-fr-EU',
+    // Reviews are French and the market is French-speaking: badge AND widget,
+    // unlike /uk. Free conversion leverage from day one.
+    trustpilot: {
+      widgetLocale: 'fr-FR',
+      url: 'https://fr.trustpilot.com/review/izika.com',
+    },
+    // The publishing entity stays the French company; the Swiss customer
+    // contracts with it. Terms carry a Swiss-specific section instead
+    // (/ch-fr/cgv, article 30).
+    legal: {
+      entity: 'izika SAS',
+      footerLines: [
+        'RCS Montpellier 807746524 - 199 rue Hélène Boucher 34170 Castelnau-le-Lez, France',
+      ],
+    },
+    // Swiss price list, not a conversion of the euro one (Stripe plan in CHF).
+    pricing: { yearly: '149', monthly: '12' },
+  },
 };
 
 export function getMarket(id: MarketId): Market {
@@ -139,6 +203,6 @@ export function getMarket(id: MarketId): Market {
 
 /**
  * Market that `/` redirects to; also drives the hreflang x-default target.
- * Flip to 'en' when the international market becomes the fallback.
+ * Flip to 'uk' when the international market becomes the fallback.
  */
 export const xDefaultMarket: MarketId = 'fr';

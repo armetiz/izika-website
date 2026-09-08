@@ -1,0 +1,65 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import LegalNoticeBodyFr from '../../components/legal/LegalNoticeBodyFr.astro';
+import { legalNoticeTocFr } from '../../data/legal-notice.fr';
+import { localizedPath } from '../../i18n';
+
+/**
+ * Mentions légales du marché suisse : les mêmes que /fr (même éditeur, même
+ * hébergeur) plus une section 5.
+ *
+ * Cette section n'est pas décorative : l'art. 3 al. 1 let. s LCD impose à
+ * quiconque propose des biens ou services par commerce électronique en Suisse
+ * d'indiquer son identité et son adresse de contact « y compris celle du
+ * courrier électronique », et cette obligation saisit le comportement
+ * déployant ses effets sur le marché suisse, indépendamment du droit
+ * régissant le contrat. Le manquement le plus fréquent — et le plus simple à
+ * éviter — est de ne publier qu'un formulaire de contact : d'où l'adresse
+ * e-mail en clair ci-dessous.
+ */
+
+const toc = [
+  ...legalNoticeTocFr,
+  { href: '#suisse', label: '5. Informations pour les clients suisses' },
+];
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="legal"
+  title="Mentions légales"
+  description="Éditeur, responsabilité civile professionnelle, hébergement et informations légales applicables aux clients suisses d'izika."
+>
+  <LegalShell market="ch-fr" title="Mentions légales" toc={toc}>
+    <LegalNoticeBodyFr />
+
+    <section id="suisse">
+      <h2>5. Informations pour les clients suisses</h2>
+      <p>
+        izika est édité et exploité depuis la France par IZIKA SAS, dont l’identité complète figure
+        à la section 1. La société ne dispose pas d’établissement en Suisse.
+      </p>
+      <p>
+        <strong>Adresse de contact, courrier électronique compris</strong> (art. 3 al. 1 let. s de
+        la loi fédérale contre la concurrence déloyale, LCD) :
+      </p>
+      <p>
+        IZIKA SAS — 199 rue Hélène Boucher, 34170 Castelnau-le-Lez, France<br />
+        Courriel : <a href="mailto:contact@izika.com">contact@izika.com</a>
+      </p>
+      <p>
+        Les étapes techniques de la conclusion du contrat, les moyens de corriger une erreur de
+        saisie et les modalités de confirmation de commande sont décrits à l’article 30 des{' '}
+        <a href={localizedPath('terms', 'ch-fr')}>conditions générales de vente</a>, qui précise
+        également le droit applicable, le for et le droit de rétractation accordé aux clients
+        suisses.
+      </p>
+      <p>
+        Le traitement des données personnelles est régi par la loi fédérale sur la protection des
+        données (nLPD) et par le RGPD ; voir la{' '}
+        <a href={localizedPath('privacy', 'ch-fr')}>charte de confidentialité</a>.
+      </p>
+    </section>
+  </LegalShell>
+</StandardLayout>

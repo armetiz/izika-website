@@ -1,0 +1,15 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import ProductLanding from '../../components/ProductLanding.astro';
+import { teamPageUk } from '../../data/team-page.uk';
+---
+
+<StandardLayout
+  market="uk"
+  title="Mileage allowance management for companies and local authorities"
+  description="Simplify mileage allowance calculation for your employees"
+  routeKey="team"
+  footerBackground="gradient"
+>
+  <ProductLanding trackingContext="page_team" copy={teamPageUk} />
+</StandardLayout>

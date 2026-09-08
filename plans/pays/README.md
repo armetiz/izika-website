@@ -3,14 +3,19 @@
 Répertoire de suivi de l'ouverture de nouveaux pays chez izika : quels marchés
 viser, dans quel ordre, et où en est chacun. Complète
 `plans/decouplage-langue-pays.md`, qui reste le reste-à-faire du seul marché
-déjà lancé côté site (`/en`, Royaume-Uni).
+déjà lancé côté site (`/uk`, Royaume-Uni).
 
 ## Contenu
 
 | Fichier | Rôle |
 |---|---|
 | `00-priorisation-marches.md` | Analyse Europe + monde : compatibilité de chaque pays avec le moteur izika, structure de son barème, langues. C'est le document de décision. |
+| `02-bonnes-pratiques-i18n-saas.md` | Cadrage : ce qui marche et ne marche pas dans l'internationalisation d'un SaaS, confronté à l'état d'izika. À lire avant la procédure. |
+| `01-procedure-ouverture-marche.md` | **La procédure répétable** : les trois couches de garantie du dépôt, l'inventaire de ce que rien ne vérifie, et les six phases d'une ouverture. À dérouler à chaque marché. |
+| `03-inventaire-assets.md` | **L'inventaire des 108 assets images**, classés par famille et par dépendance (langue, devise, unité, fiscal, pays), avec le verdict d'automatisation de chacun. Base de l'audit de rationalisation et de nommage ; référence de la rubrique « Design / Assets » des fiches pays. |
 | `de-allemagne.md` | Plan de déploiement marketing du marché `/de` — première ouverture décidée. |
+| `ch-suisse.md` | Plan du marché `/ch-fr` — **construit et buildé au 2026-09-07** ; reste à faire hors dépôt (TVA, validation juridique, TWINT). Cas de test « langue maîtrisée », premier marché non-euro. |
+| `be-belgique.md` | Plan du marché `/be-fr` — cas de test « langue maîtrisée », barème à indexation instable. |
 
 Les fiches pays suivantes se nomment `<iso2>-<pays>.md` (`ie-irlande.md`,
 `be-belgique.md`…), sur le modèle de `de-allemagne.md`. Une fiche pays contient
@@ -27,11 +32,18 @@ confondre dans un tableau de suivi :
   Aujourd'hui : **France uniquement**. Partout ailleurs, l'utilisateur doit
   saisir un barème personnalisé à la main.
 - **`site`** — le marché vitrine est en production : pages, dictionnaire,
-  routes, SEO, calculateur, contenu. Aujourd'hui : **France et Royaume-Uni**.
+  routes, SEO, calculateur, contenu. Aujourd'hui : **France, Royaume-Uni et
+  Suisse romande** (`/ch-fr`, construit le 2026-09-07).
 
 Le Royaume-Uni est donc en `site` sans `app` : c'est un pays **à intégrer**, pas
 un pays intégré. Le site promet des rapports « current rates included » que
 l'app ne sait pas encore produire.
+
+La Suisse est le cas le moins tendu des trois : son forfait plat se saisit
+sans peine dans le barème personnalisé, et `/ch-fr` ne promet nulle part un
+barème embarqué — il dit au contraire que le taux vient du règlement de frais
+de l'entreprise. Restent à confirmer côté app la saisie d'un taux en CHF et
+l'affichage d'une devise autre que l'euro dans les rapports.
 
 ## Ce que l'équipe peut porter, linguistiquement
 

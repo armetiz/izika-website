@@ -30,6 +30,7 @@ const en: Dict = {
   countries: {
     FR: 'France',
     GB: 'United Kingdom',
+    CH: 'Switzerland',
   },
   regions: {
     europe: 'Europe',

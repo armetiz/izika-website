@@ -1,0 +1,15 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import ProductLanding from '../../components/ProductLanding.astro';
+import { soloPageUk } from '../../data/solo-page.uk';
+---
+
+<StandardLayout
+  market="uk"
+  title="Automatic mileage allowance management"
+  description="izika is Europe's #1 mileage allowance calculation solution for freelancers"
+  routeKey="solo"
+  footerBackground="gradient"
+>
+  <ProductLanding trackingContext="page_solo" copy={soloPageUk} />
+</StandardLayout>

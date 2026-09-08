@@ -38,6 +38,7 @@ export default {
   countries: {
     FR: 'France',
     GB: 'Royaume-Uni',
+    CH: 'Suisse',
   },
   regions: {
     europe: 'Europe',

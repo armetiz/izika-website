@@ -1,6 +1,6 @@
 /**
  * Copy contract of the pricing page (PricingPage.astro shell). One module per
- * market: pricing-page.fr.ts / pricing-page.en.ts. Prices come from
+ * market: pricing-page.fr.ts / pricing-page.uk.ts. Prices come from
  * MARKETS.<market>.pricing (single source, also feeds the JSON-LD).
  */
 export interface PricingTier {

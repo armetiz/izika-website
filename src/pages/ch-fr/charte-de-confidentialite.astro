@@ -1,0 +1,94 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import PrivacyBodyFr from '../../components/legal/PrivacyBodyFr.astro';
+import { privacyTocFr } from '../../data/legal-privacy.fr';
+
+/**
+ * Charte de confidentialité du marché suisse : le même document que /fr
+ * (même responsable de traitement, mêmes finalités, mêmes durées) plus une
+ * section 16.
+ *
+ * Pourquoi une section et non une charte distincte : la Suisse est hors UE,
+ * mais l'art. 3 nLPD vise « les états de fait qui déploient des effets en
+ * Suisse, même s'ils se sont produits à l'étranger ». La nLPD s'AJOUTE donc
+ * au RGPD pour un éditeur français ciblant la Suisse, elle ne le remplace
+ * pas — deux chartes divergentes décriraient deux fois le même traitement.
+ *
+ * Sur les cookies, l'art. 45c let. b LTC n'exige que l'information et la
+ * possibilité de refuser (opt-out), là où le droit européen impose l'opt-in.
+ * La CMP reste donc en opt-in pour tous les visiteurs : c'est déjà obligatoire
+ * côté UE, cela satisfait a fortiori le droit suisse, et maintenir deux
+ * logiques de consentement géodépendantes serait une source de bugs. La
+ * section ci-dessous mentionne néanmoins explicitement la possibilité de
+ * refuser, au sens de la LTC.
+ */
+
+const toc = [...privacyTocFr, { href: '#suisse', label: '16. Clients et visiteurs suisses' }];
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="privacy"
+  title="Charte de confidentialité"
+  description="Traitement des données personnelles chez izika : nLPD suisse et RGPD, cookies, droits d'accès et de refus."
+>
+  <LegalShell market="ch-fr" title="Charte de confidentialité" toc={toc}>
+    <PrivacyBodyFr />
+
+    <section id="suisse">
+      <h2>16. Clients et visiteurs suisses</h2>
+
+      <h3>16.1 Loi applicable</h3>
+      <p>
+        Les traitements décrits par la présente charte relèvent, pour les personnes se trouvant en
+        Suisse, de la loi fédérale sur la protection des données (nLPD), <strong>en sus</strong> du
+        Règlement (UE) 2016/679 (RGPD). L’art. 3 nLPD vise en effet « les états de fait qui
+        déploient des effets en Suisse, même s’ils se sont produits à l’étranger » : une société
+        française qui s’adresse à une clientèle suisse y est soumise.
+      </p>
+      <p>
+        Les principes appliqués — finalités déterminées, proportionnalité, sécurité, durée de
+        conservation limitée — sont ceux exposés aux sections 4 à 10 ci-dessus. La nLPD n’y ajoute
+        pas d’obligation de fond différente pour les traitements en cause.
+      </p>
+
+      <h3>16.2 Responsable du traitement et représentant en Suisse</h3>
+      <p>
+        Le responsable du traitement demeure IZIKA SAS, dont l’identité figure à la section 3.
+        L’art. 14 nLPD n’impose la désignation d’un représentant en Suisse que lorsque quatre
+        conditions sont réunies cumulativement : offre de biens ou de services en Suisse,
+        traitement à grande échelle, traitement régulier et traitement présentant un risque élevé
+        pour la personnalité. Ces conditions ne sont pas réunies pour les traitements décrits ici ;
+        la présente charte sera mise à jour si elles venaient à l’être.
+      </p>
+
+      <h3>16.3 Cookies — information et possibilité de refuser</h3>
+      <p>
+        L’art. 45c let. b de la loi sur les télécommunications (LTC) autorise le traitement de
+        données sur un équipement terminal à condition que les utilisateurs soient informés de sa
+        finalité et de la <strong>possibilité de le refuser</strong>.
+      </p>
+      <p>
+        izika va au-delà de cette exigence : aucun cookie non strictement nécessaire n’est déposé{' '}
+        <strong>avant</strong> votre consentement exprès, et ce consentement peut être retiré à tout
+        moment depuis le lien « Consentement des cookies » présent en pied de chaque page. Vous
+        pouvez également vous opposer au dépôt de cookies par le paramétrage de votre navigateur,
+        étant précisé qu’un tel refus peut empêcher le bon fonctionnement du site.
+      </p>
+
+      <h3>16.4 Exercice de vos droits</h3>
+      <p>
+        Vous disposez, au titre de la nLPD comme du RGPD, d’un droit d’accès, de rectification, de
+        suppression et d’opposition sur les données vous concernant. Ces droits s’exercent selon les
+        modalités de la section 13, à l’adresse{' '}
+        <a href="mailto:contact@izika.com">contact@izika.com</a> ou par courrier postal.
+      </p>
+      <p>
+        Vous pouvez par ailleurs saisir le Préposé fédéral à la protection des données et à la
+        transparence (PFPDT) si vous estimez que le traitement de vos données n’est pas conforme au
+        droit suisse.
+      </p>
+    </section>
+  </LegalShell>
+</StandardLayout>

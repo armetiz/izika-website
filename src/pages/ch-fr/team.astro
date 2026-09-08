@@ -1,0 +1,156 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import ProductLanding from '../../components/ProductLanding.astro';
+import Card from '../../components/Card.astro';
+import { teamPageChFr } from '../../data/team-page.ch-fr';
+import { checkBullet, eyebrow } from '../../lib/ui';
+import { chfPerKm } from '../../lib/format';
+import { TAUX_ACTUEL, TAUX_ANTERIEUR } from '../../data/mileage-ch';
+import { articlePath, localizedPath } from '../../i18n';
+
+// Bloc éditorial propre au marché suisse, inséré entre le hero produit et le
+// reste de la landing. Il porte l'argument que ni /fr, ni /uk, ni un futur
+// /de ne peuvent porter : en Suisse, rembourser les frais de déplacement
+// n'est pas une optimisation fiscale, c'est une obligation de droit du
+// travail (art. 327a et 327b CO), semi-impérative (art. 362 CO).
+//
+// Il vit ici plutôt que dans team-page.ch-fr.ts parce que le contrat de type
+// ProductLandingCopy n'a pas de section libre : y ajouter un champ
+// « argument juridique » l'imposerait aux trois autres marchés qui n'en ont
+// pas l'usage.
+
+const consequences = [
+  {
+    titre: "Ce n'est pas une politique interne, c'est la loi",
+    texte:
+      "L'art. 327a al. 1 CO oblige l'employeur à rembourser tous les frais imposés par l'exécution du travail. L'al. 3 va plus loin : tout accord par lequel le travailleur supporterait lui-même ces frais est <strong>nul</strong> — pas discutable, nul. Et l'art. 362 CO range ces dispositions parmi celles auxquelles on ne peut pas déroger au détriment du travailleur.",
+  },
+  {
+    titre: 'Un forfait ne vous libère que s’il couvre réellement',
+    texte: `L'al. 2 autorise le remboursement sous forme d'indemnité fixe, mais <strong>à la condition qu'elle couvre tous les frais nécessaires</strong>. Un règlement de frais resté à ${chfPerKm(TAUX_ANTERIEUR)} quand le coût réel du kilomètre a monté ne remplit plus cette condition : le maximum admis fiscalement est passé à ${chfPerKm(TAUX_ACTUEL)} au 1ᵉʳ janvier 2026, et il est désormais indexé sur le prix au kilomètre du TCS.`,
+  },
+  {
+    titre: 'Le véhicule privé a son propre article',
+    texte:
+      "L'art. 327b CO traite spécifiquement du collaborateur qui utilise son véhicule pour le travail : frais courants d'usage et d'entretien, mais aussi impôts, prime de responsabilité civile et usure, dans la mesure où le véhicule sert à l'exécution du travail. C'est plus large que le seul carburant.",
+  },
+  {
+    titre: 'La preuve est documentaire, et elle vous incombe',
+    texte:
+      "Face à un collaborateur comme face à l'administration fiscale, ce qui compte est ce que vous pouvez montrer : pour chaque déplacement, la date, le motif professionnel, le trajet, la distance et le taux appliqué. Un fichier Excel rempli de mémoire ne le montre pas.",
+  },
+] as const;
+---
+
+<StandardLayout
+  market="ch-fr"
+  title="Gestion des frais kilométriques pour les entreprises et associations"
+  description="izika centralise les demandes de remboursement de frais kilométriques de vos collaborateurs et documente le respect de l'art. 327a CO, au taux de votre règlement de frais."
+  routeKey="team"
+  footerBackground="gradient"
+>
+  <ProductLanding trackingContext="page_team" copy={teamPageChFr}>
+  <!-- L'argument suisse : le remboursement des frais est une obligation légale.
+       Placé avant le CTA de clôture (slot dédié) pour que la page se termine
+       toujours sur son appel à l'action. -->
+  <section slot="before-closing" class="mx-auto max-w-6xl px-4 pb-24 -mt-16">
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <p class={eyebrow}>Le cadre légal suisse</p>
+      <h2 class="text-3xl font-bold">
+        En Suisse, rembourser les frais n'est pas une faveur. C'est une obligation.
+      </h2>
+      <p class="mt-4 text-muted">
+        L'art. 327a du Code des obligations met les frais professionnels à la charge de
+        l'employeur et frappe de nullité tout accord contraire. Le droit suisse ne raisonne pas en
+        tolérance fiscale, il raisonne en <strong>droit du travailleur</strong> — et il en tire des
+        conséquences pratiques pour l'employeur.
+      </p>
+    </div>
+
+    <Card class="mx-auto max-w-3xl" bodyClass="p-6 lg:p-8">
+      <p class={eyebrow}>Art. 327a CO — Frais</p>
+      <blockquote class="space-y-3 border-l-4 border-primary pl-5 text-lg italic">
+        <p>
+          « L'employeur rembourse au travailleur tous les frais imposés par l'exécution du travail
+          […]. »
+        </p>
+        <p>
+          « […] les frais engagés par le travailleur lui seront remboursés sous forme d'une
+          indemnité fixe […] <strong class="not-italic">à la condition qu'elle couvre tous les frais
+          nécessaires</strong>. »
+        </p>
+        <p>
+          « Tout accord en vertu duquel le travailleur supporte lui-même tout ou partie des frais
+          nécessaires est <strong class="not-italic">nul</strong>. »
+        </p>
+      </blockquote>
+      <p class="mt-4 text-sm text-muted">
+        Code des obligations, art. 327a al. 1 à 3. L'art. 327b traite du cas particulier du véhicule
+        privé, et l'art. 362 en fait des dispositions auxquelles il ne peut être dérogé au détriment
+        du travailleur.
+      </p>
+    </Card>
+
+    <div class="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
+      {consequences.map((item, i) => (
+        <div class="rounded-card bg-soft-neutral p-6">
+          <div class="flex items-start gap-3">
+            <span class={checkBullet} aria-hidden="true">{i + 1}</span>
+            <div>
+              <h3 class="text-lg font-bold">{item.titre}</h3>
+              <p class="mt-2 text-sm" set:html={item.texte} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mx-auto mt-12 max-w-3xl rounded-card bg-soft-primary px-6 py-8 lg:px-10">
+      <h3 class="text-[1.3125rem] font-bold">Ce que izika Team y change</h3>
+      <ul class="mt-4 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class={checkBullet} aria-hidden="true">✓</span>
+          <p>
+            Chaque déplacement arrive <strong>daté, motivé, mesuré</strong> depuis l'agenda du
+            collaborateur — la documentation existe avant que quiconque ne la demande.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class={checkBullet} aria-hidden="true">✓</span>
+          <p>
+            Le <strong>taux de votre règlement de frais</strong> s'applique uniformément à toute la
+            structure — {chfPerKm(TAUX_ACTUEL)}, {chfPerKm(TAUX_ANTERIEUR)} ou le vôtre. Le jour où
+            vous le mettez à jour, tout le monde suit.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class={checkBullet} aria-hidden="true">✓</span>
+          <p>
+            Le <strong>flux d'approbation</strong> laisse une trace de qui a validé quoi et quand —
+            de quoi répondre à un collaborateur comme à un contrôle.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class={checkBullet} aria-hidden="true">✓</span>
+          <p>
+            Vos collaborateurs cessent d'avancer des frais sans savoir quand ils seront remboursés,
+            et vous cessez d'arbitrer des kilométrages estimés de mémoire.
+          </p>
+        </li>
+      </ul>
+      <p class="mt-6 text-sm text-muted">
+        Pour aller plus loin&nbsp;:{' '}
+        <a class="underline" href={articlePath('art-327a-co-remboursement-frais', 'ch-fr')}
+          >l'art. 327a CO expliqué</a
+        >{' · '}
+        <a class="underline" href={articlePath('reglement-de-frais-suisse', 'ch-fr')}
+          >établir un règlement de frais</a
+        >{' · '}
+        <a class="underline" href={localizedPath('calculator', 'ch-fr')}
+          >calculer un montant</a
+        >
+      </p>
+    </div>
+  </section>
+  </ProductLanding>
+</StandardLayout>

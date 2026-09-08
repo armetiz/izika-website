@@ -1,0 +1,60 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import { localizedPath } from '../../i18n';
+
+// ⚠️ COURTESY TRANSLATION of src/pages/fr/mentions-legales.astro — to be
+// reviewed by legal counsel before going live. The French version prevails
+// (stated on the page).
+
+const toc = [
+  { href: '#intro', label: '1. Introduction' },
+  { href: '#rcp', label: '2. Professional liability insurance' },
+  { href: '#cnil', label: '3. CNIL declaration' },
+  { href: '#hosting', label: '4. Hosting' },
+] as const;
+---
+
+<StandardLayout market="uk" routeKey="legal" title="Legal notice">
+  <LegalShell market="uk" title="Legal notice" toc={toc}>
+    <p>
+      <em>
+        This English version is provided for convenience only. The&nbsp;
+        <a href={localizedPath('legal', 'fr')}>French version</a> is the legally binding one.
+      </em>
+    </p>
+
+    <section id="intro">
+      <h2>1. Introduction</h2>
+      <p>Company name: S.A.S. IZIKA</p>
+      <p>Registered office: 199 rue Hélène Boucher, 34170 Castelnau-le-Lez, France</p>
+      <p>Montpellier Trade and Companies Register (RCS): 807 746 524</p>
+      <p>Intra-community VAT number: FR37 807 746 524</p>
+      <p>SAS with an initial variable capital of €3,000</p>
+      <p>Publication director: Thomas Tourlourat</p>
+    </section>
+
+    <section id="rcp">
+      <h2>2. Professional liability insurance</h2>
+      <p>
+        IZIKA SAS holds a professional liability insurance policy taken out with HISCOX under
+        policy number HSXPM310013343.
+      </p>
+    </section>
+
+    <section id="cnil">
+      <h2>3. CNIL declaration</h2>
+      <p>CNIL declaration on data processing: 1924022 v 0</p>
+    </section>
+
+    <section id="hosting">
+      <h2>4. Hosting</h2>
+      <p>SCALEWAY SAS with a capital of €214,410.50</p>
+      <p>RCS PARIS 433 115 904</p>
+      <p>APE code 2620Z</p>
+      <p>VAT no.: FR 22 424 761 419</p>
+      <p>Registered office: SCALEWAY SAS BP 438 75366 PARIS CEDEX 08 – France.</p>
+      <p>Publication director: Arnaud Brindejonc de Bermingham</p>
+    </section>
+  </LegalShell>
+</StandardLayout>

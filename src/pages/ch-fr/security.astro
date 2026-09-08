@@ -1,0 +1,20 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import SecurityBodyFr from '../../components/legal/SecurityBodyFr.astro';
+import { securityTocFr } from '../../data/legal-security.fr';
+
+// Document strictement identique à /fr/security : les faits techniques ne
+// dépendent pas du marché. Cf. l'en-tête de SecurityBodyFr.astro.
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="security"
+  title="Politique de sécurité"
+  description="Chiffrement, hébergement européen hors cloud américain, politique de mots de passe : la politique de sécurité d'izika."
+>
+  <LegalShell market="ch-fr" title="Politique de sécurité" toc={securityTocFr}>
+    <SecurityBodyFr />
+  </LegalShell>
+</StandardLayout>

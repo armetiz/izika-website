@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { routes, type RouteKey } from './i18n/routes';
 
 /**
- * Articles are per-MARKET directories (fr/, later en/, ch-fr/…): entry id is
+ * Articles are per-MARKET directories (fr/, uk/, ch-fr/…): entry id is
  * "<marketId>/<slug>". IK articles are country-specific content, not
  * translations of each other; articles of different markets sharing a
  * `hreflangKey` are hreflang alternates of one another (wired in

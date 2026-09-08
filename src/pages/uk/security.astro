@@ -1,0 +1,67 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+
+// English translation of src/pages/fr/security.astro.
+
+const toc = [
+  { href: '#encryption', label: '1. Encrypted communications' },
+  { href: '#hosting', label: '2. French infrastructure' },
+  { href: '#licensing', label: '3. Software licensing' },
+  { href: '#updates', label: '4. Update management' },
+  { href: '#password-policy', label: '5. Password policy and storage' },
+  { href: '#questions', label: '6. Any questions?' },
+] as const;
+---
+
+<StandardLayout market="uk" routeKey="security" title="Security policy">
+  <LegalShell market="uk" title="Security policy" toc={toc}>
+    <section id="encryption">
+      <h2>1. Encrypted communications</h2>
+      <p>
+        Every exchange you have with our services goes through an HTTPS connection. The SSL
+        certificate is a Gandi Standard&nbsp;SSL&nbsp;CA&nbsp;2 certificate.
+      </p>
+      <p>
+        As for the exchanges we may have with third parties, we require the use of secure
+        connections.
+      </p>
+    </section>
+
+    <section id="hosting">
+      <h2>2. French infrastructure</h2>
+      <p>
+        Data sovereignty is a cause we regularly advocate for, which is why we decided from the
+        start that our application would be entirely hosted at Scaleway, a French company
+        headquartered in Paris whose entire infrastructure we use is located in France.
+      </p>
+    </section>
+
+    <section id="licensing">
+      <h2>3. Software licensing</h2>
+      <p>We only use open-source software.</p>
+    </section>
+
+    <section id="updates">
+      <h2>4. Update management</h2>
+      <p>We apply security updates to all of our dependencies on a daily basis.</p>
+    </section>
+
+    <section id="password-policy">
+      <h2>5. Password policy and storage</h2>
+      <p>
+        We do not store your passwords; we only store a
+        non-reversible <a href="https://en.wikipedia.org/wiki/Hash_function">hash</a> computed
+        with the <a href="https://en.wikipedia.org/wiki/Argon2">Argon2</a> algorithm.
+      </p>
+    </section>
+
+    <section id="questions">
+      <h2>6. Any questions?</h2>
+      <p>
+        If you have a question about any specific point, we will be happy to answer it: use the
+        chat to contact us 24/7.
+      </p>
+    </section>
+  </LegalShell>
+</StandardLayout>

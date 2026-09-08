@@ -130,7 +130,7 @@ différence de la France. 2026/27 est la première revalorisation depuis 2011/12
 (45p → 55p, annoncée le 21 mai 2026, rétroactive au 6 avril 2026).
 
 Ce barème est déjà modélisé côté site dans `src/data/mileage-uk.ts` et exposé
-par le calculateur `/en/mileage-allowance-calculator`. Il **n'est pas dans
+par le calculateur `/uk/mileage-allowance-calculator`. Il **n'est pas dans
 l'app**. Deux ruptures d'hypothèse à traiter au passage : l'unité est le
 **mile** et la devise la **livre**, alors que le moteur raisonne aujourd'hui en
 kilomètres et en euros. Langue : anglais, déjà couvert (`src/i18n/en.ts`).
@@ -366,13 +366,13 @@ ouvrir un troisième marché vitrine ne fait qu'aggraver l'écart.
 - [ ] **Barème UK dans l'app** — prérequis à toute nouvelle ouverture. Déjà
       listé comme bloquant dans `plans/decouplage-langue-pays.md`, section
       « Produit / App ». Tant qu'il n'est pas fait, la promesse « current rates
-      included » de `/en` est fausse.
+      included » de `/uk` est fausse.
 - [ ] **Unités non métriques** — le moteur raisonne en kilomètres. Le
       Royaume-Uni et les États-Unis sont en miles, la Suède en *mille* suédois
       (10 km). Décider si l'unité devient un attribut du barème ou du `Market`.
 - [ ] **Devises non-euro** — GBP, CHF, DKK, SEK, NOK, PLN, CZK, HUF. Le
       `Market` porte déjà `currency` et `numberLocale`
-      (`src/i18n/markets.ts`) ; côté app, à vérifier. Noter que `/en` affiche
+      (`src/i18n/markets.ts`) ; côté app, à vérifier. Noter que `/uk` affiche
       aujourd'hui ses tarifs en EUR alors que son calculateur est en GBP.
 - [ ] **Majoration passager** — Royaume-Uni (0,05 £/mi) et Autriche
       (0,15 €/km). Notion absente du moteur, mutualisable entre les deux.
@@ -394,14 +394,14 @@ ouvrir un troisième marché vitrine ne fait qu'aggraver l'écart.
       glose française, qui valide. Sans ce circuit, aucune copy allemande,
       néerlandaise ou italienne n'est validable par l'équipe.
 - [ ] **Entité juridique et TVA** hors de France — aujourd'hui izika SAS pour
-      tous les marchés, y compris `/en`.
-- [ ] **Consentement Axeptio** — une version par marché ; `/en` utilise encore
+      tous les marchés, y compris `/uk`.
+- [ ] **Consentement Axeptio** — une version par marché ; `/uk` utilise encore
       `izika-fr-EU`.
 - [ ] **Preuve sociale locale** — les avis Trustpilot sont sur
       `fr.trustpilot.com`, en français. Le champ `trustpilot` du `Market` est
       `null` partout ailleurs, donc les blocs disparaissent.
 - [ ] **Socle éditorial** — un pays sans articles ne se référence pas. `/fr`
-      en compte 37, `/en` un seul.
+      en compte 37, `/uk` un seul.
 - [ ] **Vérifier le plafond mensuel estonien** et les taux lettons, lituaniens
       et bulgares avant de figer leur classement en D.
 

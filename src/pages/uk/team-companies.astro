@@ -1,0 +1,33 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import TeamLanding from '../../components/TeamLanding.astro';
+import LandingClosingCta from '../../components/LandingClosingCta.astro';
+import { teamLandingUk } from '../../data/team-landing.uk';
+
+// English counterpart of src/pages/fr/team-entreprises.astro.
+---
+
+<StandardLayout
+  market="uk"
+  title="Mileage allowance management for companies"
+  description="Simplify mileage allowance calculation for your employees"
+  routeKey="teamEntreprises"
+  footerBackground="soft"
+>
+  <TeamLanding audience="companies" trackingContext="page_entreprises" copy={teamLandingUk} />
+
+  <LandingClosingCta
+    title="Ready to try the best mileage allowance management tool?"
+    text="Our team is at your disposal to help you roll out izika in your organization."
+    trackingContext="page_entreprises"
+    class="bg-soft-neutral"
+  >
+    <div class="mt-4 flex items-start gap-2">
+      <img width="50" src="/assets/landing-pages/team/cocorico.png" alt="" loading="lazy" />
+      <p class="flex-1">
+        Application made in France,<br />
+        Ultra-efficient, non-outsourced support!
+      </p>
+    </div>
+  </LandingClosingCta>
+</StandardLayout>

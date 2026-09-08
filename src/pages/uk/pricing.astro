@@ -1,0 +1,18 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import PricingPage from '../../components/PricingPage.astro';
+import { pricingPageUk } from '../../data/pricing-page.uk';
+import { featureCardsUk } from '../../data/feature-cards.uk';
+import { webApplicationSchema } from '../../seo/schema';
+import { getMarket } from '../../i18n';
+---
+
+<StandardLayout
+  market="uk"
+  routeKey="pricing"
+  title="Plans and pricing"
+  description="Simplify your mileage expenses with the most efficient software on the market."
+  schemaNodes={[webApplicationSchema(getMarket('uk'))]}
+>
+  <PricingPage market="uk" copy={pricingPageUk} featureCards={featureCardsUk} />
+</StandardLayout>

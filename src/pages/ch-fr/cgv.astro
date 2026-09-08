@@ -1,0 +1,175 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import LegalShell from '../../components/LegalShell.astro';
+import TermsBodyFr from '../../components/legal/TermsBodyFr.astro';
+import { termsArticleTitlesFr } from '../../data/legal-terms.fr';
+import { localizedPath } from '../../i18n';
+
+/**
+ * CGV du marché suisse : le MÊME contrat que /fr/cgv (articles 1 à 29, rendus
+ * par TermsBodyFr) plus un article 30 propre au droit suisse. Un jeu unique
+ * de CGV avec une section pays, plutôt que deux documents complets qui
+ * divergeraient à la première modification.
+ *
+ * Ce que l'article 30 corrige, et pourquoi il ne pouvait pas rester implicite :
+ * - l'article 29 désigne le droit français et le tribunal de Montpellier.
+ *   Face à un CONSOMMATEUR suisse, l'art. 120 al. 2 LDIP exclut l'élection de
+ *   droit et l'art. 16 de la Convention de Lugano réserve le for du domicile
+ *   du consommateur. Une décision rendue au mépris de cette section ne serait
+ *   pas reconnue en Suisse (art. 35 Lugano) : la clause serait donc inutile
+ *   là où elle devrait servir. En B2B elle reste parfaitement valable
+ *   (art. 116 LDIP, art. 23 Lugano) — d'où la séparation explicite ;
+ * - le droit suisse ne connaît AUCUN droit de rétractation pour la vente en
+ *   ligne (art. 40a ss CO : démarchage uniquement). Plutôt que d'exclure les
+ *   clients suisses ou de laisser la question au silence, izika accorde
+ *   contractuellement les mêmes 14 jours qu'en France : décision produit
+ *   explicite, un seul régime, une seule implémentation dans le tunnel de
+ *   souscription ;
+ * - les art. 197 et 210 CO (garantie) relèvent du contrat de vente et ne
+ *   s'appliquent pas à un abonnement SaaS ; le dire évite de laisser croire à
+ *   une garantie légale de deux ans qui n'existe pas ;
+ * - l'art. 3 al. 1 let. s LCD impose des informations e-commerce quel que
+ *   soit le droit régissant le contrat.
+ *
+ * ⚠ Rédigé à partir des textes ; à faire valider par un conseil suisse avant
+ * l'ouverture des paiements (voir plans/pays/ch-suisse.md, § juridique).
+ */
+
+const SWISS_ARTICLE = 'DISPOSITIONS SPÉCIFIQUES AUX CLIENTS RÉSIDANT EN SUISSE';
+
+const toc = [...termsArticleTitlesFr, SWISS_ARTICLE].map((title, i) => ({
+  href: `#article-${i + 1}`,
+  label: `${i + 1}. ${title}`,
+}));
+
+const swissIndex = termsArticleTitlesFr.length + 1;
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="terms"
+  title="Conditions Générales de Vente"
+  description="Conditions générales de vente izika applicables aux clients suisses : droit applicable, for, droit de rétractation de 14 jours, garantie et informations e-commerce."
+>
+  <LegalShell market="ch-fr" title="Conditions Générales de Vente" navTitle="Les articles" toc={toc}>
+    <TermsBodyFr />
+
+    <section id={`article-${swissIndex}`}>
+      <h2>Article {swissIndex}. {SWISS_ARTICLE}</h2>
+
+      <p>
+        Le présent article s’applique au CLIENT domicilié ou ayant son siège en Suisse. En cas de
+        contradiction avec un autre article des présentes, il prévaut.
+      </p>
+
+      <h3>{swissIndex}.1 Droit applicable et for — clients professionnels</h3>
+      <p>
+        Lorsque le CLIENT contracte dans le cadre de son activité professionnelle, l’article 29 des
+        présentes s’applique intégralement : le CONTRAT est régi par le droit français et les
+        juridictions du ressort de la Cour d’Appel de Montpellier sont compétentes. Cette élection
+        est valable au regard de l’art. 116 de la loi fédérale sur le droit international privé
+        (LDIP) et de l’art. 23 de la Convention de Lugano.
+      </p>
+
+      <h3>{swissIndex}.2 Droit applicable et for — clients consommateurs</h3>
+      <p>
+        Lorsque le CLIENT contracte à des fins étrangères à son activité professionnelle, l’art. 120
+        al. 2 LDIP exclut l’élection de droit et les art. 15 à 17 de la Convention de Lugano
+        réservent au consommateur le for de son domicile. En conséquence, et sans qu’il soit besoin
+        d’invoquer ces dispositions :
+      </p>
+      <ol>
+        <li>
+          IZIKA renonce à se prévaloir de l’article 29 à l’encontre d’un CLIENT consommateur
+          domicilié en Suisse ; celui-ci conserve la faculté de porter le litige devant le tribunal
+          de son domicile ;
+        </li>
+        <li>
+          le CLIENT consommateur conserve le bénéfice des dispositions impératives du droit suisse
+          de la protection des consommateurs, sans que le choix du droit français puisse les lui
+          retirer ;
+        </li>
+        <li>
+          toute action d’IZIKA contre un CLIENT consommateur domicilié en Suisse est portée devant
+          les tribunaux de son domicile.
+        </li>
+      </ol>
+
+      <h3>{swissIndex}.3 Droit de rétractation — 14 jours, accordés contractuellement</h3>
+      <p>
+        Le droit suisse ne prévoit <strong>pas</strong> de droit de révocation pour les contrats
+        conclus en ligne : les art. 40a et suivants du Code des obligations limitent ce droit au
+        démarchage à domicile, sur le lieu de travail, dans les transports publics, sur la voie
+        publique, lors de manifestations publicitaires et au démarchage téléphonique.
+      </p>
+      <p>
+        IZIKA accorde néanmoins à ses CLIENTS suisses, <strong>par la présente clause</strong>, un
+        droit de rétractation de <strong>quatorze (14) jours</strong> à compter de la souscription,{' '}
+        <strong>identique à celui dont bénéficient ses clients français</strong>. IZIKA applique
+        ainsi un régime unique, sans distinction selon le pays de résidence du CLIENT : ce qui vaut
+        pour un client français vaut pour un client suisse.
+      </p>
+      <p>
+        La rétractation s’exerce sans avoir à motiver sa décision, par un message adressé depuis la
+        page izika.com/contact ou par courrier à l’adresse figurant à l’article 24. IZIKA rembourse
+        les sommes versées au plus tard quatorze (14) jours après réception de la demande, par le
+        même moyen de paiement que celui utilisé lors de la souscription, sauf accord contraire du
+        CLIENT.
+      </p>
+
+      <h3>{swissIndex}.4 Garantie et responsabilité</h3>
+      <p>
+        Les art. 197 et 210 CO, relatifs à la garantie en raison des défauts, relèvent du contrat de
+        vente et supposent la livraison d’une chose. L’abonnement objet des présentes est un contrat
+        de fourniture de services applicatifs : il n’ouvre <strong>pas</strong> droit à une garantie
+        légale de deux ans. Les engagements de qualité de service d’IZIKA sont ceux définis aux
+        articles 11 et 21 des présentes.
+      </p>
+      <p>
+        Demeurent réservés l’art. 100 CO, qui frappe de nullité toute stipulation excluant par
+        avance la responsabilité pour dol ou faute grave, et, à l’égard d’un CLIENT consommateur,
+        l’art. 8 de la loi fédérale contre la concurrence déloyale (LCD).
+      </p>
+
+      <h3>{swissIndex}.5 Informations relatives au commerce électronique (art. 3 al. 1 let. s LCD)</h3>
+      <ol>
+        <li>
+          <strong>Identité et coordonnées du fournisseur :</strong> IZIKA SAS, 199 rue Hélène
+          Boucher, 34170 Castelnau-le-Lez, France — courriel :{' '}
+          <a href="mailto:contact@izika.com">contact@izika.com</a>. Coordonnées complètes aux{' '}
+          <a href={localizedPath('legal', 'ch-fr')}>mentions légales</a>.
+        </li>
+        <li>
+          <strong>Étapes techniques de la conclusion du contrat :</strong> création de compte,
+          sélection de l’offre, saisie des coordonnées de facturation, récapitulatif de la commande,
+          acceptation des présentes conditions, paiement, puis confirmation.
+        </li>
+        <li>
+          <strong>Correction des erreurs de saisie :</strong> chaque étape est modifiable jusqu’à la
+          validation du paiement ; les coordonnées et paramètres du compte restent modifiables
+          ensuite depuis l’application.
+        </li>
+        <li>
+          <strong>Confirmation de commande :</strong> IZIKA adresse sans délai au CLIENT une
+          confirmation de sa commande par courriel, accompagnée de la facture.
+        </li>
+      </ol>
+
+      <h3>{swissIndex}.6 Prix, devise et impôts</h3>
+      <p>
+        Les prix applicables au CLIENT suisse sont libellés en francs suisses (CHF) et facturés dans
+        cette devise. Les mentions d’impôt applicables figurent sur la facture émise lors de la
+        souscription.
+      </p>
+
+      <h3>{swissIndex}.7 Protection des données</h3>
+      <p>
+        Le traitement des données du CLIENT suisse relève de la loi fédérale sur la protection des
+        données (nLPD), dont l’art. 3 vise les états de fait déployant leurs effets en Suisse même
+        lorsqu’ils se produisent à l’étranger, en sus du Règlement (UE) 2016/679 (RGPD). Les
+        modalités figurent à la{' '}
+        <a href={localizedPath('privacy', 'ch-fr')}>charte de confidentialité</a>.
+      </p>
+    </section>
+  </LegalShell>
+</StandardLayout>

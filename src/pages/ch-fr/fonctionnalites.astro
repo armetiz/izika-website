@@ -1,0 +1,14 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import FeaturesPage from '../../components/FeaturesPage.astro';
+import { featuresPageChFr } from '../../data/features-page.ch-fr';
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="features"
+  title="Fonctionnalités"
+  description="Des fonctionnalités fiables pour vous faire gagner du temps sur vos frais kilométriques, au taux de votre règlement de frais."
+>
+  <FeaturesPage market="ch-fr" copy={featuresPageChFr} />
+</StandardLayout>

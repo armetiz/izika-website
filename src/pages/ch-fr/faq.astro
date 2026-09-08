@@ -1,0 +1,23 @@
+---
+import StandardLayout from '../../layouts/StandardLayout.astro';
+import GradientHero from '../../components/GradientHero.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { faqPageSchema } from '../../seo/schema';
+import { faqEntriesCh } from '../../data/faq.ch-fr';
+---
+
+<StandardLayout
+  market="ch-fr"
+  routeKey="faq"
+  title="Questions fréquentes"
+  description="Taux kilométrique, règlement de frais, art. 327a CO, sécurité des données : les réponses aux questions les plus fréquentes en Suisse."
+  schemaNodes={[faqPageSchema(faqEntriesCh)]}
+>
+  <GradientHero class="text-center">
+    <h1 class="text-[2.5rem] font-bold">Questions fréquentes</h1>
+  </GradientHero>
+
+  <section class="mx-auto max-w-3xl px-4 py-16 lg:pb-32">
+    <FaqAccordion entries={faqEntriesCh} />
+  </section>
+</StandardLayout>

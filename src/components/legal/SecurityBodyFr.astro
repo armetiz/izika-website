@@ -1,0 +1,65 @@
+---
+/**
+ * Corps de la politique de sécurité (sections 1 à 6), porté depuis
+ * templates/content/security.html.twig.
+ *
+ * Composant partagé entre /fr et /ch-fr, sans variante : les faits décrits
+ * (HTTPS, hébergement Scaleway en France, open source, Argon2) sont les
+ * mêmes, et « infrastructure française » est en Suisse un argument de
+ * souveraineté — hébergement européen, hors cloud américain — et non une
+ * référence hors sujet.
+ *
+ * Le sommaire correspondant est dans src/data/legal-security.fr.ts.
+ */
+---
+
+    <section id="encryption">
+      <h2>1. Chiffrement des échanges</h2>
+      <p>
+        Tous les échanges que vous pouvez avoir avec nos services se font via une connexion HTTPS.
+        Le certificat SSL est un certificat Gandi Standard&nbsp;SSL&nbsp;CA&nbsp;2.
+      </p>
+      <p>
+        En ce qui concerne les échanges que nous pouvons avoir avec des tiers, nous imposons l'usage
+        de connexions sécurisées.
+      </p>
+    </section>
+
+    <section id="hosting">
+      <h2>2. Infrastructure Française</h2>
+      <p>
+        La souveraineté des données est un sujet pour lequel nous militons régulièrement, c’est
+        pourquoi nous avons dès le début décidé que notre application serait entièrement hébergée
+        chez Scaleway, une société française dont le siège est à Paris
+        et dont l’ensemble de l’infrastructure que nous utilisons est en France.
+      </p>
+    </section>
+
+    <section id="licensing">
+      <h2>3. Typologie des licences</h2>
+      <p>Nous utilisons uniquement des logiciels open-source.</p>
+    </section>
+
+    <section id="updates">
+      <h2>4. Gestion des mises à jour</h2>
+      <p>
+        Quotidiennement, nous appliquons les mises à jour de sécurité de l'ensemble de nos
+        dépendances.
+      </p>
+    </section>
+
+    <section id="password-policy">
+      <h2>5. Politique de mots de passe et stockage</h2>
+      <p>
+        Nous ne stockons pas vos mots de passe, nous ne stockons
+        qu’un <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">hash</a> non réversible
+        calculé avec l'algorithme <a href="https://fr.wikipedia.org/wiki/Argon2">Argon2</a>.
+      </p>
+    </section>
+
+    <section id="questions">
+      <h2>6. Vous avez des questions ?</h2>
+      <p>
+        Si vous avez des questions sur un point précis, nous serons heureux d'y répondre : utilisez le chat pour nous contacter 24h/24
+      </p>
+    </section>
