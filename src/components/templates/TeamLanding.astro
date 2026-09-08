@@ -25,9 +25,6 @@ interface Props {
 
 const { audience, trackingContext, copy } = Astro.props;
 
-// The two app screenshots of these landings share one aspect ratio, so the
-// copy carries only src and alt (see src/data/team-landing.ts).
-const SCREEN = { width: 920, height: 719 } as const;
 ---
 
 <!-- Hero Section -->
@@ -88,7 +85,7 @@ const SCREEN = { width: 920, height: 719 } as const;
   title={copy.collaborators.title}
   items={copy.collaborators.points}
 >
-  <LandingScreenshot {...copy.collaborators.screen} {...SCREEN} />
+  <LandingScreenshot {...copy.collaborators.screen} />
 </LandingChecklistSection>
 
 <!-- Features Section: gestionnaires -->
@@ -98,7 +95,7 @@ const SCREEN = { width: 920, height: 719 } as const;
   title={copy.managers.title}
   items={copy.managers.points}
 >
-  <LandingScreenshot {...copy.managers.screen} {...SCREEN} />
+  <LandingScreenshot {...copy.managers.screen} />
 </LandingChecklistSection>
 
 <!-- Security Section -->

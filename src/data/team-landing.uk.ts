@@ -11,7 +11,7 @@ export const teamLandingUk: TeamLandingCopy = {
     catch:
       'Save your organization a maximum of time on the management of its mileage allowances.',
     cta: 'Try izika for free',
-    image: '/assets/markets/uk/app/screen-calendar-import-wide.jpg',
+    image: '/assets/markets/uk/app/screen-calendar-import.jpg',
     imageAlt: 'izika on a desktop computer',
     imageWidth: 1618,
     imageHeight: 1010,
@@ -48,8 +48,10 @@ export const teamLandingUk: TeamLandingCopy = {
       'Management of supporting documents and assignments to projects or clients.',
     ],
     screen: {
-      src: '/assets/markets/uk/app/screen-next-stop.png',
+      src: '/assets/markets/uk/app/screen-next-stop.jpg',
       alt: 'Configuring star-pattern or round trips',
+      width: 1618,
+      height: 1210,
     },
   },
   managers: {
@@ -65,6 +67,8 @@ export const teamLandingUk: TeamLandingCopy = {
     screen: {
       src: '/assets/markets/uk/app/screen-claims-list.png',
       alt: 'List of mileage claims',
+      width: 920,
+      height: 719,
     },
   },
   security: {

@@ -2,6 +2,7 @@
 import Card from '../ui/Card.astro';
 import CtaCalendarCard from '../sections/CtaCalendarCard.astro';
 import GradientHero from '../ui/GradientHero.astro';
+import ScreenCrop from '../ui/ScreenCrop.astro';
 import TrackedLink from '../ui/TrackedLink.astro';
 import { localizedPath, type MarketId } from '../../i18n';
 import { btnPrimary } from '../../lib/cta';
@@ -61,7 +62,15 @@ const trackingContext = 'page_features';
     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
       {copy.cards.map((card) => (
         <Card>
-          <img slot="top" class="w-full" src={card.image} alt={card.imageAlt} loading="lazy" />
+          <ScreenCrop
+            slot="top"
+            class="w-full"
+            src={card.image}
+            alt={card.imageAlt}
+            width={card.imageWidth}
+            height={card.imageHeight}
+            crop={card.imageCrop}
+          />
           <h3 class="text-lg font-bold">{card.title}</h3>
           {card.paragraphsHtml.map((html, index) => (
             <p

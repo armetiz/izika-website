@@ -47,7 +47,7 @@ Comme le **montant des IK est déclaratif**, nombreux sont les **professionnels*
 
 ## Tableau d'indemnités kilométriques
 
-![export izika](/assets/markets/fr/app/step-mileage-export.png?3eaf80c)
+![export izika](/assets/markets/fr/app/report-mileage.png?3eaf80c)
 
 Voici à quoi ressemble un **tableau d'indemnités kilométriques** dans le logiciel izika. Ce logiciel génère des tableaux d'indemnités kilométriques, avec le calcul de la distance et des IK à partir des principaux agendas online tels que Google Agenda, Outlook, iCloud, etc.
 

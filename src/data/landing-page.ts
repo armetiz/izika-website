@@ -4,6 +4,8 @@
  * The "compliance" section is shared between solo and team per market
  * (compliance-section.fr.ts / .uk.ts).
  */
+import type { CropRect } from '../lib/crop';
+
 export interface LandingScreen {
   src: string;
   alt: string;
@@ -45,6 +47,8 @@ export interface ProductLandingCopy {
       ipadAlt: string;
       ipadWidth: number;
       ipadHeight: number;
+      /** Fenêtre à cadrer dans le master (le relevé entier, pas sa vignette). */
+      ipadCrop?: CropRect;
       /** Phone overlay. */
       mobileSrc: string;
       mobileAlt: string;

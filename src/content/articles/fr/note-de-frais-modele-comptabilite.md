@@ -82,7 +82,7 @@ Voici un exemple de tableau des frais kilométriques avec toutes les mentions ob
 
 **Modèle de tableau des frais kilométriques :**
 
-![export izika](/assets/markets/fr/app/step-mileage-export.png?3eaf80c)
+![export izika](/assets/markets/fr/app/report-mileage.png?3eaf80c)
 
 ### Déterminer la distance et le barème fiscal à retenir pour le calcul
 

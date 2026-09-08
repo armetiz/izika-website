@@ -1,0 +1,67 @@
+---
+import type { CropRect } from '../../lib/crop';
+
+/**
+ * Capture d'app servie telle quelle, ou recadrée dans une fenêtre du master.
+ *
+ * Sans `crop`, c'est un `<img>` ordinaire — le composant ne change rien.
+ * Avec `crop`, le master est agrandi et décalé derrière une fenêtre qui porte
+ * le ratio voulu : c'est ce qui remplace les fichiers `card-*`, `*-wide` et
+ * `*-tablet` supprimés (plans/pays/03-inventaire-assets.md § 4.3).
+ *
+ * Le décalage passe par des marges en pourcentage et **non** par
+ * `position: absolute` : le conteneur n'a donc pas besoin d'être positionné,
+ * et l'appelant reste libre de le placer lui-même (`absolute` dans le collage
+ * du hero, flux normal dans une carte).
+ *
+ * Rappel CSS : un pourcentage de marge — `margin-top` compris — se résout sur
+ * la **largeur** du bloc conteneur, d'où le facteur `height / width` dans le
+ * décalage vertical.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  /** Dimensions intrinsèques du master, pas de la fenêtre. */
+  width: number;
+  height: number;
+  crop?: CropRect;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const { src, alt, width, height, crop, class: className, loading = 'lazy' } = Astro.props;
+
+const frame = crop && {
+  wrapper: `aspect-ratio:${crop.w * width} / ${crop.h * height}`,
+  image: [
+    `width:${(100 / crop.w).toFixed(4)}%`,
+    `margin-left:${((-crop.x / crop.w) * 100).toFixed(4)}%`,
+    `margin-top:${((-crop.y / crop.w) * (height / width) * 100).toFixed(4)}%`,
+  ].join(';'),
+};
+---
+
+{
+  frame ? (
+    <div class:list={['overflow-hidden', className]} style={frame.wrapper}>
+      <img
+        class="block h-auto max-w-none"
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        style={frame.image}
+      />
+    </div>
+  ) : (
+    <img
+      class:list={[className]}
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+    />
+  )
+}

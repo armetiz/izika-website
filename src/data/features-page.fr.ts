@@ -35,8 +35,11 @@ export const featuresPageFr: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/markets/fr/app/card-settings-vehicles.jpg',
+      image: '/assets/markets/fr/app/screen-settings-vehicles.png',
       imageAlt: 'Gestion multi-véhicules',
+      imageWidth: 1642,
+      imageHeight: 1200,
+      imageCrop: { x: 0, y: 0.137, w: 0.62, h: 0.5656 },
       title: 'Gestion multi-véhicules',
       paragraphsHtml: [
         '🚘 Configurez vos différents véhicules et leurs puissances fiscales, et définissez votre véhicule par défaut.',
@@ -44,16 +47,22 @@ export const featuresPageFr: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/markets/fr/app/card-settings-addresses.jpg',
+      image: '/assets/markets/fr/app/screen-settings-addresses.png',
       imageAlt: 'Adresses favorites',
+      imageWidth: 1644,
+      imageHeight: 1204,
+      imageCrop: { x: 0, y: 0, w: 0.62, h: 0.5644 },
       title: 'Adresses favorites',
       paragraphsHtml: [
         "🏢 Saisissez vos adresses favorites pour les définir automatiquement comme points de départ et d'arrivée de vos déplacements réguliers.",
       ],
     },
     {
-      image: '/assets/markets/fr/app/card-settings-travel-mode.jpg',
+      image: '/assets/markets/fr/app/screen-settings-travel-mode.png',
       imageAlt: 'Modes de déplacement',
+      imageWidth: 1640,
+      imageHeight: 1208,
+      imageCrop: { x: 0, y: 0.384, w: 0.62, h: 0.5612 },
       title: 'Modes de déplacement',
       paragraphsHtml: [
         'Choisissez votre mode de déplacement par défaut :',

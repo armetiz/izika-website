@@ -4,6 +4,8 @@
  * the market's pages pass it as a prop — the shell holds no language string.
  * `…Html` fields are trusted inline HTML (span/br), rendered via set:html.
  */
+import type { LandingScreen } from './landing-page';
+
 export interface TeamLandingCopy {
   hero: {
     /** H1 text before the highlighted audience word (keep trailing nbsp). */
@@ -25,13 +27,13 @@ export interface TeamLandingCopy {
     kicker: string;
     title: string;
     points: readonly string[];
-    screen: { src: string; alt: string };
+    screen: LandingScreen;
   };
   managers: {
     kicker: string;
     title: string;
     points: readonly string[];
-    screen: { src: string; alt: string };
+    screen: LandingScreen;
   };
   security: {
     kicker: string;

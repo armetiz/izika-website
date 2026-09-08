@@ -34,8 +34,11 @@ export const featuresPageUk: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/markets/uk/app/card-settings-vehicles.jpg',
+      image: '/assets/markets/uk/app/screen-settings-vehicles.png',
       imageAlt: 'Multi-vehicle management',
+      imageWidth: 1642,
+      imageHeight: 1200,
+      imageCrop: { x: 0, y: 0.137, w: 0.62, h: 0.5656 },
       title: 'Multi-vehicle management',
       paragraphsHtml: [
         '🚘 Set up your vehicles and their tax horsepower, and define your default vehicle.',
@@ -43,16 +46,22 @@ export const featuresPageUk: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/markets/uk/app/card-settings-addresses.jpg',
+      image: '/assets/markets/uk/app/screen-settings-addresses.png',
       imageAlt: 'Favourite addresses',
+      imageWidth: 1644,
+      imageHeight: 1204,
+      imageCrop: { x: 0, y: 0, w: 0.62, h: 0.5644 },
       title: 'Favourite addresses',
       paragraphsHtml: [
         '🏢 Save your favourite addresses so they are automatically used as the start and end points of your regular trips.',
       ],
     },
     {
-      image: '/assets/markets/uk/app/card-settings-travel-mode.jpg',
+      image: '/assets/markets/uk/app/screen-settings-travel-mode.png',
       imageAlt: 'Travel modes',
+      imageWidth: 1640,
+      imageHeight: 1208,
+      imageCrop: { x: 0, y: 0.384, w: 0.62, h: 0.5612 },
       title: 'Travel modes',
       paragraphsHtml: [
         'Choose your default travel mode:',
