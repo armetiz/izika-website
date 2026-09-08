@@ -86,13 +86,20 @@ export default {
     guidesTitle: 'Guides & conseils',
   },
   article: {
-    ctaTitle: 'Envie de gagner du temps sur le calcul de vos IK ?',
-    ctaText: 'Vos IK en quelques minutes au lieu de plusieurs heures.',
+    /** Carte CTA collante de la colonne latérale (desktop uniquement). */
+    ctaTitle: 'Vos IK, calculées toutes seules',
+    ctaText: 'Quelques minutes par mois au lieu de plusieurs heures.',
     ctaMore: 'En savoir +',
     bottomTitle: 'izika automatise la gestion de vos indemnités kilométriques',
     bottomButton: 'Découvrez izika',
     tocTitle: 'Sommaire',
+    /** Libellé du <details> qui remplace la colonne latérale en mobile. */
+    tocToggle: 'Sommaire de l\u2019article',
     breadcrumbHome: 'Accueil',
+    breadcrumbArticles: 'Articles',
+    breadcrumbAria: 'Fil d\u2019Ariane',
+    /** {minutes} remplacé par la durée estimée (200 mots/minute). */
+    readingTime: '{minutes} min de lecture',
   },
   solutionsMenu: {
     soloGroup: 'Solos et Indépendants',

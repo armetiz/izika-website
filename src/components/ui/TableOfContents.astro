@@ -1,32 +1,107 @@
 ---
 import type { MarkdownHeading } from 'astro';
+import { tocHeadings } from '../../lib/article';
 
 /**
- * Replaces the CommonMark [TOC] placeholder (min heading level 2, like the
- * old TableOfContentsExtension config).
+ * Sommaire de l'article. Deux rendus pour un seul jeu de liens :
+ * - `variant="sidebar"` : collant dans la colonne de gauche (≥ lg), avec
+ *   surlignage de la section courante ;
+ * - `variant="mobile"` : <details> replié sous le titre, la colonne latérale
+ *   n'existant pas sous lg.
+ *
+ * Le surlignage est une amélioration progressive : sans JavaScript, les ancres
+ * fonctionnent, seule la mise en évidence disparaît.
  */
 interface Props {
   headings: MarkdownHeading[];
   title: string;
+  toggleLabel: string;
+  variant: 'sidebar' | 'mobile';
 }
 
-const { headings, title } = Astro.props;
-const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+const { headings, title, toggleLabel, variant } = Astro.props;
+const items = tocHeadings(headings);
+const linkClass =
+  'block border-l-2 border-transparent py-1 pl-3 hover:text-ink hover:underline aria-[current=location]:border-primary aria-[current=location]:font-semibold aria-[current=location]:text-ink';
 ---
 
 {
-  items.length > 0 && (
-    <nav class="mx-auto mb-8 max-w-[72ch] rounded-card bg-beige-light p-6 lg:max-w-[85%]" aria-label={title}>
-      <p class="mb-2 font-semibold">{title}</p>
-      <ul class="space-y-1 text-sm">
-        {items.map((h) => (
-          <li class={h.depth === 3 ? 'pl-4' : ''}>
-            <a class="underline hover:text-primary-hover" href={`#${h.slug}`}>
-              {h.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  )
+  items.length > 0 &&
+    (variant === 'sidebar' ? (
+      <nav aria-label={title} data-toc>
+        <p class="text-xs font-semibold tracking-wide text-muted uppercase">{title}</p>
+        <ul class="mt-3 max-h-[60vh] space-y-0.5 overflow-y-auto text-sm text-muted">
+          {items.map((h) => (
+            <li class={h.depth === 3 ? 'pl-3' : ''}>
+              <a class={linkClass} href={`#${h.slug}`}>
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    ) : (
+      <details class="mb-8 rounded-card bg-beige-light p-4 lg:hidden">
+        <summary class="cursor-pointer font-semibold">{toggleLabel}</summary>
+        <ul class="mt-3 space-y-0.5 text-sm text-muted">
+          {items.map((h) => (
+            <li class={h.depth === 3 ? 'pl-3' : ''}>
+              <a class={linkClass} href={`#${h.slug}`}>
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))
 }
+
+<script>
+  // Surligne l'entrée de la dernière section franchie. On compare les titres à
+  // une bande haute de la fenêtre plutôt qu'à son centre : sur les pages de
+  // barème, un tableau plus haut que l'écran ne laisserait sinon aucun titre
+  // visible et le sommaire se viderait de sa sélection.
+  const nav = document.querySelector<HTMLElement>('[data-toc]');
+  if (nav) {
+    const links = new Map<string, HTMLAnchorElement>();
+    for (const a of nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')) {
+      links.set(a.getAttribute('href')!.slice(1), a);
+    }
+    const targets = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    let current: string | null = null;
+    const select = (id: string | null) => {
+      if (id === current) return;
+      if (current) links.get(current)?.removeAttribute('aria-current');
+      current = id;
+      if (id) links.get(id)?.setAttribute('aria-current', 'location');
+    };
+
+    const HEADER_OFFSET = 120;
+    const sync = () => {
+      let last: string | null = null;
+      for (const el of targets) {
+        if (el.getBoundingClientRect().top > HEADER_OFFSET) break;
+        last = el.id;
+      }
+      select(last ?? targets[0]?.id ?? null);
+    };
+
+    sync();
+    let ticking = false;
+    addEventListener(
+      'scroll',
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          sync();
+        });
+      },
+      { passive: true },
+    );
+  }
+</script>

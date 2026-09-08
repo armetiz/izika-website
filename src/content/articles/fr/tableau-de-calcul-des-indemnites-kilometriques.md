@@ -4,6 +4,7 @@ description: >-
   Tableau de calcul des indemnités kilométriques 2025 pour voitures, motos et
   cyclomoteurs — avec barème officiel et exemples de calcul détaillés.
 date: '2021-04-06'
+toc: true
 ---
 
 # Tableau de calcul des indemnités kilométriques

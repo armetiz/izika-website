@@ -4,6 +4,7 @@ description: >-
   Le barème indemnités kilométriques est édité chaque année par les services
   fiscaux. Ce barème permet à toute personne utilisant son véhicule personnel...
 date: '2018-02-01'
+toc: true
 ---
 
 > Le barème des indemnités kilométriques évolue chaque année. Vous êtes sur une page d'archive. Pour vos déclarations, merci de vous reporter aux barèmes pour [calculer vos frais de déplacement en 2025](/fr/bareme-indemnites-kilometriques-2025).

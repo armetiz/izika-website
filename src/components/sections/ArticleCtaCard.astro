@@ -1,0 +1,37 @@
+---
+import TrackedLink from '../ui/TrackedLink.astro';
+import { btnPrimarySm } from '../../lib/cta';
+import { t, localizedPath, type MarketId } from '../../i18n';
+
+/**
+ * Carte d'appel à l'action de la colonne latérale d'un article. Elle remplace
+ * l'ancien bandeau beige qui s'intercalait entre le header et le titre : à
+ * cet endroit elle reste visible pendant toute la lecture — donc bien plus
+ * longtemps exposée — sans jamais couper le texte.
+ *
+ * La bascule responsive est portée par l'<aside> qui l'accueille : sous lg,
+ * la colonne latérale disparaît et seule la carte de clôture du bas subsiste.
+ */
+interface Props {
+  market: MarketId;
+}
+
+const { market } = Astro.props;
+const dict = t(market);
+const homeHref = localizedPath('home', market);
+---
+
+<div class="rounded-card bg-beige-light p-5">
+  <p class="font-bold text-ink">{dict.article.ctaTitle}</p>
+  <p class="mt-1 text-sm text-muted">{dict.article.ctaText}</p>
+  <TrackedLink eventId="cta_block_cta" class={`mt-4 w-full text-center ${btnPrimarySm}`}>
+    {dict.cta.try}
+  </TrackedLink>
+  {
+    homeHref && (
+      <a class="mt-3 block text-center text-sm text-muted underline hover:text-ink" href={homeHref}>
+        {dict.article.ctaMore}
+      </a>
+    )
+  }
+</div>

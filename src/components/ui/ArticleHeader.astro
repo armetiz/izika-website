@@ -1,0 +1,57 @@
+---
+import { t, getMarket, localizedPath, type MarketId } from '../../i18n';
+
+/**
+ * Bandeau d'entrée d'un article : fil d'Ariane, date de publication et durée
+ * de lecture. Il remplace l'ancien bloc CTA beige, qui demandait au lecteur de
+ * s'inscrire avant même de lui dire sur quelle page il venait d'arriver.
+ *
+ * Le niveau « Articles » suit la partialité des routes : /uk n'a pas de hub
+ * (routes.articles ne définit que fr et ch-fr), le fil d'Ariane s'y réduit
+ * donc à Accueil › titre.
+ */
+interface Props {
+  market: MarketId;
+  title: string;
+  date: Date;
+  readingMinutes: number;
+}
+
+const { market, title, date, readingMinutes } = Astro.props;
+const dict = t(market);
+
+const homeHref = localizedPath('home', market);
+const articlesHref = localizedPath('articles', market);
+
+const crumbs = [
+  { label: dict.article.breadcrumbHome, href: homeHref },
+  { label: dict.article.breadcrumbArticles, href: articlesHref },
+].filter((c): c is { label: string; href: string } => c.href !== null);
+
+const dateFormat = new Intl.DateTimeFormat(getMarket(market).numberLocale, { dateStyle: 'long' });
+---
+
+<div class="border-b border-beige-line bg-beige-pale">
+  <div class="mx-auto max-w-6xl px-4 py-4">
+    <nav aria-label={dict.article.breadcrumbAria}>
+      <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+        {
+          crumbs.map((crumb) => (
+            <li class="flex items-center gap-2">
+              <a class="hover:text-ink hover:underline" href={crumb.href}>
+                {crumb.label}
+              </a>
+              <span aria-hidden="true">›</span>
+            </li>
+          ))
+        }
+        <li class="min-w-0 truncate font-semibold text-ink" aria-current="page">{title}</li>
+      </ol>
+    </nav>
+    <p class="mt-1 text-sm text-muted">
+      <time datetime={date.toISOString().slice(0, 10)}>{dateFormat.format(date)}</time>
+      <span aria-hidden="true"> · </span>
+      {dict.article.readingTime.replace('{minutes}', String(readingMinutes))}
+    </p>
+  </div>
+</div>

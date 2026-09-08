@@ -1,13 +1,15 @@
 ---
 import StandardLayout from './StandardLayout.astro';
-import TrackedLink from '../components/ui/TrackedLink.astro';
 import Card from '../components/ui/Card.astro';
 import TableOfContents from '../components/ui/TableOfContents.astro';
+import ArticleHeader from '../components/ui/ArticleHeader.astro';
+import ArticleCtaCard from '../components/sections/ArticleCtaCard.astro';
 import { articleSchema, breadcrumbSchema } from '../seo/schema';
-import { btnPill, btnPrimaryCompact } from '../lib/cta';
+import { btnPrimaryCompact } from '../lib/cta';
 import { getCollection } from 'astro:content';
 import HreflangTags from '../components/head/HreflangTags.astro';
 import { t, getMarket, articlePath, localizedPath, splitContentId, type MarketId } from '../i18n';
+import { countWords, readingMinutes, showToc } from '../lib/article';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
@@ -19,12 +21,24 @@ interface Props {
   robots?: string;
   toc?: boolean;
   headings?: MarkdownHeading[];
+  /** Markdown brut : sert la durée de lecture et le seuil du sommaire. */
+  body?: string;
   /** Articles of different markets sharing this key are hreflang alternates. */
   hreflangKey?: string;
 }
 
-const { market, title, description, date, image, robots, toc = false, headings = [], hreflangKey } =
-  Astro.props;
+const {
+  market,
+  title,
+  description,
+  date,
+  image,
+  robots,
+  toc = false,
+  headings = [],
+  body = '',
+  hreflangKey,
+} = Astro.props;
 const dict = t(market);
 
 // hreflang alternates via hreflangKey — zero emission while the key exists in
@@ -46,11 +60,24 @@ const canonical = new URL(
   Astro.site,
 ).href;
 const homeUrl = new URL(localizedPath('home', market)!, Astro.site).href;
+const articlesPath = localizedPath('articles', market);
+
+// Le sommaire est décidé par le contenu (longueur et découpage) et non plus
+// par un drapeau posé article par article : `toc: true` ne sert désormais
+// qu'à forcer les cas limites.
+const words = countWords(body);
+const minutes = readingMinutes(words);
+const withToc = showToc(headings, words, toc);
 
 const schemaNodes = [
   articleSchema(getMarket(market), { url: canonical, title, description, datePublished: date, image: ogImage }),
   breadcrumbSchema([
     { name: dict.article.breadcrumbHome, url: homeUrl },
+    // Le hub n'existe pas dans tous les marchés (/uk n'en a pas) : le niveau
+    // intermédiaire disparaît alors du fil d'Ariane comme du schéma.
+    ...(articlesPath
+      ? [{ name: dict.article.breadcrumbArticles, url: new URL(articlesPath, Astro.site).href }]
+      : []),
     { name: title, url: canonical },
   ]),
 ];
@@ -70,48 +97,55 @@ const schemaNodes = [
     <HreflangTags alternates={articleAlternates} />
   </Fragment>
 
-  <!-- Top CTA banner (same copy as page.html.twig) -->
-  <div class="mx-auto max-w-6xl px-4 pt-8 pb-16 md:pt-16">
-    <div class="rounded-card bg-beige-light p-10">
-      <div class="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
-        <div>
-          <p class="text-3xl font-bold">{dict.article.ctaTitle}</p>
-          <p class="mb-0">{dict.article.ctaText}</p>
-        </div>
-        <div class="flex flex-wrap justify-center gap-2">
-          <TrackedLink
-            eventId="cta_block_cta"
-            class={btnPill}
-          >
-            {dict.cta.try}
-          </TrackedLink>
-          <a
-            class="btn-3d min-w-40 rounded-full bg-white px-4 py-3 text-center font-bold"
-            href={localizedPath('home', market)}
-          >
-            {dict.article.ctaMore}
-          </a>
-        </div>
+  <ArticleHeader market={market} title={title} date={date} readingMinutes={minutes} />
+
+  {/* Colonne latérale de 15rem + colonne de lecture de 46rem, centrées dans le
+      max-w-6xl : la largeur du texte est portée par la grille, plus par
+      .prose-izika. Sous lg, tout retombe sur une seule colonne et l'aside
+      disparaît au profit du sommaire repliable. */}
+  <div
+    class="mx-auto grid max-w-6xl gap-8 px-4 pt-10 pb-16 lg:grid-cols-[15rem_minmax(0,46rem)] lg:justify-center lg:gap-16"
+  >
+    <aside class="hidden lg:sticky lg:top-20 lg:block lg:self-start">
+      {
+        withToc && (
+          <TableOfContents
+            headings={headings}
+            title={dict.article.tocTitle}
+            toggleLabel={dict.article.tocToggle}
+            variant="sidebar"
+          />
+        )
+      }
+      <div class:list={[withToc && 'mt-8']}>
+        <ArticleCtaCard market={market} />
       </div>
+    </aside>
+
+    <div class="min-w-0">
+      {
+        withToc && (
+          <TableOfContents
+            headings={headings}
+            title={dict.article.tocTitle}
+            toggleLabel={dict.article.tocToggle}
+            variant="mobile"
+          />
+        )
+      }
+      <article class="prose prose-izika">
+        <slot />
+      </article>
     </div>
   </div>
 
-  <div class="mx-auto max-w-6xl px-4 pt-8 pb-16">
-    {toc && headings.length > 0 && <TableOfContents headings={headings} title={dict.article.tocTitle} />}
-    <article class="prose prose-izika mx-auto lg:max-w-[85%]">
-      <slot />
-    </article>
-  </div>
-
-  <!-- Bottom CTA card -->
+  {/* Carte de clôture, alignée sur la largeur totale de la grille (15rem + 4rem
+      + 46rem = 65rem) pour ne pas flotter sous les deux colonnes. */}
   <div class="mx-auto max-w-6xl px-4 pb-16">
-    <Card class="relative mx-auto lg:max-w-[85%]" bodyClass="p-8">
+    <Card class="mx-auto max-w-[65rem] bg-beige-light!" bodyClass="p-8">
       <div class="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
         <h3 class="text-lg font-bold">{dict.article.bottomTitle}</h3>
-        <a
-          class={btnPrimaryCompact}
-          href={localizedPath('home', market)}
-        >
+        <a class={btnPrimaryCompact} href={localizedPath('home', market)}>
           {dict.article.bottomButton}
         </a>
       </div>

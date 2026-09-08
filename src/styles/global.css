@@ -107,7 +107,10 @@ h6 {
   --tw-prose-headings: var(--color-ink);
   --tw-prose-links: var(--color-ink);
   --tw-prose-bold: var(--color-ink);
-  max-width: 72ch;
+  /* La largeur de lecture est portée par la grille de ArticleLayout (46rem),
+     pas par la prose elle-même : les tableaux de barème ont besoin de toute
+     la colonne. */
+  max-width: none;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -182,6 +185,12 @@ h6 {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+/* Le header est collant (64 px) : sans cette marge, une ancre du sommaire
+   ferait atterrir son titre derrière lui. */
+.prose-izika :is(h1, h2, h3, h4) {
+  scroll-margin-top: 6rem;
 }
 
 /* Heading permalink anchors added by rehype-autolink-headings */
