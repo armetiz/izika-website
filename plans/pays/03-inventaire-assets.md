@@ -25,7 +25,7 @@ rendre à la build, texte et chiffres pris dans les dictionnaires — est
    produit : c'est une imitation qu'il faut maintenir en parallèle du vrai
    produit. La dérive est mécanique et invisible.
 2. **Le volume ne le justifie pas.** Ouvrir un marché complet demande
-   **53 visuels**. C'est un lot de production, pas une chaîne industrielle.
+   **56 visuels**. C’est un lot de production, pas une chaîne industrielle.
 3. **Ce n'est pas qu'une traduction.** Ces visuels portent quatre axes de
    variation — langue, devise, unité de distance, forme du barème :
    - `app/report-accounting` : « BARÈME · d × 0.407 », « citroën BERLINGO
@@ -51,7 +51,7 @@ rendre à la build, texte et chiffres pris dans les dictionnaires — est
 ### L'enjeu, en une ligne
 
 `src/data/mileage-uk.ts` définit le barème HMRC en **miles** et en **pence**
-(45p), mais `/uk` sert aujourd'hui **53 visuels** dont les octets sont ceux du
+(45p), mais `/uk` sert aujourd’hui **56 visuels** dont les octets sont ceux du
 français : rapports en kilomètres et en euros, badge « CERTIFIÉ CONFORME » en
 français. Ce n'est pas un défaut esthétique, c'est une **promesse produit
 fausse** — et le build la répète à chaque exécution, une ligne par visuel.
@@ -74,7 +74,7 @@ assets/
   articles/      <slug-article>/<fichier>             — un dossier par article
   brand/         logo-izika, emblem-origin
   icons/         pictogrammes produit (500×500) + calendar.svg
-  illustrations/ sketch-* (croquis au trait)
+  illustrations/ sketch-* (croquis au trait, neutres)
   integrations/  logos partenaires (google, outlook, icloud, ics, dolibarr…)
   menu/solo|team/ pictogrammes du méga-menu
   people/        portrait-* génériques
@@ -158,29 +158,27 @@ Les pictogrammes du méga-menu suivent le même identifiant
 
 | | |
 |---|---:|
-| Fichiers dans `public/assets` | **189** |
-| Poids total | **11,3 Mo** |
-| Visuels marché-dépendants (sujets distincts) | **53** |
-| Fichiers qu'ils représentent (53 × 2 ou 3 marchés) | **140** — 9,2 Mo |
+| Fichiers dans `public/assets` | **195** |
+| Poids total | **11,6 Mo** |
+| Visuels marché-dépendants (sujets distincts) | **56** |
+| Fichiers qu'ils représentent (56 × 2 ou 3 marchés) | **146** — 9,5 Mo |
 | Fichiers neutres, réutilisables partout | **49** — 2,1 Mo |
 | Chemins d'assets marché-dépendants en dur dans un composant | **0** |
 | Marchés servis | `fr`, `uk`, `ch-fr` |
 
-Répartition par famille : `app/` 78 fichiers (5,2 Mo), `verticals/` 36 (3,5 Mo),
+Répartition par famille : `app/` 78 fichiers (5,2 Mo), `verticals/` 44 (4,0 Mo),
 `icons/` 22 (276 Ko), `articles/` 19 (1,2 Mo), `menu/` 10, `social/` 6,
-`integrations/` 6, `brand/` 3, `illustrations/` 3, `photos/` 3, `people/` 2.
+`integrations/` 6, `brand/` 3, `photos/` 3, `people/` 2, `illustrations/` 1.
 
 Sortie du build :
 
 ```
-[izika:asset-guard] 188 image path(s) checked, 0 broken, 0 orphan(s), 53 to localise.
+[izika:asset-guard] 194 image path(s) checked, 0 broken, 0 orphan(s), 56 to localise.
 ```
 
-Les **53 « to localise »** sont les visuels dont les octets sont encore
+Les **56 « to localise »** sont les visuels dont les octets sont encore
 identiques d'un marché à l'autre. C'est la dette de localisation, et c'est la
 liste de travail de la designer, régénérée à chaque build.
-
----
 
 ## 4. Le lot à produire par marché
 
@@ -190,18 +188,22 @@ marché s'ouvre.**
 | Famille | Visuels | Poids | `/fr` | `/uk` | `/ch-fr` |
 |---|---:|---:|:-:|:-:|:-:|
 | `app/` — captures de l'app | 26 | ≈ 1,7 Mo | ✓ | ✓ | ✓ |
-| `verticals/` — 5 verticales × 3 à 4 gabarits | 16 | ≈ 1,5 Mo | ✓ | ✓ | — |
+| `verticals/` — 5 verticales × 4 gabarits | 20 | ≈ 1,8 Mo | ✓ | ✓ | — |
 | `icons/` — pictogrammes à texte/devise | 6 | ≈ 76 Ko | ✓ | ✓ | 5 |
 | `social/` — bannières OG | 2 | ≈ 64 Ko | ✓ | ✓ | ✓ |
 | `photos/` — `laptop-app` | 1 | ≈ 148 Ko | ✓ | ✓ | ✓ |
-| `illustrations/` — `sketch-calendar` | 1 | ≈ 80 Ko | ✓ | ✓ | — |
 | `brand/` — `emblem-origin` | 1 | ≈ 12 Ko | ✓ | ✓ | — |
-| **Total** | **53** | **≈ 3,6 Mo** | **53** | **53** | **34** |
+| **Total** | **56** | **≈ 3,8 Mo** | **56** | **56** | **34** |
 
-**Un marché complet = 53 visuels, ≈ 3,6 Mo.** Un marché sans pages solutions —
+**Un marché complet = 56 visuels, ≈ 3,8 Mo.** Un marché sans pages solutions —
 c'est le cas de `/ch-fr` — **= 34 visuels, ≈ 2,0 Mo**. Le lot suit la
 partialité des routes : pas de pages solutions, pas de `verticals/`, pas de
-`icons/provisions`, pas de `sketch-calendar`.
+`icons/provisions`.
+
+Les 20 fichiers de `verticals/` sont **réguliers depuis l'uniformisation du
+gabarit** (§ 5) : 5 verticales × 4 gabarits — `agenda`, `next-stop`,
+`calendar-to-mileage`, `report`. C'est le seul sous-lot qui se calcule au lieu
+de se lire page par page.
 
 ### 4.1 Les 8 visuels à traiter en premier
 
@@ -235,7 +237,7 @@ effort/portée du dossier.*
   arbitrage marketing. Ils sont **neutres** aujourd'hui — un seul fichier,
   aucun suffixe : les localiser demande d'abord cette décision.
 
-### 4.3 Comment faire passer le lot de 53 à ≈ 40
+### 4.3 Comment faire passer le lot de 56 à ≈ 43
 
 Les 26 visuels de `app/` ne montrent que **13 écrans distincts** :
 
@@ -250,8 +252,8 @@ Les 26 visuels de `app/` ne montrent que **13 écrans distincts** :
 
 Neuf fichiers pour l'écran « Paramètres », c'est **neuf visuels à produire par
 marché** pour un seul écran de l'app. Si la designer livre **un master par
-écran** et que les recadrages en sont dérivés, le lot par marché tombe de 53 à
-≈ 40, soit **un quart d'effort en moins à chaque ouverture**.
+écran** et que les recadrages en sont dérivés, le lot par marché tombe de 56 à
+≈ 43, soit **un quart d'effort en moins à chaque ouverture**.
 
 Ces fichiers ne sont pas interchangeables en l'état (ratios et cadrages
 différents, portés par `desktopSrc`/`tabletSrc` et par des cartes de
@@ -267,19 +269,17 @@ correctement « mai » puis « juin ».*
 
 ---
 
-## 5. Les cinq pages verticales ne sont pas gabarit-identiques
+## 5. Le gabarit des pages verticales
 
 Les cinq verticales partagent **un seul gabarit** (`SolutionPage.astro`,
-collection `solutions`) et donc **exactement 10 emplacements d'image**. Mais
-**3 emplacements sur 10 sont servis par des sources différentes selon la
-page** : le lot de `verticals/` n'est pas 5 × 3 fichiers, c'est 16 fichiers
-irréguliers. La divergence est identique sur `/fr` et sur `/uk` (les YAML
-anglais sont des copies structurelles des français).
+collection `solutions`) et donc **exactement 10 emplacements d'image**. Le
+gabarit ne contraint pas quel fichier remplit un emplacement : c'est aux YAML
+de rester cohérents entre eux, et ils ne l'étaient pas.
 
 | Emplacement | immo | assurance | artisans | consultants | libérales |
 |---|---|---|---|---|---|
-| `head.image` | `agenda` dédié | `agenda` dédié | dédié | dédié | dédié |
-| `featureHighlights.image` | `illustrations/sketch-calendar` | **`next-stop` dédié** | sketch | sketch | sketch |
+| `head.image` | `agenda` dédié | dédié | dédié | dédié | dédié |
+| `featureHighlights.image` | `next-stop` dédié | dédié | dédié | dédié | dédié |
 | `benefits[0].image` | `calendar-to-mileage` dédié | dédié | dédié | dédié | dédié |
 | `benefits[1].image` | `report` dédié | dédié | dédié | dédié | dédié |
 | `benefits[2].image` | `photos/laptop-app` | idem | idem | idem | idem |
@@ -289,40 +289,63 @@ anglais sont des copies structurelles des français).
 | `customerCase.gains[1].image` | `icons/trip-modes` | **`icons/provisions`** | trip-modes | trip-modes | trip-modes |
 | `customerCase.gains[2].image` | `icons/compliance` | idem | idem | idem | idem |
 
-**Oui, cela veut dire que les pages ne se présentent pas pareil**, et les
-écarts ne sont pas de simples choix de fichier :
+Les quatre premiers emplacements sont **uniformes** : chaque verticale a ses
+quatre visuels dédiés, dans son dossier, sous les mêmes noms. Le lot
+`verticals/` d'un marché se calcule donc : 5 × 4 = 20 fichiers.
 
-1. **Assurance montre une capture d'app (`next-stop`) là où les quatre autres
-   montrent un croquis au trait (`sketch-calendar`).** Deux registres visuels
-   différents au même endroit de la page : produit vs illustration.
-2. **Assurance promet « provisions mensuelles » là où les quatre autres
-   promettent « modes de déplacement ».** Ce n'est pas un écart d'image, c'est
-   un **bénéfice produit différent** mis en avant — le texte du bloc diffère en
-   conséquence.
-3. **Le cas client est incarné sur 3 verticales et anonyme sur 2.** Immo,
-   assurance et libérales affichent un portrait dédié ; artisans et consultants
-   retombent sur le persona générique — alors que la copie de ces pages nomme
-   quand même une personne. Le témoignage de mi-page a, lui, **trois sources
-   différentes** pour un seul emplacement.
+### 5.1 Uniformisation appliquée : `featureHighlights.image`
 
-Origine : ces pages ont été construites une par une à l'époque Twig/WordPress,
-chacune réutilisant ce qui était sous la main. La conséquence pour l'ouverture
-d'un marché est concrète — **le lot n'est pas calculable depuis le gabarit**,
-il faut le lire page par page, et la designer ne peut pas recevoir un brief
-répétable (« 3 visuels × 5 verticales »).
+Quatre verticales servaient le croquis au trait `illustrations/sketch-calendar`
+là où assurance servait une capture d'app dédiée — deux registres visuels
+différents au même endroit de la page. Les cinq servent désormais
+`verticals/<id>/next-stop.<marché>.png`.
 
-Deux corrections à mener, inscrites au reste-à-faire (§ 9) :
+Conséquences :
 
-- **Produit / design** : arrêter la grille des 10 emplacements et décider, pour
-  chacun, s'il est **dédié à la verticale** ou **partagé**. Uniformiser vers le
-  haut coûte +9 visuels par marché (portraits et `next-stop` pour les cinq) ;
-  uniformiser vers le bas ramène `verticals/` à 15 fichiers réguliers.
-- **Dev** : contrôler la parité. Le schéma de la collection ne peut pas exiger
-  un chemin précis, mais un contrôle « même emplacement ⇒ même famille d'asset
-  sur les cinq verticales » est mécanisable dans `asset-guard` ou dans un test
-  de la collection, et rendrait toute nouvelle divergence visible au build.
+- `illustrations/sketch-calendar.fr.png` et `.uk.png` n'étaient référencés que
+  là : ils sont **retirés du dépôt** (récupérables dans l'historique git,
+  commit `770b1ba`). La famille `illustrations/` ne contient plus que
+  `sketch-accountant.png`, neutre.
+- Le lot par marché passe de 53 à **56 visuels** : −1 croquis, +4 `next-stop`.
+- Les quatre nouveaux `next-stop` portent aujourd'hui **les octets de celui de
+  l'assurance** — état de départ assumé, comme pour un marché non localisé.
+  Ils montrent donc des rendez-vous d'agent d'assurance sur les pages immo,
+  artisans, consultants et libérales. **À produire par la designer**, au même
+  titre que `agenda` et `report`.
+- Point aveugle à connaître : `asset-guard` compare les octets **entre
+  marchés**, pas entre verticales. Ces quatre doublons n'apparaissent donc pas
+  dans la ligne « to localise » du build — seulement dans la comparaison RMSE
+  décrite en § 7.
 
----
+### 5.2 Divergences restantes, à trancher
+
+Trois emplacements sur dix restent hétérogènes, et deux d'entre eux ne sont pas
+un simple choix de fichier :
+
+1. **Le cas client est incarné sur 3 verticales et anonyme sur 2.** Immo,
+   assurance et libérales affichent un portrait dédié
+   (`verticals/<id>/portrait-customer.jpg`) ; artisans et consultants
+   retombent sur `people/portrait-persona.jpg`, alors que la copie de ces pages
+   nomme quand même une personne. Uniformiser vers le haut = 2 portraits à
+   produire ; vers le bas = perdre l'incarnation sur trois pages qui l'ont.
+2. **Le témoignage de mi-page a trois sources pour un seul emplacement** : un
+   portrait dédié (immo), `people/portrait-persona.jpg` (assurance) et
+   `people/portrait-testimonial.png` (les trois autres). Aucune règle derrière
+   ce partage à trois.
+3. **Assurance met en avant « provisions mensuelles » là où les quatre autres
+   mettent « modes de déplacement »** (`icons/provisions` vs
+   `icons/trip-modes`). Ce n'est pas un écart d'image : c'est un **bénéfice
+   produit différent**, et le texte du bloc diffère en conséquence. À trancher
+   côté marketing, pas côté assets — soit les cinq verticales mettent en avant
+   le même bénéfice, soit la divergence est assumée et documentée. Noter au
+   passage que `icons/provisions` n'existe pas pour `/ch-fr` : la question se
+   reposera à chaque marché qui ouvre des pages solutions.
+
+Origine commune : ces pages ont été construites une par une à l'époque
+Twig/WordPress, chacune réutilisant ce qui était sous la main. Tant que les
+emplacements 6, 7 et 9 divergent, **le lot d'un marché ne se calcule pas
+entièrement depuis le gabarit** — il faut encore lire les portraits page par
+page. C'est l'objet des deux tâches de parité en § 9.
 
 ## 6. Les garde-fous côté dev
 
@@ -428,21 +451,24 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
 - [ ] **Identifier et fournir la police de l'app** (ce n'est pas Open Sans,
       la seule famille du site — `src/styles/global.css:5-8`). Sans elle, aucun
       ré-export ne sera raccord.
-- [ ] Produire le lot `/uk` : **53 visuels**, miles et livres sterling.
+- [ ] Produire le lot `/uk` : **56 visuels**, miles et livres sterling.
       `npm run build` en imprime la liste.
 - [ ] Produire le lot `/ch-fr` : **34 visuels**, CHF et taux de règlement de
       frais — pas de barème national opposable (`src/data/mileage-ch.ts`).
+- [ ] **Produire les 4 `verticals/<id>/next-stop`** d'immo, artisans,
+      consultants et libérales (§ 5.1) : ils portent aujourd'hui les octets de
+      celui de l'assurance, donc des rendez-vous d'agent d'assurance sur quatre
+      pages qui ne le sont pas. Invisible pour `asset-guard`.
 - [ ] Ré-exporter en PNG les 7 aplats aujourd'hui en JPEG (§ 7).
-- [ ] `illustrations/sketch-calendar` : croquis dont le texte est **écrit à la
-      main** (« VISITE BUREAU R.KIPLING », « HOME STAGING CHEZ V.HUGO »).
-      Décider s'il est localisé ou retiré des marchés non francophones.
 
 ### Produit / Design
 
-- [ ] **Aligner les cinq pages verticales** (§ 5) : arrêter la grille des
-      10 emplacements et trancher, pour chacun, « dédié » ou « partagé ».
-      Aujourd'hui 3 emplacements sur 10 divergent, dont un qui change le
-      bénéfice mis en avant (provisions vs modes de déplacement).
+- [ ] **Trancher les 3 emplacements encore divergents** des pages verticales
+      (§ 5.2) : portrait du cas client (dédié sur 3 verticales, générique sur
+      2), portrait du témoignage de mi-page (trois sources pour un emplacement),
+      et surtout `gains[1]` — assurance met en avant les **provisions** là où
+      les quatre autres mettent les **modes de déplacement**. Ce dernier est un
+      arbitrage marketing, pas un choix d'image.
 - [ ] Arbitrer **un master par écran** plutôt que 9 fichiers pour l'écran
       « Paramètres » (§ 4.3). Décision qui vaut −25 % sur chaque ouverture.
 - [ ] Confirmer l'affichage des miles et des devises non-euro **dans l'app** :
@@ -452,7 +478,11 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
 
 - [ ] **Contrôler la parité des pages verticales** au build (§ 5) : même
       emplacement ⇒ même famille d'asset sur les cinq verticales, pour qu'une
-      nouvelle divergence ne s'installe pas en silence.
+      nouvelle divergence ne s'installe pas en silence. Les 4 premiers
+      emplacements sont désormais réguliers, c'est le moment de figer la règle.
+- [ ] **Détecter les doublons entre verticales** dans `asset-guard` : il ne
+      compare aujourd'hui que les variantes d'un même sujet entre marchés, donc
+      cinq `next-stop` identiques dans cinq dossiers passent inaperçus (§ 5.1).
 - [ ] Passer les images par `astro:assets` (WebP/AVIF, dimensions vérifiées à
       la compilation). Chantier performance, à planifier séparément.
 
