@@ -9,7 +9,7 @@ interface Props {
   description?: string;
   /** Editorial pages: drives hreflang alternates from the routes table. */
   routeKey?: RouteKey;
-  /** Absolute or root-relative og:image; defaults to the site banner. */
+  /** Absolute or root-relative og:image; defaults to the market banner. */
   image?: string;
   robots?: string;
   ogType?: 'website' | 'article';
@@ -20,13 +20,15 @@ const {
   market,
   title,
   routeKey,
-  image = site.defaultOgImage,
   robots = 'index, follow',
   ogType = 'website',
   articlePublishedTime,
 } = Astro.props;
 
 const marketData = getMarket(market);
+// The banner carries a marketing baseline in the market's language: it is
+// market copy, so the default comes from the Market, never from site.ts.
+const image = Astro.props.image ?? marketData.ogImage;
 const description = Astro.props.description ?? marketData.defaultDescription;
 
 // Self-referencing absolute canonical, no trailing slash and no .html

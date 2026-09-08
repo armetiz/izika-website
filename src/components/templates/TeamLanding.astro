@@ -53,10 +53,10 @@ const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
       <div class="hidden sm:block">
         <img
           class="w-full rounded-xl border border-beige-line shadow-card"
-          src="/assets/landing-pages/header-screen-macbook.jpg"
+          src={copy.hero.image}
           alt={copy.hero.imageAlt}
-          width="1618"
-          height="1010"
+          width={copy.hero.imageWidth}
+          height={copy.hero.imageHeight}
         />
       </div>
     </div>
@@ -114,7 +114,7 @@ const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
   <figure class="mx-auto w-4/5">
     <img
       class="h-auto w-full"
-      src="/assets/img/illustrations/expert-comptable-large.png"
+      src="/assets/illustrations/sketch-accountant.png"
       alt={copy.security.imageAlt}
       width="1203"
       height="1349"

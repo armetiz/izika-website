@@ -50,7 +50,7 @@ Si cette première impression est négative, le contrôleur approfondira votre d
 
 Ce tableau est le résultat de l'export izika, il permet de répondre à l'ensemble des questions du contrôleur concernant vos indemnités kilométriques.
 
-![export izika](/assets/landing-pages/how-it-works-mileage-allowances-export.png?3eaf80c)
+![export izika](/assets/app/step-mileage-export.fr.png?3eaf80c)
 
 ## Comment izika vous aide à rester impeccable
 

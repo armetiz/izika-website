@@ -30,6 +30,29 @@
 /fr_FR                                 /fr                                       301
 /fr_CH                                 /fr                                       301
 
+# ---- Legacy image URLs (WordPress era + /content/pages) ----
+# The files moved to /assets/articles/<article>/ on 2026-09-08; these keep
+# the URLs indexed in Google Images and hotlinked from old pages alive.
+/content/pages/bareme-indemnite-kilometrique.jpg                                         /assets/social/og-article-default.fr.jpg                           301
+/content/pages/bareme-indemnites-kilometriques-2020/bareme-indemnites-kilometriques.jpg  /assets/articles/bareme-indemnites-kilometriques-2020/cover.jpg  301
+/content/pages/note-de-frais-modele-2020-comptabilite/modele-note-de-frais.jpg           /assets/articles/note-de-frais-modele-comptabilite/cover.jpg    301
+/wp-content/uploads/2017/02/IK-voitures-2017.jpg                                         /assets/articles/bareme-indemnites-kilometriques-2017/bareme-2017.jpg  301
+/wp-content/uploads/2017/03/ajouter-un-agenda-dans-Google.png                            /assets/articles/integration-apple-icloud-icalendar/ajouter-un-agenda-dans-google.png  301
+/wp-content/uploads/2017/03/icloud-partage-calendrier.jpg                                /assets/articles/integration-apple-icloud-icalendar/icloud-partage-du-calendrier.jpg  301
+/wp-content/uploads/2017/03/importer-un-agenda-ICS-dans-Google-agenda.jpg                /assets/articles/integration-apple-icloud-icalendar/importer-un-agenda-ics-dans-google.jpg  301
+/wp-content/uploads/2017/08/onboarding-izika-0-une-ligne-de-RDV-dans-mes-IK.jpg          /assets/articles/parametrer-son-compte/ligne-rdv-dans-mes-ik.jpg  301
+/wp-content/uploads/2017/08/onboarding-izika-1-connexion.jpg                             /assets/articles/parametrer-son-compte/connexion.jpg            301
+/wp-content/uploads/2017/08/onboarding-izika-2-google-account-selector2.jpg              /assets/articles/parametrer-son-compte/google-selection-du-compte.jpg  301
+/wp-content/uploads/2017/08/onboarding-izika-3-adresses-favorites.jpg                    /assets/articles/parametrer-son-compte/adresses-favorites.jpg   301
+/wp-content/uploads/2017/08/onboarding-izika-5-agendas-Google.jpg                        /assets/articles/parametrer-son-compte/agendas-google.jpg       301
+/wp-content/uploads/2018/09/Dolibarr-agenda-7-1024x473.png                               /assets/articles/integration-dolibarr-module-agenda/calendrier-ics.png  301
+/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-1-1024x458.png               /assets/articles/integration-dolibarr-module-agenda/publication-agenda-ics.png  301
+/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-3-1024x474.png               /assets/articles/integration-dolibarr-module-agenda/activation-calendrier-ics.png  301
+/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-4-1024x434.png               /assets/articles/integration-dolibarr-module-agenda/configuration-agenda.png  301
+/wp-content/uploads/2019/01/Voiture-electrique.jpg                                       /assets/articles/bareme-indemnites-kilometriques-2019/voiture-electrique.jpg  301
+/wp-content/uploads/2019/03/GRC-CONTACT-CRM-lien-ICS-pour-IZIKA-1024x585.png             /assets/articles/integration-grc-contact/lien-ics-grc-contact.png  301
+/wp-content/uploads/2019/10/voiture-calculer-ik-1-1024x683.jpg                           /assets/articles/note-de-frais-modele-comptabilite/calculer-frais-de-deplacement.jpg  301
+
 # ---- Splats last ----
 /fr_FR/*                               /fr/:splat                                301
 /fr_CH/*                               /fr/:splat                                301

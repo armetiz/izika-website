@@ -48,6 +48,19 @@ export interface Market {
   ogLocale: string;
   /** JSON-LD inLanguage. */
   schemaInLanguage: string;
+  /**
+   * og:image served on every page of this market — a 1200x630 banner with its
+   * marketing baseline baked in, so it is market copy, not a shared logo.
+   * Required: a new market cannot compile until it has its own banner
+   * (public/assets/social/og-default.<market>.jpg).
+   */
+  ogImage: string;
+  /**
+   * og:image of articles that carry no cover of their own. Same rule: the
+   * default visual states a tax scheme, so every market owns one
+   * (public/assets/social/og-article-default.<market>.jpg).
+   */
+  articleOgImage: string;
   /** og:site_name / WebSite name. */
   siteName: string;
   /** JSON-LD WebSite description. */
@@ -83,6 +96,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'fr-FR',
     ogLocale: 'fr_FR',
     schemaInLanguage: 'fr-FR',
+    ogImage: '/assets/social/og-default.fr.jpg',
+    articleOgImage: '/assets/social/og-article-default.fr.jpg',
     siteName: 'izika : Calcul indemnité kilométrique',
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:
@@ -117,6 +132,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'en-GB',
     ogLocale: 'en_GB',
     schemaInLanguage: 'en-GB',
+    ogImage: '/assets/social/og-default.uk.jpg',
+    articleOgImage: '/assets/social/og-article-default.uk.jpg',
     siteName: 'izika: Mileage allowance automation',
     websiteDescription: 'Automatic mileage allowance management',
     defaultDescription:
@@ -164,6 +181,8 @@ export const MARKETS: Record<MarketId, Market> = {
     hreflang: 'fr-CH',
     ogLocale: 'fr_CH',
     schemaInLanguage: 'fr-CH',
+    ogImage: '/assets/social/og-default.ch-fr.jpg',
+    articleOgImage: '/assets/social/og-article-default.ch-fr.jpg',
     siteName: 'izika : indemnités kilométriques en Suisse',
     websiteDescription: 'Gestion automatique des indemnités kilométriques',
     defaultDescription:

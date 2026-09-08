@@ -17,23 +17,23 @@ Dolibarr propose un module Agenda permettant d'exporter vos rendez-vous au forma
 
 Dans l'interface Accueil, cliquez sur **Configuration** :
 
-![Publication agenda Dolibarr ICS 1](/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-1-1024x458.png)
+![Publication agenda Dolibarr ICS 1](/assets/articles/integration-dolibarr-module-agenda/publication-agenda-ics.png)
 
 Ensuite **activez Évènements/agenda** dans les modules :
 
-![Calendrier ICS Dolibarr activation](/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-3-1024x474.png)
+![Calendrier ICS Dolibarr activation](/assets/articles/integration-dolibarr-module-agenda/activation-calendrier-ics.png)
 
 ## Paramétrage du module Actions et agenda
 
 Appliquez la **configuration** suivante sur le module Actions et agenda :
 
-![Agenda Dolibarr configurer](/wp-content/uploads/2018/09/Publication-agenda-Dolibarr-ICS-4-1024x434.png)
+![Agenda Dolibarr configurer](/assets/articles/integration-dolibarr-module-agenda/configuration-agenda.png)
 
 ## Génération du lien ICS
 
 Dans l'onglet **Export Calendrier**, cliquez sur **Générer** (la flèche circulaire). Cette action crée une clé d'autorisation aléatoire pour votre lien d'export.
 
-![Calendrier ICS Dolibarr](/wp-content/uploads/2018/09/Dolibarr-agenda-7-1024x473.png)
+![Calendrier ICS Dolibarr](/assets/articles/integration-dolibarr-module-agenda/calendrier-ics.png)
 
 Copiez le second lien (ical/ics) — il contient la clé alphanumérique en fin d'URL.
 

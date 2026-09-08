@@ -19,7 +19,7 @@ L'Administration fiscale publie 2 barèmes BIC destinés au calcul des frais de 
 
 ## Quels véhicules sont concernés par la déduction forfaitaire ?
 
-![Véhicules concernés par la déduction forfaitaire](/wp-content/uploads/2019/01/Voiture-electrique.jpg)
+![Véhicules concernés par la déduction forfaitaire](/assets/articles/deduction-forfaitaire-frais-vehicules-indemnites-kilometriques/voiture-electrique.jpg)
 
 ### Véhicules visés par le barème BNC
 

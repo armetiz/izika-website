@@ -30,11 +30,11 @@ Ensuite dans Google Agenda :
 
 1. Rendez-vous sur Google Agenda et **créez un nouvel agenda** en cliquant sur le **+** à côté de *Autres agendas*
 
-![ajouter un agenda dans Google Calendar](/wp-content/uploads/2017/03/ajouter-un-agenda-dans-Google.png)
+![ajouter un agenda dans Google Calendar](/assets/articles/integration-apple-icloud-icalendar/ajouter-un-agenda-dans-google.png)
 
 2. Dans les Paramètres de Google Agenda, cliquez sur **Importer** puis sélectionnez le fichier ICS exporté depuis iCalendar
 
-![importer un agenda ICS dans Google agenda](/wp-content/uploads/2017/03/importer-un-agenda-ICS-dans-Google-agenda.jpg)
+![importer un agenda ICS dans Google agenda](/assets/articles/integration-apple-icloud-icalendar/importer-un-agenda-ics-dans-google.jpg)
 
 3. Connectez ce Google Agenda à izika depuis les paramètres izika
 
@@ -50,7 +50,7 @@ Cette méthode ne permet d'accéder qu'aux 3 derniers mois de rendez-vous.
 6. Cliquez sur **Ajouter un agenda via un lien ICS**
 7. Collez le lien et validez
 
-![icloud partage calendrier](/wp-content/uploads/2017/03/icloud-partage-calendrier.jpg)
+![icloud partage calendrier](/assets/articles/integration-apple-icloud-icalendar/icloud-partage-du-calendrier.jpg)
 
 ### En cas d'erreur en collant le lien URL
 

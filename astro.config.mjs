@@ -7,6 +7,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import legacyRedirects from './src/integrations/legacy-redirects.mjs';
+import assetGuard from './src/integrations/asset-guard.mjs';
 import { site } from './src/config/site';
 
 // The public site is fully static — no adapter, no worker. The Keystatic
@@ -26,7 +27,12 @@ export default defineConfig({
   trailingSlash: 'never',
   build: { format: 'file' },
   output: 'static',
-  integrations: [react(), ...(enableKeystatic ? [keystatic()] : []), legacyRedirects()],
+  integrations: [
+    react(),
+    ...(enableKeystatic ? [keystatic()] : []),
+    legacyRedirects(),
+    assetGuard(),
+  ],
   markdown: {
     rehypePlugins: [
       [

@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Fonctionnalités
   image:
-    src: /assets/solutions/artisans-btp/rdv-template.png
+    src: /assets/verticals/craftsmen-construction/agenda.fr.png
     alt: Export indemnités kilométriques pour les artisans et le BTP
     title: Export indemnités kilométriques pour les artisans et le BTP
 
 featureHighlights:
   title: La méthode la plus rapide pour les artisans pour gérer leurs déplacements chantier
   image:
-    src: /assets/solutions/visuel-agenda-professionnel.png
+    src: /assets/illustrations/sketch-calendar.fr.png
     alt: izika pour les artisans et le BTP
     title: izika pour les artisans et le BTP
   ctaText: Tester izika
@@ -46,7 +46,7 @@ benefits:
   title: "Avantages d'un outil de gestion des IK pour les artisans du BTP"
   items:
     - title: Vos trajets chantier générés automatiquement depuis votre agenda
-      image: /assets/solutions/artisans-btp/calendar-to-ik.png
+      image: /assets/verticals/craftsmen-construction/calendar-to-mileage.fr.png
       imageAlt: "izika - Indemnités kilométriques pour artisans calculées à partir de l'agenda"
       text: |
         <p>Votre planning est rythmé par des visites de chantier, des rendez-vous clients pour des devis, des passages chez des fournisseurs. Autant de déplacements que vous n'avez pas le temps de noter un par un.</p>
@@ -56,7 +56,7 @@ benefits:
           <li>Les distances et les montants d'indemnités sont déjà là, sans aucune saisie</li>
         </ul>
     - title: Un rapport fiscal conforme, prêt à envoyer à votre comptable
-      image: /assets/solutions/artisans-btp/rapport-print-ombre.png
+      image: /assets/verticals/craftsmen-construction/report.fr.png
       imageAlt: izika - Rapport fiscal conforme pour les artisans et le BTP
       text: |
         <p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justifiez chaque déplacement chantier en cas de contrôle fiscal</li>
         </ul>
     - title: Vous ne gérez pas izika au quotidien — il fonctionne en arrière plan
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.fr.jpg
       imageAlt: izika - Gestion des IK artisans sans gestion quotidienne
       text: |
         <p>Sur un chantier, vous n'avez pas le temps de noter vos kilomètres. izika ne vous demande rien au jour le jour : il travaille en arrière-plan, à partir de votre agenda.</p>
@@ -82,7 +82,7 @@ benefits:
     quote: >-
       Je fais des chantiers dans un rayon de 30 km autour de chez moi, tous les jours. Avant, je ne déclarais
       pas la moitié de mes trajets. Avec izika, tout est capturé et mon comptable a le rapport en deux clics.
-    avatar: /assets/solutions/testimonial-avatar.png
+    avatar: /assets/people/portrait-testimonial.png
     avatarAlt: Sébastien M.
     name: Sébastien M.
     companyTitle: Électricien indépendant
@@ -97,21 +97,21 @@ customerCase:
     <p>
       Clients izika depuis 2025, ils ne perdent plus de temps à reconstituer leurs déplacements en fin d'exercice.
     </p>
-  avatar: /assets/solutions/persona.jpg
+  avatar: /assets/people/portrait-persona.jpg
   avatarAlt: "Julien - Artisans de l'Ouest"
   gainsTitle: "Voici ce qu'Artisans de l'Ouest a gagné en utilisant izika :"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.fr.png
       imageAlt: "Trajets chantier calculés automatiquement depuis l'agenda"
       text: >-
         Leurs déplacements quotidiens vers les chantiers de Lion-sur-Mer, Caen, Hérouville et toute la zone normande
         <strong>sont automatiquement transformés en indemnités kilométriques</strong> sans aucune saisie.
-    - image: /assets/landing-pages/illu-tournee-etoile.png
+    - image: /assets/icons/trip-modes.png
       imageAlt: Visites de chantier et rendez-vous devis
       text: >-
         Chaque visite de chantier, chaque rendez-vous pour un devis ou une livraison de matériau devient un trajet dans izika.
         Ils vérifient leurs <strong>déplacements en quelques secondes</strong> avant d'exporter.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.fr.png
       imageAlt: Rapport annuel transmis au comptable sans effort
       text: >-
         En fin d'exercice, <strong>le rapport est prêt en quelques minutes.</strong>

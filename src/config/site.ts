@@ -12,5 +12,4 @@ export const site = {
    */
   joinUrl: 'https://go.izika.com/join',
   twitterHandle: '@izika',
-  defaultOgImage: '/assets/img/social/opengraph-ban.jpg',
 } as const;

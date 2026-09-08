@@ -8,25 +8,25 @@ export const featuresPageUk: FeaturesPageCopy = {
   },
   iconBlocks: [
     {
-      icon: '/assets/landing-pages/icon_km-auto.png',
+      icon: '/assets/icons/auto-distance.uk.png',
       alt: 'izika imports appointments from the calendar',
       title: 'Automatic trip generation',
       text: 'izika builds your trip list from the appointments in your calendar.',
     },
     {
-      icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+      icon: '/assets/icons/calendar-to-trip.uk.png',
       alt: 'SVG',
       title: 'Connects to your online calendar',
       text: 'Connect your favourite online calendar: Google Calendar, Outlook, Office 365, iCloud, .ics link…',
     },
     {
-      icon: '/assets/landing-pages/icon_bareme-personnalise.png',
+      icon: '/assets/icons/custom-rate.png',
       alt: 'configure your default travel mode',
       title: 'Mileage allowance scales',
       text: 'Choose between the official scales or create your own custom mileage scale.',
     },
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.uk.png',
       alt: 'SVG',
       title: 'Exports compliant with current tax rules',
       text: 'You get a complete monthly and/or yearly export — readable, reliable and tax-compliant.',
@@ -34,7 +34,7 @@ export const featuresPageUk: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-vehicules.jpg',
+      image: '/assets/app/card-settings-vehicles.uk.jpg',
       imageAlt: 'Multi-vehicle management',
       title: 'Multi-vehicle management',
       paragraphsHtml: [
@@ -43,7 +43,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-adresses.jpg',
+      image: '/assets/app/card-settings-addresses.uk.jpg',
       imageAlt: 'Favourite addresses',
       title: 'Favourite addresses',
       paragraphsHtml: [
@@ -51,7 +51,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-mode-deplacement.jpg',
+      image: '/assets/app/card-settings-travel-mode.uk.jpg',
       imageAlt: 'Travel modes',
       title: 'Travel modes',
       paragraphsHtml: [

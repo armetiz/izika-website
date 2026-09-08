@@ -55,13 +55,18 @@ export interface HomePageCopy {
     ctaLabel: string;
   };
   calendarLogos: ReadonlyArray<{ src: string; alt: string }>;
+  /** Photo behind the testimonial grid — shows the app, hence market copy. */
+  testimonialsBackground: string;
   team: {
     eyebrow: string;
     title: string;
     benefits: ReadonlyArray<string>;
     moreLabel: string;
     tryLabel: string;
+    image: string;
     imageAlt: string;
+    imageWidth: number;
+    imageHeight: number;
   };
   pricing: {
     title: string;

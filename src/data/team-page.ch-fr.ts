@@ -3,6 +3,7 @@ import { teamPageFr } from './team-page.fr';
 import { complianceSectionChFr } from './compliance-section.ch-fr';
 import { TAUX_ACTUEL } from './mileage-ch';
 import { chfPerKm } from '../lib/format';
+import { marketAssets } from '../lib/assets';
 
 /**
  * Landing /ch-fr/team. Dérivée de team-page.fr.ts pour la mécanique produit,
@@ -21,7 +22,7 @@ import { chfPerKm } from '../lib/format';
  * src/pages/ch-fr/team.astro (bloc éditorial hors du shell ProductLanding) ;
  * ce module en porte les accroches.
  */
-export const teamPageChFr: ProductLandingCopy = {
+export const teamPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
   ...teamPageFr,
   hero: {
     ...teamPageFr.hero,
@@ -35,23 +36,23 @@ export const teamPageChFr: ProductLandingCopy = {
   },
   highlights: [
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.ch-fr.png',
       text: 'Preuve du respect de<br /> l’art. 327a CO',
     },
     {
-      icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+      icon: '/assets/icons/calendar-to-trip.ch-fr.png',
       text: 'Génération en ligne des relevés de déplacements',
     },
     {
-      icon: '/assets/landing-pages/team/icon_approval.png',
+      icon: '/assets/icons/approval.ch-fr.png',
       text: "Flux d'approbation des demandes de remboursement",
     },
     {
-      icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
+      icon: '/assets/icons/teams-folders.png',
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/landing-pages/team/icon_security.png',
+      icon: '/assets/icons/security.ch-fr.png',
       text: 'Sécurité, confidentialité<br /> hébergement européen',
     },
   ],
@@ -83,4 +84,4 @@ export const teamPageChFr: ProductLandingCopy = {
     text: 'Essayez gratuitement toutes les fonctionnalités de izika Team pour votre organisation',
     ctaLabel: 'Tester izika pendant 2 mois',
   },
-};
+});

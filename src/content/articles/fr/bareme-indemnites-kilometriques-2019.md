@@ -51,7 +51,7 @@ Les voitures de 3 et 4 CV fiscaux bénéficient donc d'un bonus de respectivemen
 
 Ce tableau est désormais officiel et si vous n'avez pas encore clôturé le bilan, vous pouvez l'appliquer aux frais kilométriques de 2018.
 
-![voiture électrique : barème kilométrique augmenté](/wp-content/uploads/2019/01/Voiture-electrique.jpg)Les députés souhaitent également différencier les indemnités kilométriques des véhicules électriques. Aujourd'hui, du fait d'un coût d'achat beaucoup plus élevé, ceux-ci ne sont pas rentables pour les professionnels. En augmentant le **barème d'indemnités kilométriques des voitures à motorisation électrique**, l'Etat compte sur un effet d'aubaine et une accélération de la transition vers la voiture électrique.
+![voiture électrique : barème kilométrique augmenté](/assets/articles/bareme-indemnites-kilometriques-2019/voiture-electrique.jpg)Les députés souhaitent également différencier les indemnités kilométriques des véhicules électriques. Aujourd'hui, du fait d'un coût d'achat beaucoup plus élevé, ceux-ci ne sont pas rentables pour les professionnels. En augmentant le **barème d'indemnités kilométriques des voitures à motorisation électrique**, l'Etat compte sur un effet d'aubaine et une accélération de la transition vers la voiture électrique.
 
 
 ### Modèle de relevé d'indemnités kilométriques

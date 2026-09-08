@@ -2,6 +2,7 @@ import type { TeamLandingCopy } from './team-landing';
 import { teamLandingFr } from './team-landing.fr';
 import { TAUX_ACTUEL, TAUX_ANTERIEUR } from './mileage-ch';
 import { chfPerKm } from '../lib/format';
+import { marketAssets } from '../lib/assets';
 
 /**
  * Copy de la landing /ch-fr/team-entreprises. Dérivée de team-landing.fr.ts :
@@ -21,7 +22,7 @@ import { chfPerKm } from '../lib/format';
  * Pas de landing `/ch-fr/team-collectivites` : « collectivités » est une
  * catégorie administrative française (voir le commentaire de routes.ts).
  */
-export const teamLandingChFr: TeamLandingCopy = {
+export const teamLandingChFr: TeamLandingCopy = marketAssets('ch-fr', {
   ...teamLandingFr,
   hero: {
     ...teamLandingFr.hero,
@@ -30,17 +31,17 @@ export const teamLandingChFr: TeamLandingCopy = {
   },
   heroBenefits: [
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.ch-fr.png',
       text: 'Preuve du respect de l’art. 327a CO',
     },
-    { icon: '/assets/landing-pages/icon_cal-to-rdv.png', text: 'Gestion intelligente des RDV' },
-    { icon: '/assets/landing-pages/team/icon_approval.png', text: "Flux d'approbation efficaces" },
+    { icon: '/assets/icons/calendar-to-trip.ch-fr.png', text: 'Gestion intelligente des RDV' },
+    { icon: '/assets/icons/approval.ch-fr.png', text: "Flux d'approbation efficaces" },
     {
-      icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
+      icon: '/assets/icons/teams-folders.png',
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/landing-pages/team/icon_security.png',
+      icon: '/assets/icons/security.ch-fr.png',
       text: 'Sécurisé, fiable, hébergement européen',
     },
   ],
@@ -82,4 +83,4 @@ export const teamLandingChFr: TeamLandingCopy = {
     ],
     imageAlt: 'izika, relevés de frais kilométriques prêts pour votre fiduciaire',
   },
-};
+});

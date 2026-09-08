@@ -40,8 +40,16 @@ export interface ProductLandingCopy {
       tabletAlt: string;
       tabletWidth: number;
       tabletHeight: number;
+      /** Small tablet overlay — market-dependent like the two above. */
+      ipadSrc: string;
       ipadAlt: string;
+      ipadWidth: number;
+      ipadHeight: number;
+      /** Phone overlay. */
+      mobileSrc: string;
       mobileAlt: string;
+      mobileWidth: number;
+      mobileHeight: number;
     };
   };
   /** Icon row under the hero; text may contain inline HTML (<br>). */

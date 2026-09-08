@@ -19,7 +19,7 @@ Pour récupérer le lien ICS dans **GRC Contact** :
 3. Cliquez sur l'onglet **Liens ICS/ICAL**
 4. Copiez le lien commençant par `https://` en face de l'agenda contenant vos rendez-vous professionnels
 
-![Récupérer le lien ICS depuis GRC Contact](/wp-content/uploads/2019/03/GRC-CONTACT-CRM-lien-ICS-pour-IZIKA-1024x585.png)
+![Récupérer le lien ICS depuis GRC Contact](/assets/articles/integration-grc-contact/lien-ics-grc-contact.png)
 
 Ensuite, dans izika :
 

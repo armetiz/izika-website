@@ -9,25 +9,25 @@ export const featuresPageFr: FeaturesPageCopy = {
   },
   iconBlocks: [
     {
-      icon: '/assets/landing-pages/icon_km-auto.png',
+      icon: '/assets/icons/auto-distance.fr.png',
       alt: 'izika import des rdv depuis le calendrier',
       title: 'Génération automatique des déplacements',
       text: 'izika génère votre liste de déplacements à partir des rendez-vous de votre agenda.',
     },
     {
-      icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+      icon: '/assets/icons/calendar-to-trip.fr.png',
       alt: 'SVG',
       title: 'Connexion avec votre agenda en ligne',
       text: 'Connectez votre agenda en ligne préféré : Google Agenda, Outlook, Office360, iCloud, lien .ics…',
     },
     {
-      icon: '/assets/landing-pages/icon_bareme-personnalise.png',
+      icon: '/assets/icons/custom-rate.png',
       alt: 'configurez votre mode de déplacement par défaut',
       title: 'Barèmes kilométriques',
       text: 'Vous pouvez choisir d’utiliser les barêmes officiels ou bien de créer votre propre barême personnalisé.',
     },
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.fr.png',
       alt: 'SVG',
       title: 'Export conforme aux normes fiscales en vigueur',
       text: 'Vous récupérez un export mensuel et/ou annuel complet, lisible, fiable et conforme aux normes fiscales.',
@@ -35,7 +35,7 @@ export const featuresPageFr: FeaturesPageCopy = {
   ],
   cards: [
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-vehicules.jpg',
+      image: '/assets/app/card-settings-vehicles.fr.jpg',
       imageAlt: 'Gestion multi-véhicules',
       title: 'Gestion multi-véhicules',
       paragraphsHtml: [
@@ -44,7 +44,7 @@ export const featuresPageFr: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-adresses.jpg',
+      image: '/assets/app/card-settings-addresses.fr.jpg',
       imageAlt: 'Adresses favorites',
       title: 'Adresses favorites',
       paragraphsHtml: [
@@ -52,7 +52,7 @@ export const featuresPageFr: FeaturesPageCopy = {
       ],
     },
     {
-      image: '/assets/img/fonctionnalites/fonctionnalites-mode-deplacement.jpg',
+      image: '/assets/app/card-settings-travel-mode.fr.jpg',
       imageAlt: 'Modes de déplacement',
       title: 'Modes de déplacement',
       paragraphsHtml: [

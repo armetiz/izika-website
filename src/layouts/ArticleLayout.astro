@@ -37,8 +37,9 @@ const siblings = hreflangKey
   : [];
 const articleAlternates = siblings.length >= 2 ? siblings : [];
 
-// Same default og:image as the old page.html.twig.
-const ogImage = image ? `/${image.replace(/^\//, '')}` : '/content/pages/bareme-indemnite-kilometrique.jpg';
+// An article without a cover falls back to its MARKET's article banner: the
+// visual states a tax scheme, so it cannot be a single site-wide constant.
+const ogImage = image ? `/${image.replace(/^\//, '')}` : getMarket(market).articleOgImage;
 
 const canonical = new URL(
   Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, ''),

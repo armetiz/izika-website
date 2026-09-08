@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/solutions/artisans-btp/rdv-template.png
+    src: /assets/verticals/craftsmen-construction/agenda.uk.png
     alt: Mileage allowance export for craftsmen and construction
     title: Mileage allowance export for craftsmen and construction
 
 featureHighlights:
   title: The fastest way for craftsmen to manage their work-site trips
   image:
-    src: /assets/solutions/visuel-agenda-professionnel.png
+    src: /assets/illustrations/sketch-calendar.uk.png
     alt: izika for craftsmen and construction
     title: izika for craftsmen and construction
   ctaText: Try izika
@@ -46,7 +46,7 @@ benefits:
   title: "Benefits of a mileage allowance management tool for construction craftsmen"
   items:
     - title: Your work-site trips generated automatically from your calendar
-      image: /assets/solutions/artisans-btp/calendar-to-ik.png
+      image: /assets/verticals/craftsmen-construction/calendar-to-mileage.uk.png
       imageAlt: "izika - Craftsmen's mileage allowances computed from the calendar"
       text: |
         <p>Your schedule revolves around site visits, client appointments for quotes and trips to suppliers. All journeys you have no time to write down one by one.</p>
@@ -56,7 +56,7 @@ benefits:
           <li>Distances and allowance amounts are already there, with zero data entry</li>
         </ul>
     - title: A compliant tax report, ready to send to your accountant
-      image: /assets/solutions/artisans-btp/rapport-print-ombre.png
+      image: /assets/verticals/craftsmen-construction/report.uk.png
       imageAlt: izika - Compliant tax report for craftsmen and construction
       text: |
         <p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justify every work-site trip in the event of a tax audit</li>
         </ul>
     - title: You don't manage izika day to day — it works in the background
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.uk.jpg
       imageAlt: izika - Craftsmen's mileage management with no daily upkeep
       text: |
         <p>On a work site, you have no time to write down your kilometres. izika asks nothing of you day to day: it works in the background, from your calendar.</p>
@@ -82,7 +82,7 @@ benefits:
     quote: >-
       I work on sites within 30 km of home, every day. I used not to report half of my trips.
       With izika, everything is captured and my accountant gets the report in two clicks.
-    avatar: /assets/solutions/testimonial-avatar.png
+    avatar: /assets/people/portrait-testimonial.png
     avatarAlt: Sébastien M.
     name: Sébastien M.
     companyTitle: Independent electrician
@@ -97,21 +97,21 @@ customerCase:
     <p>
       izika customers since 2025, they no longer waste time reconstructing their trips at the end of the financial year.
     </p>
-  avatar: /assets/solutions/persona.jpg
+  avatar: /assets/people/portrait-persona.jpg
   avatarAlt: "Julien - Artisans de l'Ouest"
   gainsTitle: "Here is what Artisans de l'Ouest gained by using izika:"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.uk.png
       imageAlt: "Work-site trips computed automatically from the calendar"
       text: >-
         Their daily trips to the work sites of Lion-sur-Mer, Caen, Hérouville and the whole Normandy area
         <strong>are automatically turned into mileage allowances</strong> with zero data entry.
-    - image: /assets/landing-pages/illu-tournee-etoile.png
+    - image: /assets/icons/trip-modes.png
       imageAlt: Site visits and quote appointments
       text: >-
         Every site visit, every appointment for a quote or a material delivery becomes a journey in izika.
         They review their <strong>trips in a few seconds</strong> before exporting.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.uk.png
       imageAlt: Annual report sent to the accountant effortlessly
       text: >-
         At the end of the financial year, <strong>the report is ready in a few minutes.</strong>

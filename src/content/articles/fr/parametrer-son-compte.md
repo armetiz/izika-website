@@ -25,7 +25,7 @@ Pour **mesurer les déplacements professionnels**, izika a besoin de connaître 
 
 Par exemple, voici à quoi ressemble un rendez-vous dans izika :
 
-![RDV dans izika](/wp-content/uploads/2017/08/onboarding-izika-0-une-ligne-de-RDV-dans-mes-IK.jpg)
+![RDV dans izika](/assets/articles/parametrer-son-compte/ligne-rdv-dans-mes-ik.jpg)
 
 Les adresses de "Départ" et de "Destination suivante" doivent être renseignées dans vos **adresses favorites** au paramétrage d'izika.
 - La destination suivante peut être le RDV suivant, on parlera alors de "Tournée" (sans retour au bureau entre les 2 RDV).
@@ -39,7 +39,7 @@ Les adresses de "Départ" et de "Destination suivante" doivent être renseignée
 
 Le plus simple est d'utiliser la connexion Google si vous avez un compte Google (gmail par exemple)
 
-![parametrer son compte login izika](/wp-content/uploads/2017/08/onboarding-izika-1-connexion.jpg)
+![parametrer son compte login izika](/assets/articles/parametrer-son-compte/connexion.jpg)
 
 Vous aurez le choix entre :
 
@@ -53,7 +53,7 @@ Google connexion vous permet de choisir sur quel compte Google vous souhaitez ut
  
 Il faut choisir le compte sur lequel se trouve votre agenda Google si vous en avez un.
 
-![Google choix du compte](/wp-content/uploads/2017/08/onboarding-izika-2-google-account-selector2.jpg)
+![Google choix du compte](/assets/articles/parametrer-son-compte/google-selection-du-compte.jpg)
 
 
 #### Paramétrer son compte : les adresses favorites
@@ -68,7 +68,7 @@ Vous pouvez saisir plusieurs adresses favorites ainsi, en cliquant sur l'étoile
 
 Si vous avez des trajets récurrents, nous vous recommandons de créer des RDV récurrents dans votre agenda.
 
-![paramétrer son compte Adresses favorites](/wp-content/uploads/2017/08/onboarding-izika-3-adresses-favorites.jpg)
+![paramétrer son compte Adresses favorites](/assets/articles/parametrer-son-compte/adresses-favorites.jpg)
 
 
 #### Paramétrer son compte : les véhicules
@@ -105,7 +105,7 @@ Par exemple, si vous connectez un agenda Google, la connexion sera permanente et
 
 Si votre agenda ne permet pas de connexion synchrone et que vous devez passer par une sauvegarde locale des RDV professionnels, nous parlerons de connexion asynchrone.
 
-![paramètre compte - agendas Google](/wp-content/uploads/2017/08/onboarding-izika-5-agendas-Google.jpg)
+![paramètre compte - agendas Google](/assets/articles/parametrer-son-compte/agendas-google.jpg)
 
 
 ### Connecter votre agenda Google

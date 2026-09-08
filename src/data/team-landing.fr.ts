@@ -11,21 +11,24 @@ export const teamLandingFr: TeamLandingCopy = {
     catch:
       'Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités kilométriques.',
     cta: 'Tester gratuitement izika',
+    image: '/assets/app/screen-calendar-import-wide.fr.jpg',
     imageAlt: 'izika sur ordinateur de bureau',
+    imageWidth: 1618,
+    imageHeight: 1010,
   },
   heroBenefits: [
-    { icon: '/assets/landing-pages/icon_cal-to-rdv.png', text: 'Gestion intelligente des RDV' },
-    { icon: '/assets/landing-pages/team/icon_approval.png', text: "Flux d'approbation efficaces" },
+    { icon: '/assets/icons/calendar-to-trip.fr.png', text: 'Gestion intelligente des RDV' },
+    { icon: '/assets/icons/approval.fr.png', text: "Flux d'approbation efficaces" },
     {
-      icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
+      icon: '/assets/icons/teams-folders.png',
       text: 'Ventilation par équipe et par dossier',
     },
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.fr.png',
       text: 'Rapports conformes aux règles fiscales',
     },
     {
-      icon: '/assets/landing-pages/team/icon_security.png',
+      icon: '/assets/icons/security.fr.png',
       text: 'Sécurisé, fiable, hébergé en France',
     },
   ],
@@ -46,15 +49,15 @@ export const teamLandingFr: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/landing-pages/team/illu_rdv-etoiles.png',
+        src: '/assets/app/screen-next-stop.fr.png',
         alt: 'Configuration des déplacements en étoile ou en tournée',
       },
       {
-        src: '/assets/landing-pages/team/illu_dossiers.png',
+        src: '/assets/app/screen-folders.fr.png',
         alt: 'catégorisation des rendez-vous en dossiers',
       },
       {
-        src: '/assets/landing-pages/team/illu_justificatifs.png',
+        src: '/assets/app/screen-receipts.fr.png',
         alt: 'association des justificatifs aux rendez-vous',
       },
     ],
@@ -71,11 +74,11 @@ export const teamLandingFr: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/landing-pages/team/illu_liste-demandes.png',
+        src: '/assets/app/screen-claims-list.fr.png',
         alt: "Liste des demandes d'indemnisation",
       },
-      { src: '/assets/landing-pages/team/illu_approve.png', alt: 'approuver une demande' },
-      { src: '/assets/landing-pages/team/illu_voir-itineraire.png', alt: "Voir l'itinéraire en détail" },
+      { src: '/assets/app/screen-claim-approve.fr.png', alt: 'approuver une demande' },
+      { src: '/assets/app/screen-route.fr.png', alt: "Voir l'itinéraire en détail" },
     ],
   },
   security: {

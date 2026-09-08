@@ -6,7 +6,7 @@ description: >-
   d'un usage professionnel.
 date: '2020-06-19'
 image: >-
-  content/pages/bareme-indemnites-kilometriques-2020/bareme-indemnites-kilometriques.jpg
+  /assets/articles/bareme-indemnites-kilometriques-2020/cover.jpg
 ---
 
 > Le barème des indemnités kilométriques évolue chaque année. Vous êtes sur une page d'archive. Pour vos déclarations, merci de vous reporter aux barèmes pour [calculer vos frais de déplacement en 2025](/fr/bareme-indemnites-kilometriques-2025).

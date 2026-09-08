@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Fonctionnalités
   image:
-    src: /assets/solutions/agent-general-assurances/rdv-template.png
+    src: /assets/verticals/insurance-agents/agenda.fr.png
     alt: "Export indemnites kilométriques pour agent général d'assurances"
     title: "Export indemnites kilométriques pour agent général d'assurances"
 
 featureHighlights:
   title: La méthode la plus rapide pour les agents généraux pour gérer leurs déplacements
   image:
-    src: /assets/solutions/agent-general-assurances/rdv-suivant.png
+    src: /assets/verticals/insurance-agents/next-stop.fr.png
     alt: "izika pour agent général d'assurance"
     title: "izika pour agent général d'assurance"
   ctaText: Tester izika
@@ -48,7 +48,7 @@ benefits:
   title: "Avantages d'une application de gestion de trajets pour les agents d'assurances"
   items:
     - title: Vos indemnités kilométriques calculées à partir de votre agenda
-      image: /assets/solutions/agent-general-assurances/calendar-to-ik.png
+      image: /assets/verticals/insurance-agents/calendar-to-mileage.fr.png
       imageAlt: "izika - Indemnités kilométriques pour agent d'assurance calculées à partir de l'agenda"
       text: |
         <p>En tant qu’agent général, vos journées sont rythmées par des rendez-vous clients, des déplacements pour des déclarations de sinistres, des visites de suivi, des réunions partenaires...</p>
@@ -60,7 +60,7 @@ benefits:
           <li>Les distances et les montants d’indemnités sont déjà calculés pour vous</li>
         </ul>
     - title: Un rapport fiscal conforme et prêt à envoyer à votre comptable
-      image: /assets/solutions/agent-general-assurances/rapport-print-ombre.png
+      image: /assets/verticals/insurance-agents/report.fr.png
       imageAlt: "izika - Un rapport fiscal conforme et prêt à envoyer aux comptable pour les agents d'assurances"
       text: |
         <p>Que ce soit pour votre bilan comptable ou pour justifier ponctuellement vos déplacements, tout est regroupé dans un document propre et complet.</p>
@@ -71,7 +71,7 @@ benefits:
           <li>Justifier vos déplacements n’importe quand</li>
         </ul>
     - title: Vous n’avez pas à gérer izika au quotidien
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.fr.jpg
       imageAlt: "izika - Vous n’avez pas à gérer izika au quotidien"
       text: |
         <p>izika n’ajoute pas d’outil supplémentaire à gérer au jour le jour. Vous vous connectez quand vous avez besoin et tout est déjà présent.</p>
@@ -85,7 +85,7 @@ benefits:
     quote: >-
       Je fais beaucoup de rendez-vous clients. izika m’évite de tout avoir à saisir et calculer en fin d’année,
       je gagne un temps précieux !
-    avatar: /assets/solutions/persona.jpg
+    avatar: /assets/people/portrait-persona.jpg
     avatarAlt: Marc T.
     name: Marc T.
     companyTitle: "Agent général d'assurance"
@@ -101,22 +101,22 @@ customerCase:
       Depuis qu’elle utilise izika, elle génère ses indemnités kilométriques en quelques minutes et peut
       envoyer un rapport complet à son comptable sans stress ni perte de temps.
     </p>
-  avatar: /assets/solutions/agent-general-assurances/customer-case-avatar.jpg
+  avatar: /assets/verticals/insurance-agents/portrait-customer.jpg
   avatarAlt: Claire Montagnon
   gainsTitle: "Voici ce que Claire a gagné en utilisant izika :"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.fr.png
       imageAlt: Indemnités calculées à partir son agenda
       text: >-
         Tous ses trajets pour des visites clients, sinistres, signatures,
         <strong>sont importés automatiquement par izika et deviennent des indemnités kilométriques</strong>
         sans aucune saisie.
-    - image: /assets/landing-pages/icon-provisions.png
+    - image: /assets/icons/provisions.fr.png
       imageAlt: Suivi des provisions mensuelles
       text: >-
         Claire a décidé de se reverser des <strong>provisions mensuelles</strong> pour ses <strong>indemnités kilométriques</strong>.
         izika calcule sa provision chaque mois de manière conservative pour éviter d'avoir un trop perçu en fin d'année fiscale.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.fr.png
       imageAlt: Solde de provisions & Bilan comptable
       text: >-
         En fin de période fiscale, izika indique à Claire le <strong>solde de ses provisions</strong> par rapport à ses indemnités réelles,

@@ -33,7 +33,7 @@ Une fois déterminé le total kilométrique annuel, les étapes sont très simpl
 2. récupérer la formule de calcul (ex : distance x 0,337 + 1288 pour 15000 km parcourus avec une voiture de 7 CV)
 3. appliquer le barème kilométrique à ma distance parcourue annuellement (ex : 15000 x 0,337 + 1288 = 6343 € d'IK)
 
-![bareme kilométrique 2017](/wp-content/uploads/2017/02/IK-voitures-2017.jpg "bareme kilométrique 2017")Par exemple, un professionnel qui utilise son véhicule (ici une voiture de 9 CV) pour ses déplacements professionnels et qui veut estimer ses IK mensuelles pour 2000 km par mois, voici le calcul.
+![bareme kilométrique 2017](/assets/articles/bareme-indemnites-kilometriques-2017/bareme-2017.jpg "bareme kilométrique 2017")Par exemple, un professionnel qui utilise son véhicule (ici une voiture de 9 CV) pour ses déplacements professionnels et qui veut estimer ses IK mensuelles pour 2000 km par mois, voici le calcul.
 
 Total annuel : 2 000 km x 12 = 24 000 km
 

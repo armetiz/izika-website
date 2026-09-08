@@ -1,8 +1,12 @@
 ---
 /**
  * Hero screenshot collage for the solo/team landings (successor of the old
- * device-frame mockups): a large desktop screen with a tablet overlay, plus
- * the shared ipad/iphone screens. Hidden below lg like the Twig original.
+ * device-frame mockups): a large desktop screen with three overlays. Hidden
+ * below lg like the Twig original.
+ *
+ * All four images come from the page copy: they show the app in a language,
+ * a currency and a distance unit, so they are market assets and none of them
+ * can be hardcoded here.
  */
 interface Props {
   desktopSrc: string;
@@ -13,9 +17,14 @@ interface Props {
   tabletAlt: string;
   tabletWidth: number;
   tabletHeight: number;
-  /** Alt texts of the shared ipad/iphone screens (language of the page). */
+  ipadSrc: string;
   ipadAlt: string;
+  ipadWidth: number;
+  ipadHeight: number;
+  mobileSrc: string;
   mobileAlt: string;
+  mobileWidth: number;
+  mobileHeight: number;
 }
 
 const {
@@ -27,8 +36,14 @@ const {
   tabletAlt,
   tabletWidth,
   tabletHeight,
+  ipadSrc,
   ipadAlt,
+  ipadWidth,
+  ipadHeight,
+  mobileSrc,
   mobileAlt,
+  mobileWidth,
+  mobileHeight,
 } = Astro.props;
 ---
 
@@ -49,16 +64,16 @@ const {
   />
   <img
     class="absolute -bottom-10 -left-2 w-32 rotate-2 rounded-card border-4 border-white shadow-card"
-    src="/assets/landing-pages/header-screen-ipad.jpg"
+    src={ipadSrc}
     alt={ipadAlt}
-    width="533"
-    height="711"
+    width={ipadWidth}
+    height={ipadHeight}
   />
   <img
     class="absolute -right-4 -bottom-8 w-24 rounded-2xl border-4 border-white shadow-card"
-    src="/assets/landing-pages/header-screen-iphone-x.jpg"
+    src={mobileSrc}
     alt={mobileAlt}
-    width="407"
-    height="867"
+    width={mobileWidth}
+    height={mobileHeight}
   />
 </div>

@@ -86,7 +86,7 @@ const standardWorksCards: ReadonlyArray<{ card: HomeWorksCard; bg: string }> = [
 
     <div
       class="rounded-card bg-cover bg-center p-4 sm:p-8 lg:p-12"
-      style="background-image: url('/assets/img/mockup-liste-rdv.jpg');"
+      style={`background-image: url('${copy.testimonialsBackground}');`}
     >
       <div class="grid gap-6 md:grid-cols-3">
         {
@@ -228,10 +228,10 @@ const standardWorksCards: ReadonlyArray<{ card: HomeWorksCard; bg: string }> = [
       <div>
         <img
           class="h-auto w-full rounded-card shadow-card"
-          src="/assets/landing-pages/team/illu_liste-demandes.png"
+          src={copy.team.image}
           alt={copy.team.imageAlt}
-          width="920"
-          height="719"
+          width={copy.team.imageWidth}
+          height={copy.team.imageHeight}
           loading="lazy"
         />
       </div>

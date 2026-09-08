@@ -5,7 +5,7 @@ description: >-
   avantageuse mais repose comme on vient de le voir sur un formalisme fiscal
   important.
 date: '2020-01-15'
-image: content/pages/note-de-frais-modele-2020-comptabilite/modele-note-de-frais.jpg
+image: /assets/articles/note-de-frais-modele-comptabilite/cover.jpg
 ---
 
 # Note de frais : modèle et guide de déclaration des IK
@@ -82,7 +82,7 @@ Voici un exemple de tableau des frais kilométriques avec toutes les mentions ob
 
 **Modèle de tableau des frais kilométriques :**
 
-![export izika](/assets/landing-pages/how-it-works-mileage-allowances-export.png?3eaf80c)
+![export izika](/assets/app/step-mileage-export.fr.png?3eaf80c)
 
 ### Déterminer la distance et le barème fiscal à retenir pour le calcul
 
@@ -99,7 +99,7 @@ Le calcul des indemnités kilométriques est assez simple : ajouter toutes les d
 
 Le montant des IK se calcule en multipliant la distance totale de la période (non proratisée) par le barème fiscal.
 
-![Calculer les frais de déplacement en voiture](/wp-content/uploads/2019/10/voiture-calculer-ik-1-1024x683.jpg)
+![Calculer les frais de déplacement en voiture](/assets/articles/note-de-frais-modele-comptabilite/calculer-frais-de-deplacement.jpg)
 
 La complexité technique n'est évidemment pas dans cette partie mais dans celles qui précèdent. En effet, le calcul des distances et la création d'un fichier faisant foi en cas de contrôle fiscal sont très complexes. Par exemple, calculer des trajets de faible kilométrage, stocker les adresses de départ et d'arrivée dans un document normalisé est une tâche chronophage et peu valorisante. Et pourtant, afin de bénéficier de la déductibilité des indemnités kilométriques forfaitaires, il faut être en mesure de justifier les sommes déclarées.
 

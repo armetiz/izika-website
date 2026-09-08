@@ -10,7 +10,10 @@ export interface TeamLandingCopy {
     titlePrefix: string;
     catch: string;
     cta: string;
+    image: string;
     imageAlt: string;
+    imageWidth: number;
+    imageHeight: number;
   };
   heroBenefits: ReadonlyArray<{ icon: string; text: string }>;
   intro: {

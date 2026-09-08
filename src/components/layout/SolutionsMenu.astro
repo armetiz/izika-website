@@ -8,6 +8,7 @@ import {
   type MarketId,
   type SolutionKey,
 } from '../../i18n';
+import { marketAsset } from '../../lib/assets';
 
 interface Props {
   market: MarketId;
@@ -27,11 +28,11 @@ const collectivitesUrl = localizedPath('teamCollectivites', market);
 // route guarantees at build time that the table matches the content).
 const menu = dict.solutionsMenu;
 const SOLO_ICONS: Record<SolutionKey, string> = {
-  agentsImmobilier: '/assets/solutions/menu/solo/agent-immobilier-mandataire.svg',
-  agentAssurances: '/assets/solutions/menu/solo/agent-general-assurance.svg',
-  professionsLiberales: '/assets/solutions/menu/solo/professions-liberales.svg',
-  artisansBtp: '/assets/solutions/menu/solo/artisan-btp.svg',
-  consultants: '/assets/solutions/menu/solo/consultant.svg',
+  agentsImmobilier: '/assets/menu/solo/real-estate-agents.svg',
+  agentAssurances: '/assets/menu/solo/insurance-agents.svg',
+  professionsLiberales: '/assets/menu/solo/independent-professionals.svg',
+  artisansBtp: '/assets/menu/solo/craftsmen-construction.svg',
+  consultants: '/assets/menu/solo/consultants.svg',
 };
 const soloItems = (
   [
@@ -57,27 +58,27 @@ const hasSolutions = solutionsBaseSlug(market) !== undefined && soloItems.length
 const teamItems = [
   {
     href: entreprisesUrl,
-    icon: '/assets/solutions/menu/team/reseau-agences.svg',
+    icon: '/assets/menu/team/agency-networks.svg',
     ...menu.items.reseauxAgences,
   },
   {
     href: entreprisesUrl,
-    icon: '/assets/solutions/menu/team/bank-insurance.svg',
+    icon: '/assets/menu/team/banking-insurance.svg',
     ...menu.items.banqueAssurance,
   },
   {
     href: collectivitesUrl,
-    icon: '/assets/solutions/menu/team/administration.svg',
+    icon: '/assets/menu/team/public-administration.svg',
     ...menu.items.administrations,
   },
   {
     href: entreprisesUrl,
-    icon: '/assets/solutions/menu/team/btp-services-techniques.svg',
+    icon: '/assets/menu/team/construction-services.svg',
     ...menu.items.btpServices,
   },
   {
     href: entreprisesUrl,
-    icon: '/assets/solutions/menu/team/commerce-distribution-commercial.svg',
+    icon: '/assets/menu/team/retail-distribution.svg',
     ...menu.items.commerces,
   },
 ];
@@ -143,7 +144,7 @@ const groups = [
       <div class="hidden md:block">
         <img
           class="mb-3 rounded-lg"
-          src="/assets/landing-pages/icon_report-conformity.png"
+          src={marketAsset('/assets/icons/compliance.png', market)}
           alt={menu.blurbImageAlt}
           loading="lazy"
         />

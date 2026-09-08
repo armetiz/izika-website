@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/solutions/agent-general-assurances/rdv-template.png
+    src: /assets/verticals/insurance-agents/agenda.uk.png
     alt: "Mileage allowance export for insurance agents"
     title: "Mileage allowance export for insurance agents"
 
 featureHighlights:
   title: The fastest way for insurance agents to manage their trips
   image:
-    src: /assets/solutions/agent-general-assurances/rdv-suivant.png
+    src: /assets/verticals/insurance-agents/next-stop.uk.png
     alt: "izika for insurance agents"
     title: "izika for insurance agents"
   ctaText: Try izika
@@ -48,7 +48,7 @@ benefits:
   title: "Benefits of a trip management application for insurance agents"
   items:
     - title: Your mileage allowances computed from your calendar
-      image: /assets/solutions/agent-general-assurances/calendar-to-ik.png
+      image: /assets/verticals/insurance-agents/calendar-to-mileage.uk.png
       imageAlt: "izika - Insurance agents' mileage allowances computed from the calendar"
       text: |
         <p>As an insurance agent, your days revolve around client appointments, trips for claim reports, follow-up visits, partner meetings...</p>
@@ -60,7 +60,7 @@ benefits:
           <li>Distances and allowance amounts are already computed for you</li>
         </ul>
     - title: A compliant tax report, ready to send to your accountant
-      image: /assets/solutions/agent-general-assurances/rapport-print-ombre.png
+      image: /assets/verticals/insurance-agents/report.uk.png
       imageAlt: "izika - A compliant tax report ready to send to the accountant, for insurance agents"
       text: |
         <p>Whether for your annual accounts or to occasionally substantiate your trips, everything is gathered in one clean, complete document.</p>
@@ -71,7 +71,7 @@ benefits:
           <li>Justify your trips at any time</li>
         </ul>
     - title: You don't have to manage izika day to day
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.uk.jpg
       imageAlt: "izika - You don't have to manage izika day to day"
       text: |
         <p>izika doesn't add another tool to manage every day. You log in when you need to and everything is already there.</p>
@@ -85,7 +85,7 @@ benefits:
     quote: >-
       I do a lot of client appointments. izika saves me from having to enter and compute everything at
       year-end — I save precious time!
-    avatar: /assets/solutions/persona.jpg
+    avatar: /assets/people/portrait-persona.jpg
     avatarAlt: Marc T.
     name: Marc T.
     companyTitle: "Insurance agent"
@@ -101,22 +101,22 @@ customerCase:
       Since she started using izika, she generates her mileage allowances in a few minutes and can
       send a complete report to her accountant with no stress and no wasted time.
     </p>
-  avatar: /assets/solutions/agent-general-assurances/customer-case-avatar.jpg
+  avatar: /assets/verticals/insurance-agents/portrait-customer.jpg
   avatarAlt: Claire Montagnon
   gainsTitle: "Here is what Claire gained by using izika:"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.uk.png
       imageAlt: Allowances computed from her calendar
       text: >-
         All her trips for client visits, claims and signings
         <strong>are automatically imported by izika and become mileage allowances</strong>
         with zero data entry.
-    - image: /assets/landing-pages/icon-provisions.png
+    - image: /assets/icons/provisions.uk.png
       imageAlt: Monthly provision tracking
       text: >-
         Claire decided to pay herself <strong>monthly provisions</strong> for her <strong>mileage allowances</strong>.
         izika computes her provision conservatively each month to avoid an overpayment at the end of the tax year.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.uk.png
       imageAlt: Provision balance & annual accounts
       text: >-
         At the end of the tax period, izika shows Claire the <strong>balance of her provisions</strong> against her actual allowances,

@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/solutions/consultants/rdv-template.png
+    src: /assets/verticals/consultants/agenda.uk.png
     alt: Mileage allowance export for independent consultants
     title: Mileage allowance export for independent consultants
 
 featureHighlights:
   title: The fastest way for consultants to manage their client travel
   image:
-    src: /assets/solutions/visuel-agenda-professionnel.png
+    src: /assets/illustrations/sketch-calendar.uk.png
     alt: izika for independent consultants
     title: izika for independent consultants
   ctaText: Try izika
@@ -46,7 +46,7 @@ benefits:
   title: "Benefits of a mileage allowance management tool for consultants"
   items:
     - title: Your client trips computed automatically from your calendar
-      image: /assets/solutions/consultants/calendar-to-ik.png
+      image: /assets/verticals/consultants/calendar-to-mileage.uk.png
       imageAlt: "izika - consultants' mileage allowances computed from the calendar"
       text: |
         <p>As a consultant, your days are a string of meetings at your clients', trips on assignment, prospecting visits… all journeys you have no time to write down one by one.</p>
@@ -56,7 +56,7 @@ benefits:
           <li>Distances and allowance amounts are already there, with zero data entry</li>
         </ul>
     - title: A compliant tax report, ready to send to your accountant
-      image: /assets/solutions/consultants/rapport-print-ombre.png
+      image: /assets/verticals/consultants/report.uk.png
       imageAlt: izika - Compliant tax report for independent consultants
       text: |
         <p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justify every trip in the event of a tax audit</li>
         </ul>
     - title: izika runs in the background, with no mental load
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.uk.jpg
       imageAlt: izika - Consultant mileage management with no daily burden
       text: |
         <p>izika doesn't ask you to log in every day or enter a single trip. It works in the background, from your calendar.</p>
@@ -83,7 +83,7 @@ benefits:
       I travel a lot: clients, prospects, partners. Before izika, I'd scribble things down somewhere
       and reconstruct everything at year-end with my accountant. Now it's all already there.
       I save at least two hours a month.
-    avatar: /assets/solutions/testimonial-avatar.png
+    avatar: /assets/people/portrait-testimonial.png
     avatarAlt: Thomas V.
     name: Thomas V.
     companyTitle: "IT systems consultant"
@@ -99,21 +99,21 @@ customerCase:
       He regularly travels to partners, music schools and orchestras for on-site appraisals.
       An izika premium customer since 2023, he no longer wastes a minute on his mileage allowances.
     </p>
-  avatar: /assets/solutions/persona.jpg
+  avatar: /assets/people/portrait-persona.jpg
   avatarAlt: Joseph Darves - JD Atelier des Bois
   gainsTitle: "Here is what Joseph gained by using izika:"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.uk.png
       imageAlt: Trips between his two addresses computed automatically
       text: >-
         His round trips between Quincy-sous-Sénart and Paris, his visits to partners and music schools
         <strong>are automatically turned into mileage allowances</strong> with zero data entry.
-    - image: /assets/landing-pages/illu-tournee-etoile.png
+    - image: /assets/icons/trip-modes.png
       imageAlt: Appraisals and consultations on the road
       text: >-
         Every on-site appraisal, every consulting appointment at a client's automatically becomes a journey in izika.
         Joseph reviews his <strong>trips in a few seconds</strong> and fixes anything needed before exporting.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.uk.png
       imageAlt: Annual report sent to the accountant in minutes
       text: >-
         At the end of the financial year, <strong>the report is ready in five minutes.</strong>

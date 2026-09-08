@@ -13,14 +13,14 @@ head:
     routeKey: features
     text: Features
   image:
-    src: /assets/solutions/agents-immobilier-mandataires-immobilier/rdv-template.png
+    src: /assets/verticals/real-estate-agents/agenda.uk.png
     alt: Mileage allowance export for real estate agents and brokers
     title: Mileage allowance export for real estate agents and brokers
 
 featureHighlights:
   title: The simplest way for agents to manage their mileage allowances
   image:
-    src: /assets/solutions/visuel-agenda-professionnel.png
+    src: /assets/illustrations/sketch-calendar.uk.png
     alt: izika for real estate agents
     title: izika for real estate agents
   ctaText: Try izika
@@ -46,7 +46,7 @@ benefits:
   title: "Benefits of a trip management tool for real estate agents"
   items:
     - title: Your trips reconstructed from your appointments
-      image: /assets/solutions/agents-immobilier-mandataires-immobilier/calendar-to-ik.png
+      image: /assets/verticals/real-estate-agents/calendar-to-mileage.uk.png
       imageAlt: izika - real estate agents' trips reconstructed from their appointments
       text: |
         <p>Between a valuation in the morning, three viewings in the afternoon and a signing at the end of the day, your trips pile up fast.</p>
@@ -58,7 +58,7 @@ benefits:
           <li>Automatic calculation based on your vehicle</li>
         </ul>
     - title: A clear tax report for your professional obligations
-      image: /assets/landing-pages/how-it-works-mileage-allowances-export.png
+      image: /assets/verticals/real-estate-agents/report.uk.png
       imageAlt: "izika - a clear tax report for the tax administration"
       text: |
         <p>Whether for your annual return or for your accountant, everything is already structured: kilometres, trips, amounts, vehicle tax ratings.</p>
@@ -69,7 +69,7 @@ benefits:
           <li>Justify your trips in the event of a tax audit</li>
         </ul>
     - title: A solution that doesn't weigh down your day
-      image: /assets/solutions/laptop-screen-izika.jpg
+      image: /assets/photos/laptop-app.uk.jpg
       imageAlt: izika - a solution that doesn't weigh down real estate agents' days
       text: |
         <p>You don't need to use izika continuously: your trips are recorded from your appointments, and you generate your report whenever you need it.</p>
@@ -84,7 +84,7 @@ benefits:
   testimonial:
     quote: >-
       izika saves me several hours a month. I never miss a trip anymore, everything is automatic.
-    avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agente-immobiliere.jpg
+    avatar: /assets/verticals/real-estate-agents/portrait-testimonial.jpg
     avatarAlt: Julie M.
     name: Julie M.
     companyTitle: Independent real estate agent
@@ -103,21 +103,21 @@ customerCase:
       Since he started using izika, he reviews his appointments and trips in the application in a few minutes,
       and can generate a detailed, professional, reliable and compliant report for his accountant.
     </p>
-  avatar: /assets/solutions/agents-immobilier-mandataires-immobilier/agent-immobilier-cedric.jpg
+  avatar: /assets/verticals/real-estate-agents/portrait-customer.jpg
   avatarAlt: Cédric Fontaine
   gainsTitle: "Here is what Cédric gained by using izika:"
   gains:
-    - image: /assets/landing-pages/icon_cal-to-rdv.png
+    - image: /assets/icons/calendar-to-trip.uk.png
       imageAlt: Automatic trips from his calendar
       text: >-
         All his appointments for viewings, valuations and signings
         <strong>automatically become trips</strong> with zero data entry.
-    - image: /assets/landing-pages/illu-tournee-etoile.png
+    - image: /assets/icons/trip-modes.png
       imageAlt: Automatic rounds
       text: >-
         Cédric configured izika to <strong>automatically compute the day's journeys as rounds</strong>.
         When he opens izika, only a few checks are left before exporting his report.
-    - image: /assets/landing-pages/icon_report-conformity.png
+    - image: /assets/icons/compliance.uk.png
       imageAlt: "Mileage reporting and tax audits"
       text: >-
         <strong>Complete peace of mind in case of an audit</strong>.

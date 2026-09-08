@@ -3,6 +3,7 @@ import { homePageFr } from './home-page.fr';
 import { MARKETS } from '../i18n/markets';
 import { TAUX_ACTUEL } from './mileage-ch';
 import { chfPerKm } from '../lib/format';
+import { marketAssets } from '../lib/assets';
 
 const pricing = MARKETS['ch-fr'].pricing;
 
@@ -22,7 +23,7 @@ const pricing = MARKETS['ch-fr'].pricing;
  * - l'ancienneté « 3500 indépendants » est conservée : c'est un fait
  *   d'entreprise, pas une revendication de marché local.
  */
-export const homePageChFr: HomePageCopy = {
+export const homePageChFr: HomePageCopy = marketAssets('ch-fr', {
   ...homePageFr,
   hero: {
     ...homePageFr.hero,
@@ -120,4 +121,4 @@ export const homePageChFr: HomePageCopy = {
       },
     ],
   },
-};
+});

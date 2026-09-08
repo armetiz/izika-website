@@ -3,6 +3,7 @@ import { soloPageFr } from './solo-page.fr';
 import { complianceSectionChFr } from './compliance-section.ch-fr';
 import { TAUX_ACTUEL, TAUX_ANTERIEUR } from './mileage-ch';
 import { chfPerKm } from '../lib/format';
+import { marketAssets } from '../lib/assets';
 
 /**
  * Landing /ch-fr/solo. Dérivée de solo-page.fr.ts : les captures, les
@@ -21,7 +22,7 @@ import { chfPerKm } from '../lib/format';
  * Les témoignages restent ceux de clients réels (français) : en inventer des
  * suisses serait un faux, et les avis Trustpilot sont communs aux marchés.
  */
-export const soloPageChFr: ProductLandingCopy = {
+export const soloPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
   ...soloPageFr,
   hero: {
     ...soloPageFr.hero,
@@ -29,19 +30,19 @@ export const soloPageChFr: ProductLandingCopy = {
   },
   highlights: [
     {
-      icon: '/assets/landing-pages/icon_cal-to-rdv.png',
+      icon: '/assets/icons/calendar-to-trip.ch-fr.png',
       text: 'Import des rendez-vous depuis votre agenda',
     },
     {
-      icon: '/assets/landing-pages/icon_km-auto.png',
+      icon: '/assets/icons/auto-distance.ch-fr.png',
       text: 'Calcul automatique des distances',
     },
     {
-      icon: '/assets/landing-pages/icon_bareme-personnalise.png',
+      icon: '/assets/icons/custom-rate.png',
       text: `Taux libre :<br /> ${chfPerKm(TAUX_ACTUEL)}, ${chfPerKm(TAUX_ANTERIEUR)} ou le vôtre`,
     },
     {
-      icon: '/assets/landing-pages/team/icon_security.png',
+      icon: '/assets/icons/security.ch-fr.png',
       text: 'Sécurité, confidentialité<br /> hébergement européen, hors cloud américain',
     },
   ],
@@ -70,4 +71,4 @@ export const soloPageChFr: ProductLandingCopy = {
     ...soloPageFr.closing,
     title: 'Voulez-vous tester le meilleur outil de calcul de frais kilométriques ?',
   },
-};
+});

@@ -11,21 +11,24 @@ export const teamLandingUk: TeamLandingCopy = {
     catch:
       'Save your organization a maximum of time on the management of its mileage allowances.',
     cta: 'Try izika for free',
+    image: '/assets/app/screen-calendar-import-wide.uk.jpg',
     imageAlt: 'izika on a desktop computer',
+    imageWidth: 1618,
+    imageHeight: 1010,
   },
   heroBenefits: [
-    { icon: '/assets/landing-pages/icon_cal-to-rdv.png', text: 'Smart appointment management' },
-    { icon: '/assets/landing-pages/team/icon_approval.png', text: 'Efficient approval workflows' },
+    { icon: '/assets/icons/calendar-to-trip.uk.png', text: 'Smart appointment management' },
+    { icon: '/assets/icons/approval.uk.png', text: 'Efficient approval workflows' },
     {
-      icon: '/assets/landing-pages/team/icon_teams-and-folders.png',
+      icon: '/assets/icons/teams-folders.png',
       text: 'Breakdown by team and by project',
     },
     {
-      icon: '/assets/landing-pages/icon_report-conformity.png',
+      icon: '/assets/icons/compliance.uk.png',
       text: 'Reports compliant with tax rules',
     },
     {
-      icon: '/assets/landing-pages/team/icon_security.png',
+      icon: '/assets/icons/security.uk.png',
       text: 'Secure, reliable, hosted in France',
     },
   ],
@@ -46,15 +49,15 @@ export const teamLandingUk: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/landing-pages/team/illu_rdv-etoiles.png',
+        src: '/assets/app/screen-next-stop.uk.png',
         alt: 'Configuring star-pattern or round trips',
       },
       {
-        src: '/assets/landing-pages/team/illu_dossiers.png',
+        src: '/assets/app/screen-folders.uk.png',
         alt: 'categorizing appointments into projects',
       },
       {
-        src: '/assets/landing-pages/team/illu_justificatifs.png',
+        src: '/assets/app/screen-receipts.uk.png',
         alt: 'attaching supporting documents to appointments',
       },
     ],
@@ -71,11 +74,11 @@ export const teamLandingUk: TeamLandingCopy = {
     ],
     screens: [
       {
-        src: '/assets/landing-pages/team/illu_liste-demandes.png',
+        src: '/assets/app/screen-claims-list.uk.png',
         alt: 'List of mileage claims',
       },
-      { src: '/assets/landing-pages/team/illu_approve.png', alt: 'approving a claim' },
-      { src: '/assets/landing-pages/team/illu_voir-itineraire.png', alt: 'Viewing the route in detail' },
+      { src: '/assets/app/screen-claim-approve.uk.png', alt: 'approving a claim' },
+      { src: '/assets/app/screen-route.uk.png', alt: 'Viewing the route in detail' },
     ],
   },
   security: {
