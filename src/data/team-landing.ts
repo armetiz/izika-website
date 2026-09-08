@@ -42,4 +42,16 @@ export interface TeamLandingCopy {
     imageAlt: string;
   };
   testimonials: ReadonlyArray<{ author: string; role: string; text: string }>;
+  /**
+   * Closing CTA — la même section « essai gratuit » que les landings /solo et
+   * /team (ProductLandingCopy.closing), pour que toutes les landings se
+   * terminent sur le même appel à l'action.
+   */
+  closing: {
+    title: string;
+    text: string;
+    ctaLabel: string;
+    /** Argument marché facultatif rendu sous le CTA (HTML inline de confiance). */
+    noteHtml?: string;
+  };
 }

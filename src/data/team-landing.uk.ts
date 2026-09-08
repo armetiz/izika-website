@@ -104,4 +104,9 @@ export const teamLandingUk: TeamLandingCopy = {
       text: 'I find the system of approving and rejecting employees’ mileage reports really well designed, but what we appreciate most is receiving reliable data from the field sales team.',
     },
   ],
+  closing: {
+    title: 'Ready to try the best mileage allowance management tool?',
+    text: 'Every izika Team feature, with no limit whatsoever, for 3 months. Our team is at your disposal to help you roll out izika in your organization.',
+    ctaLabel: 'Try izika free for 3 months',
+  },
 };

@@ -111,6 +111,6 @@ export const teamPageUk: ProductLandingCopy = {
   closing: {
     title: 'Want to try the best mileage allowance management tool?',
     text: 'Try every izika Team feature for free for your organization',
-    ctaLabel: 'Try izika for 2 months',
+    ctaLabel: 'Try izika free for 3 months',
   },
 };

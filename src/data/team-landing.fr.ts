@@ -104,4 +104,9 @@ export const teamLandingFr: TeamLandingCopy = {
       text: 'Je trouve que le système des approbations et refus des relevés d’IK des salariés est super bien pensé, mais on apprécie surtout de recevoir des données fiables de la part des commerciaux terrain.',
     },
   ],
+  closing: {
+    title: "Prêt à tester le meilleur outil de gestion d'IK ?",
+    text: "Toutes les fonctionnalités de izika Team, sans aucune limite pendant 3 mois. Notre équipe est à votre disposition pour vous accompagner dans la mise en place d'izika dans votre structure.",
+    ctaLabel: 'Tester izika gratuitement pendant 3 mois',
+  },
 };

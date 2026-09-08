@@ -82,6 +82,6 @@ export const teamPageChFr: ProductLandingCopy = marketAssets('ch-fr', {
   closing: {
     title: 'Voulez-vous tester le meilleur outil de gestion des frais kilométriques ?',
     text: 'Essayez gratuitement toutes les fonctionnalités de izika Team pour votre organisation',
-    ctaLabel: 'Tester izika pendant 2 mois',
+    ctaLabel: 'Tester izika gratuitement pendant 3 mois',
   },
 });

@@ -111,6 +111,6 @@ export const teamPageFr: ProductLandingCopy = {
   closing: {
     title: "Voulez-vous tester le meilleur outil de gestion d'IK ?",
     text: 'Essayez gratuitement toutes les fonctionnalités de izika Team pour votre organisation',
-    ctaLabel: 'Tester izika pendant 2 mois',
+    ctaLabel: 'Tester izika gratuitement pendant 3 mois',
   },
 };

@@ -1,6 +1,7 @@
 ---
 import GradientHero from '../ui/GradientHero.astro';
 import LandingChecklistSection from '../sections/LandingChecklistSection.astro';
+import LandingClosingCta from '../sections/LandingClosingCta.astro';
 import LandingIconHighlights from '../sections/LandingIconHighlights.astro';
 import LandingScreenshot from '../sections/LandingScreenshot.astro';
 import TestimonialCard from '../ui/TestimonialCard.astro';
@@ -129,3 +130,17 @@ const { audience, trackingContext, copy } = Astro.props;
     }
   </div>
 </section>
+
+<!-- Closing CTA : la même section « essai gratuit » que /solo et /team, portée
+     par le template et non par chaque route, pour que les quatre landings
+     d'audience se terminent à l'identique. `bg-soft-neutral` doit rester
+     accordé au footerBackground="soft" des pages. -->
+<LandingClosingCta
+  title={copy.closing.title}
+  text={copy.closing.text}
+  ctaLabel={copy.closing.ctaLabel}
+  trackingContext={trackingContext}
+  class="bg-soft-neutral"
+>
+  {copy.closing.noteHtml && <p class="mt-4" set:html={copy.closing.noteHtml} />}
+</LandingClosingCta>

@@ -1,7 +1,6 @@
 ---
 import StandardLayout from '../../layouts/StandardLayout.astro';
 import TeamLanding from '../../components/templates/TeamLanding.astro';
-import LandingClosingCta from '../../components/sections/LandingClosingCta.astro';
 import { teamLandingChFr } from '../../data/team-landing.ch-fr';
 ---
 
@@ -13,21 +12,4 @@ import { teamLandingChFr } from '../../data/team-landing.ch-fr';
   footerBackground="soft"
 >
   <TeamLanding audience="entreprises" trackingContext="page_entreprises" copy={teamLandingChFr} />
-
-  <LandingClosingCta
-    title="Prêt à tester le meilleur outil de gestion des frais kilométriques ?"
-    text="Notre équipe est à votre disposition pour vous accompagner dans la mise en place d'izika dans votre structure."
-    trackingContext="page_entreprises"
-    class="bg-soft-neutral"
-  >
-    {/*
-      Pas de bloc « cocorico / made in France » ici, contrairement à /fr : en
-      Suisse l'argument qui porte est la souveraineté des données, pas le
-      pavillon de l'éditeur.
-    */}
-    <p class="mt-4">
-      Support en français, direct et non sous-traité.<br />
-      Hébergement européen, hors cloud américain.
-    </p>
-  </LandingClosingCta>
 </StandardLayout>

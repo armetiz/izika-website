@@ -117,7 +117,7 @@ export const homePageChFr: HomePageCopy = marketAssets('ch-fr', {
         ],
         plusAfterFirst: true,
         eventId: 'cta_section_pricing_team',
-        ctaLabel: 'Tester gratuitement pendant 2 mois',
+        ctaLabel: 'Tester gratuitement pendant 3 mois',
       },
     ],
   },

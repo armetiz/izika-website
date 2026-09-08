@@ -83,4 +83,13 @@ export const teamLandingChFr: TeamLandingCopy = marketAssets('ch-fr', {
     ],
     imageAlt: 'izika, relevés de frais kilométriques prêts pour votre fiduciaire',
   },
+  closing: {
+    ...teamLandingFr.closing,
+    title: 'Prêt à tester le meilleur outil de gestion des frais kilométriques ?',
+    // Pas de « cocorico / made in France » ici, contrairement à /fr : en Suisse
+    // l'argument qui porte est la souveraineté des données, pas le pavillon de
+    // l'éditeur.
+    noteHtml:
+      'Support en français, direct et non sous-traité.<br />Hébergement européen, hors cloud américain.',
+  },
 });
