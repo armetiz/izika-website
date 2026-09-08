@@ -1,12 +1,12 @@
 ---
 import StandardLayout from './StandardLayout.astro';
-import TrackedLink from '../components/TrackedLink.astro';
-import Card from '../components/Card.astro';
-import TableOfContents from '../components/TableOfContents.astro';
+import TrackedLink from '../components/ui/TrackedLink.astro';
+import Card from '../components/ui/Card.astro';
+import TableOfContents from '../components/ui/TableOfContents.astro';
 import { articleSchema, breadcrumbSchema } from '../seo/schema';
 import { btnPill, btnPrimaryCompact } from '../lib/cta';
 import { getCollection } from 'astro:content';
-import HreflangTags from '../components/HreflangTags.astro';
+import HreflangTags from '../components/head/HreflangTags.astro';
 import { t, getMarket, articlePath, localizedPath, splitContentId, type MarketId } from '../i18n';
 import type { MarkdownHeading } from 'astro';
 

@@ -7,9 +7,9 @@ import {
   computeCH,
   type Periode,
   type TauxKey,
-} from '../data/mileage-ch';
-import { chfPerKm, makeFormatters } from '../lib/format';
-import { badgePill } from '../lib/ui';
+} from '../../data/mileage-ch';
+import { chfPerKm, makeFormatters } from '../../lib/format';
+import { badgePill } from '../../lib/ui';
 import {
   SegmentedRadio,
   StepBadge,
@@ -23,7 +23,7 @@ import {
   kickerClass,
   resultPanelClass,
   stepListClass,
-} from './calculator/shared';
+} from './shared';
 
 /**
  * Calculateur d'indemnités kilométriques suisse. Tout le calcul vit dans

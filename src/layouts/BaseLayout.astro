@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
-import Seo from '../components/Seo.astro';
-import JsonLd from '../components/JsonLd.astro';
-import Analytics from '../components/Analytics.astro';
+import Seo from '../components/head/Seo.astro';
+import JsonLd from '../components/head/JsonLd.astro';
+import Analytics from '../components/head/Analytics.astro';
 import { graph, organizationSchema, webSiteSchema } from '../seo/schema';
 import type { RouteKey } from '../i18n';
 import { getMarket, type MarketId } from '../i18n';

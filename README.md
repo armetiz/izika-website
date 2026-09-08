@@ -33,7 +33,7 @@ npx astro check           # vérification TypeScript
   rendues par `SolutionPage.astro`.
 - `src/data/` — données partagées entre UI et JSON-LD (avis Trustpilot, FAQ) :
   jamais de littéraux dans `src/seo/schema.ts`.
-- `src/components/Seo.astro` — canonique auto-référencée, og:url, hreflang
+- `src/components/head/Seo.astro` — canonique auto-référencée, og:url, hreflang
   (émis seulement quand une page existe en ≥ 2 locales).
 - `public/_redirects` — règles 301 statiques ; les 37 redirections d'articles
   historiques (`/{slug}` → `/fr/{slug}`) sont **générées au build** par

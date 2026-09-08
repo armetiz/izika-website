@@ -9,10 +9,10 @@ import {
   type Categorie,
   type Motorisation,
   type Periode,
-} from '../data/bareme-ik';
-import { PERIODE_LABELS, labelTranche } from '../data/bareme-ik.labels.fr';
-import { makeFormatters } from '../lib/format';
-import { badgePill } from '../lib/ui';
+} from '../../data/bareme-ik';
+import { PERIODE_LABELS, labelTranche } from '../../data/bareme-ik.labels.fr';
+import { makeFormatters } from '../../lib/format';
+import { badgePill } from '../../lib/ui';
 import {
   SegmentedRadio,
   StepBadge,
@@ -26,7 +26,7 @@ import {
   kickerClass,
   resultPanelClass,
   stepListClass,
-} from './calculator/shared';
+} from './shared';
 
 /**
  * Simulateur d'indemnités kilométriques. Toute la logique de calcul vit dans

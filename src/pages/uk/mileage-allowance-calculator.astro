@@ -1,11 +1,11 @@
 ---
 import { badgePill, badgePillInline, checkBullet, eyebrow, tableClass, thClass, tdClass } from '../../lib/ui';
 import StandardLayout from '../../layouts/StandardLayout.astro';
-import Card from '../../components/Card.astro';
-import CtaCalendarCard from '../../components/CtaCalendarCard.astro';
-import FaqAccordion from '../../components/FaqAccordion.astro';
-import GradientHero from '../../components/GradientHero.astro';
-import MileageCalculatorUK from '../../components/MileageCalculatorUK.tsx';
+import Card from '../../components/ui/Card.astro';
+import CtaCalendarCard from '../../components/sections/CtaCalendarCard.astro';
+import FaqAccordion from '../../components/ui/FaqAccordion.astro';
+import GradientHero from '../../components/ui/GradientHero.astro';
+import MileageCalculatorUK from '../../components/calculator/MileageCalculatorUK.tsx';
 import { faqPageSchema } from '../../seo/schema';
 import { faqCalculatorEntries } from '../../data/faq-calculator.uk';
 import { PASSENGER_RATE, RATES, computeMileage } from '../../data/mileage-uk';

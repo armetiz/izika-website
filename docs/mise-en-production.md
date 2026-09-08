@@ -57,7 +57,7 @@ doivent rester muets (pas de pollution des stats, pas de bannière de test).
 
 ### Ce qui est en place
 
-`src/components/Analytics.astro` est un portage fidèle du bloc de
+`src/components/head/Analytics.astro` est un portage fidèle du bloc de
 `templates/_base.html.twig` de l'ancien site (lignes ~715-768), y compris le
 Google Consent Mode :
 
@@ -81,7 +81,7 @@ Si `PUBLIC_AXEPTIO_CLIENT_ID` est absente au build :
 1. le SDK Axeptio n'est pas injecté → **aucune bannière de consentement**, et GTM
    se déclenche sans CMP (le Consent Mode `denied` par défaut n'est jamais posé
    non plus, puisqu'il est défini dans `window.axeptioSettings`) ;
-2. `consentEnabled` dans `src/components/Footer.astro:49` est gardé par la
+2. `consentEnabled` dans `src/components/layout/Footer.astro:49` est gardé par la
    **même** variable → le bouton « Consentement des cookies » n'est pas rendu du
    tout. Plus aucun moyen visible de rouvrir le widget = manquement CNIL.
 
@@ -117,7 +117,7 @@ sont les tags à l'intérieur qui doivent respecter le Consent Mode.
 ### Vigilance 4 — ne pas réintroduire `openAxeptioCookies()`
 
 Le bouton du footer appelle la file officielle du SDK
-(`src/components/Footer.astro:158-169`) :
+(`src/components/layout/Footer.astro:158-169`) :
 
 ```js
 window._axcb = window._axcb || [];
@@ -153,7 +153,7 @@ Points de vigilance :
   simple présence de l'ID (`analyticsEnabled = Boolean(gtmId)`). Le garde-fou
   « pas de tracking hors prod » repose donc entièrement sur le fait de **ne pas**
   définir `PUBLIC_GTM_ID` sur l'environnement Preview.
-- **Tracking de clics** : les CTA passent par `src/components/TrackedLink.astro`,
+- **Tracking de clics** : les CTA passent par `src/components/ui/TrackedLink.astro`,
   qui pose l'attribut `data-track-click` lu par le bundle. Le contexte par défaut
   (`page_<dernier segment d'URL>`) reproduit l'ancien `defaultTrackingContext`,
   mais les segments d'URL ont changé (préfixe `/fr`, slugs). **Vérifier dans GTM

@@ -1,5 +1,5 @@
 /**
- * Copy contract of the TeamLanding shell (src/components/TeamLanding.astro).
+ * Copy contract of the TeamLanding shell (src/components/templates/TeamLanding.astro).
  * Each market provides its own implementation (see team-landing.fr.ts) and
  * the market's pages pass it as a prop — the shell holds no language string.
  * `…Html` fields are trusted inline HTML (span/br), rendered via set:html.

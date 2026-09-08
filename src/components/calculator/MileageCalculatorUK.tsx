@@ -8,9 +8,9 @@ import {
   type Period,
   type TaxYear,
   type VehicleType,
-} from '../data/mileage-uk';
-import { makeFormatters, pence } from '../lib/format';
-import { badgePill } from '../lib/ui';
+} from '../../data/mileage-uk';
+import { makeFormatters, pence } from '../../lib/format';
+import { badgePill } from '../../lib/ui';
 import {
   SegmentedRadio,
   StepBadge,
@@ -24,7 +24,7 @@ import {
   kickerClass,
   resultPanelClass,
   stepListClass,
-} from './calculator/shared';
+} from './shared';
 
 /**
  * UK mileage allowance calculator (HMRC AMAP rates). All the maths lives in

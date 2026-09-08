@@ -1,16 +1,16 @@
 ---
-import FeatureCard from './FeatureCard.astro';
-import LandingDeviceCollage from './LandingDeviceCollage.astro';
-import LandingHero from './LandingHero.astro';
-import LogoCloud from './LogoCloud.astro';
-import TestimonialCard from './TestimonialCard.astro';
-import TrackedLink from './TrackedLink.astro';
-import TrustpilotBadge from './TrustpilotBadge.astro';
-import { getMarket, localizedPath, type MarketId } from '../i18n';
-import { btnPill, btnPrimary, btnPrimarySm } from '../lib/cta';
-import { badgePill, checkBullet, eyebrow } from '../lib/ui';
-import type { HomePageCopy, HomeWorksCard } from '../data/home-page';
-import type { ProductFeatureCard } from '../data/feature-cards';
+import FeatureCard from '../ui/FeatureCard.astro';
+import LandingDeviceCollage from '../sections/LandingDeviceCollage.astro';
+import LandingHero from '../sections/LandingHero.astro';
+import LogoCloud from '../sections/LogoCloud.astro';
+import TestimonialCard from '../ui/TestimonialCard.astro';
+import TrackedLink from '../ui/TrackedLink.astro';
+import TrustpilotBadge from '../ui/TrustpilotBadge.astro';
+import { getMarket, localizedPath, type MarketId } from '../../i18n';
+import { btnPill, btnPrimary, btnPrimarySm } from '../../lib/cta';
+import { badgePill, checkBullet, eyebrow } from '../../lib/ui';
+import type { HomePageCopy, HomeWorksCard } from '../../data/home-page';
+import type { ProductFeatureCard } from '../../data/feature-cards';
 
 /**
  * Body of the home page. Text-free shell: strings come from `copy`
