@@ -54,10 +54,8 @@ export interface ProductLandingCopy {
   };
   /** Icon row under the hero; text may contain inline HTML (<br>). */
   highlights: ReadonlyArray<{ icon: string; text: string }>;
-  /** Accessible name of the screenshot carousels. */
-  carouselLabel: string;
-  simplify: LandingChecklistCopy & { screens: ReadonlyArray<LandingScreen> };
-  speedUp: LandingChecklistCopy & { screens: ReadonlyArray<LandingScreen> };
+  simplify: LandingChecklistCopy & { screen: LandingScreen };
+  speedUp: LandingChecklistCopy & { screen: LandingScreen };
   compliance: ComplianceCopy;
   testimonials: ReadonlyArray<{ author: string; role: string; text: string }>;
   closing: { title: string; text: string; ctaLabel: string };

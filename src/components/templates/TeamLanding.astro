@@ -2,7 +2,7 @@
 import GradientHero from '../ui/GradientHero.astro';
 import LandingChecklistSection from '../sections/LandingChecklistSection.astro';
 import LandingIconHighlights from '../sections/LandingIconHighlights.astro';
-import LandingScreenCarousel from '../sections/LandingScreenCarousel.astro';
+import LandingScreenshot from '../sections/LandingScreenshot.astro';
 import TestimonialCard from '../ui/TestimonialCard.astro';
 import TrackedLink from '../ui/TrackedLink.astro';
 import { btnPrimary } from '../../lib/cta';
@@ -25,9 +25,9 @@ interface Props {
 
 const { audience, trackingContext, copy } = Astro.props;
 
-// The app screenshots of these landings share one aspect ratio.
-const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
-  screens.map((screen) => ({ ...screen, width: 920, height: 719 }));
+// The two app screenshots of these landings share one aspect ratio, so the
+// copy carries only src and alt (see src/data/team-landing.ts).
+const SCREEN = { width: 920, height: 719 } as const;
 ---
 
 <!-- Hero Section -->
@@ -88,10 +88,7 @@ const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
   title={copy.collaborators.title}
   items={copy.collaborators.points}
 >
-  <LandingScreenCarousel
-    images={toCarousel(copy.collaborators.screens)}
-    label={copy.collaborators.title}
-  />
+  <LandingScreenshot {...copy.collaborators.screen} {...SCREEN} />
 </LandingChecklistSection>
 
 <!-- Features Section: gestionnaires -->
@@ -101,7 +98,7 @@ const toCarousel = (screens: TeamLandingCopy['collaborators']['screens']) =>
   title={copy.managers.title}
   items={copy.managers.points}
 >
-  <LandingScreenCarousel images={toCarousel(copy.managers.screens)} label={copy.managers.title} />
+  <LandingScreenshot {...copy.managers.screen} {...SCREEN} />
 </LandingChecklistSection>
 
 <!-- Security Section -->

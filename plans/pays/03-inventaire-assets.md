@@ -25,11 +25,9 @@ rendre à la build, texte et chiffres pris dans les dictionnaires — est
    produit : c'est une imitation qu'il faut maintenir en parallèle du vrai
    produit. La dérive est mécanique et invisible.
 2. **Le volume ne le justifie pas.** Ouvrir un marché complet demande
-   **56 visuels**. C’est un lot de production, pas une chaîne industrielle.
+   **48 visuels**. C’est un lot de production, pas une chaîne industrielle.
 3. **Ce n'est pas qu'une traduction.** Ces visuels portent quatre axes de
    variation — langue, devise, unité de distance, forme du barème :
-   - `app/report-accounting` : « BARÈME · d × 0.407 », « citroën BERLINGO
-     **8CV** », « PÉRIODE FISCALE », « 1 682 € »
    - `verticals/*/report` : « VOLVO V60 D3 (**6cv**) - d x 0.386 »,
      « 18 400 km / 7 198 € »
    - `app/report-mileage` : « RENAULT CLIO (**6cv**) - d x 0.386 »,
@@ -51,7 +49,7 @@ rendre à la build, texte et chiffres pris dans les dictionnaires — est
 ### L'enjeu, en une ligne
 
 `src/data/mileage-uk.ts` définit le barème HMRC en **miles** et en **pence**
-(45p), mais `/uk` sert aujourd’hui **56 visuels** dont les octets sont ceux du
+(45p), mais `/uk` sert aujourd’hui **48 visuels** dont les octets sont ceux du
 français : rapports en kilomètres et en euros, badge « CERTIFIÉ CONFORME » en
 français. Ce n'est pas un défaut esthétique, c'est une **promesse produit
 fausse** — et le build la répète à chaque exécution, une ligne par visuel.
@@ -128,7 +126,7 @@ Trois propriétés viennent de la structure, et pas d'une convention à respecte
 - **La complétude se lit sans rien exécuter.** `diff -rq markets/fr markets/de`
   liste ce qui manque au marché allemand.
 - **Ouvrir un marché est une commande.** `cp -r markets/fr markets/de`, au lieu
-  de renommer 56 fichiers un par un.
+  de renommer 48 fichiers un par un.
 
 ### 2.3 Pas de mutualisation, pas de fallback
 
@@ -184,26 +182,26 @@ Les pictogrammes du méga-menu suivent le même identifiant
 
 | | |
 |---|---:|
-| Fichiers dans `public/assets` | **195** |
-| Poids total | **11,6 Mo** |
-| Visuels marché-dépendants (sujets distincts) | **56** |
-| Fichiers qu'ils représentent (56 × 2 ou 3 marchés) | **146** — 9,5 Mo |
+| Fichiers dans `public/assets` | **171** |
+| Poids total | **11 Mo** |
+| Visuels marché-dépendants (sujets distincts) | **48** |
+| Fichiers qu'ils représentent (48 × 2 ou 3 marchés) | **122** — 8,7 Mo |
 | Fichiers neutres, réutilisables partout | **49** — 2,1 Mo |
 | Chemins d'assets marché-dépendants en dur dans un composant | **0** |
 | Marchés servis | `fr`, `uk`, `ch-fr` |
 
-Répartition : `markets/fr` 56 fichiers (3,8 Mo), `markets/uk` 56 (3,8 Mo),
-`markets/ch-fr` 34 (2,0 Mo), et côté neutre `articles/` 19 (1,2 Mo), `menu/` 10,
+Répartition : `markets/fr` 48 fichiers (3,5 Mo), `markets/uk` 48 (3,5 Mo),
+`markets/ch-fr` 26 (1,7 Mo), et côté neutre `articles/` 19 (1,2 Mo), `menu/` 10,
 `integrations/` 6, `icons/` 5, `verticals/` 4, `people/` 2, `brand/` 1,
 `illustrations/` 1.
 
 Sortie du build :
 
 ```
-[izika:asset-guard] 194 image path(s) checked, 0 broken, 0 orphan(s), 56 to localise.
+[izika:asset-guard] 170 image path(s) checked, 0 broken, 0 orphan(s), 48 to localise.
 ```
 
-Les **56 « to localise »** sont les visuels dont les octets sont encore
+Les **48 « to localise »** sont les visuels dont les octets sont encore
 identiques d'un marché à l'autre. C'est la dette de localisation, et c'est la
 liste de travail de la designer, régénérée à chaque build.
 
@@ -214,16 +212,16 @@ marché s'ouvre.**
 
 | Famille | Visuels | Poids | `/fr` | `/uk` | `/ch-fr` |
 |---|---:|---:|:-:|:-:|:-:|
-| `app/` — captures de l'app | 26 | ≈ 1,7 Mo | ✓ | ✓ | ✓ |
+| `app/` — captures de l'app | 18 | ≈ 1,5 Mo | ✓ | ✓ | ✓ |
 | `verticals/` — 5 verticales × 4 gabarits | 20 | ≈ 1,8 Mo | ✓ | ✓ | — |
 | `icons/` — pictogrammes à texte/devise | 6 | ≈ 76 Ko | ✓ | ✓ | 5 |
 | `social/` — bannières OG | 2 | ≈ 64 Ko | ✓ | ✓ | ✓ |
 | `photos/` — `laptop-app` | 1 | ≈ 148 Ko | ✓ | ✓ | ✓ |
 | `brand/` — `emblem-origin` | 1 | ≈ 12 Ko | ✓ | ✓ | — |
-| **Total** | **56** | **≈ 3,8 Mo** | **56** | **56** | **34** |
+| **Total** | **48** | **≈ 3,5 Mo** | **48** | **48** | **26** |
 
-**Un marché complet = 56 visuels, ≈ 3,8 Mo.** Un marché sans pages solutions —
-c'est le cas de `/ch-fr` — **= 34 visuels, ≈ 2,0 Mo**. Le lot suit la
+**Un marché complet = 48 visuels, ≈ 3,5 Mo.** Un marché sans pages solutions —
+c'est le cas de `/ch-fr` — **= 26 visuels, ≈ 1,7 Mo**. Le lot suit la
 partialité des routes : pas de pages solutions, pas de `verticals/`, pas de
 `icons/provisions`.
 
@@ -236,24 +234,29 @@ de se lire page par page.
 s'extrait pas d'une liste : c'est le dossier lui-même, et il se transmet tel
 quel.
 
-### 4.1 Les 8 visuels à traiter en premier
+### 4.1 Les 7 visuels à traiter en premier
 
 Sélection par densité de texte × fréquence d'usage × dépendance fiscale.
 
 | # | Visuel | Usages | Pourquoi celui-là |
 |---|---|---:|---|
 | 1 | `icons/calendar-to-trip` | **25** | L'asset le plus utilisé du site. Affiche « RDV : » et « 1 250 km » |
-| 2 | `icons/compliance` | **24** | « CERTIFIÉ CONFORME » en texte **courbe sur un cercle**, plus « 1 250 km » et « 501 € » |
+| 2 | `icons/compliance` | **25** | « CERTIFIÉ CONFORME » en texte **courbe sur un cercle**, plus « 1 250 km » et « 501 € » |
 | 3 | `photos/laptop-app` | 12 | Composite photo + écran incrusté en perspective. Le seul que ni SVG ni HTML ne reproduiraient |
-| 4 | `app/report-accounting` | 2 | Cœur de la promesse : barème, puissance fiscale, devise |
-| 5 | `app/step-mileage-export` | 5 | Rapport complet, adresses françaises |
-| 6 | `app/screen-claims-list` | 6 | Le visuel « équipe » le plus dense : colonnes, statuts, montants |
-| 7 | `verticals/*/report` | 5 × 2 | Le plus chargé en fiscal, et dupliqué cinq fois |
-| 8 | `social/og-default` | 3 | Baseline marketing entièrement cuite dans l'image, servie sur **toutes** les pages du marché |
+| 4 | `app/step-mileage-export` | 5 | Rapport complet, adresses françaises, « RENAULT CLIO (6cv) - d x 0.386 », « 21 890 km / 5 876 € » |
+| 5 | `app/screen-claims-list` | 6 | Le visuel « équipe » le plus dense : colonnes, statuts, montants |
+| 6 | `verticals/*/report` | 5 × 2 | Le plus chargé en fiscal, et dupliqué cinq fois |
+| 7 | `social/og-default` | 3 | Baseline marketing entièrement cuite dans l'image, servie sur **toutes** les pages du marché |
 
-*`icons/calendar-to-trip` et `icons/compliance` totalisent **49 points d'usage**
+*`icons/calendar-to-trip` et `icons/compliance` totalisent **50 points d'usage**
 à eux deux, pour deux fichiers de moins de 25 Ko. Meilleur rapport
 effort/portée du dossier.*
+
+`app/report-accounting` figurait ici en 4ᵉ position — « cœur de la promesse :
+barème, puissance fiscale, devise ». Il a été **supprimé du dépôt** avec les
+carrousels (§ 4.4) : c'était le 3ᵉ écran d'un bloc qui n'en montrait qu'un.
+Le site n'affiche donc plus aucun rapport comptable ; `app/step-mileage-export`
+et `app/report-mileage` restent les seuls documents fiscaux servis.
 
 ### 4.2 Deux arbitrages marketing, pas des traductions
 
@@ -268,23 +271,22 @@ effort/portée du dossier.*
   arbitrage marketing. Ils sont **neutres** aujourd'hui — un seul fichier, hors
   de `markets/` : les localiser demande d'abord cette décision.
 
-### 4.3 Comment faire passer le lot de 56 à ≈ 43
+### 4.3 Comment faire passer le lot de 48 à ≈ 38
 
-Les 26 visuels de `app/` ne montrent que **13 écrans distincts** :
+Les 18 visuels de `app/` ne montrent que **8 écrans distincts** :
 
 | Écran | Fichiers | Ce qui les distingue |
 |---|---:|---|
-| Paramètres | **9** | 3 variantes à sections masquées, 3 recadrages de carte, 1 illustration d'étape, 1 cadrage large, 1 plein écran |
+| Paramètres | **7** | 1 variante à section masquée, 3 recadrages de carte, 1 illustration d'étape, 1 cadrage large, 1 plein écran |
 | « RDV suivant » | 3 | illustration 920×719, `desktopSrc` 1618×1010, `tabletSrc` 1618×1210 |
-| Validation de demande | 2 | illustration 920×719 vs `desktopSrc` 1618×1010, dates différentes |
-| Provisions | 2 | avec et sans chrome de navigateur |
 | Import d'agenda | 2 | l'un ne montre qu'une des deux fenêtres |
-| 8 autres | 8 | un fichier chacun |
+| Relevé d'IK | 2 | `report-mileage.jpg` 533×711 et `step-mileage-export.png` 2000×1764 — **même document**, l'un cadré, l'autre posé sur une feuille |
+| 4 autres | 4 | un fichier chacun |
 
-Neuf fichiers pour l'écran « Paramètres », c'est **neuf visuels à produire par
+Sept fichiers pour l'écran « Paramètres », c'est **sept visuels à produire par
 marché** pour un seul écran de l'app. Si la designer livre **un master par
-écran** et que les recadrages en sont dérivés, le lot par marché tombe de 56 à
-≈ 43, soit **un quart d'effort en moins à chaque ouverture**.
+écran** et que les recadrages en sont dérivés, le lot par marché tombe de 48 à
+≈ 38, soit **un cinquième d'effort en moins à chaque ouverture**.
 
 Ces fichiers ne sont pas interchangeables en l'état (ratios et cadrages
 différents, portés par `desktopSrc`/`tabletSrc` et par des cartes de
@@ -294,9 +296,42 @@ tâche de nettoyage.**
 *Incohérence visible en production : `step-settings` affiche « TWINGO 5CV /
 BERLINGO 8CV » et « MODE DE DÉPLACEMENT PRÉFÉRÉ » là où `screen-settings`
 affiche « BERLINGO 8CV / ZOÉ 4CV » et « MODE DE DÉPLACEMENT PAR DÉFAUT » — deux
-jeux de données pour le même écran. Et `step-provisions` libelle deux lignes
-consécutives « juin » (589 km puis 39 km) là où `screen-provisions` affiche
-correctement « mai » puis « juin ».*
+jeux de données pour le même écran. Plus grave depuis § 4.4 :
+`step-provisions` est désormais **le seul visuel de l'écran Provisions**, et
+c'est celui qui libelle deux lignes consécutives « juin » (589 km puis 39 km)
+et affiche « 15 € » dans quatre lignes « montant versé ». La version correcte,
+`screen-provisions`, n'était servie que dans un carrousel et a été supprimée
+avec lui. **À ré-exporter.***
+
+### 4.4 Réduction appliquée : un seul écran par bloc
+
+Les blocs « fonctionnalités » des landings `/solo`, `/team` et `team-*`
+affichaient **trois captures** dans une rangée `overflow-x-auto snap-x`
+(`LandingScreenCarousel`) — successeur sans JS des carrousels slick de l'ère
+Twig. Cette rangée n'avait **aucune affordance** : ni flèches, ni pastilles, et
+une scrollbar overlay invisible sous macOS. Les slides 2 et 3 n'étaient donc
+jamais vus en desktop, et rien n'indiquait leur existence en mobile.
+
+Le composant est remplacé par `LandingScreenshot.astro`, qui rend **une seule
+image**. Les contrats de copie portent désormais `screen` au singulier
+(`src/data/landing-page.ts`, `src/data/team-landing.ts`) et `carouselLabel` a
+disparu.
+
+Conséquences :
+
+- **8 sujets par marché deviennent orphelins et sont retirés du dépôt**
+  (récupérables dans l'historique git) : `report-accounting`,
+  `screen-claim-approve`, `screen-folders`, `screen-provisions`,
+  `screen-receipts`, `screen-route`, `screen-settings-travel-mode`,
+  `screen-settings-vehicles`. Soit **24 fichiers**, 3 marchés confondus.
+- Le lot par marché passe de 56 à **48 visuels** (`/ch-fr` : 34 → **26**), et
+  `app/` de 26 à **18 fichiers**.
+- **Aucune régression visuelle en desktop** : la page rendait déjà la seule
+  première image. La perte réelle est en mobile, où le glissement tactile
+  fonctionnait — sans que rien ne le signale.
+- Les listes à puces de ces blocs annoncent encore quatre ou cinq
+  fonctionnalités pour une seule capture. **À arbitrer côté copie** : soit le
+  texte se resserre sur ce que l'image montre, soit le bloc assume l'écart.
 
 ---
 
@@ -337,7 +372,8 @@ Conséquences :
   là : ils sont **retirés du dépôt** (récupérables dans l'historique git,
   commit `770b1ba`). La famille `illustrations/` ne contient plus que
   `sketch-accountant.png`, neutre.
-- Le lot par marché passe de 53 à **56 visuels** : −1 croquis, +4 `next-stop`.
+- Le lot par marché est alors passé de 53 à 56 visuels : −1 croquis,
+  +4 `next-stop`. Il est depuis retombé à **48** (§ 4.4).
 - Les quatre nouveaux `next-stop` portent aujourd'hui **les octets de celui de
   l'assurance** — état de départ assumé, comme pour un marché non localisé.
   Ils montrent donc des rendez-vous d'agent d'assurance sur les pages immo,
@@ -490,10 +526,13 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
 - [ ] **Identifier et fournir la police de l'app** (ce n'est pas Open Sans,
       la seule famille du site — `src/styles/global.css:5-8`). Sans elle, aucun
       ré-export ne sera raccord.
-- [ ] Produire le lot `/uk` : **56 visuels**, miles et livres sterling.
+- [ ] Produire le lot `/uk` : **48 visuels**, miles et livres sterling.
       `npm run build` en imprime la liste.
-- [ ] Produire le lot `/ch-fr` : **34 visuels**, CHF et taux de règlement de
+- [ ] Produire le lot `/ch-fr` : **26 visuels**, CHF et taux de règlement de
       frais — pas de barème national opposable (`src/data/mileage-ch.ts`).
+- [ ] **Ré-exporter `app/step-provisions`** : seul visuel restant de l'écran
+      Provisions, il porte deux lignes « juin » et quatre « montant versé » à
+      15 € (§ 4.3).
 - [ ] **Produire les 4 `verticals/<id>/next-stop`** d'immo, artisans,
       consultants et libérales (§ 5.1) : ils portent aujourd'hui les octets de
       celui de l'assurance, donc des rendez-vous d'agent d'assurance sur quatre
@@ -508,8 +547,11 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
       et surtout `gains[1]` — assurance met en avant les **provisions** là où
       les quatre autres mettent les **modes de déplacement**. Ce dernier est un
       arbitrage marketing, pas un choix d'image.
-- [ ] Arbitrer **un master par écran** plutôt que 9 fichiers pour l'écran
-      « Paramètres » (§ 4.3). Décision qui vaut −25 % sur chaque ouverture.
+- [ ] Arbitrer **un master par écran** plutôt que 7 fichiers pour l'écran
+      « Paramètres » (§ 4.3). Décision qui vaut −21 % sur chaque ouverture.
+- [ ] **Resserrer la copie des blocs `simplify` / `speedUp` / `collaborators` /
+      `managers`** : ils listent quatre ou cinq fonctionnalités pour une seule
+      capture depuis § 4.4.
 - [ ] Confirmer l'affichage des miles et des devises non-euro **dans l'app** :
       les visuels ne peuvent pas montrer ce que l'app ne sait pas produire.
 

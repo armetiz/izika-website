@@ -44,7 +44,6 @@ export const soloPageUk: ProductLandingCopy = {
       text: 'Security, privacy —<br /> built and hosted in France',
     },
   ],
-  carouselLabel: 'Application screenshots',
   simplify: {
     eyebrow: 'Your mileage reports in 2 min.',
     title: 'Simplify your mileage allowance calculation',
@@ -54,26 +53,12 @@ export const soloPageUk: ProductLandingCopy = {
       'Attach supporting documents, receipts, visit reports',
       'Generate in one click your mileage expense report, ready to hand to your accountant or include in your annual accounts.',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-next-stop.png',
-        alt: 'Configuring star-pattern or round trips',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-receipts.png',
-        alt: 'attaching supporting documents to appointments',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/report-accounting.png',
-        alt: 'generate your accounting report in 1 click',
-        width: 1078,
-        height: 790,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-next-stop.png',
+      alt: 'Configuring star-pattern or round trips',
+      width: 920,
+      height: 719,
+    },
   },
   speedUp: {
     eyebrow: 'To go even faster',
@@ -84,32 +69,12 @@ export const soloPageUk: ProductLandingCopy = {
       'Add your different vehicles (izika also handles electric vehicles!)',
       'Report your monthly provisions — izika computes the remaining balance at the end of your tax period',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-settings-addresses.png',
-        alt: 'List your main addresses',
-        width: 1644,
-        height: 1204,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-settings-travel-mode.png',
-        alt: 'Configure your default travel mode',
-        width: 1640,
-        height: 1208,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-settings-vehicles.png',
-        alt: 'List your different vehicles',
-        width: 1642,
-        height: 1200,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-provisions.png',
-        alt: 'Record your monthly provisions',
-        width: 1076,
-        height: 792,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-settings-addresses.png',
+      alt: 'List your main addresses',
+      width: 1644,
+      height: 1204,
+    },
   },
   compliance: complianceSectionUk,
   testimonials: [

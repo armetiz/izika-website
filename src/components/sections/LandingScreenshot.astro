@@ -1,0 +1,29 @@
+---
+/**
+ * Single app screenshot inside a landing feature section.
+ *
+ * Was a scroll-snap row of three screenshots (`LandingScreenCarousel`), the
+ * no-JS successor of the old slick carousels. It had no affordance — no
+ * arrows, no dots, and an overlay scrollbar invisible on macOS — so slides 2
+ * and 3 were never seen on desktop. The extra screenshots are dropped rather
+ * than given a control: they cost one visual per market each (see
+ * plans/pays/03-inventaire-assets.md).
+ */
+export interface LandingScreenshotProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const { src, alt, width, height } = Astro.props as LandingScreenshotProps;
+---
+
+<img
+  class="w-full rounded-card border border-beige-line shadow-card"
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  loading="lazy"
+/>

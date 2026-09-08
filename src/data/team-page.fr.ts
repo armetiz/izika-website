@@ -52,7 +52,6 @@ export const teamPageFr: ProductLandingCopy = {
       text: 'Sécurité, confidentialité<br /> créé et hébergé en France',
     },
   ],
-  carouselLabel: "Captures d'écran de l'application",
   simplify: {
     eyebrow: "Vos relevés d'IK en 2 min.",
     title: 'Simplifiez le calcul des IK pour vos collaborateurs',
@@ -62,26 +61,12 @@ export const teamPageFr: ProductLandingCopy = {
       'Paramétrage des déplacements en tournée ou en étoile.',
       "Possibilité d'attacher des justificatifs, facturettes, rapports de visites",
     ],
-    screens: [
-      {
-        src: '/assets/markets/fr/app/screen-next-stop.png',
-        alt: 'Configuration des déplacements en étoile ou en tournée',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/fr/app/screen-folders.png',
-        alt: 'catégorisation des rendez-vous en dossiers',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/fr/app/screen-receipts.png',
-        alt: 'association des justificatifs aux rendez-vous',
-        width: 920,
-        height: 719,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/fr/app/screen-next-stop.png',
+      alt: 'Configuration des déplacements en étoile ou en tournée',
+      width: 920,
+      height: 719,
+    },
   },
   speedUp: {
     eyebrow: 'Centralisation et automatisation',
@@ -92,26 +77,12 @@ export const teamPageFr: ProductLandingCopy = {
       'Consolidation analytique par collaborateur et par client ou dossier',
       "Conformité fiscale des relevés d'indemnités kilométriques",
     ],
-    screens: [
-      {
-        src: '/assets/markets/fr/app/screen-claims-list.png',
-        alt: "Liste des demandes d'indemnisation",
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/fr/app/screen-claim-approve.png',
-        alt: 'approuver une demande',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/fr/app/screen-route.png',
-        alt: "Voir l'itinéraire en détail",
-        width: 920,
-        height: 719,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/fr/app/screen-claims-list.png',
+      alt: "Liste des demandes d'indemnisation",
+      width: 920,
+      height: 719,
+    },
   },
   compliance: complianceSectionFr,
   testimonials: [

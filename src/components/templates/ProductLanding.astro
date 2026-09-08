@@ -4,7 +4,7 @@ import LandingClosingCta from '../sections/LandingClosingCta.astro';
 import LandingDeviceCollage from '../sections/LandingDeviceCollage.astro';
 import LandingHero from '../sections/LandingHero.astro';
 import LandingIconHighlights from '../sections/LandingIconHighlights.astro';
-import LandingScreenCarousel from '../sections/LandingScreenCarousel.astro';
+import LandingScreenshot from '../sections/LandingScreenshot.astro';
 import TestimonialCard from '../ui/TestimonialCard.astro';
 import { checkBullet } from '../../lib/ui';
 import type { ProductLandingCopy } from '../../data/landing-page';
@@ -61,7 +61,7 @@ const { trackingContext, copy } = Astro.props;
   items={copy.simplify.items}
   class="bg-soft-neutral"
 >
-  <LandingScreenCarousel images={copy.simplify.screens} label={copy.carouselLabel} />
+  <LandingScreenshot {...copy.simplify.screen} />
 </LandingChecklistSection>
 
 {/* Features Section 2 */}
@@ -71,7 +71,7 @@ const { trackingContext, copy } = Astro.props;
   items={copy.speedUp.items}
   reverse
 >
-  <LandingScreenCarousel images={copy.speedUp.screens} label={copy.carouselLabel} />
+  <LandingScreenshot {...copy.speedUp.screen} />
 </LandingChecklistSection>
 
 {/* Features Section 3 */}

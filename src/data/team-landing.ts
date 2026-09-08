@@ -25,13 +25,13 @@ export interface TeamLandingCopy {
     kicker: string;
     title: string;
     points: readonly string[];
-    screens: ReadonlyArray<{ src: string; alt: string }>;
+    screen: { src: string; alt: string };
   };
   managers: {
     kicker: string;
     title: string;
     points: readonly string[];
-    screens: ReadonlyArray<{ src: string; alt: string }>;
+    screen: { src: string; alt: string };
   };
   security: {
     kicker: string;

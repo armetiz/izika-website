@@ -52,7 +52,6 @@ export const teamPageUk: ProductLandingCopy = {
       text: 'Security, privacy —<br /> built and hosted in France',
     },
   ],
-  carouselLabel: 'Application screenshots',
   simplify: {
     eyebrow: 'Your mileage reports in 2 min.',
     title: 'Simplify mileage allowance calculation for your employees',
@@ -62,26 +61,12 @@ export const teamPageUk: ProductLandingCopy = {
       'Round-trip or star-pattern travel configuration.',
       'Attach supporting documents, receipts, visit reports',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-next-stop.png',
-        alt: 'Configuring star-pattern or round trips',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-folders.png',
-        alt: 'categorizing appointments into projects',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-receipts.png',
-        alt: 'attaching supporting documents to appointments',
-        width: 920,
-        height: 719,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-next-stop.png',
+      alt: 'Configuring star-pattern or round trips',
+      width: 920,
+      height: 719,
+    },
   },
   speedUp: {
     eyebrow: 'Centralization and automation',
@@ -92,26 +77,12 @@ export const teamPageUk: ProductLandingCopy = {
       'Analytical consolidation by employee and by client or project',
       'Tax compliance of the mileage allowance reports',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-claims-list.png',
-        alt: 'List of mileage claims',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-claim-approve.png',
-        alt: 'approving a claim',
-        width: 920,
-        height: 719,
-      },
-      {
-        src: '/assets/markets/uk/app/screen-route.png',
-        alt: 'Viewing the route in detail',
-        width: 920,
-        height: 719,
-      },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-claims-list.png',
+      alt: 'List of mileage claims',
+      width: 920,
+      height: 719,
+    },
   },
   compliance: complianceSectionUk,
   testimonials: [

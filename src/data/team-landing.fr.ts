@@ -47,20 +47,10 @@ export const teamLandingFr: TeamLandingCopy = {
       'Paramétrage des déplacements en tournée ou en étoile.',
       'Gestion des justificatifs et des attributions à des dossiers ou projets.',
     ],
-    screens: [
-      {
-        src: '/assets/markets/fr/app/screen-next-stop.png',
-        alt: 'Configuration des déplacements en étoile ou en tournée',
-      },
-      {
-        src: '/assets/markets/fr/app/screen-folders.png',
-        alt: 'catégorisation des rendez-vous en dossiers',
-      },
-      {
-        src: '/assets/markets/fr/app/screen-receipts.png',
-        alt: 'association des justificatifs aux rendez-vous',
-      },
-    ],
+    screen: {
+      src: '/assets/markets/fr/app/screen-next-stop.png',
+      alt: 'Configuration des déplacements en étoile ou en tournée',
+    },
   },
   managers: {
     kicker: 'Pour vos gestionnaires,',
@@ -72,14 +62,10 @@ export const teamLandingFr: TeamLandingCopy = {
       'Organisez vos équipes comme bon vous semble. Assignez à chaque équipe des managers, des dossiers ou des projets.',
       'Editez des rapports complets et conformes aux règles comptables et fiscales.',
     ],
-    screens: [
-      {
-        src: '/assets/markets/fr/app/screen-claims-list.png',
-        alt: "Liste des demandes d'indemnisation",
-      },
-      { src: '/assets/markets/fr/app/screen-claim-approve.png', alt: 'approuver une demande' },
-      { src: '/assets/markets/fr/app/screen-route.png', alt: "Voir l'itinéraire en détail" },
-    ],
+    screen: {
+      src: '/assets/markets/fr/app/screen-claims-list.png',
+      alt: "Liste des demandes d'indemnisation",
+    },
   },
   security: {
     kicker: 'Sécurité & fiabilité',

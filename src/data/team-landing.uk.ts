@@ -47,20 +47,10 @@ export const teamLandingUk: TeamLandingCopy = {
       'Round-trip or star-pattern travel configuration.',
       'Management of supporting documents and assignments to projects or clients.',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-next-stop.png',
-        alt: 'Configuring star-pattern or round trips',
-      },
-      {
-        src: '/assets/markets/uk/app/screen-folders.png',
-        alt: 'categorizing appointments into projects',
-      },
-      {
-        src: '/assets/markets/uk/app/screen-receipts.png',
-        alt: 'attaching supporting documents to appointments',
-      },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-next-stop.png',
+      alt: 'Configuring star-pattern or round trips',
+    },
   },
   managers: {
     kicker: 'For your managers,',
@@ -72,14 +62,10 @@ export const teamLandingUk: TeamLandingCopy = {
       'Organize your teams however you like. Assign managers, projects or clients to each team.',
       'Generate complete reports compliant with accounting and tax rules.',
     ],
-    screens: [
-      {
-        src: '/assets/markets/uk/app/screen-claims-list.png',
-        alt: 'List of mileage claims',
-      },
-      { src: '/assets/markets/uk/app/screen-claim-approve.png', alt: 'approving a claim' },
-      { src: '/assets/markets/uk/app/screen-route.png', alt: 'Viewing the route in detail' },
-    ],
+    screen: {
+      src: '/assets/markets/uk/app/screen-claims-list.png',
+      alt: 'List of mileage claims',
+    },
   },
   security: {
     kicker: 'Security & reliability',
