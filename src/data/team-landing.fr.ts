@@ -11,10 +11,10 @@ export const teamLandingFr: TeamLandingCopy = {
     catch:
       'Faites gagner à votre structure un maximum de temps sur la gestion de ses indemnités kilométriques.',
     cta: 'Tester gratuitement izika',
-    image: '/assets/markets/fr/app/screen-calendar-import.jpg',
+    image: '/assets/markets/fr/app/screen-calendar-import.png',
     imageAlt: 'izika sur ordinateur de bureau',
-    imageWidth: 1618,
-    imageHeight: 1010,
+    imageWidth: 1640,
+    imageHeight: 1208,
   },
   heroBenefits: [
     { icon: '/assets/markets/fr/icons/calendar-to-trip.png', text: 'Gestion intelligente des RDV' },
@@ -48,7 +48,7 @@ export const teamLandingFr: TeamLandingCopy = {
       'Gestion des justificatifs et des attributions à des dossiers ou projets.',
     ],
     screen: {
-      src: '/assets/markets/fr/app/screen-next-stop.jpg',
+      src: '/assets/markets/fr/app/screen-next-stop.png',
       alt: 'Configuration des déplacements en étoile ou en tournée',
       width: 1618,
       height: 1210,

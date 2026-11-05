@@ -54,9 +54,9 @@ export const featuresPageChFr: FeaturesPageCopy = marketAssets('ch-fr', {
     {
       image: '/assets/markets/ch-fr/app/screen-settings-vehicles.png',
       imageAlt: 'Gestion multi-véhicules',
-      imageWidth: 1642,
-      imageHeight: 1200,
-      imageCrop: { x: 0, y: 0.137, w: 0.62, h: 0.5656 },
+      imageWidth: 1640,
+      imageHeight: 1208,
+      imageCrop: { x: 0, y: 0, w: 0.95, h: 0.8598 },
       title: 'Gestion multi-véhicules',
       paragraphsHtml: [
         '🚘 Configurez vos différents véhicules et définissez votre véhicule par défaut.',
