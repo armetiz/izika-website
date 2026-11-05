@@ -36,9 +36,9 @@ export const featuresPageUk: FeaturesPageCopy = {
     {
       image: '/assets/markets/uk/app/screen-settings-vehicles.png',
       imageAlt: 'Multi-vehicle management',
-      imageWidth: 1642,
-      imageHeight: 1200,
-      imageCrop: { x: 0, y: 0.137, w: 0.62, h: 0.5656 },
+      imageWidth: 1640,
+      imageHeight: 1208,
+      imageCrop: { x: 0, y: 0, w: 0.95, h: 0.8598 },
       title: 'Multi-vehicle management',
       paragraphsHtml: [
         '🚘 Set up your vehicles and their tax horsepower, and define your default vehicle.',
@@ -48,9 +48,9 @@ export const featuresPageUk: FeaturesPageCopy = {
     {
       image: '/assets/markets/uk/app/screen-settings-addresses.png',
       imageAlt: 'Favourite addresses',
-      imageWidth: 1644,
-      imageHeight: 1204,
-      imageCrop: { x: 0, y: 0, w: 0.62, h: 0.5644 },
+      imageWidth: 1640,
+      imageHeight: 1208,
+      imageCrop: { x: 0, y: 0, w: 0.9, h: 0.8146 },
       title: 'Favourite addresses',
       paragraphsHtml: [
         '🏢 Save your favourite addresses so they are automatically used as the start and end points of your regular trips.',
@@ -61,7 +61,7 @@ export const featuresPageUk: FeaturesPageCopy = {
       imageAlt: 'Travel modes',
       imageWidth: 1640,
       imageHeight: 1208,
-      imageCrop: { x: 0, y: 0.384, w: 0.62, h: 0.5612 },
+      imageCrop: { x: 0, y: 0.16, w: 0.85, h: 0.7692 },
       title: 'Travel modes',
       paragraphsHtml: [
         'Choose your default travel mode:',

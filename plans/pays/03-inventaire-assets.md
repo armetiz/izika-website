@@ -300,8 +300,10 @@ n'avaient pas besoin d'être des fichiers.
 
 `ScreenCrop.astro` (+ `src/lib/crop.ts`) affiche un master derrière une
 **fenêtre déclarée en fractions de l'image source** : `{ x, y, w, h }`. Sans
-`crop`, c'est un `<img>` ordinaire. Trois emplacements s'en servent — les trois
-cartes de la page fonctionnalités et la vignette « relevé » du collage du hero.
+`crop`, c'est un `<img>` ordinaire. Trois emplacements s'en servent : les trois
+cartes de la page fonctionnalités. La vignette « relevé » du collage du hero n'a
+plus de cadrage : le master de `report-mileage` livré en novembre 2026 est déjà
+resserré sur le document.
 
 Les fractions sont **indépendantes de la résolution** : un master ré-exporté
 plus grand garde ses cadrages. Ce qui les casserait, c'est un changement de
@@ -501,12 +503,6 @@ dans `src/data/`, **pas** en commandant un visuel de plus à la designer.
 
 ## 7. Qualité du parc — points ouverts
 
-- **4 aplats enregistrés en JPEG** au lieu de PNG (`app/screen-next-stop`,
-  `screen-calendar-import`, `screen-claim-approve`, `screen-mobile-trips`) :
-  artefacts autour du texte **et** surpoids. C'était 7 avant la réduction du
-  § 4.3, qui a retenu les masters PNG chaque fois qu'il en existait un.
-  Ré-encoder un JPEG en PNG ne récupère pas les artefacts déjà cuits — seule la
-  designer peut ré-exporter depuis la source.
 - **0 WebP, 0 AVIF, rien ne passe par `astro:assets`.** Chantier de performance
   à part entière, hors périmètre de ce dossier.
 - **Surdimensionnement** : traité une fois (un avatar était en 4000×4000 pour
@@ -552,15 +548,16 @@ Le coût réel est la production du visuel. La plomberie ne coûte plus rien.
 - [ ] **Identifier et fournir la police de l'app** (ce n'est pas Open Sans,
       la seule famille du site — `src/styles/global.css:5-8`). Sans elle, aucun
       ré-export ne sera raccord.
-- [ ] Produire le lot `/uk` : **41 visuels**, miles et livres sterling.
+- [ ] Terminer le lot `/uk`, miles et livres sterling : `app/` et `icons/` sont
+      intégrés, restent `verticals/`, `social/` et `photos/`.
       `npm run build` en imprime la liste.
-- [ ] Produire le lot `/ch-fr` : **19 visuels**, CHF et taux de règlement de
-      frais — pas de barème national opposable (`src/data/mileage-ch.ts`).
+- [ ] Terminer le lot `/ch-fr`, CHF et taux de règlement de frais — pas de
+      barème national opposable (`src/data/mileage-ch.ts`) : `app/` et `icons/`
+      sont intégrés, restent `social/` et `photos/`.
 - [ ] **Produire les 4 `verticals/<id>/next-stop`** d'immo, artisans,
       consultants et libérales (§ 5.1) : ils portent aujourd'hui les octets de
       celui de l'assurance, donc des rendez-vous d'agent d'assurance sur quatre
       pages qui ne le sont pas. Invisible pour `asset-guard`.
-- [ ] Ré-exporter en PNG les 4 aplats aujourd'hui en JPEG (§ 7).
 
 ### Produit / Design
 
